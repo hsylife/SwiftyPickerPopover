@@ -14,7 +14,4 @@ Pod::Spec.new do |s|
   s.resources = "SwiftyPickerPopover/*.storyboard"
 
   s.requires_arc = true
-  s.pod_target_xcconfig = {
-        'SWIFT_VERSION' => '2.2'
-    }
 end

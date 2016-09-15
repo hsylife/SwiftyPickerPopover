@@ -50,7 +50,7 @@ let displayStringFor:((String?)->String?)? = { string in
   return nil
   }
         
-  StringPickerPopover.appearFrom(sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+  StringPickerPopover.appearFrom(button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
 ```
 
 ## Required

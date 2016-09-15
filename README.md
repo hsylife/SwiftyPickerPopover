@@ -70,8 +70,8 @@ let displayStringFor:((String?)->String?)? = { string in
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+
 
-## Auther
-Yuta Hoshino [@hsylife](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)
+## Author
+Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)
 
 ## License
 MIT.

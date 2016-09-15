@@ -7,5 +7,7 @@ Popover with Picker/DatePicker by Swift 2 for iPhone/iPad, iOS9+.
 - Popover style Picker or DatePicker appears on iPhone or iPad with iOS9+.
 - DatePicker with clear button.
 
+## Usage
+
 ## License
 MIT.

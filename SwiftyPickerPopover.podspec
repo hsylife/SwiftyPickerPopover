@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   # s.ios.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/hsylife/SwiftyPickerPopover.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/hsylife/SwiftyPickerPopover.git", :tag => s.version }
   s.source_files  = "SwiftyPickerPopover/*.swift"
   s.resources = "SwiftyPickerPopover/*.storyboard"
 

@@ -38,7 +38,7 @@ class SampleViewController: UIViewController {
     
     @IBAction func tappendDatePickerCanClearButton(sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover.appearFrom(sender, baseViewController: self, title: "DatePicker can clear", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
+        DatePickerPopover.appearFrom(sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
     }
     
     

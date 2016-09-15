@@ -5,9 +5,18 @@ Popover with Picker/DatePicker by Swift 2 for iPhone/iPad, iOS9+.
 
 ## Features
 - Popover style Picker or DatePicker appears on iPhone or iPad.
-- iOS9+
+- iOS9+. UIPopoverController free.
 - Swift 2.3
 - Callback
+
+## Required
+- Swift 2.3
+- Xcode 8
+- iOS 9+
+- CocoaPods 1.1.0.rc.2+
+
+## License
+MIT.
 
 ## Screenshots
 <img src="README_resources/StringPickerPopover.jpeg" width="400">
@@ -64,14 +73,5 @@ let displayStringFor:((String?)->String?)? = { string in
   StringPickerPopover.appearFrom(button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
 ```
 
-## Required
-- Swift 2.3
-- Xcode 8
-- iOS 9+
-- CocoaPods 1.1.0.rc.2+
-
 ## Author
 Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)
-
-## License
-MIT.

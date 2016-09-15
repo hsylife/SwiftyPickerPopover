@@ -14,13 +14,20 @@ Popover with Picker/DatePicker by Swift 2 for iPhone/iPad, iOS9+.
 <img src="README_resources/ClearableDatePicker.jpeg" width="400">
 
 ## Usage
-After installing with CocoaPods,
+For Installing with CocoaPods, specify it in your 'Podfile'.
+```ruby
+platform :ios, '9.0'
+use_frameworks!
+pod 'SwiftyPickerPopover'
+```
+Run 'pod install'.
 
+On Xcode, import the module.
 ```swift
   import SwiftyPickerPopover
 ```
 ### Basic
-DatePickerPopover
+DatePickerPopover appears.
 ```swift
   DatePickerPopover.appearFrom(button, baseViewController: self, title: "DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
 ```

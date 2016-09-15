@@ -29,7 +29,7 @@ StringPickerPopover
 ### Advanced
 DatePickerPopover with clearAction 
 ```swift
-  DatePickerPopover.appearFrom(button, baseViewController: self, title: "DatePicker can clear", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")}, clearAction: { print("clear")})
+  DatePickerPopover.appearFrom(button, baseViewController: self, title: "Clearable DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")}, clearAction: { print("clear")})
 ```
 
 StringPickerPopover with displayStringFor

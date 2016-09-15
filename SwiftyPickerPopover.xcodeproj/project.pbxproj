@@ -68,21 +68,53 @@
 		D6D5C5331D892C930002118F /* SwiftyPickerPopover */ = {
 			isa = PBXGroup;
 			children = (
+				D6D8BE9F1D8A69030075DFAD /* Demo */,
+				D6D8BEA01D8A69140075DFAD /* Abstract */,
+				D6D8BEA11D8A69250075DFAD /* DatePicker */,
+				D6D8BEA21D8A69350075DFAD /* StringPicker */,
+			);
+			path = SwiftyPickerPopover;
+			sourceTree = "<group>";
+		};
+		D6D8BE9F1D8A69030075DFAD /* Demo */ = {
+			isa = PBXGroup;
+			children = (
 				D6D5C5341D892C930002118F /* AppDelegate.swift */,
 				D6D5C5361D892C930002118F /* SampleViewController.swift */,
 				D6D5C5381D892C930002118F /* Main.storyboard */,
 				D6D5C53B1D892C930002118F /* Assets.xcassets */,
 				D6D5C53D1D892C930002118F /* LaunchScreen.storyboard */,
 				D6D5C5401D892C930002118F /* Info.plist */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		D6D8BEA01D8A69140075DFAD /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
 				D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */,
+			);
+			name = Abstract;
+			sourceTree = "<group>";
+		};
+		D6D8BEA11D8A69250075DFAD /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
 				D6846A2D1D892EB300792CA4 /* DatePickerPopover.storyboard */,
 				D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */,
 				D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */,
+			);
+			name = DatePicker;
+			sourceTree = "<group>";
+		};
+		D6D8BEA21D8A69350075DFAD /* StringPicker */ = {
+			isa = PBXGroup;
+			children = (
 				D6846A301D892EB300792CA4 /* StringPickerPopover.storyboard */,
 				D6846A311D892EB300792CA4 /* StringPickerPopover.swift */,
 				D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */,
 			);
-			path = SwiftyPickerPopover;
+			name = StringPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

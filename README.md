@@ -9,6 +9,10 @@ Popover with Picker/DatePicker by Swift 2 for iPhone/iPad, iOS9+.
 - Swift 2.3
 - Callback
 
+## Screenshots
+<img src="README_resources/StringPickerPopover.jpeg" width="400">
+<img src="README_resources/ClearableDatePicker.jpeg" width="400">
+
 ## Usage
 After installing with CocoaPods,
 

@@ -18,18 +18,18 @@ After installing with CocoaPods,
 ### Basic
 DatePickerPopover
 ```swift
-  DatePickerPopover.appearFrom(sender, baseViewController: self, title: "DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+  DatePickerPopover.appearFrom(button, baseViewController: self, title: "DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
 ```
 
 StringPickerPopover
 ```swift
-  StringPickerPopover.appearFrom(sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: nil, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+  StringPickerPopover.appearFrom(button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: nil, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
 ```
 
 ### Advanced
 DatePickerPopover with clearAction 
 ```swift
-  DatePickerPopover.appearFrom(sender, baseViewController: self, title: "DatePicker can clear", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")}, clearAction: { print("clear")})
+  DatePickerPopover.appearFrom(button, baseViewController: self, title: "DatePicker can clear", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")}, clearAction: { print("clear")})
 ```
 
 StringPickerPopover with displayStringFor

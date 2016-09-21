@@ -12,11 +12,11 @@
 		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
 		D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E61D8AD0F300DAE60A /* Main.storyboard */; };
 		D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E91D8AD0F300DAE60A /* SampleViewController.swift */; };
+		D65E306F1D9282B000771790 /* DatePickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30711D9282B000771790 /* DatePickerPopover.storyboard */; };
+		D65E30731D92837800771790 /* StringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30751D92837800771790 /* StringPickerPopover.storyboard */; };
 		D6846A2C1D892EA300792CA4 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */; };
-		D6846A331D892EB300792CA4 /* DatePickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6846A2D1D892EB300792CA4 /* DatePickerPopover.storyboard */; };
 		D6846A341D892EB300792CA4 /* DatePickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */; };
 		D6846A351D892EB300792CA4 /* DatePickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */; };
-		D6846A361D892EB300792CA4 /* StringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6846A301D892EB300792CA4 /* StringPickerPopover.storyboard */; };
 		D6846A371D892EB300792CA4 /* StringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A311D892EB300792CA4 /* StringPickerPopover.swift */; };
 		D6846A381D892EB300792CA4 /* StringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */; };
 /* End PBXBuildFile section */
@@ -28,11 +28,12 @@
 		D63410E71D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		D63410E81D8AD0F300DAE60A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = SOURCE_ROOT; };
 		D63410E91D8AD0F300DAE60A /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleViewController.swift; path = Demo/SampleViewController.swift; sourceTree = SOURCE_ROOT; };
+		D65E30701D9282B000771790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatePickerPopover.storyboard; sourceTree = "<group>"; };
+		D65E30721D9282E200771790 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatePickerPopover.strings; sourceTree = "<group>"; };
+		D65E30741D92837800771790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StringPickerPopover.storyboard; sourceTree = "<group>"; };
 		D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractPopover.swift; sourceTree = "<group>"; };
-		D6846A2D1D892EB300792CA4 /* DatePickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DatePickerPopover.storyboard; sourceTree = "<group>"; };
 		D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopover.swift; sourceTree = "<group>"; };
 		D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopoverViewController.swift; sourceTree = "<group>"; };
-		D6846A301D892EB300792CA4 /* StringPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StringPickerPopover.storyboard; sourceTree = "<group>"; };
 		D6846A311D892EB300792CA4 /* StringPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPickerPopover.swift; sourceTree = "<group>"; };
 		D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPickerPopoverViewController.swift; sourceTree = "<group>"; };
 		D6D5C5311D892C930002118F /* SwiftyPickerPopover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPickerPopover.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +102,7 @@
 		D6D8BEA11D8A69250075DFAD /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
-				D6846A2D1D892EB300792CA4 /* DatePickerPopover.storyboard */,
+				D65E30711D9282B000771790 /* DatePickerPopover.storyboard */,
 				D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */,
 				D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */,
 			);
@@ -111,7 +112,7 @@
 		D6D8BEA21D8A69350075DFAD /* StringPicker */ = {
 			isa = PBXGroup;
 			children = (
-				D6846A301D892EB300792CA4 /* StringPickerPopover.storyboard */,
+				D65E30751D92837800771790 /* StringPickerPopover.storyboard */,
 				D6846A311D892EB300792CA4 /* StringPickerPopover.swift */,
 				D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */,
 			);
@@ -163,6 +164,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D6D5C5281D892C930002118F;
 			productRefGroup = D6D5C5321D892C930002118F /* Products */;
@@ -179,11 +181,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6846A331D892EB300792CA4 /* DatePickerPopover.storyboard in Resources */,
+				D65E306F1D9282B000771790 /* DatePickerPopover.storyboard in Resources */,
 				D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */,
 				D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */,
 				D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */,
-				D6846A361D892EB300792CA4 /* StringPickerPopover.storyboard in Resources */,
+				D65E30731D92837800771790 /* StringPickerPopover.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +225,23 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		D65E30711D9282B000771790 /* DatePickerPopover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D65E30701D9282B000771790 /* Base */,
+				D65E30721D9282E200771790 /* ja */,
+			);
+			name = DatePickerPopover.storyboard;
+			sourceTree = "<group>";
+		};
+		D65E30751D92837800771790 /* StringPickerPopover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D65E30741D92837800771790 /* Base */,
+			);
+			name = StringPickerPopover.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -230,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -281,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -29,7 +29,7 @@ class DatePickerPopover: AbstractPopover {
     /// - parameter initialDate: initial selected date
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    /// - parameter clearAction: action in which user tappend clear action
+    /// - parameter clearAction: action in which user tappend clear action. Omissible.
     class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:NSDate, doneAction: ((NSDate)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController

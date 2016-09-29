@@ -1,5 +1,5 @@
 //
-//  CountdownPickerPopoverViewController.swift
+//  ColumnStringPickerPopoverViewController.swift
 //  SwiftyPickerPopover
 //
 //  Created by Ken Torimaru on 2016/09/29.
@@ -14,44 +14,32 @@
 import Foundation
 import UIKit
 
-class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    var doneAction: ((TimeInterval)->Void)?
+    //var doneAction: ((Int, String)->Void)?
+    var doneAction: (([Int])->Void)?
     var cancleAction: (()->Void)?
-    var clearAction: (()->Void)?
     
-    @IBOutlet weak var picker: UIDatePicker!
-    
-    var timeInterval = TimeInterval()
-    var dateMode: UIDatePickerMode = .countDownTimer
-    var hideClearButton: Bool = false
-
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var picker: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.countDownDuration = timeInterval
-        picker.datePickerMode = dateMode
-        clearButton.isHidden = hideClearButton
+        picker.delegate = ColumnStringPickerPopover.sharedInstance
     }
     
-    
-    @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        doneAction?(picker.countDownDuration)
+    @IBAction func tappedDone(_ sender: AnyObject? = nil) {
+        //let selectedRow = picker.selectedRow(inComponent: 0)
+        //let selectedString = StringPickerPopover.sharedInstance.choices[selectedRow]
+        doneAction?(ColumnStringPickerPopover.sharedInstance.selectedRow)
+        
         dismiss(animated: true, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: UIButton? = nil) {
+    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         cancleAction?()
         dismiss(animated: true, completion: {})
     }
     
-    @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        clearAction?()
-        dismiss(animated: true, completion: {})
-    }
-    
-    /// popover dismissed
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }

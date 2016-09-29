@@ -10,6 +10,9 @@
 		BECD4B761D9DB73C008BB309 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */; };
 		BECD4B771D9DB73C008BB309 /* CountdownPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */; };
 		BECD4B781D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */; };
+		BECD4B981D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */; };
+		BECD4B9A1D9DC5CB008BB309 /* ColumnStringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B991D9DC5CB008BB309 /* ColumnStringPickerPopover.swift */; };
+		BECD4B9C1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */; };
 		D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */; };
 		D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63410E21D8AD0F300DAE60A /* Assets.xcassets */; };
 		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
@@ -28,6 +31,9 @@
 		BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CountdownPickerPopover.storyboard; sourceTree = "<group>"; };
 		BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopover.swift; sourceTree = "<group>"; };
 		BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopoverViewController.swift; sourceTree = "<group>"; };
+		BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColumnStringPickerPopover.storyboard; sourceTree = "<group>"; };
+		BECD4B991D9DC5CB008BB309 /* ColumnStringPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnStringPickerPopover.swift; sourceTree = "<group>"; };
+		BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnStringPickerPopoverViewController.swift; sourceTree = "<group>"; };
 		D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D63410E21D8AD0F300DAE60A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		D63410E51D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +70,16 @@
 				BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */,
 			);
 			name = CountdownPicker;
+			sourceTree = "<group>";
+		};
+		BECD4B961D9DC56B008BB309 /* ColumnStringPicker */ = {
+			isa = PBXGroup;
+			children = (
+				BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */,
+				BECD4B991D9DC5CB008BB309 /* ColumnStringPickerPopover.swift */,
+				BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */,
+			);
+			name = ColumnStringPicker;
 			sourceTree = "<group>";
 		};
 		D63410E31D8AD0F300DAE60A /* Base.lproj */ = {
@@ -103,6 +119,7 @@
 				D6D8BEA01D8A69140075DFAD /* Abstract */,
 				D6D8BEA11D8A69250075DFAD /* DatePicker */,
 				BECD4B721D9DB6F7008BB309 /* CountdownPicker */,
+				BECD4B961D9DC56B008BB309 /* ColumnStringPicker */,
 				D6D8BEA21D8A69350075DFAD /* StringPicker */,
 			);
 			path = SwiftyPickerPopover;
@@ -200,6 +217,7 @@
 			files = (
 				D65E306F1D9282B000771790 /* DatePickerPopover.storyboard in Resources */,
 				D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */,
+				BECD4B981D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard in Resources */,
 				BECD4B761D9DB73C008BB309 /* CountdownPickerPopover.storyboard in Resources */,
 				D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */,
 				D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */,
@@ -215,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */,
+				BECD4B9C1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift in Sources */,
 				BECD4B771D9DB73C008BB309 /* CountdownPickerPopover.swift in Sources */,
 				D6846A351D892EB300792CA4 /* DatePickerPopoverViewController.swift in Sources */,
 				D6846A371D892EB300792CA4 /* StringPickerPopover.swift in Sources */,
@@ -222,6 +241,7 @@
 				BECD4B781D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift in Sources */,
 				D6846A381D892EB300792CA4 /* StringPickerPopoverViewController.swift in Sources */,
 				D6846A2C1D892EA300792CA4 /* AbstractPopover.swift in Sources */,
+				BECD4B9A1D9DC5CB008BB309 /* ColumnStringPickerPopover.swift in Sources */,
 				D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

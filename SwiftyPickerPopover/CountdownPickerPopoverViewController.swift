@@ -1,5 +1,5 @@
 //
-//  DatePickerPopoverViewController.swift
+//  CountdownPickerPopoverViewController.swift
 //  SwiftyPickerPopover
 //
 //  Created by Yuta Hoshino on 2016/09/14.
@@ -9,30 +9,30 @@
 import Foundation
 import UIKit
 
-class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    var doneAction: ((Date)->Void)?
+    var doneAction: ((TimeInterval)->Void)?
     var cancleAction: (()->Void)?
     var clearAction: (()->Void)?
     
     @IBOutlet weak var picker: UIDatePicker!
     
-    var selectedDate = Date()
-    var dateMode: UIDatePickerMode = .date
+    var timeInterval = TimeInterval()
+    var dateMode: UIDatePickerMode = .countDownTimer
     var hideClearButton: Bool = false
 
     @IBOutlet weak var clearButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.date = selectedDate
+        picker.countDownDuration = timeInterval
         picker.datePickerMode = dateMode
         clearButton.isHidden = hideClearButton
     }
     
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        doneAction?(picker.date)
+        doneAction?(picker.countDownDuration)
         dismiss(animated: true, completion: {})
     }
     

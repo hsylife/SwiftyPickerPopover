@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BECD4B761D9DB73C008BB309 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */; };
+		BECD4B771D9DB73C008BB309 /* CountdownPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */; };
+		BECD4B781D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */; };
 		D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */; };
 		D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63410E21D8AD0F300DAE60A /* Assets.xcassets */; };
 		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CountdownPickerPopover.storyboard; sourceTree = "<group>"; };
+		BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopover.swift; sourceTree = "<group>"; };
+		BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopoverViewController.swift; sourceTree = "<group>"; };
 		D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D63410E21D8AD0F300DAE60A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		D63410E51D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +56,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BECD4B721D9DB6F7008BB309 /* CountdownPicker */ = {
+			isa = PBXGroup;
+			children = (
+				BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */,
+				BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */,
+				BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */,
+			);
+			name = CountdownPicker;
+			sourceTree = "<group>";
+		};
 		D63410E31D8AD0F300DAE60A /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +102,7 @@
 				D63410E91D8AD0F300DAE60A /* SampleViewController.swift */,
 				D6D8BEA01D8A69140075DFAD /* Abstract */,
 				D6D8BEA11D8A69250075DFAD /* DatePicker */,
+				BECD4B721D9DB6F7008BB309 /* CountdownPicker */,
 				D6D8BEA21D8A69350075DFAD /* StringPicker */,
 			);
 			path = SwiftyPickerPopover;
@@ -151,7 +168,7 @@
 				TargetAttributes = {
 					D6D5C5301D892C930002118F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 94CEFW22UD;
+						DevelopmentTeam = JWZRQH3NLH;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -183,6 +200,7 @@
 			files = (
 				D65E306F1D9282B000771790 /* DatePickerPopover.storyboard in Resources */,
 				D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */,
+				BECD4B761D9DB73C008BB309 /* CountdownPickerPopover.storyboard in Resources */,
 				D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */,
 				D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */,
 				D65E30731D92837800771790 /* StringPickerPopover.storyboard in Resources */,
@@ -197,9 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */,
+				BECD4B771D9DB73C008BB309 /* CountdownPickerPopover.swift in Sources */,
 				D6846A351D892EB300792CA4 /* DatePickerPopoverViewController.swift in Sources */,
 				D6846A371D892EB300792CA4 /* StringPickerPopover.swift in Sources */,
 				D6846A341D892EB300792CA4 /* DatePickerPopover.swift in Sources */,
+				BECD4B781D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift in Sources */,
 				D6846A381D892EB300792CA4 /* StringPickerPopoverViewController.swift in Sources */,
 				D6846A2C1D892EA300792CA4 /* AbstractPopover.swift in Sources */,
 				D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */,
@@ -346,13 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 94CEFW22UD;
+				DEVELOPMENT_TEAM = JWZRQH3NLH;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ge-nie-inc.SwiftyPickerPopover";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -360,13 +380,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 94CEFW22UD;
+				DEVELOPMENT_TEAM = JWZRQH3NLH;
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ge-nie-inc.SwiftyPickerPopover";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

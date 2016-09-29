@@ -10,7 +10,7 @@ import UIKit
 
 class SampleViewController: UIViewController {
     
-    @IBAction func tappedStringPickerButton(sender: UIButton) {
+    @IBAction func tappedStringPickerButton(_ sender: UIButton) {
         let displayStringFor:((String?)->String?)? = { string in
             if let s = string {
                 switch(s){
@@ -31,15 +31,23 @@ class SampleViewController: UIViewController {
         StringPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
     }
     
-    @IBAction func tappendDatePickerButton(sender: UIButton) {
+    @IBAction func tappendDatePickerButton(_ sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
     }
     
-    @IBAction func tappendDatePickerCanClearButton(sender: UIButton) {
+    @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
+        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
     }
+    
+    @IBAction func countdownButton(_ sender: UIButton) {
+        // DatePickerPopover appears
+        print("countdown")
+        CountdownPickerPopover.appearFrom(sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
+        
+    }
+
     
     
 }

@@ -31,7 +31,7 @@ class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDa
     /// - parameter initialRow: initial selected row index
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    class func appearFrom(originView originView: UIView, baseViewController: UIViewController, title: String?, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
+    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -56,7 +56,7 @@ class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDa
         #if swift(>=3.0)
             baseViewController.present(navigationController, animated: true, completion: nil)
         #else
-            baseViewController.presentViewController(navigationController, animated: true, completion: nil)
+            baseViewController.present(navigationController, animated: true, completion: nil)
         #endif
     }    
     
@@ -66,16 +66,16 @@ class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDa
     }
     
     /// UIPickerViewDataSource
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
     
     /// UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let d = displayStringFor {
             return d(choices[row])
         }

@@ -1,16 +1,15 @@
 # SwiftyPickerPopover
-Popover with Picker/DatePicker by Swift 2.3 for iPhone/iPad, iOS9+.
+Popover with Picker of sereval types by Swift 3 for iPhone/iPad, iOS9+.
 
 [![Version](https://img.shields.io/cocoapods/v/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) [![License](https://img.shields.io/cocoapods/l/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) [![Platform](https://img.shields.io/cocoapods/p/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover)
 
 ## Features
-- Popover style Picker or DatePicker appears on iPhone or iPad.
-- iOS9+. UIPopoverController free. Swift 2.3
+- Popover style of Picker appears on iPhone or iPad.
+- iOS9+. UIPopoverController free. Swift 3
 - Callback
 
 ## Required
-- Swift 2.3
-- Xcode 8
+- Swift 3, Xcode 8
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+
 
@@ -71,6 +70,8 @@ let displayStringFor:((String?)->String?)? = { string in
         
   StringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
 ```
+## Contributor
+Ken Torimaru
 
 ## Author
 Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

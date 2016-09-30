@@ -53,12 +53,8 @@ class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDa
         }
         
         // presnet popover
-        #if swift(>=3.0)
-            baseViewController.present(navigationController, animated: true, completion: nil)
-        #else
-            baseViewController.present(navigationController, animated: true, completion: nil)
-        #endif
-    }    
+        baseViewController.present(navigationController, animated: true, completion: nil)
+    }
     
     /// storyboardName
     override func storyboardName()->String{

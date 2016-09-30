@@ -39,7 +39,7 @@ class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicker
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat, doneAction: (([Int])->Void)?, cancelAction: (()->Void)?){
+    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -87,14 +87,30 @@ class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicker
         return CGFloat(temp)
     }
 
-    
-    /// UIPickerViewDelegate
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    // get string of choice
+    func choice(component: Int, row: Int)->String? {
         if let d = displayStringFor {
             return d(choices[component][row])
         }
         return choices[component][row]
     }
+    
+    // get array of selected strings
+    func selectedStrings()->[String]{
+        var result = [String]()
+        for (index, content) in selectedRow.enumerated() {
+            if let string = choice(component: index, row: content){
+                result.append(string)
+            }
+        }
+        return result
+    }
+    
+    /// UIPickerViewDelegate
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return choice(component: component, row: row)
+    }
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var label = view as! UILabel!
         if label == nil {

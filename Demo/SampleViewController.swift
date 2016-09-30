@@ -54,7 +54,7 @@ class SampleViewController: UIViewController {
             initialRow: [0,0],
             columnPercent: [0.5, 0.5],
             fontSize: 12.0,
-            doneAction: { selectionArray in print("selectionArray \(selectionArray)")}, cancelAction: {print("cancel")})
+            doneAction: { selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")}, cancelAction: {print("cancel")})
     }
 
     

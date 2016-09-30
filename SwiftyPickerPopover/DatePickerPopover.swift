@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DatePickerPopover: AbstractPopover {
+public class DatePickerPopover: AbstractPopover {
     // singleton
     class var sharedInstance : DatePickerPopover {
         struct Static {
@@ -30,7 +30,7 @@ class DatePickerPopover: AbstractPopover {
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:Date, doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:Date, doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
         guard let navigationController = sharedInstance.configureNavigationController(originView, baseViewController: baseViewController, title: title) else {

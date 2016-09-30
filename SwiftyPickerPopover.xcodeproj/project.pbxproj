@@ -13,6 +13,20 @@
 		BECD4B981D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */; };
 		BECD4B9A1D9DC5CB008BB309 /* ColumnStringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B991D9DC5CB008BB309 /* ColumnStringPickerPopover.swift */; };
 		BECD4B9C1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */; };
+		D60AE7DB1D9EE0DE000320F4 /* SwiftyPickerPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = D60AE7D91D9EE0DE000320F4 /* SwiftyPickerPopover.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D60AE7E41D9EE104000320F4 /* AbstractPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */; };
+		D60AE7E51D9EE104000320F4 /* DatePickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */; };
+		D60AE7E61D9EE111000320F4 /* DatePickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */; };
+		D60AE7E71D9EE111000320F4 /* CountdownPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */; };
+		D60AE7E81D9EE111000320F4 /* CountdownPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */; };
+		D60AE7E91D9EE111000320F4 /* ColumnStringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B991D9DC5CB008BB309 /* ColumnStringPickerPopover.swift */; };
+		D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */; };
+		D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A311D892EB300792CA4 /* StringPickerPopover.swift */; };
+		D60AE7EC1D9EE111000320F4 /* StringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */; };
+		D60AE7ED1D9EE11F000320F4 /* DatePickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30711D9282B000771790 /* DatePickerPopover.storyboard */; };
+		D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */; };
+		D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */; };
+		D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30751D92837800771790 /* StringPickerPopover.storyboard */; };
 		D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */; };
 		D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63410E21D8AD0F300DAE60A /* Assets.xcassets */; };
 		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
@@ -27,6 +41,19 @@
 		D6846A381D892EB300792CA4 /* StringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D60AE7DF1D9EE0DE000320F4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CountdownPickerPopover.storyboard; sourceTree = "<group>"; };
 		BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopover.swift; sourceTree = "<group>"; };
@@ -34,6 +61,9 @@
 		BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColumnStringPickerPopover.storyboard; sourceTree = "<group>"; };
 		BECD4B991D9DC5CB008BB309 /* ColumnStringPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnStringPickerPopover.swift; sourceTree = "<group>"; };
 		BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnStringPickerPopoverViewController.swift; sourceTree = "<group>"; };
+		D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPickerPopover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60AE7D91D9EE0DE000320F4 /* SwiftyPickerPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyPickerPopover.h; sourceTree = "<group>"; };
+		D60AE7DA1D9EE0DE000320F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D63410E21D8AD0F300DAE60A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		D63410E51D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,10 +78,17 @@
 		D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopoverViewController.swift; sourceTree = "<group>"; };
 		D6846A311D892EB300792CA4 /* StringPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPickerPopover.swift; sourceTree = "<group>"; };
 		D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPickerPopoverViewController.swift; sourceTree = "<group>"; };
-		D6D5C5311D892C930002118F /* SwiftyPickerPopover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPickerPopover.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6D5C5311D892C930002118F /* SwiftyPickerPopoverDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPickerPopoverDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D60AE7D31D9EE0DE000320F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6D5C52E1D892C930002118F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,6 +119,15 @@
 			name = ColumnStringPicker;
 			sourceTree = "<group>";
 		};
+		D60AE7D81D9EE0DE000320F4 /* SwiftyPickerPopover */ = {
+			isa = PBXGroup;
+			children = (
+				D60AE7D91D9EE0DE000320F4 /* SwiftyPickerPopover.h */,
+				D60AE7DA1D9EE0DE000320F4 /* Info.plist */,
+			);
+			path = SwiftyPickerPopover;
+			sourceTree = "<group>";
+		};
 		D63410E31D8AD0F300DAE60A /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D6D5C5331D892C930002118F /* SwiftyPickerPopover */,
+				D60AE7D81D9EE0DE000320F4 /* SwiftyPickerPopover */,
 				D6D5C5321D892C930002118F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,7 +150,8 @@
 		D6D5C5321D892C930002118F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6D5C5311D892C930002118F /* SwiftyPickerPopover.app */,
+				D6D5C5311D892C930002118F /* SwiftyPickerPopoverDemo.app */,
+				D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,14 +203,26 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		D60AE7D41D9EE0DE000320F4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D60AE7DB1D9EE0DE000320F4 /* SwiftyPickerPopover.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		D6D5C5301D892C930002118F /* SwiftyPickerPopover */ = {
+		D60AE7D61D9EE0DE000320F4 /* SwiftyPickerPopover */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6D5C5431D892C930002118F /* Build configuration list for PBXNativeTarget "SwiftyPickerPopover" */;
+			buildConfigurationList = D60AE7E11D9EE0DE000320F4 /* Build configuration list for PBXNativeTarget "SwiftyPickerPopover" */;
 			buildPhases = (
-				D6D5C52D1D892C930002118F /* Sources */,
-				D6D5C52E1D892C930002118F /* Frameworks */,
-				D6D5C52F1D892C930002118F /* Resources */,
+				D60AE7D21D9EE0DE000320F4 /* Sources */,
+				D60AE7D31D9EE0DE000320F4 /* Frameworks */,
+				D60AE7D41D9EE0DE000320F4 /* Headers */,
+				D60AE7D51D9EE0DE000320F4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -170,7 +230,25 @@
 			);
 			name = SwiftyPickerPopover;
 			productName = SwiftyPickerPopover;
-			productReference = D6D5C5311D892C930002118F /* SwiftyPickerPopover.app */;
+			productReference = D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D6D5C5301D892C930002118F /* SwiftyPickerPopoverDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6D5C5431D892C930002118F /* Build configuration list for PBXNativeTarget "SwiftyPickerPopoverDemo" */;
+			buildPhases = (
+				D6D5C52D1D892C930002118F /* Sources */,
+				D6D5C52E1D892C930002118F /* Frameworks */,
+				D6D5C52F1D892C930002118F /* Resources */,
+				D60AE7DF1D9EE0DE000320F4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyPickerPopoverDemo;
+			productName = SwiftyPickerPopover;
+			productReference = D6D5C5311D892C930002118F /* SwiftyPickerPopoverDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,6 +261,11 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Yuta Hoshino";
 				TargetAttributes = {
+					D60AE7D61D9EE0DE000320F4 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JWZRQH3NLH;
+						ProvisioningStyle = Automatic;
+					};
 					D6D5C5301D892C930002118F = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = JWZRQH3NLH;
@@ -205,12 +288,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D6D5C5301D892C930002118F /* SwiftyPickerPopover */,
+				D6D5C5301D892C930002118F /* SwiftyPickerPopoverDemo */,
+				D60AE7D61D9EE0DE000320F4 /* SwiftyPickerPopover */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D60AE7D51D9EE0DE000320F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D60AE7ED1D9EE11F000320F4 /* DatePickerPopover.storyboard in Resources */,
+				D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */,
+				D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */,
+				D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6D5C52F1D892C930002118F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +323,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D60AE7D21D9EE0DE000320F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D60AE7E61D9EE111000320F4 /* DatePickerPopoverViewController.swift in Sources */,
+				D60AE7E71D9EE111000320F4 /* CountdownPickerPopover.swift in Sources */,
+				D60AE7E81D9EE111000320F4 /* CountdownPickerPopoverViewController.swift in Sources */,
+				D60AE7E91D9EE111000320F4 /* ColumnStringPickerPopover.swift in Sources */,
+				D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */,
+				D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */,
+				D60AE7EC1D9EE111000320F4 /* StringPickerPopoverViewController.swift in Sources */,
+				D60AE7E41D9EE104000320F4 /* AbstractPopover.swift in Sources */,
+				D60AE7E51D9EE104000320F4 /* DatePickerPopover.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6D5C52D1D892C930002118F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,6 +396,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D60AE7E21D9EE0DE000320F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JWZRQH3NLH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftyPickerPopover/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ge-nie-inc.SwiftyPickerPopover";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D60AE7E31D9EE0DE000320F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JWZRQH3NLH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftyPickerPopover/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ge-nie-inc.SwiftyPickerPopover";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		D6D5C5411D892C930002118F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -413,6 +568,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D60AE7E11D9EE0DE000320F4 /* Build configuration list for PBXNativeTarget "SwiftyPickerPopover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D60AE7E21D9EE0DE000320F4 /* Debug */,
+				D60AE7E31D9EE0DE000320F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D6D5C52C1D892C930002118F /* Build configuration list for PBXProject "SwiftyPickerPopover" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -422,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6D5C5431D892C930002118F /* Build configuration list for PBXNativeTarget "SwiftyPickerPopover" */ = {
+		D6D5C5431D892C930002118F /* Build configuration list for PBXNativeTarget "SwiftyPickerPopoverDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6D5C5441D892C930002118F /* Debug */,

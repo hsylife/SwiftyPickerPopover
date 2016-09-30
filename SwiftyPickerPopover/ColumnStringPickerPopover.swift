@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 
-class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
+public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
     /// shared instance
     class var sharedInstance : ColumnStringPickerPopover {
         struct Static {
@@ -39,7 +39,7 @@ class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicker
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -72,15 +72,15 @@ class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicker
     }
     
     /// UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return choices.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices[component].count
     }
     
-    func pickerView(_ pickerView: UIPickerView,
+    public func pickerView(_ pickerView: UIPickerView,
                     widthForComponent component: Int) -> CGFloat {
         let width = Float(pickerView.frame.size.width)
         let temp = width * columnPercent[component]
@@ -107,11 +107,11 @@ class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicker
     }
     
     /// UIPickerViewDelegate
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choice(component: component, row: row)
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var label = view as! UILabel!
         if label == nil {
             label = UILabel()
@@ -124,7 +124,7 @@ class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicker
         return label!
     }
     
-    func pickerView(_ pickerView: UIPickerView,
+    public func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int){
         selectedRow[component] = row

@@ -39,9 +39,24 @@ DatePickerPopover appears.
   DatePickerPopover.appearFrom(originView: button, baseViewController: self, title: "DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
 ```
 
-StringPickerPopover
+StringPickerPopover appears.
 ```swift
   StringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+```
+
+ColumnStringPickerPopover which has variable multiple components, appers.
+```swift
+  ColumnStringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "Columns Strings",
+            choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
+            initialRow: [0,0],
+            columnPercent: [0.5, 0.5],
+            fontSize: 12.0,
+            doneAction: { selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")}, cancelAction: {print("cancel")})
+```
+
+CountdownPickerPopover which returns interval time, appears.
+```swift
+CountdownPickerPopover.appearFrom(sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
 ```
 
 ### Advanced
@@ -71,7 +86,7 @@ let displayStringFor:((String?)->String?)? = { string in
   StringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
 ```
 ## Contributor
-Ken Torimaru
+Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
 
 ## Author
 Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

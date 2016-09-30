@@ -2,8 +2,7 @@
 //  CountdownPickerPopoverViewController.swift
 //  SwiftyPickerPopover
 //
-//  Created by Yuta Hoshino on 2016/09/14.
-//  Copyright © 2016 Yuta Hoshino. All rights reserved.
+//  Created by ktorimaru on 2016/09.
 //
 
 import Foundation

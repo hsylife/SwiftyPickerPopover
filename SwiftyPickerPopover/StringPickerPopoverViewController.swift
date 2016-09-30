@@ -21,25 +21,25 @@ class StringPickerPopoverViewController: UIViewController, UIPopoverPresentation
         picker.delegate = StringPickerPopover.sharedInstance
     }
     
-    @IBAction func tappedDone(sender: AnyObject? = nil) {
-        let selectedRow = picker.selectedRowInComponent(0)
+    @IBAction func tappedDone(_ sender: AnyObject? = nil) {
+        let selectedRow = picker.selectedRow(inComponent: 0)
         let selectedString = StringPickerPopover.sharedInstance.choices[selectedRow]
         doneAction?(selectedRow, selectedString)
         
-        dismissViewControllerAnimated(true, completion: {})
+        dismiss(animated: true, completion: {})
     }
     
-    @IBAction func tappedCancel(sender: AnyObject? = nil) {
+    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         cancleAction?()
-        dismissViewControllerAnimated(true, completion: {})
+        dismiss(animated: true, completion: {})
     }
     
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
     
     /// Popover appears on iPhone
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Wzr-YZ-hfN">
+            <objects>
+                <navigationController id="byJ-Vv-M5N" sceneMemberID="viewController">
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFP-QF-Beb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="erI-yJ-JEk" kind="relationship" relationship="rootViewController" id="zCz-fC-4Od"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIz-np-6Ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-944" y="-406"/>
+        </scene>
+        <!--title-->
+        <scene sceneID="rjb-gs-enU">
+            <objects>
+                <viewController id="erI-yJ-JEk" customClass="CountdownPickerPopoverViewController" customModule="SwiftyPickerPopover" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cbG-vC-cwF"/>
+                        <viewControllerLayoutGuide type="bottom" id="KrY-U2-tGZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wcv-6k-DXR">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
+                                <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
+                                    <!--2016-09-13 10:35:36 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
+                                </constraints>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="tappedClear:" destination="erI-yJ-JEk" eventType="touchUpInside" id="cMx-Qs-KEL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="2fL-gl-tJ5"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="3md-4q-bnI"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" constant="8" symbolic="YES" id="IWY-dm-x9c"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" symbolic="YES" id="aJF-Nc-dEB"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="ga5-H8-9Ur"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="4cY-yy-Wau" secondAttribute="leading" id="uzg-hJ-mnO"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="woN-jr-MXz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="title" id="xWT-K2-Lfp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vwO-pz-IdI">
+                            <connections>
+                                <action selector="tappedCancel:" destination="erI-yJ-JEk" id="Ogz-sH-k2v"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Yyt-an-MNd">
+                            <connections>
+                                <action selector="tappedDone:" destination="erI-yJ-JEk" id="rW3-Fe-TcP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <connections>
+                        <outlet property="clearButton" destination="4cY-yy-Wau" id="Ohn-Mu-Hs3"/>
+                        <outlet property="picker" destination="7zB-OQ-P43" id="keP-bs-a96"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xB-ci-cta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-342" y="-407"/>
+        </scene>
+    </scenes>
+</document>

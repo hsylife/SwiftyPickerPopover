@@ -47,6 +47,15 @@ class SampleViewController: UIViewController {
         CountdownPickerPopover.appearFrom(sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
         
     }
+    
+    @IBAction func columnsString(_ sender: UIButton) {
+        ColumnStringPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "Columns Strings",
+            choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
+            initialRow: [0,0],
+            columnPercent: [0.5, 0.5],
+            fontSize: 12.0,
+            doneAction: { selectionArray in print("selectionArray \(selectionArray)")}, cancelAction: {print("cancel")})
+    }
 
     
     

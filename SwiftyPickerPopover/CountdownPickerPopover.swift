@@ -29,7 +29,7 @@ class CountdownPickerPopover: AbstractPopover {
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    class func appearFrom(_ originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialInterval: TimeInterval, doneAction: ((TimeInterval)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialInterval: TimeInterval, doneAction: ((TimeInterval)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
         guard let navigationController = sharedInstance.configureNavigationController(originView, baseViewController: baseViewController, title: title) else {

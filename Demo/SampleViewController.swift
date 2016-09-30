@@ -44,7 +44,7 @@ class SampleViewController: UIViewController {
     @IBAction func countdownButton(_ sender: UIButton) {
         // DatePickerPopover appears
         print("countdown")
-        CountdownPickerPopover.appearFrom(sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
+        CountdownPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
         
     }
     

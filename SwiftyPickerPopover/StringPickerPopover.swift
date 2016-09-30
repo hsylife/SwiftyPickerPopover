@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
+public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
     /// shared instance
     class var sharedInstance : StringPickerPopover {
         struct Static {
@@ -31,7 +31,7 @@ class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDa
     /// - parameter initialRow: initial selected row index
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -62,16 +62,16 @@ class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDa
     }
     
     /// UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
     
     /// UIPickerViewDelegate
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let d = displayStringFor {
             return d(choices[row])
         }

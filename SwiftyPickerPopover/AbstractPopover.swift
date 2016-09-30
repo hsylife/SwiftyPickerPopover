@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AbstractPopover:NSObject {
+public class AbstractPopover:NSObject {
     
     /// configure navigationController
     /// - parameter originView: origin view of Popover

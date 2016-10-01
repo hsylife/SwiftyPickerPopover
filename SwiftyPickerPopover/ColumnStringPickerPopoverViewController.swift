@@ -27,6 +27,14 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
         picker.delegate = ColumnStringPickerPopover.sharedInstance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let select = ColumnStringPickerPopover.sharedInstance.selectedRow
+        for x in 0..<select.count {
+            picker.selectRow(select[x], inComponent: x, animated: true)
+        }
+    }
+
+    
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         //let selectedRow = picker.selectedRow(inComponent: 0)
         //let selectedString = StringPickerPopover.sharedInstance.choices[selectedRow]

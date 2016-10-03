@@ -95,6 +95,7 @@ let displayStringFor:((String?)->String?)? = { string in
 ```
 ## Contributors
 Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
+
 BalestraPatrick [GitHub](https://github.com/BalestraPatrick)
 ## Author
 Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

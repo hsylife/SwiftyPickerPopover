@@ -35,7 +35,6 @@ Run 'pod install'.
 For Installing with Carthage, add it to your Cartfile.
 ```
 github "hsylife/SwiftyPickerPopover"
-
 ```
 
 On Xcode, import the module.

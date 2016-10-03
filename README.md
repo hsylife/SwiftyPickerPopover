@@ -93,8 +93,8 @@ let displayStringFor:((String?)->String?)? = { string in
         
   StringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
 ```
-## Contributor
+## Contributors
 Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
-
+BalestraPatrick [GitHub](https://github.com/BalestraPatrick)
 ## Author
 Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

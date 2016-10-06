@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/hsylife/SwiftyPickerPopover.git", :tag => s.version }
   s.source_files  = "SwiftyPickerPopover/*.swift"
   s.resource_bundles = {
-    'resources' => ['SwiftyPickerPopover/**/*.{strings,storyboard}']
+    'resources' => ['SwiftyPickerPopover/**/*.{strings,storyboard}','SwiftyPickerPopover/*.{strings,storyboard}']
   }
 
   s.requires_arc = true

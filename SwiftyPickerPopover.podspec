@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftyPickerPopover"
-  s.version      = "2.2.0"
+  s.version      = "2.3.0"
   s.summary      = "Popover with Picker/DatePicker by Swift 3 for iPhone/iPad, iOS9+."
   s.homepage     = "https://github.com/hsylife/SwiftyPickerPopover"
   s.license      = "MIT"
@@ -11,7 +11,9 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/hsylife/SwiftyPickerPopover.git", :tag => s.version }
   s.source_files  = "SwiftyPickerPopover/*.swift"
-  s.resources = "SwiftyPickerPopover/**/*.storyboard","SwiftyPickerPopover/**/*.strings"
+  s.resource_bundles = {
+    'resources' => ['SwiftyPickerPopover/**/*.{strings,storyboard}']
+  }
 
   s.requires_arc = true
 end

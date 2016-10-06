@@ -17,7 +17,12 @@ public class AbstractPopover:NSObject {
     /// - parameter title: title of navigation bar
     func configureNavigationController(_ originView: UIView, baseViewController: UIViewController, title: String?)->UINavigationController?{
         // create ViewController for content
-        let storyboard = UIStoryboard(name: self.storyboardName(), bundle: nil)
+        var bundle: Bundle?
+        if let bundlePath = Bundle.main.path(forResource: "resources", ofType: "bundle"){
+            bundle = Bundle(path: bundlePath)!
+        }
+        
+        let storyboard = UIStoryboard(name: self.storyboardName(), bundle: bundle)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return nil
         }

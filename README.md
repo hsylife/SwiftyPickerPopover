@@ -39,38 +39,74 @@ github "hsylife/SwiftyPickerPopover"
 
 On Xcode, import the module.
 ```swift
-  import SwiftyPickerPopover
+import SwiftyPickerPopover
 ```
 ### Basic
 DatePickerPopover appears.
 ```swift
-  DatePickerPopover.appearFrom(originView: button, baseViewController: self, title: "DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+DatePickerPopover.appearFrom(
+ originView: button,
+ baseViewController: self,
+ title: "DatePicker",
+ dateMode: .Date,
+ initialDate: NSDate(),
+ doneAction: { selectedDate in print("selectedDate \(selectedDate)")},
+ cancelAction: {print("cancel")}
+)
 ```
 
 StringPickerPopover appears.
 ```swift
-  StringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+StringPickerPopover.appearFrom(
+ originView: button,
+ baseViewController: self,
+ title: "StringPicker",
+ choices: ["value 1","value 2","value 3"],
+ initialRow:0,
+ doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} ,
+ cancelAction: { print("cancel")}
+)
 ```
 
 ColumnStringPickerPopover which has variable multiple components, appers.
 ```swift
-  ColumnStringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "Columns Strings",
-            choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
-            initialRow: [0,0],
-            columnPercent: [0.5, 0.5],
-            fontSize: 12.0,
-            doneAction: { selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")}, cancelAction: {print("cancel")})
+ColumnStringPickerPopover.appearFrom(
+ originView: button,
+ baseViewController: self, title: "Columns Strings",
+ choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
+ initialRow: [0,0],
+ columnPercent: [0.5, 0.5],
+ fontSize: 12.0,
+ doneAction: { selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")}, 
+ cancelAction: {print("cancel")}
+)
 ```
 
 CountdownPickerPopover which returns interval time, appears.
 ```swift
-CountdownPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
+CountdownPickerPopover.appearFrom(
+ originView: sender,
+ baseViewController: self,
+ title: "CountdownPicker",
+ dateMode: .countDownTimer,
+ initialInterval: TimeInterval(),
+ doneAction: { timeInterval in print("timeInterval \(timeInterval)")},
+ cancelAction: {print("cancel")}
+)
 ```
 
 ### Advanced
 DatePickerPopover with clearAction 
 ```swift
-  DatePickerPopover.appearFrom(originView: button, baseViewController: self, title: "Clearable DatePicker", dateMode: .Date, initialDate: NSDate(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")}, clearAction: { print("clear")})
+DatePickerPopover.appearFrom(originView: button,
+  baseViewController: self,
+  title: "Clearable DatePicker",
+  dateMode: .Date,
+  initialDate: NSDate(),
+  doneAction: { selectedDate in print("selectedDate \(selectedDate)")},
+  cancelAction: {print("cancel")},
+  clearAction: { print("clear")}
+)
 ```
 
 StringPickerPopover with displayStringFor
@@ -91,7 +127,16 @@ let displayStringFor:((String?)->String?)? = { string in
   return nil
   }
         
-  StringPickerPopover.appearFrom(originView: button, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+StringPickerPopover.appearFrom(
+  originView: button,
+  baseViewController: self,
+  title: "StringPicker",
+  choices: ["value 1","value 2","value 3"],
+  displayStringFor: displayStringFor,
+  initialRow:0,
+  doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")},
+  cancelAction: { print("cancel")}
+)
 ```
 ## Contributors
 Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.

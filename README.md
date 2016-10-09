@@ -28,7 +28,7 @@ For Installing with CocoaPods, specify it in your 'Podfile'.
 ```ruby
 platform :ios, '9.0'
 use_frameworks!
-pod 'SwiftyPickerPopover'
+pod 'SwiftyPickerPopover' ~> '1.2.0'
 ```
 Run 'pod install'.
 

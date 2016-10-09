@@ -19,7 +19,7 @@ public class DatePickerPopover: AbstractPopover {
     }
     
     // selected date
-    var selectedDate: Date = Date()
+    var selectedDate: NSDate = NSDate()
     
     /// Popover appears
     /// - parameter view: origin view of popover
@@ -30,7 +30,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:Date, doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:NSDate, doneAction: ((NSDate)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
         guard let navigationController = sharedInstance.configureNavigationController(originView, baseViewController: baseViewController, title: title) else {
@@ -57,7 +57,7 @@ public class DatePickerPopover: AbstractPopover {
         }
         
         // presnet popover
-        baseViewController.present(navigationController, animated: true, completion: nil)
+        baseViewController.presentViewController(navigationController, animated: true, completion: nil)
         
     }
     

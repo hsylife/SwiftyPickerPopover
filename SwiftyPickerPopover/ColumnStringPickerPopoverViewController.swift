@@ -26,7 +26,7 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
         picker.delegate = ColumnStringPickerPopover.sharedInstance
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         let select = ColumnStringPickerPopover.sharedInstance.selectedRow
         for x in 0..<select.count {
             picker.selectRow(select[x], inComponent: x, animated: true)
@@ -34,25 +34,25 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
     }
 
     
-    @IBAction func tappedDone(_ sender: AnyObject? = nil) {
+    @IBAction func tappedDone(sender: AnyObject? = nil) {
         let selectedRow = ColumnStringPickerPopover.sharedInstance.selectedRow
         let selectedChoices = ColumnStringPickerPopover.sharedInstance.selectedStrings()
         doneAction?(selectedRow, selectedChoices)
         
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
+    @IBAction func tappedCancel(sender: AnyObject? = nil) {
         cancleAction?()
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
     
     /// Popover appears on iPhone
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
+        return .None
     }
 }

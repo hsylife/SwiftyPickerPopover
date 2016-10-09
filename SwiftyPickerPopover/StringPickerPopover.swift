@@ -53,7 +53,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         }
         
         // presnet popover
-        baseViewController.present(navigationController, animated: true, completion: nil)
+        baseViewController.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     /// storyboardName
@@ -62,16 +62,16 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     }
     
     /// UIPickerViewDataSource
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
     
     /// UIPickerViewDelegate
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let d = displayStringFor {
             return d(choices[row])
         }

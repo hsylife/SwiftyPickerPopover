@@ -16,14 +16,14 @@ import UIKit
 
 class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    var doneAction: ((TimeInterval)->Void)?
+    var doneAction: ((NSTimeInterval)->Void)?
     var cancleAction: (()->Void)?
     var clearAction: (()->Void)?
     
     @IBOutlet weak var picker: UIDatePicker!
     
-    var timeInterval = TimeInterval()
-    var dateMode: UIDatePickerMode = .countDownTimer
+    var timeInterval = NSTimeInterval()
+    var dateMode: UIDatePickerMode = .CountDownTimer
     var hideClearButton: Bool = false
 
     @IBOutlet weak var clearButton: UIButton!
@@ -32,32 +32,32 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
         super.viewDidLoad()
         picker.countDownDuration = timeInterval
         picker.datePickerMode = dateMode
-        clearButton.isHidden = hideClearButton
+        clearButton.hidden = hideClearButton
     }
     
     
-    @IBAction func tappedDone(_ sender: UIButton? = nil) {
+    @IBAction func tappedDone(sender: UIButton? = nil) {
         doneAction?(picker.countDownDuration)
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: UIButton? = nil) {
+    @IBAction func tappedCancel(sender: UIButton? = nil) {
         cancleAction?()
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
-    @IBAction func tappedClear(_ sender: UIButton? = nil) {
+    @IBAction func tappedClear(sender: UIButton? = nil) {
         clearAction?()
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     /// popover dismissed
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
     
     /// Popover appears on iPhone
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
+        return .None
     }
 }

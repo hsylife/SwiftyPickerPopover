@@ -63,7 +63,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
         }
         
         // presnet popover
-        baseViewController.present(navigationController, animated: true, completion: nil)
+        baseViewController.presentViewController(navigationController, animated: true, completion: nil)
     }    
     
     /// storyboardName
@@ -72,15 +72,15 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     }
     
     /// UIPickerViewDataSource
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return choices.count
     }
     
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices[component].count
     }
     
-    public func pickerView(_ pickerView: UIPickerView,
+    public func pickerView(pickerView: UIPickerView,
                     widthForComponent component: Int) -> CGFloat {
         let width = Float(pickerView.frame.size.width)
         let temp = width * columnPercent[component]
@@ -88,7 +88,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     }
 
     // get string of choice
-    func choice(component: Int, row: Int)->String? {
+    func choice(component component: Int, row: Int)->String? {
         if let d = displayStringFor {
             return d(choices[component][row])
         }
@@ -98,7 +98,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     // get array of selected strings
     func selectedStrings()->[String]{
         var result = [String]()
-        for (index, content) in selectedRow.enumerated() {
+        for (index, content) in selectedRow.enumerate() {
             if let string = choice(component: index, row: content){
                 result.append(string)
             }
@@ -107,24 +107,24 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     }
     
     /// UIPickerViewDelegate
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choice(component: component, row: row)
     }
     
-    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    public func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var label = view as! UILabel!
         if label == nil {
             label = UILabel()
         }
         
         let data = choices[component][row]
-        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize, weight: UIFontWeightRegular)])
+        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(fontSize, weight: UIFontWeightRegular)])
         label!.attributedText = title
-        label!.textAlignment = .center
+        label!.textAlignment = .Center
         return label!
     }
     
-    public func pickerView(_ pickerView: UIPickerView,
+    public func pickerView(pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int){
         selectedRow[component] = row

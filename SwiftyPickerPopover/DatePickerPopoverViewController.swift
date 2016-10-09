@@ -11,14 +11,14 @@ import UIKit
 
 class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    var doneAction: ((Date)->Void)?
+    var doneAction: ((NSDate)->Void)?
     var cancleAction: (()->Void)?
     var clearAction: (()->Void)?
     
     @IBOutlet weak var picker: UIDatePicker!
     
-    var selectedDate = Date()
-    var dateMode: UIDatePickerMode = .date
+    var selectedDate = NSDate()
+    var dateMode: UIDatePickerMode = .Date
     var hideClearButton: Bool = false
 
     @IBOutlet weak var clearButton: UIButton!
@@ -27,32 +27,32 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
         super.viewDidLoad()
         picker.date = selectedDate
         picker.datePickerMode = dateMode
-        clearButton.isHidden = hideClearButton
+        clearButton.hidden = hideClearButton
     }
     
     
-    @IBAction func tappedDone(_ sender: UIButton? = nil) {
+    @IBAction func tappedDone(sender: UIButton? = nil) {
         doneAction?(picker.date)
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: UIButton? = nil) {
+    @IBAction func tappedCancel(sender: UIButton? = nil) {
         cancleAction?()
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
-    @IBAction func tappedClear(_ sender: UIButton? = nil) {
+    @IBAction func tappedClear(sender: UIButton? = nil) {
         clearAction?()
-        dismiss(animated: true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     /// popover dismissed
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
     
     /// Popover appears on iPhone
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
+        return .None
     }
 }

@@ -12,7 +12,7 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 - Callback
 
 ## Required
-- Swift 3, Xcode 8.
+- Swift 3, Xcode 8. (If you want to use it on Swift 2.3, please check up SwiftyPickerPopover 1.2.0)
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+ or Carthage 0.12.0+
 
@@ -24,11 +24,15 @@ MIT.
 <img src="README_resources/ClearableDatePicker.jpeg" width="400">
 
 ## Usage
-For Installing with CocoaPods, specify it in your 'Podfile'.
+For Installing it on Swift 3 with CocoaPods, specify it in your 'Podfile'.
 ```ruby
 platform :ios, '9.0'
 use_frameworks!
 pod 'SwiftyPickerPopover'
+```
+If you want to use it on Swift 2.3, specify it.
+```ruby
+pod 'SwiftyPickerPopover '~> 1.2.0'
 ```
 Run 'pod install'.
 
@@ -36,6 +40,7 @@ For Installing with Carthage, add it to your Cartfile.
 ```
 github "hsylife/SwiftyPickerPopover"
 ```
+Run 'carthage update --platform iOS'.
 
 On Xcode, import the module.
 ```swift

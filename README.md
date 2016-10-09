@@ -1,5 +1,5 @@
 # SwiftyPickerPopover
-Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
+Popover with Picker by Swift 2.3 for iPhone/iPad, iOS9+.
 
 [![Version](https://img.shields.io/cocoapods/v/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) 
 [![License](https://img.shields.io/cocoapods/l/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) 
@@ -8,11 +8,11 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 
 ## Features
 - Popover with Picker which can be chosen from several types, appears on iPhone or iPad.
-- Swift 3, iOS9+. UIPopoverController free. 
+- Swift 2.3, iOS9+. UIPopoverController free. 
 - Callback
 
 ## Required
-- Swift 3, Xcode 8.
+- Swift 2.3, Xcode 8.
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+ or Carthage 0.12.0+
 

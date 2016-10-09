@@ -32,7 +32,7 @@ pod 'SwiftyPickerPopover'
 ```
 If you want to use it on Swift 2.3, specify it.
 ```ruby
-pod 'SwiftyPickerPopover '~> 1.2.0'
+pod 'SwiftyPickerPopover ~> '1.2.0'
 ```
 Run 'pod install'.
 

@@ -12,7 +12,7 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 - Callback
 
 ## Required
-- Swift 3, Xcode 8. (If you want to use it on Swift 2.3, please check up SwiftyPickerPopover 1.2.0)
+- Swift 3, Xcode 8. (If you want to use it on Swift 2.3, please check up SwiftyPickerPopover 1.2.1)
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+ or Carthage 0.12.0+
 

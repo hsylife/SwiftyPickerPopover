@@ -28,6 +28,13 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
 
     @IBOutlet weak var clearButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        if hideClearButton {
+            clearButton.removeFromSuperview()
+            view.layoutIfNeeded()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.countDownDuration = timeInterval

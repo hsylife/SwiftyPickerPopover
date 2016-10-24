@@ -36,12 +36,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN">
-                                <frame key="frameInset" minX="-5" minY="64" width="305" height="236"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tJe-Py-ArN" firstAttribute="centerX" secondItem="cBE-9P-52d" secondAttribute="centerX" id="Led-5H-t3F"/>
+                            <constraint firstItem="tJe-Py-ArN" firstAttribute="centerY" secondItem="cBE-9P-52d" secondAttribute="centerY" id="ag2-BY-RVW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="0qf-St-WhE">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a1u-Fu-SLI">

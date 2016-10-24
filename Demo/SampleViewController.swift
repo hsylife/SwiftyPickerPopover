@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyPickerPopover
 
-class SampleViewController: UIViewController {
+class SampleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBAction func tappedStringPickerButton(_ sender: UIButton) {
         let displayStringFor:((String?)->String?)? = { string in
@@ -58,7 +58,30 @@ class SampleViewController: UIViewController {
             doneAction: { selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")}, cancelAction: {print("cancel")})
     }
 
+    //CollectionView
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
+        let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let label = theCell.contentView.viewWithTag(1) as! UILabel
+        label.text = (indexPath as NSIndexPath).row.description
+        
+        return theCell
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
+        StringPickerPopover.appearFrom(originView: theCell, baseView: collectionView, baseViewController: self, title: "CollectionView", choices: ["value 1","value 2","value 3"], initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+
     
 }
 

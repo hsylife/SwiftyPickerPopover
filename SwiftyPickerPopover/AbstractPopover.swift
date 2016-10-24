@@ -13,9 +13,10 @@ public class AbstractPopover:NSObject {
     
     /// configure navigationController
     /// - parameter originView: origin view of Popover
+    /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
-    func configureNavigationController(_ originView: UIView, baseViewController: UIViewController, title: String?)->UINavigationController?{
+    func configureNavigationController(_ originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?)->UINavigationController?{
         // create ViewController for content
         let bundle = Bundle(for: AbstractPopover.self)
         let storyboard = UIStoryboard(name: self.storyboardName(), bundle: bundle)
@@ -27,7 +28,7 @@ public class AbstractPopover:NSObject {
         navigationController.modalPresentationStyle = .popover
         
         // origin
-        navigationController.popoverPresentationController?.sourceView = baseViewController.view
+        navigationController.popoverPresentationController?.sourceView = baseView ?? baseViewController.view
         navigationController.popoverPresentationController?.sourceRect = originView.frame
         
         // direction of arrow

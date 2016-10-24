@@ -36,11 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
-                                <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
-                                    <!--2016-09-13 10:35:36 +0000-->
-                                </date>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
@@ -50,16 +45,22 @@
                                     <action selector="tappedClear:" destination="erI-yJ-JEk" eventType="touchUpInside" id="cMx-Qs-KEL"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
+                                <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
+                                    <!--2016-09-13 10:35:36 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="2fL-gl-tJ5"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="3md-4q-bnI"/>
-                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" constant="8" symbolic="YES" id="IWY-dm-x9c"/>
-                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" symbolic="YES" id="aJF-Nc-dEB"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="ga5-H8-9Ur"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="4cY-yy-Wau" secondAttribute="leading" id="uzg-hJ-mnO"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="woN-jr-MXz"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" priority="250" constant="8" id="2a2-QC-xR7"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="4r5-LO-1ah"/>
+                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="CcD-Rg-vh1"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="Dh6-Ij-o5t"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" id="YHQ-nu-g6m"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" id="eCS-6K-95d"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="sf0-4e-LUB"/>
+                            <constraint firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="wzl-Jw-fpT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="title" id="xWT-K2-Lfp">

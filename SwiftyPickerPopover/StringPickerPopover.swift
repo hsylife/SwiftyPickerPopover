@@ -24,6 +24,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     
     /// Popover appears
     /// - parameter originView: origin view of Popover
+    /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
     /// - parameter choices: Array of String for choices
@@ -31,7 +32,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     /// - parameter initialRow: initial selected row index
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -39,7 +40,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         sharedInstance.displayStringFor = displayStringFor
         
         // create navigationController
-        guard let navigationController = sharedInstance.configureNavigationController(originView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         

@@ -43,7 +43,7 @@
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
+                                    <constraint firstAttribute="height" constant="30" id="oSp-Dx-5ub"/>
                                 </constraints>
                                 <state key="normal" title="Clear"/>
                                 <connections>
@@ -53,13 +53,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="2fL-gl-tJ5"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="3md-4q-bnI"/>
-                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" constant="8" symbolic="YES" id="IWY-dm-x9c"/>
-                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" symbolic="YES" id="aJF-Nc-dEB"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="ga5-H8-9Ur"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="4cY-yy-Wau" secondAttribute="leading" id="uzg-hJ-mnO"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="woN-jr-MXz"/>
+                            <constraint firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="1fv-rE-uSY"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="8bc-BX-xCK"/>
+                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="9RB-ls-UNS"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="QxE-V2-F5C"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" id="aOX-zI-LFx"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="hae-tz-b0f"/>
+                            <constraint firstAttribute="bottom" secondItem="7zB-OQ-P43" secondAttribute="bottom" priority="250" constant="8" id="iD6-NR-jMv"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" id="yli-tL-4Vv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="title" id="xWT-K2-Lfp">
@@ -82,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xB-ci-cta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-342" y="-407"/>
+            <point key="canvasLocation" x="-342.39999999999998" y="-407.49625187406298"/>
         </scene>
     </scenes>
 </document>

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftyPickerPopover"
-  s.version      = "1.2.2"
+  s.version      = "1.3.0"
   s.summary      = "Popover with Picker/DatePicker by Swift 2.3 for iPhone/iPad, iOS9+."
   s.homepage     = "https://github.com/hsylife/SwiftyPickerPopover"
   s.license      = "MIT"

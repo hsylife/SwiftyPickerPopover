@@ -31,6 +31,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     
     /// Popover appears
     /// - parameter originView: origin view of Popover
+    /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
     /// - parameter choices: 2 Dimensional Array of String for choices
@@ -39,7 +40,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -49,7 +50,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
         sharedInstance.fontSize = fontSize
         
         // create navigationController
-        guard let navigationController = sharedInstance.configureNavigationController(originView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         

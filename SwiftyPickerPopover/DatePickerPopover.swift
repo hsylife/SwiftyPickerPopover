@@ -23,6 +23,7 @@ public class DatePickerPopover: AbstractPopover {
     
     /// Popover appears
     /// - parameter view: origin view of popover
+    /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title for navigation bar
     /// - parameter dateMode: UIDatePickerMode
@@ -30,10 +31,10 @@ public class DatePickerPopover: AbstractPopover {
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    public class func appearFrom(originView originView: UIView, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:NSDate, doneAction: ((NSDate)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    public class func appearFrom(originView originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:NSDate, doneAction: ((NSDate)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
-        guard let navigationController = sharedInstance.configureNavigationController(originView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         

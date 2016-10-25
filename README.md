@@ -138,6 +138,23 @@ StringPickerPopover.appearFrom(
   cancelAction: { print("cancel")}
 )
 ```
+
+StringPickerPopover appears from CollectionView's cell.
+```swift
+func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+let theCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
+StringPickerPopover.appearFrom(
+  originView: theCell,
+  baseView: collectionView,
+  baseViewController: self,
+  title: "CollectionView",
+  choices: ["value 1","value 2","value 3"],
+  initialRow:0,
+  doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")},
+  cancelAction: { print("cancel")})
+}
+```
+
 ## Contributors
 Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
 

@@ -39,7 +39,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView originView: UIView, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices

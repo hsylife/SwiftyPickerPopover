@@ -43,6 +43,7 @@
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="8eA-3o-MMn"/>
                                     <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
                                 </constraints>
                                 <state key="normal" title="Clear"/>
@@ -53,13 +54,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="2fL-gl-tJ5"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="3md-4q-bnI"/>
-                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" constant="8" symbolic="YES" id="IWY-dm-x9c"/>
-                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" symbolic="YES" id="aJF-Nc-dEB"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="ga5-H8-9Ur"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="4cY-yy-Wau" secondAttribute="leading" id="uzg-hJ-mnO"/>
-                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="woN-jr-MXz"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" id="7zg-Fk-jV7"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" priority="250" constant="8" id="Fkk-oj-DZh"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="HGe-C7-yoI"/>
+                            <constraint firstAttribute="bottom" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" id="QmW-Jm-QFG"/>
+                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="U3B-Se-IkN"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="Xj2-9u-fgP"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" id="mPJ-Ei-eH3"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="qdg-Vu-RZ9"/>
+                            <constraint firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="u9w-61-w7D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="title" id="xWT-K2-Lfp">

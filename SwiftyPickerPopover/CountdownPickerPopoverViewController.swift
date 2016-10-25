@@ -28,11 +28,16 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
 
     @IBOutlet weak var clearButton: UIButton!
     
+    override func viewWillAppear(animated: Bool) {
+        if hideClearButton {
+            clearButton.removeFromSuperview()
+            view.layoutIfNeeded()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.countDownDuration = timeInterval
         picker.datePickerMode = dateMode
-        clearButton.hidden = hideClearButton
     }
     
     
@@ -57,7 +62,7 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
     }
     
     /// Popover appears on iPhone
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .None
     }
 }

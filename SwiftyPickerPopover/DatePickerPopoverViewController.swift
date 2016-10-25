@@ -23,11 +23,16 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
 
     @IBOutlet weak var clearButton: UIButton!
     
+    override func viewWillAppear(animated: Bool) {
+        if hideClearButton {
+            clearButton.removeFromSuperview()
+            view.layoutIfNeeded()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.date = selectedDate
         picker.datePickerMode = dateMode
-        clearButton.hidden = hideClearButton
     }
     
     
@@ -52,7 +57,7 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
     }
     
     /// Popover appears on iPhone
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .None
     }
 }

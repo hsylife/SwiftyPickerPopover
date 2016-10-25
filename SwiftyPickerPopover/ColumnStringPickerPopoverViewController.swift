@@ -52,7 +52,7 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
     }
     
     /// Popover appears on iPhone
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .None
     }
 }

@@ -44,6 +44,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="buF-qZ-oTS"/>
                                 </constraints>
                                 <state key="normal" title="Clear"/>
                                 <connections>
@@ -53,13 +54,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="1OZ-Fr-9Jp"/>
                             <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="2fL-gl-tJ5"/>
                             <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="3md-4q-bnI"/>
-                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" constant="8" symbolic="YES" id="IWY-dm-x9c"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" id="Hck-Xx-3Ob"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" priority="250" constant="8" id="WFI-DW-Kgm"/>
                             <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" symbolic="YES" id="aJF-Nc-dEB"/>
                             <constraint firstItem="7zB-OQ-P43" firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="ga5-H8-9Ur"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" id="lDz-AG-0vw"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="nTK-dK-TgW"/>
+                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="sBJ-ct-vSb"/>
+                            <constraint firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="tg3-qT-lLY"/>
                             <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="4cY-yy-Wau" secondAttribute="leading" id="uzg-hJ-mnO"/>
                             <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="woN-jr-MXz"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="yY6-vS-AmX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="title" id="xWT-K2-Lfp">

@@ -39,7 +39,6 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
         super.viewDidLoad()
         picker.countDownDuration = timeInterval
         picker.datePickerMode = dateMode
-        clearButton.isHidden = hideClearButton
     }
     
     

@@ -40,8 +40,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tJe-Py-ArN" firstAttribute="centerY" secondItem="cBE-9P-52d" secondAttribute="centerY" id="2g8-bA-IHe"/>
-                            <constraint firstItem="tJe-Py-ArN" firstAttribute="centerX" secondItem="cBE-9P-52d" secondAttribute="centerX" id="3uj-KL-xWf"/>
+                            <constraint firstItem="tJe-Py-ArN" firstAttribute="leading" secondItem="cBE-9P-52d" secondAttribute="leading" id="98t-4I-CPt"/>
+                            <constraint firstItem="tJe-Py-ArN" firstAttribute="top" secondItem="cBE-9P-52d" secondAttribute="top" id="NNL-y9-LRz"/>
+                            <constraint firstAttribute="trailing" secondItem="tJe-Py-ArN" secondAttribute="trailing" id="Vqd-29-kE5"/>
+                            <constraint firstItem="tOz-Gm-pij" firstAttribute="top" secondItem="tJe-Py-ArN" secondAttribute="bottom" id="pm8-kS-z0e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="0qf-St-WhE">

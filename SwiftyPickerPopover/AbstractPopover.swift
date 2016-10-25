@@ -27,7 +27,7 @@ public class AbstractPopover:NSObject {
         navigationController.modalPresentationStyle = .Popover
         
         // origin
-        navigationController.popoverPresentationController?.sourceView = baseViewController.view
+        navigationController.popoverPresentationController?.sourceView = baseView ?? baseViewController.view
         navigationController.popoverPresentationController?.sourceRect = originView.frame
         
         // direction of arrow

@@ -11,6 +11,10 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 - Swift 3, iOS9+. UIPopoverController free. 
 - Callback
 
+## Screenshots
+<img src="README_resources/StringPickerPopover.jpeg" width="400">
+<img src="README_resources/ClearableDatePicker.jpeg" width="400">
+
 ## Required
 - Swift 3, Xcode 8. (If you want to use it on Swift 2.3, please check up SwiftyPickerPopover 1.3)
 - iOS 9+
@@ -18,10 +22,6 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 
 ## License
 MIT.
-
-## Screenshots
-<img src="README_resources/StringPickerPopover.jpeg" width="400">
-<img src="README_resources/ClearableDatePicker.jpeg" width="400">
 
 ## Usage
 For Installing it on Swift 3 with CocoaPods, specify it in your 'Podfile'.

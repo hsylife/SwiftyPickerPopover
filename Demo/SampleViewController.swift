@@ -43,8 +43,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
-        // DatePickerPopover appears
-        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+        // DatePickerPopover appears.
+        // permittedArrowDirections and minuteInterval are omissible.
+        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", permittedArrowDirections: .down, dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
     }
 
     @IBAction func countdownButton(_ sender: UIButton) {

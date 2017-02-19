@@ -44,17 +44,17 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
         doneAction?(picker.countDownDuration)
-        dismiss(animated: true, completion: {})
+        dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedCancel(_ sender: UIButton? = nil) {
         cancleAction?()
-        dismiss(animated: true, completion: {})
+        dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         clearAction?()
-        dismiss(animated: true, completion: {})
+        dismiss(animated: false, completion: {})
     }
     
     /// popover dismissed

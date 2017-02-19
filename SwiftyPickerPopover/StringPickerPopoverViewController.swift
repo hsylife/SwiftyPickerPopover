@@ -31,12 +31,12 @@ class StringPickerPopoverViewController: UIViewController, UIPopoverPresentation
         let selectedString = StringPickerPopover.sharedInstance.choices[selectedRow]
         doneAction?(selectedRow, selectedString)
         
-        dismiss(animated: true, completion: {})
+        dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         cancleAction?()
-        dismiss(animated: true, completion: {})
+        dismiss(animated: false, completion: {})
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {

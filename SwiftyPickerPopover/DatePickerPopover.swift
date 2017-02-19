@@ -28,10 +28,11 @@ public class DatePickerPopover: AbstractPopover {
     /// - parameter title: title for navigation bar
     /// - parameter dateMode: UIDatePickerMode
     /// - parameter initialDate: initial selected date
+    /// - parameter minuteInterval: Int minute interval for datePicker. The default is 0.
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:Date, doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, dateMode:UIDatePickerMode, initialDate:Date, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
         guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
@@ -44,6 +45,7 @@ public class DatePickerPopover: AbstractPopover {
             // UIPickerView
             contentViewController.selectedDate = initialDate
             contentViewController.dateMode = dateMode
+            contentViewController.minuteInterval = minuteInterval
             
             contentViewController.doneAction = doneAction
             contentViewController.cancleAction = cancelAction

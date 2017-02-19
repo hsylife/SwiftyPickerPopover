@@ -19,6 +19,7 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
     
     var selectedDate = Date()
     var dateMode: UIDatePickerMode = .date
+    var minuteInterval: Int = 0
     var hideClearButton: Bool = false
 
     @IBOutlet weak var clearButton: UIButton!
@@ -34,6 +35,7 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
         super.viewDidLoad()
         picker.date = selectedDate
         picker.datePickerMode = dateMode
+        picker.minuteInterval = minuteInterval
     }
     
     

@@ -34,13 +34,14 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
+    /// - parameter permittedArrowDirections the default value is .any
     /// - parameter choices: 2 Dimensional Array of String for choices
     /// - parameter displayStringFor: translation rule of choice to display. Omissible.
     /// - parameter initialRow: initial selected row index array
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices

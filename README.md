@@ -52,7 +52,7 @@ DatePickerPopover.appearFrom(
  originView: button,
  baseViewController: self,
  title: "DatePicker",
- dateMode: .Date,
+ dateMode: .date,
  initialDate: NSDate(),
  doneAction: { selectedDate in print("selectedDate \(selectedDate)")},
  cancelAction: {print("cancel")}
@@ -105,13 +105,30 @@ DatePickerPopover with clearAction
 DatePickerPopover.appearFrom(originView: button,
   baseViewController: self,
   title: "Clearable DatePicker",
-  dateMode: .Date,
+  dateMode: .date,
   initialDate: NSDate(),
   doneAction: { selectedDate in print("selectedDate \(selectedDate)")},
   cancelAction: {print("cancel")},
   clearAction: { print("clear")}
 )
 ```
+
+DatePickerPopover for .time with 5 minute interval is permitted .down arrow.
+```swift
+DatePickerPopover.appearFrom(originView: button,
+  baseViewController: self,
+  title: "DatePicker .time 5minInt.",
+  dateMode: .time,
+  initialDate: NSDate(),
+  minuteInterval: 5,
+  permittedArrowDirections: .down,
+  doneAction: { selectedDate in print("selectedDate \(selectedDate)")},
+  cancelAction: {print("cancel")},
+  clearAction: { print("clear")}
+)
+```
+'initialDate' and 'permittedArrowDirections' are omissible.
+'permittedArrowDirections' is not only for DatePickerPopover. Every PickerPopover derived from AbstractPickerPoover, has 'permittedArrowDirections' argument.
 
 StringPickerPopover with displayStringFor
 ```swift
@@ -158,6 +175,7 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
    cancelAction: { print("cancel")})
 }
 ```
+
 
 ## Contributors
 Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.

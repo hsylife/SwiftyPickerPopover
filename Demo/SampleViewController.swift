@@ -30,7 +30,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         // StringPickerPopover appears
         StringPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {

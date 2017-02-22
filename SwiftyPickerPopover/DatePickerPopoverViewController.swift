@@ -18,6 +18,8 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
     @IBOutlet weak var picker: UIDatePicker!
     
     var selectedDate = Date()
+    var minimumDate:Date? = nil;
+    var maximumDate:Date? = nil;
     var dateMode: UIDatePickerMode = .date
     var minuteInterval: Int = 0
     var hideClearButton: Bool = false
@@ -34,6 +36,8 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.date = selectedDate
+        picker.minimumDate = minimumDate
+        picker.maximumDate = maximumDate
         picker.datePickerMode = dateMode
         picker.minuteInterval = minuteInterval
     }

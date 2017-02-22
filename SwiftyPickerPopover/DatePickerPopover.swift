@@ -29,11 +29,13 @@ public class DatePickerPopover: AbstractPopover {
     /// - parameter permittedArrowDirections the default value is .any
     /// - parameter dateMode: UIDatePickerMode
     /// - parameter initialDate: initial selected date
+    /// - parameter minimumDate:Date? The default is nil.
+    /// - parameter maximumDate:Date? The default is nil.
     /// - parameter minuteInterval: Int minute interval for datePicker. The default is 0.
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, dateMode:UIDatePickerMode, initialDate:Date, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, dateMode:UIDatePickerMode, initialDate:Date, minimumDate:Date? = nil,  maximumDate:Date? = nil, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
         guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
@@ -45,6 +47,9 @@ public class DatePickerPopover: AbstractPopover {
             
             // UIPickerView
             contentViewController.selectedDate = initialDate
+            contentViewController.minimumDate = minimumDate
+            contentViewController.maximumDate = maximumDate
+            
             contentViewController.dateMode = dateMode
             contentViewController.minuteInterval = minuteInterval
             

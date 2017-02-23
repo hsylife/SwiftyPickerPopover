@@ -27,13 +27,15 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
-    /// - parameter permittedArrowDirections the default value is .any
+    /// - parameter permittedArrowDirections the default value is .any. Omissible.
+    /// - parameter secondsToAutomaticallyHide: seconds to automatically hide the popover. Omissible.
+    /// - parameter afterHiddenAction: action to be performed after the popover became hidden. Omissible.
     /// - parameter choices: Array of String for choices
     /// - parameter displayStringFor: translation rule of choice to display. Omissible.
     /// - parameter initialRow: initial selected row index
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -56,6 +58,13 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         
         // presnet popover
         baseViewController.present(navigationController, animated: true, completion: nil)
+        
+        // automatically hide the popover
+        if let seconds = secondsToAutomaticallyHide {
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                baseViewController.dismiss(animated: false, completion: afterHiddenAction)
+            }
+        }
     }
     
     /// storyboardName

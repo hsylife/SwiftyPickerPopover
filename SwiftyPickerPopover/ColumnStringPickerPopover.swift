@@ -34,14 +34,16 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     /// - parameter baseView: popoverPresentationController's sourceView
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
-    /// - parameter permittedArrowDirections the default value is .any
+    /// - parameter permittedArrowDirections the default value is .any. Omissible.
+    /// - parameter secondsToAutomaticallyHide: seconds to automatically hide the popover. Omissible.
+    /// - parameter afterHiddenAction: action to be performed after the popover became hidden. Omissible.
     /// - parameter choices: 2 Dimensional Array of String for choices
     /// - parameter displayStringFor: translation rule of choice to display. Omissible.
     /// - parameter initialRow: initial selected row index array
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
+    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
         sharedInstance.choices = choices
@@ -66,7 +68,14 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
         
         // presnet popover
         baseViewController.present(navigationController, animated: true, completion: nil)
-    }    
+        
+        // automatically hide the popover
+        if let seconds = secondsToAutomaticallyHide {
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                baseViewController.dismiss(animated: false, completion: afterHiddenAction)
+            }
+        }
+    }
     
     /// storyboardName
     override func storyboardName()->String{

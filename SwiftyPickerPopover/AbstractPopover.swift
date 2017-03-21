@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class AbstractPopover:NSObject {
+open class AbstractPopover:NSObject {
     
     /// configure navigationController
     /// - parameter originView: origin view of Popover
@@ -17,7 +17,7 @@ public class AbstractPopover:NSObject {
     /// - parameter baseViewController: viewController to become the base
     /// - parameter title: title of navigation bar
     /// - parameter permittedArrowDirections:UIPopoverArrowDirection the default value is .any
-    func configureNavigationController(_ originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
+    open func configureNavigationController(_ originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
         // create ViewController for content
         let bundle = Bundle(for: AbstractPopover.self)
         let storyboard = UIStoryboard(name: self.storyboardName(), bundle: bundle)
@@ -42,7 +42,7 @@ public class AbstractPopover:NSObject {
     }
     
     /// storyboardName
-    func storyboardName()->String{
+    open func storyboardName()->String{
         return "StringPickerPopover"
     }
 

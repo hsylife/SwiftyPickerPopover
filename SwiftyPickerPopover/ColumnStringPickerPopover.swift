@@ -74,7 +74,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     }
     
     /// storyboardName
-    override func storyboardName()->String{
+    override public func storyboardName()->String{
         return "ColumnStringPickerPopover"
     }
     

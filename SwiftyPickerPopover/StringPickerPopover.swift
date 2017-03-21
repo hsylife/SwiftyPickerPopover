@@ -11,7 +11,7 @@ import UIKit
 
 public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
     /// shared instance
-    static let sharedInstance: StringPickerPopover = StringPickerPopover()
+    open static let sharedInstance: StringPickerPopover = StringPickerPopover()
     override private init(){}
     
     var choices: [String] = []
@@ -64,7 +64,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     }
     
     /// storyboardName
-    override func storyboardName()->String{
+    override public func storyboardName()->String{
         return "StringPickerPopover"
     }
     

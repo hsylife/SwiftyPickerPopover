@@ -67,7 +67,7 @@ public class CountdownPickerPopover: AbstractPopover {
     }
     
     /// storyboardName
-    override func storyboardName()->String{
+    override public func storyboardName()->String{
         return "CountdownPickerPopover"
     }
         

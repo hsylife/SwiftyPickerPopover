@@ -75,7 +75,7 @@ public class DatePickerPopover: AbstractPopover {
     }
     
     /// storyboardName
-    override func storyboardName()->String{
+    override public func storyboardName()->String{
         return "DatePickerPopover"
     }
         

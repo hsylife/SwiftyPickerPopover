@@ -11,12 +11,8 @@ import UIKit
 
 public class DatePickerPopover: AbstractPopover {
     // singleton
-    class var sharedInstance : DatePickerPopover {
-        struct Static {
-            static let instance : DatePickerPopover = DatePickerPopover()
-        }
-        return Static.instance
-    }
+    static let sharedInstance: DatePickerPopover = DatePickerPopover()
+    override private init(){}
     
     // selected date
     var selectedDate: Date = Date()

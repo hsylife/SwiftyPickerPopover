@@ -10,12 +10,8 @@ import UIKit
 
 public class CountdownPickerPopover: AbstractPopover {
     // singleton
-    class var sharedInstance : CountdownPickerPopover {
-        struct Static {
-            static let instance : CountdownPickerPopover = CountdownPickerPopover()
-        }
-        return Static.instance
-    }
+    static let sharedInstance: CountdownPickerPopover = CountdownPickerPopover()
+    override private init(){}
     
     // selected date
     var timeInterval = TimeInterval()

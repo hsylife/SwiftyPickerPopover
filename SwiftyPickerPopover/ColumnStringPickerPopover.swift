@@ -16,12 +16,8 @@ import UIKit
 
 public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
     /// shared instance
-    class var sharedInstance : ColumnStringPickerPopover {
-        struct Static {
-            static let instance : ColumnStringPickerPopover = ColumnStringPickerPopover()
-        }
-        return Static.instance
-    }
+    static let sharedInstance: ColumnStringPickerPopover = ColumnStringPickerPopover()
+    override private init(){}
     
     var choices: [[String]] = [[]]
     var selectedRow: [Int] = [Int]()

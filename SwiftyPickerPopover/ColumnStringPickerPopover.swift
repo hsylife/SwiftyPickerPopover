@@ -15,9 +15,8 @@ import Foundation
 import UIKit
 
 public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
-    /// shared instance
-    static let sharedInstance: ColumnStringPickerPopover = ColumnStringPickerPopover()
-    override private init(){}
+
+    override public init(){}
     
     var choices: [[String]] = [[]]
     var selectedRow: [Int] = [Int]()
@@ -39,23 +38,24 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     /// - parameter columnPercent: percentage width for each column
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
+    public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[[String]], displayStringFor:((String?)->String?)? = nil, initialRow:[Int],columnPercent:[Float], fontSize: CGFloat = 12.0, doneAction: (([Int],[String])->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
-        sharedInstance.choices = choices
-        sharedInstance.selectedRow = initialRow
-        sharedInstance.columnPercent = columnPercent
-        sharedInstance.displayStringFor = displayStringFor
-        sharedInstance.fontSize = fontSize
+        self.choices = choices
+        self.selectedRow = initialRow
+        self.columnPercent = columnPercent
+        self.displayStringFor = displayStringFor
+        self.fontSize = fontSize
         
         // create navigationController
-        guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         
         // StringPickerPopoverViewController
         if let contentViewController = navigationController.topViewController as? ColumnStringPickerPopoverViewController {
             
+            contentViewController.popover = self
             contentViewController.doneAction = doneAction
             contentViewController.cancleAction = cancelAction
             

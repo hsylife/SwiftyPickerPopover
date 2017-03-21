@@ -29,12 +29,12 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
         // StringPickerPopover appears
-        StringPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+        StringPickerPopover().appearFrom(originView: sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker", secondsToAutomaticallyHide: 3.0, afterHiddenAction: { print("automatically hidden")}, dateMode: .date, initialDate: Date(), minimumDate:nil, maximumDate:nil, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker", secondsToAutomaticallyHide: 3.0, afterHiddenAction: { print("automatically hidden")}, dateMode: .date, initialDate: Date(), minimumDate:nil, maximumDate:nil, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
         // Or more briefly. minimumDate and maximumDate are omissible.
 //        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
 
@@ -42,24 +42,24 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
+        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
         // DatePickerPopover appears.
         // permittedArrowDirections and minuteInterval are omissible.
-        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", permittedArrowDirections: .down, dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", permittedArrowDirections: .down, dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
     }
 
     @IBAction func countdownButton(_ sender: UIButton) {
         // DatePickerPopover appears
         print("countdown")
-        CountdownPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
+        CountdownPickerPopover().appearFrom(originView: sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
         
     }
     
     @IBAction func columnsString(_ sender: UIButton) {
-        ColumnStringPickerPopover.appearFrom(originView: sender, baseViewController: self, title: "Columns Strings",
+        ColumnStringPickerPopover().appearFrom(originView: sender, baseViewController: self, title: "Columns Strings",
             choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
             initialRow: [0,0],
             columnPercent: [0.5, 0.5],
@@ -81,7 +81,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        StringPickerPopover.appearFrom(originView: theCell, baseView: collectionView, baseViewController: self, title: "CollectionView", choices: ["value 1","value 2","value 3"], initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+        StringPickerPopover().appearFrom(originView: theCell, baseView: collectionView, baseViewController: self, title: "CollectionView", choices: ["value 1","value 2","value 3"], initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

@@ -16,6 +16,7 @@ import UIKit
 
 class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    var popover:ColumnStringPickerPopover = ColumnStringPickerPopover()
     var doneAction: (([Int],[String])->Void)?
     var cancleAction: (()->Void)?
     
@@ -23,11 +24,11 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.delegate = ColumnStringPickerPopover.sharedInstance
+        picker.delegate = popover
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let select = ColumnStringPickerPopover.sharedInstance.selectedRow
+        let select = popover.selectedRow
         for x in 0..<select.count {
             picker.selectRow(select[x], inComponent: x, animated: true)
         }
@@ -35,8 +36,8 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
 
     
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
-        let selectedRow = ColumnStringPickerPopover.sharedInstance.selectedRow
-        let selectedChoices = ColumnStringPickerPopover.sharedInstance.selectedStrings()
+        let selectedRow = popover.selectedRow
+        let selectedChoices = popover.selectedStrings()
         doneAction?(selectedRow, selectedChoices)
         
         dismiss(animated: false, completion: {})

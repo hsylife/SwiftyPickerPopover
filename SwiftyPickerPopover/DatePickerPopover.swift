@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 public class DatePickerPopover: AbstractPopover {
-    // singleton
-    static let sharedInstance: DatePickerPopover = DatePickerPopover()
-    override private init(){}
+    override public init(){}
     
     // selected date
     var selectedDate: Date = Date()
@@ -33,10 +31,10 @@ public class DatePickerPopover: AbstractPopover {
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
     /// - parameter clearAction: action in which user tappend clear action. Omissible.
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialDate:Date, minimumDate:Date? = nil,  maximumDate:Date? = nil, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialDate:Date, minimumDate:Date? = nil,  maximumDate:Date? = nil, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
-        guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
+        guard let navigationController = configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
             return
         }
         

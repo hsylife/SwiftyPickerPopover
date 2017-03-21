@@ -16,6 +16,7 @@ import UIKit
 
 class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    var popover:CountdownPickerPopover = CountdownPickerPopover()
     var doneAction: ((TimeInterval)->Void)?
     var cancleAction: (()->Void)?
     var clearAction: (()->Void)?

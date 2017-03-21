@@ -11,6 +11,7 @@ import UIKit
 
 class StringPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    var popover:StringPickerPopover = StringPickerPopover()
     var doneAction: ((Int, String)->Void)?
     var cancleAction: (()->Void)?
     
@@ -18,17 +19,17 @@ class StringPickerPopoverViewController: UIViewController, UIPopoverPresentation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.delegate = StringPickerPopover.sharedInstance
+        picker.delegate = popover
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let select = StringPickerPopover.sharedInstance.selectedRow
+        let select = popover.selectedRow
         picker.selectRow(select, inComponent: 0, animated: true)
     }
 
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        let selectedString = StringPickerPopover.sharedInstance.choices[selectedRow]
+        let selectedString = popover.choices[selectedRow]
         doneAction?(selectedRow, selectedString)
         
         dismiss(animated: false, completion: {})

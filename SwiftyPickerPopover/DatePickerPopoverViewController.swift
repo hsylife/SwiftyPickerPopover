@@ -11,6 +11,7 @@ import UIKit
 
 class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    var popover:DatePickerPopover = DatePickerPopover()
     var doneAction: ((Date)->Void)?
     var cancleAction: (()->Void)?
     var clearAction: (()->Void)?

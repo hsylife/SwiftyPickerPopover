@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
-    /// shared instance
-    open static let sharedInstance: StringPickerPopover = StringPickerPopover()
-    override private init(){}
+
+    override public init(){}
     
     var choices: [String] = []
     var selectedRow: Int = 0
@@ -31,21 +30,22 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     /// - parameter initialRow: initial selected row index
     /// - parameter doneAction: action in which user tappend done button
     /// - parameter cancelAction: action in which user tappend cancel button
-    public class func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
+    public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
         
         // set parameters
-        sharedInstance.choices = choices
-        sharedInstance.selectedRow = initialRow
-        sharedInstance.displayStringFor = displayStringFor
+        self.choices = choices
+        self.selectedRow = initialRow
+        self.displayStringFor = displayStringFor
         
         // create navigationController
-        guard let navigationController = sharedInstance.configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         
         // StringPickerPopoverViewController
         if let contentViewController = navigationController.topViewController as? StringPickerPopoverViewController {
             
+            contentViewController.popover = self
             contentViewController.doneAction = doneAction
             contentViewController.cancleAction = cancelAction
             

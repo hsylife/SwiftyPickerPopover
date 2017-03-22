@@ -14,15 +14,17 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     // MARK: - Properties
     let storyboardName = "StringPickerPopover"
     
+    public typealias ItemType = String
+    
     var title: String?
-    var choices: [String] = []
+    var choices: [ItemType] = []
     var originView: UIView = UIView()
     var baseView: UIView?
     var baseViewController: UIViewController = UIViewController()
     private var permittedArrowDirections:UIPopoverArrowDirection = .any
     
-    private var displayStringFor:((String?)->String?)?
-    private var  doneAction: ((Int, String)->Void)?
+    private var displayStringFor:((ItemType?)->String?)?
+    private var doneAction: ((Int, ItemType)->Void)?
     private var cancelAction: (()->Void)?
     
     var selectedRow: Int = 0
@@ -37,7 +39,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     ///   - originView: The view to be the origin point where the popover appears.
     ///   - baseView: SourceView of popoverPresentationController. Omissible.
     ///   - baseViewController: The base viewController
-    public init(title: String?, choices:[String], originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController){
+    public init(title: String?, choices:[ItemType], originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController){
         
         super.init()
         
@@ -75,7 +77,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
     /// - Returns: self
-    public func setDisplayStringFor(_ displayStringFor:((String?)->String?)?)->Self{
+    public func setDisplayStringFor(_ displayStringFor:((ItemType?)->String?)?)->Self{
         self.displayStringFor = displayStringFor
         return self
     }
@@ -84,7 +86,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     ///
     /// - Parameter completion: Action when you press done.
     /// - Returns: self
-    public func setDoneAction(_ completion:((Int, String)->Void)?)->Self{
+    public func setDoneAction(_ completion:((Int, ItemType)->Void)?)->Self{
         self.doneAction = completion
         return self
     }

@@ -35,7 +35,7 @@ public class DatePickerPopover: AbstractPopover {
     public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialDate:Date, minimumDate:Date? = nil,  maximumDate:Date? = nil, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
-        guard let navigationController = configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
+        guard let navigationController = configureNavigationController(storyboardName: "DatePickerPopover", originView:originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
             return
         }
         
@@ -72,10 +72,4 @@ public class DatePickerPopover: AbstractPopover {
             }
         }
     }
-    
-    /// storyboardName
-    override public func storyboardName()->String{
-        return "DatePickerPopover"
-    }
-        
 }

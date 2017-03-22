@@ -49,7 +49,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
         self.fontSize = fontSize
         
         // create navigationController
-        guard let navigationController = configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = configureNavigationController(storyboardName: "ColumnStringPickerPopover", originView:originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         
@@ -73,12 +73,7 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
             }
         }
     }
-    
-    /// storyboardName
-    override public func storyboardName()->String{
-        return "ColumnStringPickerPopover"
-    }
-    
+
     /// UIPickerViewDataSource
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return choices.count

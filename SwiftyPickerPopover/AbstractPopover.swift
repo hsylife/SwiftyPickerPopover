@@ -16,16 +16,17 @@ open class AbstractPopover:NSObject {
     /// Configure navigationController.
     ///
     /// - Parameters:
+    ///   - storyboardName: Storyboard name
     ///   - originView: The view to be the origin point where the popover appears.
     ///   - baseView: SourceView of popoverPresentationController. Omissible.
     ///   - baseViewController: The base viewController
     ///   - title: Navigation bar title
     ///   - permittedArrowDirections: The default value is .any. Omissible.
     /// - Returns: The configured navigationController.
-    open func configureNavigationController(_ originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
+    open func configureNavigationController(storyboardName: String, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
         // create ViewController for content
         let bundle = Bundle(for: AbstractPopover.self)
-        let storyboard = UIStoryboard(name: self.storyboardName(), bundle: bundle)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return nil
         }
@@ -45,10 +46,4 @@ open class AbstractPopover:NSObject {
         
         return navigationController
     }
-    
-    /// storyboardName
-    open func storyboardName()->String{
-        return "StringPickerPopover"
-    }
-
 }

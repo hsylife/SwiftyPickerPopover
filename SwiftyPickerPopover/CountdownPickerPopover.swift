@@ -31,7 +31,7 @@ public class CountdownPickerPopover: AbstractPopover {
     public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialInterval: TimeInterval, doneAction: ((TimeInterval)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
-        guard let navigationController = configureNavigationController(originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
+        guard let navigationController = configureNavigationController(storyboardName: "CountdownPickerPopover", originView:originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
             return
         }
         
@@ -65,10 +65,4 @@ public class CountdownPickerPopover: AbstractPopover {
             }
         }
     }
-    
-    /// storyboardName
-    override public func storyboardName()->String{
-        return "CountdownPickerPopover"
-    }
-        
 }

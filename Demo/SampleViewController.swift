@@ -29,7 +29,17 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
         // StringPickerPopover appears
-        StringPickerPopover().appearFrom(originView: sender, baseViewController: self, title: "StringPicker", choices: ["value 1","value 2","value 3"], displayStringFor: displayStringFor, initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+        StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"], originView: sender, baseViewController: self)
+            .setDisplayStringFor(displayStringFor)
+            .setDoneAction({
+                selectedRow, selectedString in
+                print("done row \(selectedRow) \(selectedString)")
+            })
+            .setCancelAction({
+                print("cancel")
+            })
+            .appear()
+        
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
@@ -81,7 +91,17 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        StringPickerPopover().appearFrom(originView: theCell, baseView: collectionView, baseViewController: self, title: "CollectionView", choices: ["value 1","value 2","value 3"], initialRow:0, doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} , cancelAction: { print("cancel")})
+        let popover = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"], originView: theCell, baseView: collectionView, baseViewController: self)
+        .setInitialRow(1)
+        .setDoneAction({ (selectedRow, selectedString) in
+            print("done row \(selectedRow) \(selectedString)")
+        })
+        .setCancelAction( { print("cancel")}
+        )
+        
+        popover.appear()
+        popover.hideAutomatically(after: 5.0)
+        
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

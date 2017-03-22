@@ -13,7 +13,7 @@ open class StringPickerPopoverViewController: AbstractPickerPopoverViewControlle
 
     @IBOutlet weak var picker: UIPickerView!
 
-    var popover:StringPickerPopover = StringPickerPopover()
+    var popover:StringPickerPopover?
     var doneAction: ((Int, String)->Void)?
     
     override open func viewDidLoad() {
@@ -22,14 +22,16 @@ open class StringPickerPopoverViewController: AbstractPickerPopoverViewControlle
     }
     
     override open func viewWillAppear(_ animated: Bool) {
-        let select = popover.selectedRow
-        picker.selectRow(select, inComponent: 0, animated: true)
+        if let select = popover?.selectedRow {
+            picker?.selectRow(select, inComponent: 0, animated: true)
+        }
     }
 
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        let selectedString = popover.choices[selectedRow]
-        doneAction?(selectedRow, selectedString)
+        if let selectedString = popover?.choices[selectedRow]{
+            doneAction?(selectedRow, selectedString)
+        }
         
         dismiss(animated: false, completion: {})
     }

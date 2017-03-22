@@ -14,14 +14,13 @@
 import Foundation
 import UIKit
 
-class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    
+class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewController {
+
+    @IBOutlet weak var picker: UIPickerView!
+
     var popover:ColumnStringPickerPopover = ColumnStringPickerPopover()
     var doneAction: (([Int],[String])->Void)?
-    var cancleAction: (()->Void)?
-    
-    @IBOutlet weak var picker: UIPickerView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = popover
@@ -43,17 +42,4 @@ class ColumnStringPickerPopoverViewController: UIViewController, UIPopoverPresen
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        cancleAction?()
-        dismiss(animated: false, completion: {})
-    }
-    
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        tappedCancel()
-    }
-    
-    /// Popover appears on iPhone
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
-    }
 }

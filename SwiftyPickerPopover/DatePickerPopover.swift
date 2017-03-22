@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public class DatePickerPopover: AbstractPopover {
-    override public init(){}
     
     // selected date
     var selectedDate: Date = Date()

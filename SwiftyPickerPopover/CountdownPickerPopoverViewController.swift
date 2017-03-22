@@ -14,14 +14,13 @@
 import Foundation
 import UIKit
 
-class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    
-    var popover:CountdownPickerPopover = CountdownPickerPopover()
-    var doneAction: ((TimeInterval)->Void)?
-    var cancleAction: (()->Void)?
-    var clearAction: (()->Void)?
+open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewController {
     
     @IBOutlet weak var picker: UIDatePicker!
+
+    var popover:CountdownPickerPopover = CountdownPickerPopover()
+    var doneAction: ((TimeInterval)->Void)?
+    var clearAction: (()->Void)?
     
     var timeInterval = TimeInterval()
     var dateMode: UIDatePickerMode = .countDownTimer
@@ -29,14 +28,14 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
 
     @IBOutlet weak var clearButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         if hideClearButton {
             clearButton.removeFromSuperview()
             view.layoutIfNeeded()
         }
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         picker.countDownDuration = timeInterval
         picker.datePickerMode = dateMode
@@ -48,23 +47,8 @@ class CountdownPickerPopoverViewController: UIViewController, UIPopoverPresentat
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: UIButton? = nil) {
-        cancleAction?()
-        dismiss(animated: false, completion: {})
-    }
-    
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         clearAction?()
         dismiss(animated: false, completion: {})
-    }
-    
-    /// popover dismissed
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        tappedCancel()
-    }
-    
-    /// Popover appears on iPhone
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
-    }
+    }    
 }

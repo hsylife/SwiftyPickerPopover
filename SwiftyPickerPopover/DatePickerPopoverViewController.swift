@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+open class DatePickerPopoverViewController: AbstractPickerPopoverViewController {
     
     var popover:DatePickerPopover = DatePickerPopover()
     var doneAction: ((Date)->Void)?
-    var cancleAction: (()->Void)?
     var clearAction: (()->Void)?
     
     @IBOutlet weak var picker: UIDatePicker!
@@ -27,14 +26,14 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
 
     @IBOutlet weak var clearButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         if hideClearButton {
             clearButton.removeFromSuperview()
             view.layoutIfNeeded()
         }
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         picker.date = selectedDate
         picker.minimumDate = minimumDate
@@ -49,23 +48,8 @@ class DatePickerPopoverViewController: UIViewController, UIPopoverPresentationCo
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction func tappedCancel(_ sender: UIButton? = nil) {
-        cancleAction?()
-        dismiss(animated: false, completion: {})
-    }
-    
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         clearAction?()
         dismiss(animated: false, completion: {})
-    }
-    
-    /// popover dismissed
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        tappedCancel()
-    }
-    
-    /// Popover appears on iPhone
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
-    }
+    }    
 }

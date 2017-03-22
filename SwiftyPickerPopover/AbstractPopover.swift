@@ -11,6 +11,8 @@ import UIKit
 
 open class AbstractPopover:NSObject {
     
+    override public init(){}
+
     /// configure navigationController
     /// - parameter originView: origin view of Popover
     /// - parameter baseView: popoverPresentationController's sourceView

@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    override public init(){}
     
     var choices: [String] = []
     var selectedRow: Int = 0

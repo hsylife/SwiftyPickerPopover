@@ -16,8 +16,6 @@ import UIKit
 
 public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    override public init(){}
-    
     var choices: [[String]] = [[]]
     var selectedRow: [Int] = [Int]()
     var columnPercent: [Float] = [Float]()

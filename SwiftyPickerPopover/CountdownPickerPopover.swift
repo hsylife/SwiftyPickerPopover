@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 public class CountdownPickerPopover: AbstractPopover {
-
-    override public init(){}
     
     // selected date
     var timeInterval = TimeInterval()

@@ -13,23 +13,25 @@ public class DatePickerPopover: AbstractPopover {
     
     // selected date
     var selectedDate: Date = Date()
-    
-    /// Popover appears
-    /// - parameter view: origin view of popover
-    /// - parameter baseView: popoverPresentationController's sourceView
-    /// - parameter baseViewController: viewController to become the base
-    /// - parameter title: title for navigation bar
-    /// - parameter permittedArrowDirections the default value is .any. Omissible.
-    /// - parameter secondsToAutomaticallyHide: seconds to automatically hide the popover. Omissible.
-    /// - parameter afterHiddenAction: action to be performed after the popover became hidden. Omissible.
-    /// - parameter dateMode: UIDatePickerMode
-    /// - parameter initialDate: initial selected date
-    /// - parameter minimumDate:Date? The default is nil. Omissible.
-    /// - parameter maximumDate:Date? The default is nil. Omissible.
-    /// - parameter minuteInterval: Int minute interval for datePicker. The default is 0. Omissible.
-    /// - parameter doneAction: action in which user tappend done button
-    /// - parameter cancelAction: action in which user tappend cancel button
-    /// - parameter clearAction: action in which user tappend clear action. Omissible.
+
+    /// Popover appears with the following arguments.
+    ///
+    /// - Parameters:
+    ///   - originView: The view to be the origin point where the popover appears.
+    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewController: The base viewController
+    ///   - title: Navigation bar title
+    ///   - permittedArrowDirections: The default value is .any. Omissible.
+    ///   - secondsToAutomaticallyHide: Number of seconds until the popover disappears automatically. Omissible.
+    ///   - afterHiddenAction: Action to be performed after the popover disappears automatically. Omissible.
+    ///   - dateMode: Specify UIDatePickerMode.
+    ///   - initialDate: The value of the picker selected at first.
+    ///   - minimumDate: Minimum value. Omissible.
+    ///   - maximumDate: Maximum value. Omissible.
+    ///   - minuteInterval: Specify the interval between steps in minutes. Omissible.
+    ///   - doneAction: Action when you press done.
+    ///   - cancelAction: Action when you press cancel.
+    ///   - clearAction: Action When you press clear. Omissible.
     public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialDate:Date, minimumDate:Date? = nil,  maximumDate:Date? = nil, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController

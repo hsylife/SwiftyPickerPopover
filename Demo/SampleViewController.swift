@@ -36,7 +36,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         // DatePickerPopover appears
         DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker", secondsToAutomaticallyHide: 3.0, afterHiddenAction: { print("automatically hidden")}, dateMode: .date, initialDate: Date(), minimumDate:nil, maximumDate:nil, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
         // Or more briefly. minimumDate and maximumDate are omissible.
-//        DatePickerPopover.appearFrom(originView: sender, baseViewController: self, title: "DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+//        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
 
     }
     

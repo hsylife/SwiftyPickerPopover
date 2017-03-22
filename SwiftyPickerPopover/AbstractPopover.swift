@@ -12,13 +12,16 @@ import UIKit
 open class AbstractPopover:NSObject {
     
     override public init(){}
-
-    /// configure navigationController
-    /// - parameter originView: origin view of Popover
-    /// - parameter baseView: popoverPresentationController's sourceView
-    /// - parameter baseViewController: viewController to become the base
-    /// - parameter title: title of navigation bar
-    /// - parameter permittedArrowDirections:UIPopoverArrowDirection the default value is .any
+    
+    /// Configure navigationController.
+    ///
+    /// - Parameters:
+    ///   - originView: The view to be the origin point where the popover appears.
+    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewController: The base viewController
+    ///   - title: Navigation bar title
+    ///   - permittedArrowDirections: The default value is .any. Omissible.
+    /// - Returns: The configured navigationController.
     open func configureNavigationController(_ originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
         // create ViewController for content
         let bundle = Bundle(for: AbstractPopover.self)

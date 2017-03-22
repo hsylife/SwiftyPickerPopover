@@ -33,13 +33,4 @@ open class StringPickerPopoverViewController: AbstractPickerPopoverViewControlle
         
         dismiss(animated: false, completion: {})
     }
-    
-//    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-//        cancleAction?()
-//        dismiss(animated: false, completion: {})
-//    }
-//    
-//    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-//        tappedCancel()
-//    }
 }

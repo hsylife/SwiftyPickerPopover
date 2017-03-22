@@ -15,19 +15,21 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     var selectedRow: Int = 0
     var displayStringFor: ((String?)->String?)? = nil
     
-    /// Popover appears
-    /// - parameter originView: origin view of Popover
-    /// - parameter baseView: popoverPresentationController's sourceView
-    /// - parameter baseViewController: viewController to become the base
-    /// - parameter title: title of navigation bar
-    /// - parameter permittedArrowDirections the default value is .any. Omissible.
-    /// - parameter secondsToAutomaticallyHide: seconds to automatically hide the popover. Omissible.
-    /// - parameter afterHiddenAction: action to be performed after the popover became hidden. Omissible.
-    /// - parameter choices: Array of String for choices
-    /// - parameter displayStringFor: translation rule of choice to display. Omissible.
-    /// - parameter initialRow: initial selected row index
-    /// - parameter doneAction: action in which user tappend done button
-    /// - parameter cancelAction: action in which user tappend cancel button
+    /// Popover appears with the following arguments.
+    ///
+    /// - Parameters:
+    ///   - originView: The view to be the origin point where the popover appears.
+    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewController: The base viewController
+    ///   - title: Navigation bar title
+    ///   - permittedArrowDirections: The default value is .any. Omissible.
+    ///   - secondsToAutomaticallyHide: Number of seconds until the popover disappears automatically. Omissible.
+    ///   - afterHiddenAction: Action to be performed after the popover disappears automatically. Omissible.
+    ///   - choices: Options in the picker.
+    ///   - displayStringFor: Rules for converting choice values to display strings. Omissible.
+    ///   - initialRow: Initial row of picker.
+    ///   - doneAction: Action when you press done.
+    ///   - cancelAction: Action when you press cancel.
     public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, choices:[String], displayStringFor:((String?)->String?)? = nil, initialRow:Int, doneAction: ((Int, String)->Void)?, cancelAction: (()->Void)?){
         
         // set parameters

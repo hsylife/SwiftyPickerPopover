@@ -12,11 +12,9 @@ import UIKit
 public class StringPickerPopoverViewController: AbstractPickerPopoverViewController {
 
     public typealias PopoverType = StringPickerPopover
-    public typealias ItemType = String
     
     var popover:PopoverType?
-
-    var doneAction: ((Int, ItemType)->Void)?
+    var doneAction: ((Int, PopoverType.ItemType)->Void)?
 
     @IBOutlet weak var picker: UIPickerView!
     

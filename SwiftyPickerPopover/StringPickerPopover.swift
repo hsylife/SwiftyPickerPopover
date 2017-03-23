@@ -13,7 +13,6 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     
     // MARK: - Properties
     let storyboardName = "StringPickerPopover"
-    
     public typealias ItemType = String
     
     var title: String?

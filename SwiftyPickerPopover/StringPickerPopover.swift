@@ -36,19 +36,12 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     /// - Parameters:
     ///   - title: Navigation bar title
     ///   - choices: Options for the picker.
-    ///   - originView: The view to be the origin point where the popover appears.
-    ///   - baseView: SourceView of popoverPresentationController. Omissible.
-    ///   - baseViewController: The base viewController
-    public init(title: String?, choices:[ItemType], originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController){
+    public init(title: String?, choices:[ItemType]){
         
         super.init()
         
         // set parameters
         self.title = title
-        self.choices = choices
-        self.originView = originView
-        self.baseView = baseView
-        self.baseViewController = baseViewController
         self.choices = choices
         
     }
@@ -104,8 +97,18 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
 
     /// The popover appears.
     ///
-    /// - Parameter completion: Action to be performed after the popover appeared. Omissible.
-    public func appear(completion:(()->Void)? = nil){
+    /// - Parameter
+    ///   - originView: The view to be the origin point where the popover appears.
+    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewController: The base viewController
+    ///   - completion: Action to be performed after the popover appeared. Omissible.
+
+    public func appear(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil){
+        
+        self.originView = originView
+        self.baseView = baseView
+        self.baseViewController = baseViewController
+
         // create navigationController
         guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections ) else {
             return

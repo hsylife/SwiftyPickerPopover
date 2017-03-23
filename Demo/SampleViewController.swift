@@ -29,7 +29,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
         // StringPickerPopover appears
-        StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"], originView: sender, baseViewController: self)
+        StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
             .setDoneAction({
                 selectedRow, selectedString in
@@ -38,7 +38,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setCancelAction({
                 print("cancel")
             })
-            .appear()
+            .appear(originView: sender, baseViewController: self)
         
     }
     
@@ -91,7 +91,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        let popover = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"], originView: theCell, baseView: collectionView, baseViewController: self)
+        let popover = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
         .setInitialRow(1)
         .setDoneAction({ (selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
@@ -99,7 +99,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         .setCancelAction( { print("cancel")}
         )
         
-        popover.appear()
+        popover.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         popover.hideAutomatically(after: 5.0)
         
     }

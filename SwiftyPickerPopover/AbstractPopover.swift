@@ -19,8 +19,6 @@ open class AbstractPopover: NSObject {
 
     var permittedArrowDirections_:UIPopoverArrowDirection = .any
 
-    var cancelAction_: (()->Void)?
-
     override public init(){
         storyboardName = String(describing: type(of:self))
     }
@@ -36,14 +34,6 @@ open class AbstractPopover: NSObject {
         return self
     }
     
-    /// Set property
-    ///
-    /// - Parameter completion: Action when you cancel done.
-    /// - Returns: self
-    public func setCancelAction(_ completion: (()->Void)?)->Self{
-        self.cancelAction_ = completion
-        return self
-    }
 
     // MARK: - Popover display
     
@@ -56,8 +46,6 @@ open class AbstractPopover: NSObject {
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
     open func appear(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil){
-        
-        print(storyboardName)
 
         self.baseViewController = baseViewController
         
@@ -76,7 +64,6 @@ open class AbstractPopover: NSObject {
     open func configureContentViewController(navigationController: UINavigationController)->AbstractPickerPopoverViewController?{
         if let contentViewController = navigationController.topViewController as? AbstractPickerPopoverViewController {
             
-            contentViewController.cancleAction = cancelAction_
             return contentViewController
         }
         

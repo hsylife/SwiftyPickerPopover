@@ -14,16 +14,18 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     // MARK: Types
     
     public typealias ItemType = String
-    public typealias PickerPopoverViewController = StringPickerPopoverViewController
+    public typealias PopoverType = StringPickerPopover
+    public typealias PickerPopoverViewControllerType = StringPickerPopoverViewController
     
     // MARK: - Properties
     
     var choices: [ItemType] = []
     
     var displayStringFor_:((ItemType?)->String?)?
-    var doneAction_: ((Int, ItemType)->Void)?
-    
-    var selectedRow: Int = 0
+    var doneAction_: ((PopoverType, Int, ItemType)->Void)?
+    var cancelAction_: ((PopoverType)->Void)?
+
+    var selectedRow_: Int = 0
 
     // MARK: - Initializer
 
@@ -31,7 +33,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     ///
     /// - Parameters:
     ///   - title: Title for navigation bar.
-    ///   - choices: Options for the picker.
+    ///   - choices: Options for picker.
     public init(title: String?, choices:[ItemType]){
         
         super.init()
@@ -46,10 +48,10 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
 
     /// Set property
     ///
-    /// - Parameter initialRow: Initial row of picker.
+    /// - Parameter row: Selected row of picker.
     /// - Returns: self
-    public func setInitialRow(_ initialRow:Int)->Self{
-        self.selectedRow = initialRow
+    public func setSelectedRow(_ row:Int)->Self{
+        self.selectedRow_ = row
         return self
     }
 
@@ -66,26 +68,35 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     ///
     /// - Parameter completion: Action when you press done.
     /// - Returns: self
-    public func setDoneAction(_ completion:((Int, ItemType)->Void)?)->Self{
+    public func setDoneAction(_ completion:((PopoverType, Int, ItemType)->Void)?)->Self{
         self.doneAction_ = completion
         return self
     }
     
+    /// Set property
+    ///
+    /// - Parameter completion: Action when you cancel done.
+    /// - Returns: self
+    public func setCancelAction(_ completion: ((PopoverType)->Void)?)->Self{
+        self.cancelAction_ = completion
+        return self
+    }
+
     // MARK: - Popover display
     
-    /// Describe the difference to abstract class.
+    /// Describe the difference from the abstract class.
     ///
     /// - Parameter navigationController
     /// - Returns: The type of PickerPopoverViewController that supports this class.
-    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewController? {
+    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewControllerType? {
         let contentVC = super.configureContentViewController(navigationController: navigationController)
         
-        if let vc = contentVC as? PickerPopoverViewController {
+        if let vc = contentVC as? PickerPopoverViewControllerType {
             vc.popover = self
         return vc
         }
         
-        return contentVC as! PickerPopoverViewController?
+        return contentVC as! PickerPopoverViewControllerType?
     }
     
     // MARK: - UIPickerViewDataSource

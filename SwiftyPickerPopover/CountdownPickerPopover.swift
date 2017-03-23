@@ -10,59 +10,84 @@ import UIKit
 
 public class CountdownPickerPopover: AbstractPopover {
     
-    // selected date
-    var timeInterval = TimeInterval()
+    // MARK: Types
+    public typealias ItemType = TimeInterval
+    public typealias PopoverType = CountdownPickerPopover
+    public typealias PickerPopoverViewControllerType = CountdownPickerPopoverViewController
+
+    // MARK: - Properties
+
+    var doneAction_: ((PopoverType, ItemType)->Void)?
+    var clearAction_: ((PopoverType)->Void)?
+    var cancelAction_: ((PopoverType)->Void)?
+
+    // selected value
+    var selectedTimeInterval:ItemType = ItemType()
+
+    // MARK: - Initializer
     
-    /// Popover appears with the following arguments.
+    /// Initialize a Popover with the following argument.
     ///
-    /// - Parameters:
-    ///   - originView: The view to be the origin point where the popover appears.
-    ///   - baseView: SourceView of popoverPresentationController. Omissible.
-    ///   - baseViewController: The base viewController
-    ///   - title: Navigation bar title
-    ///   - permittedArrowDirections: The default value is .any. Omissible.
-    ///   - secondsToAutomaticallyHide: Number of seconds until the popover disappears automatically. Omissible.
-    ///   - afterHiddenAction: Action to be performed after the popover disappears automatically. Omissible.
-    ///   - dateMode: Specify UIDatePickerMode.
-    ///   - initialInterval: The value of the picker selected at first.
-    ///   - doneAction: Action when you press done.
-    ///   - cancelAction: Action when you press cancel.
-    ///   - clearAction: Action When you press clear. Omissible.
-    public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialInterval: TimeInterval, doneAction: ((TimeInterval)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
+    /// - Parameter title: Title for navigation bar.
+    public init(title: String?){
+        super.init()
         
-        // create navigationController
-        guard let navigationController = configureNavigationController(storyboardName: "CountdownPickerPopover", originView:originView, baseView: baseView, baseViewController: baseViewController, title: title) else {
-            return
+        // set parameters
+        self.title = title
+    }
+
+    // MARK: - Propery setter
+    
+    /// Set property
+    ///
+    /// - Parameter defaultInterval: The default value of picker.
+    /// - Returns: self
+    public func setInitialTimeInterval(_ defaultInterval:ItemType)->Self{
+        self.selectedTimeInterval = defaultInterval
+        return self
+    }
+
+    /// Set property
+    ///
+    /// - Parameter completion: Action when you press done.
+    /// - Returns: self
+    public func setDoneAction(_ completion:((PopoverType, ItemType)->Void)?)->Self{
+        self.doneAction_ = completion
+        return self
+    }
+
+    /// Set property
+    ///
+    /// - Parameter completion: Action when you cancel done.
+    /// - Returns: self
+    public func setCancelAction(_ completion: ((PopoverType)->Void)?)->Self{
+        self.cancelAction_ = completion
+        return self
+    }
+    
+    /// Set property
+    ///
+    /// - Parameter completion: Action when you press done.
+    /// - Returns: self
+    public func setClearAction(_ completion:((PopoverType)->Void)?)->Self{
+        self.clearAction_ = completion
+        return self
+    }
+    
+    // MARK: - Popover display
+    
+    /// Describe the difference from the abstract class.
+    ///
+    /// - Parameter navigationController
+    /// - Returns: The type of PickerPopoverViewController that supports this class.
+    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewControllerType? {
+        let contentVC = super.configureContentViewController(navigationController: navigationController)
+        
+        if let vc = contentVC as? PickerPopoverViewControllerType {
+            vc.popover = self
+            return vc
         }
         
-        // StringPickerPopoverViewController
-        if let contentViewController = navigationController.topViewController as? CountdownPickerPopoverViewController {
-            
-            // UIPickerView
-            contentViewController.popover = self
-            contentViewController.timeInterval = initialInterval
-            contentViewController.dateMode = dateMode
-            
-            contentViewController.doneAction = doneAction
-            contentViewController.cancleAction = cancelAction
-            if let action = clearAction {
-                contentViewController.clearAction = action
-            }
-            else {
-                contentViewController.hideClearButton = true
-            }
-            
-            navigationController.popoverPresentationController?.delegate = contentViewController
-        }
-        
-        // presnet popover
-        baseViewController.present(navigationController, animated: true, completion: nil)
-        
-        // automatically hide the popover
-        if let seconds = secondsToAutomaticallyHide {
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                baseViewController.dismiss(animated: false, completion: afterHiddenAction)
-            }
-        }
+        return contentVC as! PickerPopoverViewControllerType?
     }
 }

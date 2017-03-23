@@ -23,7 +23,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     }
     
     override public func viewWillAppear(_ animated: Bool) {
-        if let select = popover?.selectedRow {
+        if let select = popover?.selectedRow_ {
             picker?.selectRow(select, inComponent: 0, animated: true)
         }
     }
@@ -31,9 +31,20 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{
-            popover?.doneAction_?(selectedRow, selectedString)
+            popover?.doneAction_?(popover!, selectedRow, selectedString)
         }
         
         dismiss(animated: false, completion: {})
     }
+    
+    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+        popover?.cancelAction_?(popover!)
+        dismiss(animated: false, completion: {})
+    }
+    
+    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        tappedCancel()
+    }
+
+
 }

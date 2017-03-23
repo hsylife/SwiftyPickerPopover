@@ -32,10 +32,10 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
             .setDoneAction({
-                selectedRow, selectedString in
+                p, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelAction({
+            .setCancelAction({ popover in
                 print("cancel")
             })
             .appear(originView: sender, baseViewController: self)
@@ -46,10 +46,10 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         // DatePickerPopover appears.
         
         let popover = DatePickerPopover(title: "DatePicker")
-        .setDateMode(.date)
-        .setInitialDate(Date())
-        .setDoneAction({ selectedDate in print("selectedDate \(selectedDate)")})
-        .setCancelAction({print("cancel")})
+            .setDateMode(.date)
+            .setSelectedDate(Date())
+            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
+            .setCancelAction({ popover in print("cancel")})
         
         popover.appear(originView: sender, baseViewController: self)
         
@@ -58,29 +58,47 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         // DatePickerPopover appears
-//        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
+        DatePickerPopover(title: "Clearable DatePicker")
+            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
+            .setCancelAction({ popover in print("cancel")})
+            .setClearAction({ p in
+                print("clear")
+                p.disappear()
+            })
+            .appear(originView: sender, baseViewController: self)
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
         // DatePickerPopover appears.
-        // permittedArrowDirections and minuteInterval are omissible.
-//        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", permittedArrowDirections: .down, dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+        DatePickerPopover(title: "DatePicker .time 5minInt.")
+            .setDateMode(.time)
+            .setMinuteInterval(5)
+            .setPermittedArrowDirections(.down)
+            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
+            .setCancelAction({ popover in print("cancel")})
+            .appear(originView: sender, baseViewController: self)
     }
 
     @IBAction func countdownButton(_ sender: UIButton) {
-        // DatePickerPopover appears
-        print("countdown")
-        CountdownPickerPopover().appearFrom(originView: sender, baseViewController: self, title: "CountdownPicker", dateMode: .countDownTimer, initialInterval: TimeInterval(), doneAction: { timeInterval in print("timeInterval \(timeInterval)")}, cancelAction: {print("cancel")})
+        
+        // CountdownPickerPopover appears
+        CountdownPickerPopover(title: "CountdownPicker")
+            .setInitialTimeInterval(TimeInterval())
+            .setDoneAction({ popover, timeInterval in print("timeInterval \(timeInterval)")} )
+            .setCancelAction({ popover in print("cancel")})
+            .appear(originView: sender, baseViewController: self)
         
     }
     
     @IBAction func columnsString(_ sender: UIButton) {
-        ColumnStringPickerPopover().appearFrom(originView: sender, baseViewController: self, title: "Columns Strings",
-            choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
-            initialRow: [0,0],
-            columnPercent: [0.5, 0.5],
-            fontSize: 12.0,
-            doneAction: { selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")}, cancelAction: {print("cancel")})
+        //ColumnStringPickerPopover appears.
+        ColumnStringPickerPopover(title: "Columns Strings",
+                                  choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
+                                  selectedRows: [0,0], columnPercents: [0.5, 0.5])
+        .setDoneAction({ popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
+        .setCancelAction({p in print("cancel")})
+        .setFontSize(14)
+        .appear(originView: sender, baseViewController: self)
     }
 
     //CollectionView
@@ -98,11 +116,11 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         let popover = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
-        .setInitialRow(1)
-        .setDoneAction({ (selectedRow, selectedString) in
+        .setSelectedRow(1)
+        .setDoneAction({ (p, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelAction( { print("cancel")}
+        .setCancelAction( { popover in print("cancel")}
         )
         
         popover.appear(originView: theCell, baseView: collectionView, baseViewController: self)

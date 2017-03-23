@@ -16,39 +16,51 @@ import UIKit
 
 open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewController {
     
+    typealias PopoverType = CountdownPickerPopover
+
+    var popover:PopoverType?
+
     @IBOutlet weak var picker: UIDatePicker!
-
-    var popover:CountdownPickerPopover = CountdownPickerPopover()
-    var doneAction: ((TimeInterval)->Void)?
-    var clearAction: (()->Void)?
-    
-    var timeInterval = TimeInterval()
-    var dateMode: UIDatePickerMode = .countDownTimer
-    var hideClearButton: Bool = false
-
     @IBOutlet weak var clearButton: UIButton!
+
+    var hideClearButton: Bool = false
     
     override open func viewWillAppear(_ animated: Bool) {
-        if hideClearButton {
-            clearButton.removeFromSuperview()
-            view.layoutIfNeeded()
+        if let pp = popover {
+            if let _ = pp.clearAction_ { }
+            else {
+                clearButton.removeFromSuperview()
+                view.layoutIfNeeded()
+            }
         }
     }
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        picker.countDownDuration = timeInterval
-        picker.datePickerMode = dateMode
+        if let pp = popover {
+            picker.datePickerMode = .countDownTimer
+
+            picker.countDownDuration = pp.selectedTimeInterval
+        }
     }
     
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        doneAction?(picker.countDownDuration)
+        popover?.doneAction_?(popover!, picker.countDownDuration)
+        dismiss(animated: false, completion: {})
+    }
+    
+    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+        popover?.cancelAction_?(popover!)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        clearAction?()
-        dismiss(animated: false, completion: {})
-    }    
+        popover?.clearAction_?(popover!)
+    }
+    
+    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        tappedCancel()
+    }
+
 }

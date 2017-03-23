@@ -40,13 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="3Ad-t5-xYw">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9t3-zj-PGz">
-                            <connections>
-                                <action selector="tappedCancel:" destination="t31-zV-uJb" id="ek9-44-9NR"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="3Ad-t5-xYw"/>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>

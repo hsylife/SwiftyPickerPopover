@@ -14,19 +14,20 @@ public class DatePickerPopover: AbstractPopover {
     // MARK: Types
     
     public typealias ItemType = Date
-    public typealias PickerPopoverViewController = DatePickerPopoverViewController
+    public typealias PopoverType = DatePickerPopover
+    public typealias PickerPopoverViewControllerType = DatePickerPopoverViewController
 
     // MARK: - Properties
 
-    var displayStringFor_:((ItemType?)->String?)?
-    var doneAction_: ((ItemType)->Void)?
-    var clearAction_: (()->Void)?
-    var dateMode_:UIDatePickerMode = .date
-    var minimumDate_: Date?
-    var maximumDate_: Date?
-    var minuteInterval_: Int = 0
+    var doneAction_: ((PopoverType,ItemType)->Void)?
+    var cancelAction_: ((PopoverType)->Void)?
+    var clearAction_: ((PopoverType)->Void)?
     
-    var selectedDate: Date = Date()
+    var dateMode_:UIDatePickerMode = .date
+    var minimumDate_: ItemType?
+    var maximumDate_: ItemType?
+    var minuteInterval_: Int = 0
+    var selectedDate_: ItemType = ItemType()
 
     // MARK: - Initializer
     
@@ -44,10 +45,10 @@ public class DatePickerPopover: AbstractPopover {
 
     /// Set property
     ///
-    /// - Parameter initialRow: Initial row of picker.
+    /// - Parameter row: The default value of picker.
     /// - Returns: self
-    public func setInitialDate(_ initialDate:Date)->Self{
-        self.selectedDate = initialDate
+    public func setSelectedDate(_ row:ItemType)->Self{
+        self.selectedDate_ = row
         return self
     }
     
@@ -89,45 +90,45 @@ public class DatePickerPopover: AbstractPopover {
     
     /// Set property
     ///
-    /// - Parameter displayStringFor: Rules for converting choice values to display strings.
-    /// - Returns: self
-    public func setDisplayStringFor(_ displayStringFor:((ItemType?)->String?)?)->Self{
-        self.displayStringFor_ = displayStringFor
-        return self
-    }
-    
-    /// Set property
-    ///
     /// - Parameter completion: Action when you press done.
     /// - Returns: self
-    public func setDoneAction(_ completion:((ItemType)->Void)?)->Self{
+    public func setDoneAction(_ completion:((PopoverType,ItemType)->Void)?)->Self{
         self.doneAction_ = completion
         return self
     }
     
     /// Set property
     ///
+    /// - Parameter completion: Action when you cancel done.
+    /// - Returns: self
+    public func setCancelAction(_ completion: ((PopoverType)->Void)?)->Self{
+        self.cancelAction_ = completion
+        return self
+    }
+    
+    /// Set property
+    ///
     /// - Parameter completion: Action when you press done.
     /// - Returns: self
-    public func setClearAction(_ completion:(()->Void)?)->Self{
+    public func setClearAction(_ completion:((PopoverType)->Void)?)->Self{
         self.clearAction_ = completion
         return self
     }
     
     // MARK: - Popover display
     
-    /// Describe the difference to abstract class.
+    /// Describe the difference from the abstract class.
     ///
     /// - Parameter navigationController
     /// - Returns: The type of PickerPopoverViewController that supports this class.
-    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewController? {
+    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewControllerType? {
         let contentVC = super.configureContentViewController(navigationController: navigationController)
         
-        if let vc = contentVC as? PickerPopoverViewController {
+        if let vc = contentVC as? PickerPopoverViewControllerType {
             vc.popover = self
             return vc
         }
         
-        return contentVC as! PickerPopoverViewController?
+        return contentVC as! PickerPopoverViewControllerType?
     }
 }

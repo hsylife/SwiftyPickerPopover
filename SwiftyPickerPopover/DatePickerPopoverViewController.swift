@@ -33,7 +33,7 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
     override open func viewDidLoad() {
         super.viewDidLoad()
         if let pp = popover {
-            picker.date = pp.selectedDate
+            picker.date = pp.selectedDate_
             picker.minimumDate = pp.minimumDate_
             picker.maximumDate = pp.maximumDate_
             picker.datePickerMode = pp.dateMode_
@@ -43,12 +43,20 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
     
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        popover?.doneAction_?(picker.date)
+        popover?.doneAction_?(popover!, picker.date)
+        dismiss(animated: false, completion: {})
+    }
+    
+    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+        popover?.cancelAction_?(popover!)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        popover?.clearAction_?()
-        dismiss(animated: false, completion: {})
-    }    
+        popover?.clearAction_?(popover!)
+    }
+    
+    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        tappedCancel()
+    }
 }

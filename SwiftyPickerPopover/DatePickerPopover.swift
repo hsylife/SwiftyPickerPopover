@@ -11,9 +11,51 @@ import UIKit
 
 public class DatePickerPopover: AbstractPopover {
     
-    // selected date
+    // MARK: - Properties
+//    let storyboardName = "DatePickerPopover"
+    public typealias ItemType = Date
+
+//    var title: String?
+//    var originView: UIView = UIView()
+//    var baseView: UIView?
+//    var baseViewController: UIViewController = UIViewController()
+//
+//    private var dateMode:UIDatePickerMode = .date
+//    private var minimumDate:Date?
+//    private var maximumDate:Date?
+//    private var minuteInterval:Int = 0
+//    private var permittedArrowDirections:UIPopoverArrowDirection = .any
+//    private var displayStringFor:((ItemType?)->String?)?
+//    private var doneAction: ((Int, ItemType)->Void)?
+//    private var cancelAction: (()->Void)?
+//    private var clearAction: (()->Void)?
+    
     var selectedDate: Date = Date()
 
+    // MARK: - Initializer
+    
+    /// Initialize a Popover with the following argument.
+    ///
+    /// - Parameter title: Title for navigation bar.
+//    public init(title: String?){
+//        super.init()
+//        
+//        // set parameters
+//        self.title = title
+//    }
+    
+    // MARK: - Propery setter
+
+    /// Set property
+    ///
+    /// - Parameter permittedArrowDirections: Permitted arrow directions
+    /// - Returns: self
+//    public func setPermittedArrowDirections(_ permittedArrowDirections:UIPopoverArrowDirection)->Self{
+//        self.permittedArrowDirections = permittedArrowDirections
+//        return self
+//    }
+
+    
     /// Popover appears with the following arguments.
     ///
     /// - Parameters:
@@ -35,7 +77,7 @@ public class DatePickerPopover: AbstractPopover {
     public func appearFrom(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, title: String?, permittedArrowDirections:UIPopoverArrowDirection = .any, secondsToAutomaticallyHide: Double? = nil, afterHiddenAction: (()->Void)? = nil, dateMode:UIDatePickerMode, initialDate:Date, minimumDate:Date? = nil,  maximumDate:Date? = nil, minuteInterval:Int = 0 ,doneAction: ((Date)->Void)?, cancelAction: (()->Void)?, clearAction: (()->Void)? = nil){
         
         // create navigationController
-        guard let navigationController = configureNavigationController(storyboardName: "DatePickerPopover", originView:originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
+        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView:originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections) else {
             return
         }
         

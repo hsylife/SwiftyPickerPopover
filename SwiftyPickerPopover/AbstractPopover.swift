@@ -9,10 +9,100 @@
 import Foundation
 import UIKit
 
-open class AbstractPopover:NSObject {
+open class AbstractPopover: NSObject {
+
+    let storyboardName: String
+
+    var title: String?
     
-    override public init(){}
+    var baseViewController: UIViewController = UIViewController()
+
+    var permittedArrowDirections_:UIPopoverArrowDirection = .any
+
+    var cancelAction_: (()->Void)?
+
+    override public init(){
+        storyboardName = String(describing: type(of:self))
+    }
     
+    // MARK: - Propery setter
+    
+    /// Set property
+    ///
+    /// - Parameter permittedArrowDirections: Permitted arrow directions
+    /// - Returns: self
+    open func setPermittedArrowDirections(_ permittedArrowDirections:UIPopoverArrowDirection)->Self{
+        self.permittedArrowDirections_ = permittedArrowDirections
+        return self
+    }
+    
+    /// Set property
+    ///
+    /// - Parameter completion: Action when you cancel done.
+    /// - Returns: self
+    public func setCancelAction(_ completion: (()->Void)?)->Self{
+        self.cancelAction_ = completion
+        return self
+    }
+
+    // MARK: - Popover display
+    
+    /// The popover appears.
+    ///
+    /// - Parameter
+    ///   - originView: The view to be the origin point where the popover appears.
+    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewController: The base viewController
+    ///   - completion: Action to be performed after the popover appeared. Omissible.
+    
+    open func appear(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil){
+        
+        print(storyboardName)
+
+        self.baseViewController = baseViewController
+        
+        // create navigationController
+        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections_ ) else { return }
+        
+        // configure StringPickerPopoverViewController
+        let contentViewController = configureContentViewController(navigationController: navigationController)
+        
+        navigationController.popoverPresentationController?.delegate = contentViewController
+        
+        // presnet popover
+        baseViewController.present(navigationController, animated: true, completion: completion)
+    }
+    
+    open func configureContentViewController(navigationController: UINavigationController)->AbstractPickerPopoverViewController?{
+        if let contentViewController = navigationController.topViewController as? AbstractPickerPopoverViewController {
+            
+            contentViewController.cancleAction = cancelAction_
+            return contentViewController
+        }
+        
+        return nil
+    }
+    
+    /// Hide the popover.
+    ///
+    /// - Parameter completion: Action to be performed after the popover disappeared. Omissible.
+    open func hide(completion:(()->Void)? = nil){
+        self.baseViewController.dismiss(animated: false, completion: completion)
+    }
+    
+    /// Hide the popover automatically after the arbitrary number of seconds.
+    ///
+    /// - Parameters:
+    ///   - seconds: Number of seconds to hide.
+    ///   - completion: Action to be performed after the popover disappeared. Omissible.
+    open func hideAutomatically(after seconds: Double, completion: (()->Void)? = nil){
+        // automatically hide the popover
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.baseViewController.dismiss(animated: false, completion: completion)
+        }
+        
+    }
+
     /// Configure navigationController.
     ///
     /// - Parameters:
@@ -27,6 +117,7 @@ open class AbstractPopover:NSObject {
         // create ViewController for content
         let bundle = Bundle(for: AbstractPopover.self)
         let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+        
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return nil
         }

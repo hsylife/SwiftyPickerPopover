@@ -28,6 +28,7 @@
 		D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E91D8AD0F300DAE60A /* SampleViewController.swift */; };
 		D646E0ED1E820825003C8731 /* AbstractPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */; };
 		D646E0EE1E820F2A003C8731 /* SwiftyPickerPopover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */; };
+		D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +69,7 @@
 		D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopoverViewController.swift; sourceTree = "<group>"; };
 		D6846A311D892EB300792CA4 /* StringPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPickerPopover.swift; sourceTree = "<group>"; };
 		D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPickerPopoverViewController.swift; sourceTree = "<group>"; };
+		D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AbstractPopover.storyboard; sourceTree = "<group>"; };
 		D6D5C5311D892C930002118F /* SwiftyPickerPopoverDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPickerPopoverDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 		D6D8BEA01D8A69140075DFAD /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
+				D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */,
 				D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */,
 				D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */,
 			);
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60AE7ED1D9EE11F000320F4 /* DatePickerPopover.storyboard in Resources */,
+				D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */,
 				D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */,
 				D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */,
 				D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */,

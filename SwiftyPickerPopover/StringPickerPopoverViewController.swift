@@ -11,10 +11,9 @@ import UIKit
 
 public class StringPickerPopoverViewController: AbstractPickerPopoverViewController {
 
-    public typealias PopoverType = StringPickerPopover
+    typealias PopoverType = StringPickerPopover
     
     var popover:PopoverType?
-    var doneAction: ((Int, PopoverType.ItemType)->Void)?
 
     @IBOutlet weak var picker: UIPickerView!
     
@@ -32,7 +31,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{
-            doneAction?(selectedRow, selectedString)
+            popover?.doneAction_?(selectedRow, selectedString)
         }
         
         dismiss(animated: false, completion: {})

@@ -11,45 +11,44 @@ import UIKit
 
 open class DatePickerPopoverViewController: AbstractPickerPopoverViewController {
     
-    var popover:DatePickerPopover = DatePickerPopover()
-    var doneAction: ((Date)->Void)?
-    var clearAction: (()->Void)?
+    typealias PopoverType = DatePickerPopover
+    
+    var popover:PopoverType?
     
     @IBOutlet weak var picker: UIDatePicker!
-    
-    var selectedDate = Date()
-    var minimumDate:Date? = nil;
-    var maximumDate:Date? = nil;
-    var dateMode: UIDatePickerMode = .date
-    var minuteInterval: Int = 0
-    var hideClearButton: Bool = false
-
     @IBOutlet weak var clearButton: UIButton!
+
+    var hideClearButton: Bool = false
     
     override open func viewWillAppear(_ animated: Bool) {
-        if hideClearButton {
-            clearButton.removeFromSuperview()
-            view.layoutIfNeeded()
+        if let pp = popover {
+            if let _ = pp.clearAction_ { }
+            else {
+                clearButton.removeFromSuperview()
+                view.layoutIfNeeded()
+            }
         }
     }
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        picker.date = selectedDate
-        picker.minimumDate = minimumDate
-        picker.maximumDate = maximumDate
-        picker.datePickerMode = dateMode
-        picker.minuteInterval = minuteInterval
+        if let pp = popover {
+            picker.date = pp.selectedDate
+            picker.minimumDate = pp.minimumDate_
+            picker.maximumDate = pp.maximumDate_
+            picker.datePickerMode = pp.dateMode_
+            picker.minuteInterval = pp.minuteInterval_
+        }
     }
     
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        doneAction?(picker.date)
+        popover?.doneAction_?(picker.date)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        clearAction?()
+        popover?.clearAction_?()
         dismiss(animated: false, completion: {})
     }    
 }

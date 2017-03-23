@@ -43,22 +43,28 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
-        // DatePickerPopover appears
-        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker", secondsToAutomaticallyHide: 3.0, afterHiddenAction: { print("automatically hidden")}, dateMode: .date, initialDate: Date(), minimumDate:nil, maximumDate:nil, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
-        // Or more briefly. minimumDate and maximumDate are omissible.
-//        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
-
+        // DatePickerPopover appears.
+        
+        let popover = DatePickerPopover(title: "DatePicker")
+        .setDateMode(.date)
+        .setInitialDate(Date())
+        .setDoneAction({ selectedDate in print("selectedDate \(selectedDate)")})
+        .setCancelAction({print("cancel")})
+        
+        popover.appear(originView: sender, baseViewController: self)
+        
+        popover.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )        
     }
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
+//        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "Clearable DatePicker", dateMode: .date, initialDate: Date(), doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")},clearAction: { print("clear")})
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
         // DatePickerPopover appears.
         // permittedArrowDirections and minuteInterval are omissible.
-        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", permittedArrowDirections: .down, dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
+//        DatePickerPopover().appearFrom(originView: sender, baseViewController: self, title: "DatePicker .time 5minInt.", permittedArrowDirections: .down, dateMode: .time, initialDate: Date(), minuteInterval: 5, doneAction: { selectedDate in print("selectedDate \(selectedDate)")}, cancelAction: {print("cancel")})
     }
 
     @IBAction func countdownButton(_ sender: UIButton) {
@@ -100,7 +106,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         )
         
         popover.appear(originView: theCell, baseView: collectionView, baseViewController: self)
-        popover.hideAutomatically(after: 5.0)
+        popover.disappearAutomatically(after: 5.0)
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {

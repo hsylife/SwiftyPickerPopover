@@ -11,6 +11,8 @@ import UIKit
 
 public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    // MARK: Types
+    
     public typealias ItemType = String
     public typealias PickerPopoverViewController = StringPickerPopoverViewController
     
@@ -83,7 +85,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         return vc
         }
         
-        return contentVC as! StringPickerPopover.PickerPopoverViewController?
+        return contentVC as! PickerPopoverViewController?
     }
     
     // MARK: - UIPickerViewDataSource

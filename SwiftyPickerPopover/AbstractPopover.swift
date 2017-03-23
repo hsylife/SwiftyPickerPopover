@@ -83,19 +83,19 @@ open class AbstractPopover: NSObject {
         return nil
     }
     
-    /// Hide the popover.
+    /// The popover disappears.
     ///
     /// - Parameter completion: Action to be performed after the popover disappeared. Omissible.
-    open func hide(completion:(()->Void)? = nil){
+    open func disappear(completion:(()->Void)? = nil){
         self.baseViewController.dismiss(animated: false, completion: completion)
     }
     
-    /// Hide the popover automatically after the arbitrary number of seconds.
+    /// The popover automatically disappears after the arbitrary number of seconds.
     ///
     /// - Parameters:
     ///   - seconds: Number of seconds to hide.
     ///   - completion: Action to be performed after the popover disappeared. Omissible.
-    open func hideAutomatically(after seconds: Double, completion: (()->Void)? = nil){
+    open func disappearAutomatically(after seconds: Double, completion: (()->Void)? = nil){
         // automatically hide the popover
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             self.baseViewController.dismiss(animated: false, completion: completion)

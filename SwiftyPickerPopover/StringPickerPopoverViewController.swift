@@ -23,9 +23,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     }
     
     override public func viewWillAppear(_ animated: Bool) {
-        if let select = popover?.selectedRow_ {
-            picker?.selectRow(select, inComponent: 0, animated: true)
-        }
+        refrectPopoverProperties()
     }
 
     func refrectPopoverProperties(){

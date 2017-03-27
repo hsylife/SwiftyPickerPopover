@@ -84,6 +84,10 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
 
     // MARK: - Popover display
     
+    func reload(){
+        
+    }
+    
     /// Describe the difference from the abstract class.
     ///
     /// - Parameter navigationController
@@ -93,7 +97,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         
         if let vc = contentVC as? PickerPopoverViewControllerType {
             vc.popover = self
-        return vc
+            return vc
         }
         
         return contentVC as! PickerPopoverViewControllerType?

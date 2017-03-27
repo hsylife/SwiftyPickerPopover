@@ -61,6 +61,10 @@ open class AbstractPopover: NSObject {
         baseViewController.present(navigationController, animated: true, completion: completion)
     }
     
+    /// Configure contentViewController of popover
+    ///
+    /// - Parameter navigationController: Source navigationController.
+    /// - Returns: ContentViewController.
     open func configureContentViewController(navigationController: UINavigationController)->AbstractPickerPopoverViewController?{
         if let contentViewController = navigationController.topViewController as? AbstractPickerPopoverViewController {
             
@@ -95,6 +99,7 @@ open class AbstractPopover: NSObject {
         }
     }
     
+    /// Update the started time of disappearAutomatically().
     func redoDisappearAutomatically(){
         //Redo disapperAutomatically()
         if let seconds = disappearAutomaticallyItems.seconds {

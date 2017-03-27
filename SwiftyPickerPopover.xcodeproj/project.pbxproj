@@ -21,6 +21,7 @@
 		D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */; };
 		D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */; };
 		D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30751D92837800771790 /* StringPickerPopover.storyboard */; };
+		D6239B151E88E7F200E9E68C /* DispatchQueure+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6239B141E88E7F200E9E68C /* DispatchQueure+.swift */; };
 		D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */; };
 		D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63410E21D8AD0F300DAE60A /* Assets.xcassets */; };
 		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
@@ -54,6 +55,7 @@
 		D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPickerPopover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60AE7D91D9EE0DE000320F4 /* SwiftyPickerPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyPickerPopover.h; sourceTree = "<group>"; };
 		D60AE7DA1D9EE0DE000320F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6239B141E88E7F200E9E68C /* DispatchQueure+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueure+.swift"; sourceTree = "<group>"; };
 		D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D63410E21D8AD0F300DAE60A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		D63410E51D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */,
 				D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */,
 				D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */,
+				D6239B141E88E7F200E9E68C /* DispatchQueure+.swift */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D646E0ED1E820825003C8731 /* AbstractPickerPopoverViewController.swift in Sources */,
+				D6239B151E88E7F200E9E68C /* DispatchQueure+.swift in Sources */,
 				D60AE7E61D9EE111000320F4 /* DatePickerPopoverViewController.swift in Sources */,
 				D60AE7E71D9EE111000320F4 /* CountdownPickerPopover.swift in Sources */,
 				D60AE7E81D9EE111000320F4 /* CountdownPickerPopoverViewController.swift in Sources */,

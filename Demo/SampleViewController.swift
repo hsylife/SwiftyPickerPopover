@@ -29,7 +29,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
         // StringPickerPopover appears
-        StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
+        let popover = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
             .setDoneAction({
                 p, selectedRow, selectedString in
@@ -38,34 +38,38 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setCancelAction({ popover in
                 print("cancel")
             })
-            .appear(originView: sender, baseViewController: self)
+            
+        popover.appear(originView: sender, baseViewController: self)
         
+        popover.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
+
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
         // DatePickerPopover appears.
         
-        let popover = DatePickerPopover(title: "DatePicker")
+        DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
             .setCancelAction({ popover in print("cancel")})
-        
-        popover.appear(originView: sender, baseViewController: self)
-        
-        popover.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )        
+            .setClearAction({ popover in print("clear")})
+            .appear(originView: sender, baseViewController: self)
     }
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         // DatePickerPopover appears
-        DatePickerPopover(title: "Clearable DatePicker")
+        let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
             .setCancelAction({ popover in print("cancel")})
-            .setClearAction({ p in
+            .setClearAction({ popover in
                 print("clear")
-                p.disappear()
+                popover.disappear()
             })
-            .appear(originView: sender, baseViewController: self)
+            
+        p.appear(originView: sender, baseViewController: self)
+        p.disappearAutomatically(after: 2.0)
+
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
@@ -124,7 +128,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         )
         
         popover.appear(originView: theCell, baseView: collectionView, baseViewController: self)
-        popover.disappearAutomatically(after: 5.0)
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {

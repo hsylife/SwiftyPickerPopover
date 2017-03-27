@@ -16,9 +16,10 @@ open class AbstractPopover: NSObject {
     var title: String?
     
     var baseViewController: UIViewController = UIViewController()
-
     var permittedArrowDirections_:UIPopoverArrowDirection = .any
-
+    
+    var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
+    
     override public init(){
         storyboardName = String(describing: type(of:self))
     }
@@ -53,9 +54,8 @@ open class AbstractPopover: NSObject {
         guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseView: baseView, baseViewController: baseViewController, title: title, permittedArrowDirections: permittedArrowDirections_ ) else { return }
         
         // configure StringPickerPopoverViewController
-        let contentViewController = configureContentViewController(navigationController: navigationController)
-        
-        navigationController.popoverPresentationController?.delegate = contentViewController
+        let contentVC = configureContentViewController(navigationController: navigationController)
+        navigationController.popoverPresentationController?.delegate = contentVC
         
         // presnet popover
         baseViewController.present(navigationController, animated: true, completion: completion)
@@ -84,12 +84,24 @@ open class AbstractPopover: NSObject {
     ///   - completion: Action to be performed after the popover disappeared. Omissible.
     open func disappearAutomatically(after seconds: Double, completion: (()->Void)? = nil){
         // automatically hide the popover
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.baseViewController.dismiss(animated: false, completion: completion)
-        }
         
+        disappearAutomaticallyItems.seconds = seconds
+        disappearAutomaticallyItems.completion = completion
+        
+        disappearAutomaticallyItems.dispatchWorkItem?.cancel()
+        disappearAutomaticallyItems.dispatchWorkItem = DispatchQueue.main.cancelableAsyncAfter(deadline: .now() + seconds) {
+            self.baseViewController.dismiss(animated: false, completion: completion)
+            self.disappearAutomaticallyItems = (nil,nil,nil)
+        }
     }
-
+    
+    func redoDisappearAutomatically(){
+        //Redo disapperAutomatically()
+        if let seconds = disappearAutomaticallyItems.seconds {
+            disappearAutomatically(after: seconds, completion: disappearAutomaticallyItems.completion)
+        }
+    }
+    
     /// Configure navigationController.
     ///
     /// - Parameters:

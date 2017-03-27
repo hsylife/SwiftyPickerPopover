@@ -28,6 +28,10 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         }
     }
 
+    @IBAction func touched(_ sender: Any) {
+        
+    }
+    
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{

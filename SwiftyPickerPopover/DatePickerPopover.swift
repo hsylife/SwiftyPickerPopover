@@ -131,4 +131,11 @@ public class DatePickerPopover: AbstractPopover {
         
         return contentVC as! PickerPopoverViewControllerType?
     }
+    
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //Redo disapperAutomatically()
+        if let seconds = disappearAutomaticallyItems.seconds {
+            disappearAutomatically(after: seconds, completion: disappearAutomaticallyItems.completion)
+        }
+    }
 }

@@ -39,7 +39,6 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
         super.viewDidLoad()
         if let pp = popover {
             picker.datePickerMode = .countDownTimer
-
             picker.countDownDuration = pp.selectedTimeInterval
         }
     }
@@ -57,6 +56,10 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         popover?.clearAction_?(popover!)
+    }
+    
+    @IBAction func valueChanged(_ sender: Any) {
+        popover?.redoDisappearAutomatically()
     }
     
     open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {

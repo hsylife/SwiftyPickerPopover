@@ -177,9 +177,9 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     public func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int){
+        
         selectedRows_[component] = row
         
+        redoDisappearAutomatically()
     }
-    
-    
 }

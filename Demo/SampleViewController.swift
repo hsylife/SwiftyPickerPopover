@@ -53,7 +53,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setSelectedDate(Date())
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
             .setCancelAction({ popover in print("cancel")})
-            .setClearAction({ popover in print("clear")})
+            .setClearAction({ popover in print("clear")
+                popover.disappear()
+            })
             .appear(originView: sender, baseViewController: self)
     }
     
@@ -64,7 +66,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setCancelAction({ popover in print("cancel")})
             .setClearAction({ popover in
                 print("clear")
-                popover.disappear()
             })
             
         p.appear(originView: sender, baseViewController: self)

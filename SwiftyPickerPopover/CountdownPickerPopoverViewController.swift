@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 
-open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewController {
+public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewController {
     
     typealias PopoverType = CountdownPickerPopover
 
@@ -25,7 +25,7 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
 
     var hideClearButton: Bool = false
     
-    override open func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         if let pp = popover {
             if let _ = pp.clearAction_ { }
             else {
@@ -35,7 +35,7 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
         }
     }
     
-    override open func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         if let pp = popover {
             picker.datePickerMode = .countDownTimer
@@ -49,7 +49,7 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         popover?.cancelAction_?(popover!)
         dismiss(animated: false, completion: {})
     }
@@ -64,7 +64,7 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
         popover?.redoDisappearAutomatically()
     }
     
-    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
 

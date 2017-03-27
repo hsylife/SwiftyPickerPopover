@@ -34,7 +34,6 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
             }
         }
     }
-
     
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         if let popover = popover {
@@ -46,16 +45,12 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         }
     }
     
-    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         popover?.cancelAction_?(popover!)
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction func valueChanged(_ sender: Any) {
-        popover?.redoDisappearAutomatically()
-    }
-    
-    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
 

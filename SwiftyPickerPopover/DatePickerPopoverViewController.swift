@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class DatePickerPopoverViewController: AbstractPickerPopoverViewController {
+public class DatePickerPopoverViewController: AbstractPickerPopoverViewController {
     
     typealias PopoverType = DatePickerPopover
     
@@ -20,7 +20,7 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
 
     var hideClearButton: Bool = false
     
-    override open func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         if let pp = popover {
             if let _ = pp.clearAction_ { }
             else {
@@ -30,7 +30,7 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
         }
     }
     
-    override open func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         if let pp = popover {
             picker.date = pp.selectedDate_
@@ -47,7 +47,7 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         popover?.cancelAction_?(popover!)
         dismiss(animated: false, completion: {})
     }
@@ -61,7 +61,7 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
         popover?.redoDisappearAutomatically()
     }
     
-    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
 }

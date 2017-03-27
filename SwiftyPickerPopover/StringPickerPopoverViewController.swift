@@ -28,8 +28,10 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         }
     }
 
-    @IBAction func touched(_ sender: Any) {
-        
+    func refrectPopoverProperties(){
+        if let select = popover?.selectedRow_ {
+            picker?.selectRow(select, inComponent: 0, animated: true)
+        }
     }
     
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
@@ -41,12 +43,12 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         dismiss(animated: false, completion: {})
     }
     
-    @IBAction open func tappedCancel(_ sender: AnyObject? = nil) {
+    @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         popover?.cancelAction_?(popover!)
         dismiss(animated: false, completion: {})
     }
     
-    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
 

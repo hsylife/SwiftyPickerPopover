@@ -116,6 +116,7 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         return choices[row]
     }
     
+
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         redoDisappearAutomatically()
     }

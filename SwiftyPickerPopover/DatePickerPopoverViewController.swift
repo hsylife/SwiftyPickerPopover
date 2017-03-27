@@ -54,9 +54,10 @@ open class DatePickerPopoverViewController: AbstractPickerPopoverViewController 
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         popover?.clearAction_?(popover!)
+        popover?.redoDisappearAutomatically()
     }
     
-    @IBAction func valueChanged(_ sender: Any) {
+    @IBAction func pickerValueChanged(_ sender: UIDatePicker) {
         popover?.redoDisappearAutomatically()
     }
     

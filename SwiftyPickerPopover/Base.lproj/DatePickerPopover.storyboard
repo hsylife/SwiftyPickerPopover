@@ -45,7 +45,7 @@
                                     <!--2016-09-13 10:35:36 +0000-->
                                 </date>
                                 <connections>
-                                    <action selector="valueChanged:" destination="erI-yJ-JEk" eventType="valueChanged" id="wiq-nX-4cP"/>
+                                    <action selector="pickerValueChanged:" destination="erI-yJ-JEk" eventType="valueChanged" id="U5r-kP-lXN"/>
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">

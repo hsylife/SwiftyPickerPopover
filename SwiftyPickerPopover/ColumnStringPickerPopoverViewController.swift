@@ -51,6 +51,10 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         dismiss(animated: false, completion: {})
     }
     
+    @IBAction func valueChanged(_ sender: Any) {
+        popover?.redoDisappearAutomatically()
+    }
+    
     open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }

@@ -55,10 +55,12 @@ open class CountdownPickerPopoverViewController: AbstractPickerPopoverViewContro
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
+        popover?.redoDisappearAutomatically()
         popover?.clearAction_?(popover!)
     }
     
-    @IBAction func valueChanged(_ sender: Any) {
+    
+    @IBAction func pickerValueChanged(_ sender: UIDatePicker) {
         popover?.redoDisappearAutomatically()
     }
     

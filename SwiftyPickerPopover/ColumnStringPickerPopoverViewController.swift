@@ -18,7 +18,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
 
     typealias PopoverType = ColumnStringPickerPopover
 
-    var popover:PopoverType?
+    var popover: PopoverType? { return anyPopover as? PopoverType }
     
     @IBOutlet weak var picker: UIPickerView!
 

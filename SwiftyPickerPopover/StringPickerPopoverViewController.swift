@@ -13,7 +13,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
 
     typealias PopoverType = StringPickerPopover
     
-    var popover:PopoverType?
+    var popover: PopoverType? { return anyPopover as? PopoverType }
 
     @IBOutlet weak var picker: UIPickerView!
     

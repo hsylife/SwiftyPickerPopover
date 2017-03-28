@@ -11,12 +11,15 @@ import UIKit
 
 open class AbstractPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    var anyPopover: AnyObject?
+    
     override open func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         refrectPopoverProperties()
     }
     
     func refrectPopoverProperties(){
+        title = (anyPopover as? AbstractPopover)?.title
     }
     
     /// Popover appears on iPhone

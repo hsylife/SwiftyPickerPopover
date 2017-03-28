@@ -18,7 +18,7 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     
     typealias PopoverType = CountdownPickerPopover
 
-    var popover:PopoverType?
+    var popover: PopoverType? { return anyPopover as? PopoverType }
 
     @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var clearButton: UIButton!

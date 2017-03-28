@@ -116,21 +116,6 @@ public class DatePickerPopover: AbstractPopover {
     }
     
     // MARK: - Popover display
-
-    /// Describe the difference from the abstract class.
-    ///
-    /// - Parameter navigationController
-    /// - Returns: The type of PickerPopoverViewController that supports this class.
-    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewControllerType? {
-        let contentVC = super.configureContentViewController(navigationController: navigationController)
-        
-        if let vc = contentVC as? PickerPopoverViewControllerType {
-            vc.popover = self
-            return vc
-        }
-        
-        return contentVC as! PickerPopoverViewControllerType?
-    }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //Redo disapperAutomatically()

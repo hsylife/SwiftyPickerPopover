@@ -99,23 +99,6 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
         self.fontSize_ = fontSize
         return self
     }
-    
-    // MARK: - Popover display
-    
-    /// Describe the difference from the abstract class.
-    ///
-    /// - Parameter navigationController
-    /// - Returns: The type of PickerPopoverViewController that supports this class.
-    override public func configureContentViewController(navigationController: UINavigationController) -> PickerPopoverViewControllerType? {
-        let contentVC = super.configureContentViewController(navigationController: navigationController)
-        
-        if let vc = contentVC as? PickerPopoverViewControllerType {
-            vc.popover = self
-            return vc
-        }
-        
-        return contentVC as! PickerPopoverViewControllerType?
-    }
 
     // MARK: - UIPickerViewDataSource
 

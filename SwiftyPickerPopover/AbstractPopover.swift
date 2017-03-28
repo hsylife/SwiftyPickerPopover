@@ -69,6 +69,7 @@ open class AbstractPopover: NSObject {
     /// - Returns: ContentViewController.
     open func configureContentViewController(navigationController: UINavigationController)->AbstractPickerPopoverViewController?{
         if let contentViewController = navigationController.topViewController as? AbstractPickerPopoverViewController {
+            contentViewController.anyPopover = self
             self.contentViewController = contentViewController
             return contentViewController
         }

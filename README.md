@@ -2,7 +2,7 @@
 Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 
 [![Version](https://img.shields.io/cocoapods/v/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) 
-[![License](https://img.shields.io/cocoapods/l/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) 
+[![License](https://img.shields.io/cocoapods/l/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) DatePickerPopover
 [![Platform](https://img.shields.io/cocoapods/p/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/hsylife/SwiftyPickerPopover)
 
@@ -94,7 +94,7 @@ To display a popover with an UIDatePicker of countDownTimer style:
 ```
 
 ### Advanced
-To display a popover with an UIDatePicker and a clear button, which disappers automatically after specific seconds after it appeared:
+To display a DatePickerPopover that includes a clear button, disappers automatically after a certain number of seconds, rewinds the picker when tapping the clear button:
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
@@ -171,7 +171,6 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         
     }
 ```
-
 
 ## Contributors
 Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.

@@ -21,6 +21,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     var hideClearButton: Bool = false
     
     override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let pp = popover {
             if let _ = pp.clearAction_ { }
             else {
@@ -29,9 +30,10 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
             }
         }
     }
-    
-    override public func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func refrectPopoverProperties(){
+        title = popover?.title
+        
         if let pp = popover {
             picker.date = pp.selectedDate_
             picker.minimumDate = pp.minimumDate_
@@ -39,9 +41,10 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
             picker.datePickerMode = pp.dateMode_
             picker.minuteInterval = pp.minuteInterval_
         }
+        
+
     }
-    
-    
+
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
         popover?.doneAction_?(popover!, picker.date)
         dismiss(animated: false, completion: {})

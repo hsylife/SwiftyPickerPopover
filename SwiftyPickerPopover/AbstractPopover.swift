@@ -20,6 +20,8 @@ open class AbstractPopover: NSObject {
     
     var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
     
+    var contentViewController: AnyObject?
+    
     override public init(){
         storyboardName = String(describing: type(of:self))
     }
@@ -67,7 +69,7 @@ open class AbstractPopover: NSObject {
     /// - Returns: ContentViewController.
     open func configureContentViewController(navigationController: UINavigationController)->AbstractPickerPopoverViewController?{
         if let contentViewController = navigationController.topViewController as? AbstractPickerPopoverViewController {
-            
+            self.contentViewController = contentViewController
             return contentViewController
         }
         
@@ -105,6 +107,10 @@ open class AbstractPopover: NSObject {
         if let seconds = disappearAutomaticallyItems.seconds {
             disappearAutomatically(after: seconds, completion: disappearAutomaticallyItems.completion)
         }
+    }
+    
+    open func reload(){
+        (self.contentViewController as? AbstractPickerPopoverViewController)?.refrectPopoverProperties()
     }
     
     /// Configure navigationController.

@@ -57,7 +57,11 @@
                                 <action selector="tappedCancel:" destination="pEv-eJ-a7K" id="MrI-nl-pqx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NGv-xi-ME4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NGv-xi-ME4">
+                            <connections>
+                                <action selector="tappedDone:" destination="pEv-eJ-a7K" id="YmT-o4-kNn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

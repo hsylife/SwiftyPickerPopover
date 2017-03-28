@@ -47,8 +47,8 @@ public class DatePickerPopover: AbstractPopover {
     ///
     /// - Parameter row: The default value of picker.
     /// - Returns: self
-    public func setSelectedDate(_ row:ItemType)->Self{
-        self.selectedDate_ = row
+    public func setSelectedDate(_ date:ItemType)->Self{
+        self.selectedDate_ = date
         return self
     }
     
@@ -116,7 +116,7 @@ public class DatePickerPopover: AbstractPopover {
     }
     
     // MARK: - Popover display
-    
+
     /// Describe the difference from the abstract class.
     ///
     /// - Parameter navigationController

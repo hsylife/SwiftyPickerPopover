@@ -27,11 +27,8 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         picker.delegate = popover
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
-        refrectPopoverProperties()
-    }
-    
-    func refrectPopoverProperties(){
+    override func refrectPopoverProperties(){
+        title = popover?.title
         if let selected = popover?.selectedRows_ {
             for x in 0..<selected.count {
                 picker.selectRow(selected[x], inComponent: x, animated: true)

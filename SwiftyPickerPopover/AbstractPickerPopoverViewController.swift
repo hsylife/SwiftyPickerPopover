@@ -11,6 +11,14 @@ import UIKit
 
 open class AbstractPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
+    override open func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        refrectPopoverProperties()
+    }
+    
+    func refrectPopoverProperties(){
+    }
+    
     /// Popover appears on iPhone
     open func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none

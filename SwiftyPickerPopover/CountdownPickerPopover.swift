@@ -22,7 +22,7 @@ public class CountdownPickerPopover: AbstractPopover {
     var cancelAction_: ((PopoverType)->Void)?
 
     // selected value
-    var selectedTimeInterval:ItemType = ItemType()
+    var selectedTimeInterval_:ItemType = ItemType()
 
     // MARK: - Initializer
     
@@ -40,10 +40,10 @@ public class CountdownPickerPopover: AbstractPopover {
     
     /// Set property
     ///
-    /// - Parameter defaultInterval: The default value of picker.
+    /// - Parameter interval: Value for picker.
     /// - Returns: self
-    public func setInitialTimeInterval(_ defaultInterval:ItemType)->Self{
-        self.selectedTimeInterval = defaultInterval
+    public func setSelectedTimeInterval(_ interval:ItemType)->Self{
+        self.selectedTimeInterval_ = interval
         return self
     }
 

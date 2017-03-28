@@ -33,16 +33,17 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
                 view.layoutIfNeeded()
             }
         }
+        refrectPopoverProperties()
     }
     
-    override public func viewDidLoad() {
-        super.viewDidLoad()
+    override func refrectPopoverProperties(){
+        title = popover?.title
+        
         if let pp = popover {
             picker.datePickerMode = .countDownTimer
-            picker.countDownDuration = pp.selectedTimeInterval
+            picker.countDownDuration = pp.selectedTimeInterval_
         }
     }
-    
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
         popover?.doneAction_?(popover!, picker.countDownDuration)

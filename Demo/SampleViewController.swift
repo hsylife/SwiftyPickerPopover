@@ -40,7 +40,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             })
             
         popover.appear(originView: sender, baseViewController: self)
-        
         popover.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
 
     }
@@ -53,9 +52,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setSelectedDate(Date())
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
             .setCancelAction({ popover in print("cancel")})
-            .setClearAction({ popover in print("clear")
-                popover.disappear()
-            })
             .appear(originView: sender, baseViewController: self)
     }
     
@@ -66,10 +62,14 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setCancelAction({ popover in print("cancel")})
             .setClearAction({ popover in
                 print("clear")
+                //Rewind
+                popover.setSelectedDate(Date()).reload()
+                //Disapper
+//                popover.disappear()
             })
             
         p.appear(originView: sender, baseViewController: self)
-        p.disappearAutomatically(after: 2.0)
+        p.disappearAutomatically(after: 3.0)
 
     }
     
@@ -88,9 +88,12 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         // CountdownPickerPopover appears
         CountdownPickerPopover(title: "CountdownPicker")
-            .setInitialTimeInterval(TimeInterval())
+            .setSelectedTimeInterval(TimeInterval())
             .setDoneAction({ popover, timeInterval in print("timeInterval \(timeInterval)")} )
             .setCancelAction({ popover in print("cancel")})
+            .setClearAction({ popover in print("Clear")
+                popover.setSelectedTimeInterval(TimeInterval()).reload()
+            })
             .appear(originView: sender, baseViewController: self)
         
     }

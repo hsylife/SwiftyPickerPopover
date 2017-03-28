@@ -135,18 +135,18 @@ let displayStringFor:((String?)->String?)? = { string in
   return nil
   }
         
-let popover = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
+let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
             .setDoneAction({
-                p, selectedRow, selectedString in
+                popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
             .setCancelAction({ popover in
                 print("cancel")
             })
             
-        popover.appear(originView: sender, baseViewController: self)
-        popover.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
+        p.appear(originView: sender, baseViewController: self)
+        p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
 ```
 
 A StringPickerPopover appears from the collectionView's cell:
@@ -155,15 +155,14 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        let popover = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
-        .setSelectedRow(1)
-        .setDoneAction({ (p, selectedRow, selectedString) in
-            print("done row \(selectedRow) \(selectedString)")
-        })
-        .setCancelAction( { popover in print("cancel")}
-        )
+        let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
+                        .setSelectedRow(1)
+                        .setDoneAction({ (popover, selectedRow, selectedString) in
+                              print("done row \(selectedRow) \(selectedString)")
+                         })
+                        .setCancelAction( { popover in print("cancel")} )
         
-        popover.appear(originView: theCell, baseView: collectionView, baseViewController: self)
+        p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         
     }
 ```

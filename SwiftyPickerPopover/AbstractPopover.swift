@@ -142,9 +142,6 @@ open class AbstractPopover: NSObject {
         // direction of arrow
         navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
         
-        // navigationItem's title
-        navigationController.topViewController!.navigationItem.title = title
-        
         return navigationController
     }
 }

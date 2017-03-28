@@ -15,7 +15,7 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 <img src="README_resources/SwiftyPickerPopover_movie.gif" width="362">
 
 ## Required
-- Swift 3, Xcode 8. (If you want to use it on Swift 2.3, please check up SwiftyPickerPopover 1.3)
+- Swift 3, Xcode 8.
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+ or Carthage 0.12.0+
 
@@ -28,10 +28,6 @@ For Installing it on Swift 3 with CocoaPods, specify it in your 'Podfile'.
 platform :ios, '9.0'
 use_frameworks!
 pod 'SwiftyPickerPopover'
-```
-If you want to use it on Swift 2.3, specify it.
-```ruby
-pod 'SwiftyPickerPopover ~> '1.3.0'
 ```
 Run 'pod install'.
 

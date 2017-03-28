@@ -46,30 +46,27 @@ On Xcode, import the module.
 import SwiftyPickerPopover
 ```
 ### Basic
-DatePickerPopover appears.
+To display a popover with UIDatePicker, the code looks like this:
+
 ```swift
-DatePickerPopover.appearFrom(
- originView: button,
- baseViewController: self,
- title: "DatePicker",
- dateMode: .date,
- initialDate: NSDate(),
- doneAction: { selectedDate in print("selectedDate \(selectedDate)")},
- cancelAction: {print("cancel")}
-)
+DatePickerPopover(title: "DatePicker")
+            .setDateMode(.date)
+            .setSelectedDate(Date())
+            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
+            .setCancelAction({ popover in print("cancel")})
+            .appear(originView: sender, baseViewController: self)
 ```
 
-StringPickerPopover appears.
+To display a popover with UIPickerView that allows users to choose a String type choice:
 ```swift
-StringPickerPopover.appearFrom(
- originView: button,
- baseViewController: self,
- title: "StringPicker",
- choices: ["value 1","value 2","value 3"],
- initialRow:0,
- doneAction: { selectedRow, selectedString in print("done row \(selectedRow) \(selectedString)")} ,
- cancelAction: { print("cancel")}
-)
+StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
+        .setSelectedRow(0)
+        .setDoneAction({ (popover, selectedRow, selectedString) in
+            print("done row \(selectedRow) \(selectedString)")
+        })
+        .setCancelAction( { popover in print("cancel")}
+        )
+        .appear(originView: button, baseViewController: self)
 ```
 
 ColumnStringPickerPopover which has variable multiple components, appers.

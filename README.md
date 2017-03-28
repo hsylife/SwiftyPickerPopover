@@ -7,7 +7,7 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/hsylife/SwiftyPickerPopover)
 
 ## Features
-- Popover with Picker which can be chosen from several types, appears on iPhone or iPad.
+- With simple code, you can make a popover with a built-in picker display on iPhone or iPad.
 - Swift 3, iOS9+. UIPopoverController free. 
 - Callback
 
@@ -23,7 +23,7 @@ Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
 MIT.
 
 ## Usage
-For Installing it on Swift 3 with CocoaPods, specify it in your 'Podfile'.
+For installing it with CocoaPods, specify it in your 'Podfile':
 ```ruby
 platform :ios, '9.0'
 use_frameworks!
@@ -31,13 +31,13 @@ pod 'SwiftyPickerPopover'
 ```
 Run 'pod install'.
 
-For Installing with Carthage, add it to your Cartfile.
+Instead, for installing it with Carthage, add it to your Cartfile:
 ```
 github "hsylife/SwiftyPickerPopover"
 ```
 Run 'carthage update --platform iOS'.
 
-On Xcode, import the module.
+On Xcode, import the module:
 ```swift
 import SwiftyPickerPopover
 ```

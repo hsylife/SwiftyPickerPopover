@@ -14,7 +14,7 @@ open class AbstractPickerPopoverViewController: UIViewController, UIPopoverPrese
     var anyPopover: AnyObject?
     
     override open func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
+        super.viewWillAppear(animated)
         refrectPopoverProperties()
     }
     

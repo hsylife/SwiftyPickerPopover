@@ -13,11 +13,12 @@ open class AbstractPickerPopoverViewController: UIViewController, UIPopoverPrese
     
     var anyPopover: AnyObject?
     
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         refrectPopoverProperties()
     }
     
+    /// Make the popover property reflect on the popover
     func refrectPopoverProperties(){
         title = (anyPopover as? AbstractPopover)?.title
     }

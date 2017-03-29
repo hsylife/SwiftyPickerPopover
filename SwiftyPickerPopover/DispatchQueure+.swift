@@ -8,6 +8,12 @@
 
 import Foundation
 extension DispatchQueue {
+    /// It does asyncAfter() and reterns DispatchWorkItem.
+    ///
+    /// - Parameters:
+    ///   - deadline: Delay seconds
+    ///   - execute: Code to be executed
+    /// - Returns: DispatchWorkItem which can cancel () etc.
     func cancelableAsyncAfter(deadline: DispatchTime, execute: @escaping () -> Void) -> DispatchWorkItem {
         let item = DispatchWorkItem(block: execute)
         asyncAfter(deadline: deadline, execute: item)

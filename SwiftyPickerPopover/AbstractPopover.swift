@@ -23,6 +23,7 @@ open class AbstractPopover: NSObject {
     var contentViewController: AnyObject?
     
     override public init(){
+        //Get a string as stroyboard name from this class name.
         storyboardName = String(describing: type(of:self))
     }
     

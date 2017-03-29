@@ -12,6 +12,7 @@ import SwiftyPickerPopover
 class SampleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBAction func tappedStringPickerButton(_ sender: UIButton) {
+        /// Replace a string with the string to be display.
         let displayStringFor:((String?)->String?)? = { string in
             if let s = string {
                 switch(s){
@@ -28,7 +29,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             return nil
         }
         
-        // StringPickerPopover appears
+        /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
             .setDoneAction({
@@ -45,8 +46,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
-        // DatePickerPopover appears.
-        
+        /// DatePickerPopover appears:
         DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
@@ -56,7 +56,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
-        // DatePickerPopover appears
+        /// DatePickerPopover appears:
         let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
             .setCancelAction({ popover in print("cancel")})
@@ -74,7 +74,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
-        // DatePickerPopover appears.
+        // DatePickerPopover appears:
         DatePickerPopover(title: "DatePicker .time 5minInt.")
             .setDateMode(.time)
             .setMinuteInterval(5)
@@ -86,7 +86,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     @IBAction func countdownButton(_ sender: UIButton) {
         
-        // CountdownPickerPopover appears
+        // CountdownPickerPopover appears:
         CountdownPickerPopover(title: "CountdownPicker")
             .setSelectedTimeInterval(TimeInterval())
             .setDoneAction({ popover, timeInterval in print("timeInterval \(timeInterval)")} )
@@ -123,6 +123,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
+        //StringPickerPopover appears from the cell of collectionView.
         let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
         .setSelectedRow(1)
         .setDoneAction({ (popover, selectedRow, selectedString) in

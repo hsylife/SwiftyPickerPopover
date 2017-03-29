@@ -5,9 +5,6 @@
 //  Created by ktorimaru on 2016/09.
 //
 
-import Foundation
-import UIKit
-
 public class CountdownPickerPopover: AbstractPopover {
     
     // MARK: Types

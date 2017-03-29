@@ -6,9 +6,6 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 public class DatePickerPopover: AbstractPopover {
     
     // MARK: Types

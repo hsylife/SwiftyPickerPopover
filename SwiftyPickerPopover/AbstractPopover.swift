@@ -110,6 +110,8 @@ open class AbstractPopover: NSObject {
         }
     }
     
+    
+    /// Reload the popover with the latest properties. 
     open func reload(){
         (self.contentViewController as? AbstractPickerPopoverViewController)?.refrectPopoverProperties()
     }

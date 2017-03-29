@@ -23,6 +23,7 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     var hideClearButton: Bool = false
     
     override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let pp = popover {
             if let _ = pp.clearAction_ { }
             else {
@@ -30,7 +31,6 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
                 view.layoutIfNeeded()
             }
         }
-        refrectPopoverProperties()
     }
     
     override func refrectPopoverProperties(){

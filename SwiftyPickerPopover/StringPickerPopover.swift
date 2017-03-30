@@ -6,7 +6,7 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
-public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
+public class StringPickerPopover: AbstractPopover {
 
     // MARK: Types
     
@@ -78,9 +78,10 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         self.cancelAction_ = completion
         return self
     }
+}
 
-    
-    // MARK: - UIPickerViewDataSource
+// MARK: - UIPickerViewDataSource
+extension StringPickerPopover: UIPickerViewDataSource {
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -88,8 +89,10 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
-    
-    // MARK: - UIPickerViewDelegate
+}
+
+// MARK: - UIPickerViewDelegate
+extension StringPickerPopover: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let d = displayStringFor_ {
             return d(choices[row])
@@ -97,7 +100,6 @@ public class StringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPicke
         return choices[row]
     }
     
-
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         redoDisappearAutomatically()
     }

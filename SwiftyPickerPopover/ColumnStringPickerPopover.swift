@@ -11,7 +11,7 @@
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, UIPickerViewDataSource {
+public class ColumnStringPickerPopover: AbstractPopover {
     
     // MARK: Types
     
@@ -97,46 +97,12 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
         return self
     }
 
-    // MARK: - UIPickerViewDataSource
+    
 
-    /// UIPickerViewDataSource
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return choices.count
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return choices[component].count
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView,
-                    widthForComponent component: Int) -> CGFloat {
-        let width = Float(pickerView.frame.size.width)
-        let temp = width * columnPercents_[component]
-        return CGFloat(temp)
-    }
+}
 
-    // get string of choice
-    func choice(component: Int, row: Int)->ItemType? {
-        if let d = displayStringFor_ {
-            return d(choices[component][row])
-        }
-        return choices[component][row]
-    }
-    
-    // get array of selected values
-    func selectedValues()->[ItemType]{
-        var result = [ItemType]()
-        for (index, content) in selectedRows_.enumerated() {
-            if let string = choice(component: index, row: content){
-                result.append(string)
-            }
-        }
-        return result
-    }
-    
-    // MARK: - UIPickerViewDelegate
-
-    /// UIPickerViewDelegate
+// MARK: - UIPickerViewDelegate
+extension ColumnStringPickerPopover: UIPickerViewDelegate{
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choice(component: component, row: row)
     }
@@ -155,11 +121,52 @@ public class ColumnStringPickerPopover: AbstractPopover, UIPickerViewDelegate, U
     }
     
     public func pickerView(_ pickerView: UIPickerView,
-                    didSelectRow row: Int,
-                    inComponent component: Int){
+                           didSelectRow row: Int,
+                           inComponent component: Int){
         
         selectedRows_[component] = row
         
         redoDisappearAutomatically()
     }
+
+}
+
+// MARK: - UIPickerViewDataSource
+extension ColumnStringPickerPopover: UIPickerViewDataSource{
+    
+    /// UIPickerViewDataSource
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return choices.count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return choices[component].count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView,
+                           widthForComponent component: Int) -> CGFloat {
+        let width = Float(pickerView.frame.size.width)
+        let temp = width * columnPercents_[component]
+        return CGFloat(temp)
+    }
+    
+    // get string of choice
+    func choice(component: Int, row: Int)->ItemType? {
+        if let d = displayStringFor_ {
+            return d(choices[component][row])
+        }
+        return choices[component][row]
+    }
+    
+    // get array of selected values
+    func selectedValues()->[ItemType]{
+        var result = [ItemType]()
+        for (index, content) in selectedRows_.enumerated() {
+            if let string = choice(component: index, row: content){
+                result.append(string)
+            }
+        }
+        return result
+    }
+ 
 }

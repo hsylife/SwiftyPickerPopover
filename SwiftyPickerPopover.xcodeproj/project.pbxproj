@@ -133,9 +133,18 @@
 			path = Demo/Base.lproj;
 			sourceTree = SOURCE_ROOT;
 		};
+		D6A5E4A81E8CF18800B98D8C /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				D63410E91D8AD0F300DAE60A /* SampleViewController.swift */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
 		D6D5C5281D892C930002118F = {
 			isa = PBXGroup;
 			children = (
+				D6A5E4A81E8CF18800B98D8C /* Demo */,
 				D6D5C5331D892C930002118F /* SwiftyPickerPopover */,
 				D60AE7D81D9EE0DE000320F4 /* SwiftyPickerPopover */,
 				D6D5C5321D892C930002118F /* Products */,
@@ -158,7 +167,6 @@
 				D63410E21D8AD0F300DAE60A /* Assets.xcassets */,
 				D63410E31D8AD0F300DAE60A /* Base.lproj */,
 				D63410E81D8AD0F300DAE60A /* Info.plist */,
-				D63410E91D8AD0F300DAE60A /* SampleViewController.swift */,
 				D6D8BEA01D8A69140075DFAD /* Abstract */,
 				D6D8BEA11D8A69250075DFAD /* DatePicker */,
 				BECD4B721D9DB6F7008BB309 /* CountdownPicker */,

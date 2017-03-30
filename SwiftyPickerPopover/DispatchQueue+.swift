@@ -1,5 +1,5 @@
 //
-//  DispatchQueure+.swift
+//  DispatchQueue+.swift
 //  SwiftyPickerPopover
 //
 //  Created by Y.T. Hoshino on 2017/03/27.

@@ -12,19 +12,17 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     
     var popover: PopoverType? { return anyPopover as? PopoverType }
     
-    @IBOutlet weak var picker: UIDatePicker!
+    @IBOutlet weak public var picker: UIDatePicker!
     @IBOutlet weak var clearButton: UIButton!
 
     var hideClearButton: Bool = false
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let pp = popover {
-            if let _ = pp.clearAction_ { }
-            else {
-                clearButton.removeFromSuperview()
-                view.layoutIfNeeded()
-            }
+        if let _ = popover?.clearAction_ { }
+        else {
+            clearButton.removeFromSuperview()
+            view.layoutIfNeeded()
         }
     }
 

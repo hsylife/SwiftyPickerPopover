@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class AbstractPickerPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+open class AbstractPickerPopoverViewController: UIViewController {
     
     var anyPopover: AnyObject?
     
@@ -22,10 +22,11 @@ open class AbstractPickerPopoverViewController: UIViewController, UIPopoverPrese
     func refrectPopoverProperties(){
         title = (anyPopover as? AbstractPopover)?.title
     }
-    
+}
+
+extension AbstractPickerPopoverViewController: UIPopoverPresentationControllerDelegate {
     /// Popover appears on iPhone
     open func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
-    
 }

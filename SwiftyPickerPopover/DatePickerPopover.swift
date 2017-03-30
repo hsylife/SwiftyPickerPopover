@@ -18,7 +18,7 @@ public class DatePickerPopover: AbstractPopover {
 
     var doneAction_: ((PopoverType,ItemType)->Void)?
     var cancelAction_: ((PopoverType)->Void)?
-    public var clearAction_: ((PopoverType)->Void)?
+    var clearAction_: ((PopoverType)->Void)?
     
     var dateMode_:UIDatePickerMode = .date
     var minimumDate_: ItemType?

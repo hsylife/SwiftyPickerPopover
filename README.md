@@ -90,7 +90,7 @@ To display a popover with an UIDatePicker of countDownTimer style:
 ```
 
 ### Advanced
-To display a DatePickerPopover that includes a clear button, disappers automatically after a certain number of seconds, rewinds the picker when tapping the clear button:
+To display a DatePickerPopover has a clear button, which rewinds itself by tapping the button, and.which disappers automatically after a certain number of seconds:
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )

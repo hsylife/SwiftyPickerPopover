@@ -1,5 +1,5 @@
 # SwiftyPickerPopover
-Popover with Picker by Swift 3 for iPhone/iPad, iOS9+.
+Make a popover with a built-in picker display on iPhone/iPad running on iOS9+ wih simple code in Swift3.
 
 [![Version](https://img.shields.io/cocoapods/v/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) 
 [![License](https://img.shields.io/cocoapods/l/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) DatePickerPopover

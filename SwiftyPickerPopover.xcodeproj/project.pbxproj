@@ -17,7 +17,6 @@
 		D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */; };
 		D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A311D892EB300792CA4 /* StringPickerPopover.swift */; };
 		D60AE7EC1D9EE111000320F4 /* StringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */; };
-		D60AE7ED1D9EE11F000320F4 /* DatePickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30711D9282B000771790 /* DatePickerPopover.storyboard */; };
 		D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */; };
 		D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */; };
 		D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30751D92837800771790 /* StringPickerPopover.storyboard */; };
@@ -27,6 +26,7 @@
 		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
 		D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E61D8AD0F300DAE60A /* Main.storyboard */; };
 		D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E91D8AD0F300DAE60A /* SampleViewController.swift */; };
+		D63E37781E8E660300EB31C5 /* DatePickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30711D9282B000771790 /* DatePickerPopover.storyboard */; };
 		D646E0ED1E820825003C8731 /* AbstractPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */; };
 		D646E0EE1E820F2A003C8731 /* SwiftyPickerPopover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */; };
 		D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */; };
@@ -136,7 +136,11 @@
 		D6A5E4A81E8CF18800B98D8C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */,
 				D63410E91D8AD0F300DAE60A /* SampleViewController.swift */,
+				D63410E21D8AD0F300DAE60A /* Assets.xcassets */,
+				D63410E81D8AD0F300DAE60A /* Info.plist */,
+				D63410E31D8AD0F300DAE60A /* Base.lproj */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -163,10 +167,6 @@
 		D6D5C5331D892C930002118F /* SwiftyPickerPopover */ = {
 			isa = PBXGroup;
 			children = (
-				D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */,
-				D63410E21D8AD0F300DAE60A /* Assets.xcassets */,
-				D63410E31D8AD0F300DAE60A /* Base.lproj */,
-				D63410E81D8AD0F300DAE60A /* Info.plist */,
 				D6D8BEA01D8A69140075DFAD /* Abstract */,
 				D6D8BEA11D8A69250075DFAD /* DatePicker */,
 				BECD4B721D9DB6F7008BB309 /* CountdownPicker */,
@@ -304,8 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D60AE7ED1D9EE11F000320F4 /* DatePickerPopover.storyboard in Resources */,
 				D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */,
+				D63E37781E8E660300EB31C5 /* DatePickerPopover.storyboard in Resources */,
 				D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */,
 				D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */,
 				D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */,
@@ -329,8 +329,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60AE7E41D9EE104000320F4 /* AbstractPopover.swift in Sources */,
 				D646E0ED1E820825003C8731 /* AbstractPickerPopoverViewController.swift in Sources */,
 				D6239B151E88E7F200E9E68C /* DispatchQueue+.swift in Sources */,
+				D60AE7E51D9EE104000320F4 /* DatePickerPopover.swift in Sources */,
 				D60AE7E61D9EE111000320F4 /* DatePickerPopoverViewController.swift in Sources */,
 				D60AE7E71D9EE111000320F4 /* CountdownPickerPopover.swift in Sources */,
 				D60AE7E81D9EE111000320F4 /* CountdownPickerPopoverViewController.swift in Sources */,
@@ -338,8 +340,6 @@
 				D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */,
 				D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */,
 				D60AE7EC1D9EE111000320F4 /* StringPickerPopoverViewController.swift in Sources */,
-				D60AE7E41D9EE104000320F4 /* AbstractPopover.swift in Sources */,
-				D60AE7E51D9EE104000320F4 /* DatePickerPopover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

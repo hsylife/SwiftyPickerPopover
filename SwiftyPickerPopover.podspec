@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SwiftyPickerPopover"
   s.version      = "3.0.0"
-  s.summary      = "Make a popover with a built-in picker display on iPhone/iPad running on iOS9+ wih simple code in Swift3."
+  s.summary      = "Make a popover with a built-in picker appear on iOS9+ runnng on iPhone/iPad wih simple code in Swift3."
   s.homepage     = "https://github.com/hsylife/SwiftyPickerPopover"
   s.license      = "MIT"
   s.author             = { "Yuta Hoshino" => "ythshn@gmail.com" }

@@ -1,5 +1,5 @@
 # SwiftyPickerPopover
-Make a popover with a built-in picker appear on iOS9+ runnng on iPhone/iPad with simple code in Swift3.
+A more convenient way to display a popover with a built-in picker, on iPhone/iPad of iOS9+.
 
 [![Version](https://img.shields.io/cocoapods/v/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover) 
 [![License](https://img.shields.io/cocoapods/l/SwiftyPickerPopover.svg?style=flat)](http://cocoadocs.org/docsets/SwiftyPickerPopover)
@@ -7,7 +7,7 @@ Make a popover with a built-in picker appear on iOS9+ runnng on iPhone/iPad with
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/hsylife/SwiftyPickerPopover)
 
 ## Features
-- With simple code, you can make a popover with a built-in picker display on iPhone or iPad.
+- By simple code, you can display a popover that contains a built-in picker, on iPhone or iPad.
 - Swift 3, iOS9+. UIPopoverController free. 
 - Callback
 

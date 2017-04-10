@@ -43,7 +43,12 @@ import SwiftyPickerPopover
 ```
 ### Basic
 To display a popover with an UIDatePicker, the code looks like this:
+```swift
+DatePickerPopover(title: "DatePicker")
+            .appear(originView: sender, baseViewController: self)
+```
 
+To Specify more arguments:
 ```swift
 DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)

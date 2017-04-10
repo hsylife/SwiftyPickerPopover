@@ -48,7 +48,7 @@ DatePickerPopover(title: "DatePicker")
             .appear(originView: sender, baseViewController: self)
 ```
 
-To Specify more arguments:
+To specify more arguments:
 ```swift
 DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)

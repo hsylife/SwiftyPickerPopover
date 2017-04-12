@@ -127,24 +127,35 @@ open class AbstractPopover: NSObject {
     ///   - permittedArrowDirections: The default value is .any. Omissible.
     /// - Returns: The configured navigationController.
     open func configureNavigationController(storyboardName: String, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
-        // create ViewController for content
-        let bundle = Bundle(for: AbstractPopover.self)
-        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
-        
-        guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
-            return nil
-        }
-        
-        // define using popover
-        navigationController.modalPresentationStyle = .popover
-        
-        // origin
-        navigationController.popoverPresentationController?.sourceView = baseView ?? baseViewController.view
-        navigationController.popoverPresentationController?.sourceRect = originView.frame
-        
-        // direction of arrow
-        navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
-        
-        return navigationController
+		let mainBundle = Bundle.main
+		let mainStoryboard = UIStoryboard(name: storyboardName, bundle: mainBundle)
+		
+		guard let navigationController = mainStoryboard.instantiateInitialViewController() as? UINavigationController else {
+			// create ViewController for content
+			let bundle = Bundle(for: AbstractPopover.self)
+			let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+			
+			guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
+				return nil
+			}
+			
+			return self.configureNavigationController(navigationController: navigationController, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
+		}
+
+		return self.configureNavigationController(navigationController: navigationController, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
     }
+	
+	fileprivate func configureNavigationController(navigationController: UINavigationController, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController? {
+		// define using popover
+		navigationController.modalPresentationStyle = .popover
+		
+		// origin
+		navigationController.popoverPresentationController?.sourceView = baseView ?? baseViewController.view
+		navigationController.popoverPresentationController?.sourceRect = originView.frame
+		
+		// direction of arrow
+		navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
+		
+		return navigationController
+	}
 }

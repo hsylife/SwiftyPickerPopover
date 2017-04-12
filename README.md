@@ -173,9 +173,9 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
 ```
 
 ## Contributors
-Ken Torimaru  [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
-BalestraPatrick [GitHub](https://github.com/BalestraPatrick) for correcting README.md.
-andersonlucasg3 [GitHub](https://github.com/andersonlucasg3) for adding possibility to override the storyboards with custom localizations in the app project.
+- Ken Torimaru [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
+- BalestraPatrick [GitHub](https://github.com/BalestraPatrick) for correcting README.md.
+- andersonlucasg3 [GitHub](https://github.com/andersonlucasg3) for adding possibility to override the storyboards with custom localizations in the app project.
 
 ## Author
-Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)
+- Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

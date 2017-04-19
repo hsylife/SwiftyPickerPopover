@@ -172,6 +172,15 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
     }
 ```
 
+## Customize
+### How do I customize or localize a popover's storyboard?
+When you prepare your customized Storyboard, it will be applied automatically.
+
+1. Find the original file of the popover's Storyboard, which you want to change. For example, 'CountdownPickerPopover.storyboard'.
+2. Add it to your project on Xcode for including it into mainBundle. At this time, please check 'Copy items if needed'. Do not change the file name.
+3. Next, change the module specified by default. Open the Storyboard file on Xcode and uncheck 'Inherit From Target' in InterfaceBuilder > Identity inspector > Custom Class. Specify 'SwiftyPickerPopover' for 'Module'.
+4. Finally, customize your storyboard file.
+
 ## Contributors
 - Ken Torimaru [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
 - BalestraPatrick [GitHub](https://github.com/BalestraPatrick) for correcting README.md.

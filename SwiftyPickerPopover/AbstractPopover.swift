@@ -127,22 +127,20 @@ open class AbstractPopover: NSObject {
     ///   - permittedArrowDirections: The default value is .any. Omissible.
     /// - Returns: The configured navigationController.
     open func configureNavigationController(storyboardName: String, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
-		let mainBundle = Bundle.main
-		let mainStoryboard = UIStoryboard(name: storyboardName, bundle: mainBundle)
-		
-		guard let navigationController = mainStoryboard.instantiateInitialViewController() as? UINavigationController else {
-			// create ViewController for content
-			let bundle = Bundle(for: AbstractPopover.self)
-			let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
-			
-			guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
-				return nil
-			}
-			
-			return self.configureNavigationController(navigationController: navigationController, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
-		}
+        var bundle:Bundle
+        if let _ = Bundle.main.path(forResource: storyboardName, ofType: "storyboardc"){
+            bundle = Bundle.main
+        } else {
+            bundle = Bundle(for: AbstractPopover.self)
+        }
 
-		return self.configureNavigationController(navigationController: navigationController, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+        
+        guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
+            return nil
+        }
+        
+        return self.configureNavigationController(navigationController: navigationController, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
     }
 	
 	fileprivate func configureNavigationController(navigationController: UINavigationController, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController? {

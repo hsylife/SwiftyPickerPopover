@@ -17,18 +17,18 @@
 		D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD4B9B1D9DC5E3008BB309 /* ColumnStringPickerPopoverViewController.swift */; };
 		D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A311D892EB300792CA4 /* StringPickerPopover.swift */; };
 		D60AE7EC1D9EE111000320F4 /* StringPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */; };
-		D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */; };
 		D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */; };
 		D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30751D92837800771790 /* StringPickerPopover.storyboard */; };
 		D6239B151E88E7F200E9E68C /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6239B141E88E7F200E9E68C /* DispatchQueue+.swift */; };
 		D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */; };
 		D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63410E21D8AD0F300DAE60A /* Assets.xcassets */; };
-		D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */; };
-		D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63410E61D8AD0F300DAE60A /* Main.storyboard */; };
 		D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63410E91D8AD0F300DAE60A /* SampleViewController.swift */; };
 		D63E37781E8E660300EB31C5 /* DatePickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D65E30711D9282B000771790 /* DatePickerPopover.storyboard */; };
 		D646E0ED1E820825003C8731 /* AbstractPickerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */; };
 		D646E0EE1E820F2A003C8731 /* SwiftyPickerPopover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */; };
+		D671079B1EA7386200C06AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */; };
+		D671079C1EA7387D00C06AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D671079E1EA7387D00C06AC2 /* Main.storyboard */; };
+		D67107A51EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67107A71EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard */; };
 		D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CountdownPickerPopover.storyboard; sourceTree = "<group>"; };
 		BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopover.swift; sourceTree = "<group>"; };
 		BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownPickerPopoverViewController.swift; sourceTree = "<group>"; };
 		BECD4B971D9DC5B8008BB309 /* ColumnStringPickerPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColumnStringPickerPopover.storyboard; sourceTree = "<group>"; };
@@ -58,14 +57,17 @@
 		D6239B141E88E7F200E9E68C /* DispatchQueue+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+.swift"; sourceTree = "<group>"; };
 		D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		D63410E21D8AD0F300DAE60A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		D63410E51D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D63410E71D8AD0F300DAE60A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		D63410E81D8AD0F300DAE60A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = SOURCE_ROOT; };
 		D63410E91D8AD0F300DAE60A /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleViewController.swift; path = Demo/SampleViewController.swift; sourceTree = SOURCE_ROOT; };
 		D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractPickerPopoverViewController.swift; sourceTree = "<group>"; };
 		D65E30701D9282B000771790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatePickerPopover.storyboard; sourceTree = "<group>"; };
-		D65E30721D9282E200771790 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatePickerPopover.strings; sourceTree = "<group>"; };
 		D65E30741D92837800771790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StringPickerPopover.storyboard; sourceTree = "<group>"; };
+		D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Demo/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D671079F1EA7389300C06AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D67107A01EA7389B00C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		D67107A41EA739C100C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatePickerPopover.strings; sourceTree = "<group>"; };
+		D67107A61EA73A2A00C06AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CountdownPickerPopover.storyboard; sourceTree = "<group>"; };
+		D67107A91EA73A2C00C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CountdownPickerPopover.strings; sourceTree = "<group>"; };
 		D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractPopover.swift; sourceTree = "<group>"; };
 		D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopover.swift; sourceTree = "<group>"; };
 		D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopoverViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +99,7 @@
 		BECD4B721D9DB6F7008BB309 /* CountdownPicker */ = {
 			isa = PBXGroup;
 			children = (
-				BECD4B731D9DB73C008BB309 /* CountdownPickerPopover.storyboard */,
+				D67107A71EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard */,
 				BECD4B741D9DB73C008BB309 /* CountdownPickerPopover.swift */,
 				BECD4B751D9DB73C008BB309 /* CountdownPickerPopoverViewController.swift */,
 			);
@@ -123,16 +125,6 @@
 			path = SwiftyPickerPopover;
 			sourceTree = "<group>";
 		};
-		D63410E31D8AD0F300DAE60A /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */,
-				D63410E61D8AD0F300DAE60A /* Main.storyboard */,
-			);
-			name = Base.lproj;
-			path = Demo/Base.lproj;
-			sourceTree = SOURCE_ROOT;
-		};
 		D6A5E4A81E8CF18800B98D8C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +132,8 @@
 				D63410E91D8AD0F300DAE60A /* SampleViewController.swift */,
 				D63410E21D8AD0F300DAE60A /* Assets.xcassets */,
 				D63410E81D8AD0F300DAE60A /* Info.plist */,
-				D63410E31D8AD0F300DAE60A /* Base.lproj */,
+				D671079E1EA7387D00C06AC2 /* Main.storyboard */,
+				D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -306,7 +299,7 @@
 			files = (
 				D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */,
 				D63E37781E8E660300EB31C5 /* DatePickerPopover.storyboard in Resources */,
-				D60AE7EE1D9EE11F000320F4 /* CountdownPickerPopover.storyboard in Resources */,
+				D67107A51EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard in Resources */,
 				D60AE7EF1D9EE11F000320F4 /* ColumnStringPickerPopover.storyboard in Resources */,
 				D60AE7F01D9EE11F000320F4 /* StringPickerPopover.storyboard in Resources */,
 			);
@@ -316,9 +309,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D63410EC1D8AD0F300DAE60A /* Main.storyboard in Resources */,
-				D63410EB1D8AD0F300DAE60A /* LaunchScreen.storyboard in Resources */,
+				D671079B1EA7386200C06AC2 /* LaunchScreen.storyboard in Resources */,
 				D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */,
+				D671079C1EA7387D00C06AC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,27 +348,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D63410E41D8AD0F300DAE60A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D63410E51D8AD0F300DAE60A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		D63410E61D8AD0F300DAE60A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D63410E71D8AD0F300DAE60A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D65E30711D9282B000771790 /* DatePickerPopover.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D65E30701D9282B000771790 /* Base */,
-				D65E30721D9282E200771790 /* ja */,
+				D67107A41EA739C100C06AC2 /* ja */,
 			);
 			name = DatePickerPopover.storyboard;
 			sourceTree = "<group>";
@@ -386,6 +363,25 @@
 				D65E30741D92837800771790 /* Base */,
 			);
 			name = StringPickerPopover.storyboard;
+			sourceTree = "<group>";
+		};
+		D671079E1EA7387D00C06AC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D671079F1EA7389300C06AC2 /* Base */,
+				D67107A01EA7389B00C06AC2 /* ja */,
+			);
+			name = Main.storyboard;
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		D67107A71EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D67107A61EA73A2A00C06AC2 /* Base */,
+				D67107A91EA73A2C00C06AC2 /* ja */,
+			);
+			name = CountdownPickerPopover.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,0 +1,27 @@
+
+/* Class = "UIButton"; normalTitle = "DatePicker .time  5minInt."; ObjectID = "7Ks-c5-B6c"; */
+"7Ks-c5-B6c.normalTitle" = "DatePicker .time  5分間隔";
+
+/* Class = "UIButton"; normalTitle = "String Columns"; ObjectID = "8Ho-ov-rmT"; */
+"8Ho-ov-rmT.normalTitle" = "String Columns";
+
+/* Class = "UIButton"; normalTitle = "DatePicker Clearable"; ObjectID = "H2Y-eM-ogW"; */
+"H2Y-eM-ogW.normalTitle" = "DatePicker Clearable";
+
+/* Class = "UIButton"; normalTitle = "DatePicker"; ObjectID = "S0f-NN-ctD"; */
+"S0f-NN-ctD.normalTitle" = "DatePicker";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WGq-v7-9Vx"; */
+"WGq-v7-9Vx.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "StringPicker"; ObjectID = "mPJ-1q-PXQ"; */
+"mPJ-1q-PXQ.normalTitle" = "StringPicker";
+
+/* Class = "UIButton"; normalTitle = "Countdown"; ObjectID = "r3c-rj-dZy"; */
+"r3c-rj-dZy.normalTitle" = "Countdown";
+
+/* Class = "UILabel"; text = "SwiftyPickerPopover"; ObjectID = "yTw-zc-9na"; */
+"yTw-zc-9na.text" = "SwiftyPickerPopover";
+
+/* Class = "UILabel"; text = "collectionView"; ObjectID = "zpQ-gA-FQa"; */
+"zpQ-gA-FQa.text" = "collectionView";

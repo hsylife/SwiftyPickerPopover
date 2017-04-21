@@ -21,6 +21,7 @@ open class AbstractPopover: NSObject {
     var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
     
     var contentViewController: AnyObject?
+    var backgroundColor: UIColor?
     
     override public init(){
         //Get a string as stroyboard name from this class name.
@@ -38,6 +39,14 @@ open class AbstractPopover: NSObject {
         return self
     }
     
+    /// Set property
+    ///
+    /// - Parameter color: color of arrow. It specify the color of viewController.backgroundColor
+    /// - Returns: self
+    open func setArrowColor(_ color:UIColor)->Self{
+        self.backgroundColor = color
+        return self
+    }
 
     // MARK: - Popover display
     
@@ -59,6 +68,8 @@ open class AbstractPopover: NSObject {
         // configure StringPickerPopoverViewController
         let contentVC = configureContentViewController(navigationController: navigationController)
         navigationController.popoverPresentationController?.delegate = contentVC
+        
+        navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController.view.backgroundColor
         
         // presnet popover
         baseViewController.present(navigationController, animated: true, completion: completion)

@@ -15,7 +15,6 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
-*.xcuserstate
 
 # CocoaPod
 Pods/*
@@ -23,5 +22,6 @@ Podfile.lock
 
 # others
 *.swp
+UserInterfaceState.xcuserstate
 !.gitkeep
 .DS_Store

@@ -22,8 +22,8 @@
 
 ### Enhancements
 
-* None.
+* add Japanese localization to Demo.
 
 ### Bugfixes
 
-* fix "Could not find a storyboard named 'StringPickerPopover' in bundle NSBundle". add Japanese localization to Demo.
+* fix "Could not find a storyboard named 'StringPickerPopover' in bundle NSBundle".

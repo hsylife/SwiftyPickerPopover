@@ -15,7 +15,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bbG-aM-kwI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bbG-aM-kwI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -11,7 +11,8 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     typealias PopoverType = StringPickerPopover
     
     var popover: PopoverType? { return anyPopover as? PopoverType }
-
+    
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var picker: UIPickerView!
     
     override public func viewDidLoad() {
@@ -21,6 +22,13 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
 
     override func refrectPopoverProperties(){
         title = popover?.title
+        
+        if let action = popover?.cancelButton_ {
+            navigationItem.leftBarButtonItem = nil
+            cancelButton.title = action.title
+            navigationItem.leftBarButtonItem = cancelButton
+        }
+        
         if let select = popover?.selectedRow_ {
             picker?.selectRow(select, inComponent: 0, animated: true)
         }
@@ -36,7 +44,10 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelAction_?(popover!)
+        let selectedRow = picker.selectedRow(inComponent: 0)
+        if let selectedString = popover?.choices[selectedRow]{
+            popover?.cancelButton_.completion?(popover!, selectedRow, selectedString)
+        }
         dismiss(animated: false, completion: {})
     }
     

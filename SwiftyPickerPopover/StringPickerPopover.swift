@@ -20,8 +20,8 @@ public class StringPickerPopover: AbstractPopover {
     
     var displayStringFor_:((ItemType?)->String?)?
     var doneAction_: ((PopoverType, Int, ItemType)->Void)?
-    var cancelAction_: ((PopoverType)->Void)?
-
+    var cancelButton_: (title: String, completion:((PopoverType, Int, ItemType)->Void)?) =  (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    
     var selectedRow_: Int = 0
 
     // MARK: - Initializer
@@ -69,13 +69,16 @@ public class StringPickerPopover: AbstractPopover {
         self.doneAction_ = completion
         return self
     }
-    
+        
     /// Set property
     ///
     /// - Parameter completion: Action when you cancel done.
     /// - Returns: self
-    public func setCancelAction(_ completion: ((PopoverType)->Void)?)->Self{
-        self.cancelAction_ = completion
+    public func setCancelButton(title:String? = nil, completion:((PopoverType, Int, ItemType)->Void)?)->Self{
+        if let t = title{
+            self.cancelButton_.title = t
+        }
+        self.cancelButton_.completion = completion
         return self
     }
 }

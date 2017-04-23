@@ -36,10 +36,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelAction({ popover in
-                print("cancel")
-            })
-            
+            .setCancelButton(completion: {popover in
+                print("cancel") })
+        
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
 
@@ -129,7 +128,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         .setDoneAction({ (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelAction( { popover in print("cancel")} )
+        .setCancelButton(title:"🗑", completion: { popover in print("cancel")} )
         
         p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         

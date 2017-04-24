@@ -179,6 +179,7 @@
 				D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */,
 				D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */,
 				D6239B141E88E7F200E9E68C /* DispatchQueue+.swift */,
+				D64C09B61EACD2270072BB79 /* Localizable.strings */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -197,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				D65E30751D92837800771790 /* StringPickerPopover.storyboard */,
-				D64C09B61EACD2270072BB79 /* Localizable.strings */,
 				D6846A311D892EB300792CA4 /* StringPickerPopover.swift */,
 				D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */,
 			);

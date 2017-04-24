@@ -32,7 +32,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
-            .setDoneAction({
+            .setDoneButton(completion: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
@@ -125,7 +125,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         //StringPickerPopover appears from the cell of collectionView.
         let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
         .setSelectedRow(1)
-        .setDoneAction({ (popover, selectedRow, selectedString) in
+        .setDoneButton(title:"👌", completion: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
         .setCancelButton(title:"🗑", completion: { popover in print("cancel")} )

@@ -57,7 +57,7 @@
                                 <action selector="tappedCancel:" destination="pEv-eJ-a7K" id="1Ja-ND-Ob3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NGv-xi-ME4">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="NGv-xi-ME4" userLabel="Done Button">
                             <connections>
                                 <action selector="tappedDone:" destination="pEv-eJ-a7K" id="YmT-o4-kNn"/>
                             </connections>
@@ -68,6 +68,7 @@
                     <size key="freeformSize" width="300" height="300"/>
                     <connections>
                         <outlet property="cancelButton" destination="a1u-Fu-SLI" id="pCt-rp-fSc"/>
+                        <outlet property="doneButton" destination="NGv-xi-ME4" id="PQL-FR-PK6"/>
                         <outlet property="picker" destination="tJe-Py-ArN" id="0ed-HW-3nL"/>
                     </connections>
                 </viewController>

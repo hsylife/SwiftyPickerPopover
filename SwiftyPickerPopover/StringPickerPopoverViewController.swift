@@ -24,17 +24,13 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     override func refrectPopoverProperties(){
         title = popover?.title
         
-        if let action = popover?.cancelButton_ {
-            navigationItem.leftBarButtonItem = nil
-            cancelButton.title = action.title
-            navigationItem.leftBarButtonItem = cancelButton
-        }
+        navigationItem.leftBarButtonItem = nil
+        cancelButton.title = popover?.cancelButton_.title
+        navigationItem.leftBarButtonItem = cancelButton
         
-        if let action = popover?.doneButton_ {
-            navigationItem.rightBarButtonItem = nil
-            doneButton.title = action.title
-            navigationItem.rightBarButtonItem = doneButton
-        }
+        navigationItem.rightBarButtonItem = nil
+        doneButton.title = popover?.doneButton_.title
+        navigationItem.rightBarButtonItem = doneButton
         
         if let select = popover?.selectedRow_ {
             picker?.selectRow(select, inComponent: 0, animated: true)

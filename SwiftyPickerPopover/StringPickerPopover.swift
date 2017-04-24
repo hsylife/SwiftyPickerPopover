@@ -19,8 +19,10 @@ public class StringPickerPopover: AbstractPopover {
     var choices: [ItemType] = []
     
     var displayStringFor_:((ItemType?)->String?)?
-    var doneButton_: (title: String, completion:((PopoverType, Int, ItemType)->Void)?) =  (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
-    var cancelButton_: (title: String, completion:((PopoverType, Int, ItemType)->Void)?) =  (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    var doneButton_: (title: String, completion:((PopoverType, Int, ItemType)->Void)?) =
+        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    var cancelButton_: (title: String, completion:((PopoverType, Int, ItemType)->Void)?) =
+        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
     
     var selectedRow_: Int = 0
 

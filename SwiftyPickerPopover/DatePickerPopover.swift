@@ -16,9 +16,12 @@ public class DatePickerPopover: AbstractPopover {
 
     // MARK: - Properties
 
-    var doneAction_: ((PopoverType,ItemType)->Void)?
-    var cancelAction_: ((PopoverType)->Void)?
-    var clearAction_: ((PopoverType)->Void)?
+    var doneButton_: (title: String, completion:((PopoverType, ItemType)->Void)?) =
+        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    var cancelButton_: (title: String, completion:((PopoverType, ItemType)->Void)?) =
+        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    var clearButton_: (title: String, completion:((PopoverType, ItemType)->Void)?) =
+        (NSLocalizedString("Clear", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
     
     var dateMode_:UIDatePickerMode = .date
     var minimumDate_: ItemType?
@@ -85,30 +88,39 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set property
-    ///
-    /// - Parameter completion: Action when you press done.
-    /// - Returns: self
-    public func setDoneAction(_ completion:((PopoverType,ItemType)->Void)?)->Self{
-        self.doneAction_ = completion
+    /// - Parameters:
+    ///   - title: Title for the bar button item
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setDoneButton(title:String? = nil, completion:((PopoverType, ItemType)->Void)?)->Self{
+        if let t = title{
+            self.doneButton_.title = t
+        }
+        self.doneButton_.completion = completion
         return self
     }
     
-    /// Set property
-    ///
-    /// - Parameter completion: Action when you cancel done.
-    /// - Returns: self
-    public func setCancelAction(_ completion: ((PopoverType)->Void)?)->Self{
-        self.cancelAction_ = completion
+    /// - Parameters:
+    ///   - title: Title for the bar button item
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setCancelButton(title:String? = nil, completion:((PopoverType, ItemType)->Void)?)->Self{
+        if let t = title{
+            self.cancelButton_.title = t
+        }
+        self.cancelButton_.completion = completion
         return self
     }
     
-    /// Set property
-    ///
-    /// - Parameter completion: Action when you press done.
-    /// - Returns: self
-    public func setClearAction(_ completion:((PopoverType)->Void)?)->Self{
-        self.clearAction_ = completion
+    /// - Parameters:
+    ///   - title: Title for the bar button item
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setClearButton(title:String? = nil, completion:((PopoverType, ItemType)->Void)?)->Self{
+        if let t = title{
+            self.clearButton_.title = t
+        }
+        self.clearButton_.completion = completion
         return self
     }
     

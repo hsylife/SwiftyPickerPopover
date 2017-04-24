@@ -36,7 +36,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelButton(completion: {popover in
+            .setCancelButton(completion: {v in
                 print("cancel") })
         
         p.appear(originView: sender, baseViewController: self)
@@ -49,17 +49,17 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
-            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
-            .setCancelAction({ popover in print("cancel")})
+            .setDoneButton(completion: { popover, selectedDate in print("selectedDate \(selectedDate)")})
+            .setCancelButton(completion: { v in print("cancel")})
             .appear(originView: sender, baseViewController: self)
     }
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         /// DatePickerPopover appears:
         let p = DatePickerPopover(title: "Clearable DatePicker")
-            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelAction({ popover in print("cancel")})
-            .setClearAction({ popover in
+            .setDoneButton(completion: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
+            .setCancelButton(completion: { v in print("cancel")})
+            .setClearButton(completion: { popover, selectedDate in
                 print("clear")
                 //Rewind
                 popover.setSelectedDate(Date()).reload()
@@ -78,8 +78,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setDateMode(.time)
             .setMinuteInterval(5)
             .setPermittedArrowDirections(.down)
-            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelAction({ popover in print("cancel")})
+            .setDoneButton(completion: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
+            .setCancelButton(completion: { v in print("cancel")})
             .appear(originView: sender, baseViewController: self)
     }
 
@@ -128,7 +128,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         .setDoneButton(title:"👌", completion: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelButton(title:"🗑", completion: { popover in print("cancel")} )
+        .setCancelButton(title:"🗑", completion: { v in print("cancel")} )
         
         p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         

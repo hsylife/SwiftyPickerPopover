@@ -146,7 +146,7 @@ let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2"
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelButton(action: { popover in
+            .setCancelButton(action: { v in
                 print("cancel")
             })
             

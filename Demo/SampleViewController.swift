@@ -102,8 +102,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         ColumnStringPickerPopover(title: "Columns Strings",
                                   choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
-        .setDoneAction({ popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
-        .setCancelAction({p in print("cancel")})
+        .setDoneButton(completion: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
+        .setCancelButton(completion: { v in print("cancel")})
         .setFontSize(14)
         .appear(originView: sender, baseViewController: self)
     }

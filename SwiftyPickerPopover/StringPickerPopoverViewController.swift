@@ -40,7 +40,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{
-            popover?.doneButton_.completion?(popover!, selectedRow, selectedString)
+            popover?.doneButton_.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }
@@ -48,7 +48,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{
-            popover?.cancelButton_.completion?(popover!, selectedRow, selectedString)
+            popover?.cancelButton_.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }

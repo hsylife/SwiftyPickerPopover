@@ -38,7 +38,7 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
         clearButton.setTitle(popover?.clearButton_.title, for: .normal)
 
         if let pp = popover {
-            if let _ = pp.clearButton_.completion { }
+            if let _ = pp.clearButton_.action { }
             else {
                 clearButton.removeFromSuperview()
                 view.layoutIfNeeded()
@@ -50,18 +50,18 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     }
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        popover?.doneButton_.completion?(popover!, picker.countDownDuration)
+        popover?.doneButton_.action?(popover!, picker.countDownDuration)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelButton_.completion?(popover!, picker.countDownDuration)
+        popover?.cancelButton_.action?(popover!, picker.countDownDuration)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         popover?.redoDisappearAutomatically()
-        popover?.clearButton_.completion?(popover!, picker.countDownDuration)
+        popover?.clearButton_.action?(popover!, picker.countDownDuration)
     }
     
     

@@ -32,7 +32,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
 
         clearButton.setTitle(popover?.clearButton_.title, for: .normal)
         
-        if let _ = popover?.clearButton_.completion { }
+        if let _ = popover?.clearButton_.action { }
         else {
             clearButton.removeFromSuperview()
             view.layoutIfNeeded()
@@ -50,17 +50,17 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     }
 
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        popover?.doneButton_.completion?(popover!, picker.date)
+        popover?.doneButton_.action?(popover!, picker.date)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelButton_.completion?(popover!, picker.date)
+        popover?.cancelButton_.action?(popover!, picker.date)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        popover?.clearButton_.completion?(popover!, picker.date)
+        popover?.clearButton_.action?(popover!, picker.date)
         popover?.redoDisappearAutomatically()
     }
     

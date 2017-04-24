@@ -48,7 +48,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         if let popover = popover {
             let selectedRows = popover.selectedRows_
             let selectedChoices = popover.selectedValues()
-            popover.doneButton_.completion?(popover, selectedRows, selectedChoices)
+            popover.doneButton_.action?(popover, selectedRows, selectedChoices)
             
             dismiss(animated: false, completion: {})
         }
@@ -58,7 +58,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         if let popover = popover {
             let selectedRows = popover.selectedRows_
             let selectedChoices = popover.selectedValues()
-            popover.cancelButton_.completion?(popover, selectedRows, selectedChoices)
+            popover.cancelButton_.action?(popover, selectedRows, selectedChoices)
             
             dismiss(animated: false, completion: {})
         }

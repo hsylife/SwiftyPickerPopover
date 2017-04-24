@@ -1,3 +1,18 @@
+4.0.0 Release notes (2017-04-24)
+=============================================================
+
+### API Breaking Changes
+
+* Change setXxxAction() to setXxxButton().
+
+### Enhancements
+
+* Add setArrowColor().
+
+### Bugfixes
+
+* None.
+
 3.0.4 Release notes (2017-04-21)
 =============================================================
 

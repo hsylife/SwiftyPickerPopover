@@ -17,44 +17,51 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
 
     var popover: PopoverType? { return anyPopover as? PopoverType }
 
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var clearButton: UIButton!
 
     var hideClearButton: Bool = false
     
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func refrectPopoverProperties(){
+        title = popover?.title
+
+        navigationItem.leftBarButtonItem = nil
+        cancelButton.title = popover?.cancelButton_.title
+        navigationItem.leftBarButtonItem = cancelButton
+        
+        navigationItem.rightBarButtonItem = nil
+        doneButton.title = popover?.doneButton_.title
+        navigationItem.rightBarButtonItem = doneButton
+
+        clearButton.setTitle(popover?.clearButton_.title, for: .normal)
+
         if let pp = popover {
-            if let _ = pp.clearAction_ { }
+            if let _ = pp.clearButton_.completion { }
             else {
                 clearButton.removeFromSuperview()
                 view.layoutIfNeeded()
             }
-        }
-    }
-    
-    override func refrectPopoverProperties(){
-        title = popover?.title
-        
-        if let pp = popover {
+
             picker.datePickerMode = .countDownTimer
             picker.countDownDuration = pp.selectedTimeInterval_
         }
     }
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        popover?.doneAction_?(popover!, picker.countDownDuration)
+        popover?.doneButton_.completion?(popover!, picker.countDownDuration)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelAction_?(popover!)
+        popover?.cancelButton_.completion?(popover!, picker.countDownDuration)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
         popover?.redoDisappearAutomatically()
-        popover?.clearAction_?(popover!)
+        popover?.clearButton_.completion?(popover!, picker.countDownDuration)
     }
     
     

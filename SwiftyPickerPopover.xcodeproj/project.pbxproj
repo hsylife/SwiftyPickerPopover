@@ -68,9 +68,7 @@
 		D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Demo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D671079F1EA7389300C06AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D67107A01EA7389B00C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		D67107A41EA739C100C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DatePickerPopover.strings; sourceTree = "<group>"; };
 		D67107A61EA73A2A00C06AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CountdownPickerPopover.storyboard; sourceTree = "<group>"; };
-		D67107A91EA73A2C00C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CountdownPickerPopover.strings; sourceTree = "<group>"; };
 		D6846A2B1D892EA300792CA4 /* AbstractPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractPopover.swift; sourceTree = "<group>"; };
 		D6846A2E1D892EB300792CA4 /* DatePickerPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopover.swift; sourceTree = "<group>"; };
 		D6846A2F1D892EB300792CA4 /* DatePickerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPopoverViewController.swift; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D65E30701D9282B000771790 /* Base */,
-				D67107A41EA739C100C06AC2 /* ja */,
 			);
 			name = DatePickerPopover.storyboard;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D67107A61EA73A2A00C06AC2 /* Base */,
-				D67107A91EA73A2C00C06AC2 /* ja */,
 			);
 			name = CountdownPickerPopover.storyboard;
 			sourceTree = "<group>";

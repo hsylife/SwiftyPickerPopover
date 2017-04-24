@@ -15,6 +15,8 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
 
     typealias PopoverType = ColumnStringPickerPopover
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     var popover: PopoverType? { return anyPopover as? PopoverType }
     
     @IBOutlet weak var picker: UIPickerView!
@@ -26,6 +28,15 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     
     override func refrectPopoverProperties(){
         title = popover?.title
+        
+        navigationItem.leftBarButtonItem = nil
+        cancelButton.title = popover?.cancelButton_.title
+        navigationItem.leftBarButtonItem = cancelButton
+        
+        navigationItem.rightBarButtonItem = nil
+        doneButton.title = popover?.doneButton_.title
+        navigationItem.rightBarButtonItem = doneButton
+
         if let selected = popover?.selectedRows_ {
             for x in 0..<selected.count {
                 picker.selectRow(selected[x], inComponent: x, animated: true)
@@ -37,15 +48,20 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         if let popover = popover {
             let selectedRows = popover.selectedRows_
             let selectedChoices = popover.selectedValues()
-            popover.doneAction_?(popover, selectedRows, selectedChoices)
+            popover.doneButton_.action?(popover, selectedRows, selectedChoices)
             
             dismiss(animated: false, completion: {})
         }
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelAction_?(popover!)
-        dismiss(animated: false, completion: {})
+        if let popover = popover {
+            let selectedRows = popover.selectedRows_
+            let selectedChoices = popover.selectedValues()
+            popover.cancelButton_.action?(popover, selectedRows, selectedChoices)
+            
+            dismiss(animated: false, completion: {})
+        }
     }
     
     public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {

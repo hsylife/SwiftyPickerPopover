@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  SwiftyPickerPopover
+
+  Created by Y.T. Hoshino on 2017/04/23.
+  Copyright © 2017年 Yuta Hoshino. All rights reserved.
+*/
+
+"Cancel" = "キャンセル";
+"Done" = "完了";
+"Clear" = "クリア";

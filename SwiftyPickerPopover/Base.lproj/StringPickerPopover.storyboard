@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +15,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bbG-aM-kwI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bbG-aM-kwI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -52,12 +52,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="0qf-St-WhE">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a1u-Fu-SLI">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="a1u-Fu-SLI">
                             <connections>
-                                <action selector="tappedCancel:" destination="pEv-eJ-a7K" id="MrI-nl-pqx"/>
+                                <action selector="tappedCancel:" destination="pEv-eJ-a7K" id="1Ja-ND-Ob3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NGv-xi-ME4">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="NGv-xi-ME4" userLabel="Done Button">
                             <connections>
                                 <action selector="tappedDone:" destination="pEv-eJ-a7K" id="YmT-o4-kNn"/>
                             </connections>
@@ -67,6 +67,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
                     <connections>
+                        <outlet property="cancelButton" destination="a1u-Fu-SLI" id="pCt-rp-fSc"/>
+                        <outlet property="doneButton" destination="NGv-xi-ME4" id="PQL-FR-PK6"/>
                         <outlet property="picker" destination="tJe-Py-ArN" id="0ed-HW-3nL"/>
                     </connections>
                 </viewController>

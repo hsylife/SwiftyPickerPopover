@@ -32,14 +32,13 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
-            .setDoneAction({
+            .setDoneButton(action: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelAction({ popover in
-                print("cancel")
-            })
-            
+            .setCancelButton(action: {v in
+                print("cancel") })
+        
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
 
@@ -50,17 +49,17 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
-            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")})
-            .setCancelAction({ popover in print("cancel")})
+            .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")})
+            .setCancelButton(action: { v in print("cancel")})
             .appear(originView: sender, baseViewController: self)
     }
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         /// DatePickerPopover appears:
         let p = DatePickerPopover(title: "Clearable DatePicker")
-            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelAction({ popover in print("cancel")})
-            .setClearAction({ popover in
+            .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
+            .setCancelButton(action: { v in print("cancel")})
+            .setClearButton(action: { popover, selectedDate in
                 print("clear")
                 //Rewind
                 popover.setSelectedDate(Date()).reload()
@@ -79,8 +78,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setDateMode(.time)
             .setMinuteInterval(5)
             .setPermittedArrowDirections(.down)
-            .setDoneAction({ popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelAction({ popover in print("cancel")})
+            .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
+            .setCancelButton(action: { v in print("cancel")})
             .appear(originView: sender, baseViewController: self)
     }
 
@@ -89,9 +88,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         // CountdownPickerPopover appears:
         CountdownPickerPopover(title: "CountdownPicker")
             .setSelectedTimeInterval(TimeInterval())
-            .setDoneAction({ popover, timeInterval in print("timeInterval \(timeInterval)")} )
-            .setCancelAction({ popover in print("cancel")})
-            .setClearAction({ popover in print("Clear")
+            .setDoneButton(action: { popover, timeInterval in print("timeInterval \(timeInterval)")} )
+            .setCancelButton(action: { v in print("cancel")})
+            .setClearButton(action: { popover, timeInterval in print("Clear")
                 popover.setSelectedTimeInterval(TimeInterval()).reload()
             })
             .appear(originView: sender, baseViewController: self)
@@ -103,8 +102,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         ColumnStringPickerPopover(title: "Columns Strings",
                                   choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
-        .setDoneAction({ popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
-        .setCancelAction({p in print("cancel")})
+        .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
+        .setCancelButton(action: { v in print("cancel")})
         .setFontSize(14)
         .appear(originView: sender, baseViewController: self)
     }
@@ -126,10 +125,10 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         //StringPickerPopover appears from the cell of collectionView.
         let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
         .setSelectedRow(1)
-        .setDoneAction({ (popover, selectedRow, selectedString) in
+        .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelAction( { popover in print("cancel")} )
+        .setCancelButton(title:"🗑", action: { v in print("cancel")} )
         
         p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         

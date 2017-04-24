@@ -19,9 +19,11 @@ public class StringPickerPopover: AbstractPopover {
     var choices: [ItemType] = []
     
     var displayStringFor_:((ItemType?)->String?)?
-    var doneAction_: ((PopoverType, Int, ItemType)->Void)?
-    var cancelAction_: ((PopoverType)->Void)?
-
+    var doneButton_: (title: String, action:((PopoverType, Int, ItemType)->Void)?) =
+        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    var cancelButton_: (title: String, action:((PopoverType, Int, ItemType)->Void)?) =
+        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    
     var selectedRow_: Int = 0
 
     // MARK: - Initializer
@@ -61,21 +63,27 @@ public class StringPickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set property
-    ///
-    /// - Parameter completion: Action when you press done.
-    /// - Returns: self
-    public func setDoneAction(_ completion:((PopoverType, Int, ItemType)->Void)?)->Self{
-        self.doneAction_ = completion
+    /// - Parameters:
+    ///   - title: Title for the bar button item
+    ///   - action: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setDoneButton(title:String? = nil, action:((PopoverType, Int, ItemType)->Void)?)->Self{
+        if let t = title{
+            self.doneButton_.title = t
+        }
+        self.doneButton_.action = action
         return self
     }
-    
-    /// Set property
-    ///
-    /// - Parameter completion: Action when you cancel done.
-    /// - Returns: self
-    public func setCancelAction(_ completion: ((PopoverType)->Void)?)->Self{
-        self.cancelAction_ = completion
+
+    /// - Parameters:
+    ///   - title: Title for the bar button item
+    ///   - action: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setCancelButton(title:String? = nil, action:((PopoverType, Int, ItemType)->Void)?)->Self{
+        if let t = title{
+            self.cancelButton_.title = t
+        }
+        self.cancelButton_.action = action
         return self
     }
 }

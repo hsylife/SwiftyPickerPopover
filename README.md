@@ -54,7 +54,7 @@ DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")})
-            .setCancelButton({action: v in print("cancel")})
+            .setCancelButton(action: { v in print("cancel")})
             .appear(originView: sender, baseViewController: self)
 ```
 
@@ -65,7 +65,7 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
         .setDoneButton(action: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelButton(action:  { v in print("cancel")}
+        .setCancelButton(action: { v in print("cancel")}
         )
         .appear(originView: button, baseViewController: self)
 ```
@@ -76,7 +76,7 @@ ColumnStringPickerPopover(title: "Columns Strings",
                                   choices: [["Breakfast", "Lunch", "Dinner"],["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
         .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
-        .setCancelButton({v in print("cancel")})
+        .setCancelButton(action: {v in print("cancel")})
         .setFontSize(14)
         .appear(originView: sender, baseViewController: self)
 )
@@ -88,7 +88,7 @@ To display a popover with an UIDatePicker of countDownTimer style:
             .setSelectedTimeInterval(TimeInterval())
             .setDoneButton(action: { popover, timeInterval in print("timeInterval \(timeInterval)")} )
             .setCancelButton(action: { v in print("cancel")})
-            .setClearButton({action:  popover, timeInterval in print("Clear")
+            .setClearButton(action: { popover, timeInterval in print("Clear")
                 popover.setSelectedTimeInterval(TimeInterval()).reload()
             })
             .appear(originView: sender, baseViewController: self)
@@ -99,8 +99,8 @@ To display a DatePickerPopover has a clear button, which rewinds itself by tappi
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelButton({ v in print("cancel")})
-            .setClearButton({ popover, selectedDate in
+            .setCancelButton(action: { v in print("cancel")})
+            .setClearButton(action: { popover, selectedDate in
                 print("clear")
                 //Rewind
                 popover.setSelectedDate(Date()).reload()

@@ -43,7 +43,9 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
             picker.minimumDate = pp.minimumDate_
             picker.maximumDate = pp.maximumDate_
             picker.datePickerMode = pp.dateMode_
-            picker.minuteInterval = pp.minuteInterval_
+            if picker.datePickerMode != .date {
+                picker.minuteInterval = pp.minuteInterval_
+            }
         }
         
 

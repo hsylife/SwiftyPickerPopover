@@ -128,7 +128,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelButton(title:"🗑", action: { v in print("cancel")} )
+        .setCancelButton(title:"👎", action: { v in print("cancel")} )
         
         p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         

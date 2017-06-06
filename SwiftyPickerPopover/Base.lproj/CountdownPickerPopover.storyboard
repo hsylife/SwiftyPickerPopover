@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,6 @@
                 <navigationController id="byJ-Vv-M5N" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFP-QF-Beb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -36,11 +36,11 @@
                         <viewControllerLayoutGuide type="bottom" id="KrY-U2-tGZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wcv-6k-DXR">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
-                                <rect key="frame" x="0.0" y="262" width="300" height="30"/>
+                                <rect key="frame" x="0.0" y="629" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
-                                <rect key="frame" x="0.0" y="64" width="300" height="198"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="565"/>
                                 <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
                                     <!--2016-09-13 10:35:36 +0000-->
                                 </date>

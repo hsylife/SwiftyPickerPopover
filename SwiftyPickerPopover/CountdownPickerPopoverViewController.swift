@@ -27,11 +27,9 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     override func refrectPopoverProperties(){
         title = popover?.title
 
-        navigationItem.leftBarButtonItem = nil
         cancelButton.title = popover?.cancelButton_.title
         navigationItem.leftBarButtonItem = cancelButton
         
-        navigationItem.rightBarButtonItem = nil
         doneButton.title = popover?.doneButton_.title
         navigationItem.rightBarButtonItem = doneButton
 

@@ -8,14 +8,14 @@ A more convenient way to display a popover with a built-in picker, on iPhone/iPa
 
 ## Features
 - By simple code, you can display a popover that contains a built-in picker, on iPhone or iPad.
-- Swift 3, iOS9+. UIPopoverController free. 
+- Swift 4, iOS9+. UIPopoverController free. 
 - Callback
 
 ## Screenshots
 <img src="README_resources/SwiftyPickerPopover_movie.gif" width="362">
 
 ## Required
-- Swift 3, Xcode 8.
+- Swift 4, Xcode 9.
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+ or Carthage 0.12.0+
 
@@ -54,7 +54,7 @@ DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")})
-            .setCancelButton(action: { v in print("cancel")})
+            .setCancelButton(action: { popover, selectedDate in print("cancel")})
             .appear(originView: sender, baseViewController: self)
 ```
 
@@ -65,7 +65,7 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
         .setDoneButton(action: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelButton(action: { v in print("cancel")}
+        .setCancelButton(action: { (popover, selectedRow, selectedString) in print("cancel")}
         )
         .appear(originView: button, baseViewController: self)
 ```
@@ -76,7 +76,7 @@ ColumnStringPickerPopover(title: "Columns Strings",
                                   choices: [["Breakfast", "Lunch", "Dinner"],["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
         .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
-        .setCancelButton(action: {v in print("cancel")})
+        .setCancelButton(action: { popover, selectedRows, selectedStrings in print("cancel")})
         .setFontSize(14)
         .appear(originView: sender, baseViewController: self)
 )
@@ -87,7 +87,7 @@ To display a popover with an UIDatePicker of countDownTimer style:
  CountdownPickerPopover(title: "CountdownPicker")
             .setSelectedTimeInterval(TimeInterval())
             .setDoneButton(action: { popover, timeInterval in print("timeInterval \(timeInterval)")} )
-            .setCancelButton(action: { v in print("cancel")})
+            .setCancelButton(action: { popover, timeInterval in print("cancel")})
             .setClearButton(action: { popover, timeInterval in print("Clear")
                 popover.setSelectedTimeInterval(TimeInterval()).reload()
             })
@@ -99,7 +99,7 @@ To display a DatePickerPopover has a clear button, which rewinds itself by tappi
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelButton(action: { v in print("cancel")})
+            .setCancelButton(action: { _,_ in print("cancel")})
             .setClearButton(action: { popover, selectedDate in
                 print("clear")
                 //Rewind
@@ -117,7 +117,7 @@ DatePickerPopover(title: "DatePicker .time 5minInt.")
             .setMinuteInterval(5)
             .setPermittedArrowDirections(.down)
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelButton(action: { v in print("cancel")})
+            .setCancelButton(action: { _,_ in print("cancel")})
             .appear(originView: sender, baseViewController: self)
 )
 ```
@@ -146,7 +146,7 @@ let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2"
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelButton(action: { v in
+            .setCancelButton(action: { _,_,_ in
                 print("cancel")
             })
             
@@ -163,7 +163,7 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
                         .setSelectedRow(1)
                         .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in print("done row \(selectedRow) \(selectedString)") })
-                        .setCancelButton(title:"🗑", action: { v in print("cancel")} )
+                        .setCancelButton(title:"🗑", action: { (popover, selectedRow, selectedString) in print("cancel")} )
         
         p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
         

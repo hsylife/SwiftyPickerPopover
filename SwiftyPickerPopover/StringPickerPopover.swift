@@ -26,6 +26,8 @@ public class StringPickerPopover: AbstractPopover {
     
     var selectedRow_: Int = 0
 
+    var rowHeight_: CGFloat = 44.0
+    
     // MARK: - Initializer
 
     /// Initialize a Popover with the following arguments.
@@ -54,6 +56,15 @@ public class StringPickerPopover: AbstractPopover {
         return self
     }
 
+    /// Set row height
+    ///
+    /// - Parameter height: Row height
+    /// - Returns: self
+    public func setRowHeight(_ height:CGFloat)->Self{
+        self.rowHeight_ = height
+        return self
+    }
+    
     /// Set property
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
@@ -106,6 +117,11 @@ extension StringPickerPopover: UIPickerViewDelegate {
             return d(choices[row])
         }
         return choices[row]
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView,
+                           rowHeightForComponent component: Int) -> CGFloat {
+        return rowHeight_
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

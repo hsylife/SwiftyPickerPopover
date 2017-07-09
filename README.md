@@ -70,6 +70,13 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
         .appear(originView: button, baseViewController: self)
 ```
 
+String and Image like UITableViewCell:
+```swift
+StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
+        .setImageNames(["Icon1",nil,"Icon3"])
+        .appear(originView: button, baseViewController: self)
+```
+
 To display a popover with an UIPickerView of multiple columns:
 ```swift
 ColumnStringPickerPopover(title: "Columns Strings",

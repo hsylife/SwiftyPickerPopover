@@ -70,13 +70,6 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
         .appear(originView: button, baseViewController: self)
 ```
 
-String and Image like UITableViewCell:
-```swift
-StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
-        .setImageNames(["Icon1",nil,"Icon3"])
-        .appear(originView: button, baseViewController: self)
-```
-
 To display a popover with an UIPickerView of multiple columns:
 ```swift
 ColumnStringPickerPopover(title: "Columns Strings",
@@ -102,6 +95,13 @@ To display a popover with an UIDatePicker of countDownTimer style:
 ```
 
 ### Advanced
+To display a popover with an UIPickerView that allows users to choose a String type choice with image like UITableViewCell:
+```swift
+StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
+        .setImageNames(["Icon1",nil,"Icon3"])
+        .appear(originView: button, baseViewController: self)
+```
+
 To display a DatePickerPopover has a clear button, which rewinds itself by tapping the button, and.which disappers automatically after a certain number of seconds:
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")

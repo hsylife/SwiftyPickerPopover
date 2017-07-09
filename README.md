@@ -98,7 +98,7 @@ To display a popover with an UIDatePicker of countDownTimer style:
 ```
 
 ### Advanced
-To display a popover with an UIPickerView that allows users to choose a String type choice with image like UITableViewCell:
+To display a popover with an UIPickerView that allows users to choose a String type choice with image like UITableViewCell. After adding image files to your target's Assets.xcassets:
 ```swift
 StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
         .setImageNames(["Icon1",nil,"Icon3"])

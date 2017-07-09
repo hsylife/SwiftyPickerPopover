@@ -23,11 +23,14 @@ A more convenient way to display a popover with a built-in picker, on iPhone/iPa
 MIT.
 
 ## Usage
-For installing it with CocoaPods, specify it in your 'Podfile':
+For installing it with CocoaPods, specify it in your 'Podfile'.
+Replace ‘YourProjectTargetName’ with your own target name:
 ```ruby
 platform :ios, '9.0'
 use_frameworks!
+target ‘YourProjectTargetName’ do
 pod 'SwiftyPickerPopover'
+end
 ```
 Run 'pod install'.
 

@@ -17,6 +17,7 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: - Properties
     
     var choices: [ItemType] = []
+    var imageNames_: [String?]?
     
     var displayStringFor_:((ItemType?)->String?)?
     var doneButton_: (title: String, action:((PopoverType, Int, ItemType)->Void)?) =
@@ -45,6 +46,11 @@ public class StringPickerPopover: AbstractPopover {
         
     }
 
+    public func setImageNames(_ imageNames:[String?]?)->Self{
+        self.imageNames_ = imageNames
+        return self
+    }
+    
     // MARK: - Propery setter
 
     /// Set property
@@ -119,6 +125,71 @@ extension StringPickerPopover: UIPickerViewDelegate {
         return choices[row]
     }
     
+    public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let baseAtt = NSMutableAttributedString()
+        
+        if let imageNames = imageNames_{
+            if let name = imageNames[row]{
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = UIImage(named: name)
+                let imageAtt = NSAttributedString(attachment: imageAttachment)
+                baseAtt.append(imageAtt)
+                
+                let marginAtt = NSAttributedString(string: " ")
+                baseAtt.append(marginAtt)
+            }
+        }
+        
+        var str = ""
+        if let d = displayStringFor_ {
+            str = d(choices[row]) ?? choices[row]
+        }
+        else {
+            str = choices[row]
+        }
+        
+        let stringAtt = NSAttributedString(string: str)
+        baseAtt.append(stringAtt)
+        
+        return baseAtt
+    }
+    
+//    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        let width = pickerView.frame.size.width
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.rowHeight_))
+//        
+//        if let imageNames = imageNames_{
+//            let margin:CGFloat = 5.0
+//
+//            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.rowHeight_ - margin , height: self.rowHeight_ - margin))
+//            if let name = imageNames[row]{
+//                imageView.image = UIImage(named: name)
+//            }
+//            view.addSubview(imageView)
+//
+//            let labelX = imageView.frame.origin.x + imageView.frame.size.width + margin
+//            let label = UILabel(frame: CGRect(x: labelX , y: 0, width: width - labelX, height: self.rowHeight_))
+//            label.textAlignment = .left
+//            if let d = displayStringFor_ {
+//                label.text = d(choices[row])
+//            } else {
+//                label.text = choices[row]
+//            }
+//            view.addSubview(label)
+//        } else {
+//            let label = UILabel(frame: CGRect(x: 0, y: 0, width: width , height: self.rowHeight_))
+//            label.textAlignment = .center
+//            if let d = displayStringFor_ {
+//                label.text = d(choices[row])
+//            } else {
+//                label.text = choices[row]
+//            }
+//            view.addSubview(label)
+//        }
+//        
+//        return view
+//    }
+
     public func pickerView(_ pickerView: UIPickerView,
                            rowHeightForComponent component: Int) -> CGFloat {
         return rowHeight_

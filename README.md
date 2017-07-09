@@ -104,7 +104,7 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
         .setImageNames(["Icon1",nil,"Icon3"])
         .appear(originView: button, baseViewController: self)
 ```
-<img src="README_resources/StringWithImage.jpeg" width="144">
+<img src="README_resources/StringWithImage.jpeg" width="362">
 
 To display a DatePickerPopover has a clear button, which rewinds itself by tapping the button, and.which disappers automatically after a certain number of seconds:
 ```swift

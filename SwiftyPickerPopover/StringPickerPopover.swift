@@ -153,42 +153,6 @@ extension StringPickerPopover: UIPickerViewDelegate {
         
         return baseAtt
     }
-    
-//    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let width = pickerView.frame.size.width
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.rowHeight_))
-//        
-//        if let imageNames = imageNames_{
-//            let margin:CGFloat = 5.0
-//
-//            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.rowHeight_ - margin , height: self.rowHeight_ - margin))
-//            if let name = imageNames[row]{
-//                imageView.image = UIImage(named: name)
-//            }
-//            view.addSubview(imageView)
-//
-//            let labelX = imageView.frame.origin.x + imageView.frame.size.width + margin
-//            let label = UILabel(frame: CGRect(x: labelX , y: 0, width: width - labelX, height: self.rowHeight_))
-//            label.textAlignment = .left
-//            if let d = displayStringFor_ {
-//                label.text = d(choices[row])
-//            } else {
-//                label.text = choices[row]
-//            }
-//            view.addSubview(label)
-//        } else {
-//            let label = UILabel(frame: CGRect(x: 0, y: 0, width: width , height: self.rowHeight_))
-//            label.textAlignment = .center
-//            if let d = displayStringFor_ {
-//                label.text = d(choices[row])
-//            } else {
-//                label.text = choices[row]
-//            }
-//            view.addSubview(label)
-//        }
-//        
-//        return view
-//    }
 
     public func pickerView(_ pickerView: UIPickerView,
                            rowHeightForComponent component: Int) -> CGFloat {

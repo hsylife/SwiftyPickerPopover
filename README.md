@@ -29,7 +29,7 @@ Replace ‘YourProjectTargetName’ with your own target name:
 platform :ios, '9.0'
 use_frameworks!
 target ‘YourProjectTargetName’ do
-pod 'SwiftyPickerPopover'
+pod 'SwiftyPickerPopover' :git => 'https://github.com/hsylife/SwiftyPickerPopover', :branch => 'swift4'
 end
 ```
 Run 'pod install'.

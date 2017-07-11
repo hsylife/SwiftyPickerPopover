@@ -41,7 +41,7 @@ open class AbstractPopover: NSObject {
     
     /// Set property
     ///
-    /// - Parameter color: color of arrow. It specify the color of viewController.backgroundColor
+    /// - Parameter color: color of arrow. Specify the color of viewController.backgroundColor
     /// - Returns: self
     open func setArrowColor(_ color:UIColor)->Self{
         self.backgroundColor = color
@@ -70,6 +70,8 @@ open class AbstractPopover: NSObject {
         navigationController.popoverPresentationController?.delegate = contentVC
         
         navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController.view.backgroundColor
+        
+        navigationController.navigationBar.tintColor = baseViewController.view.tintColor
         
         // presnet popover
         baseViewController.present(navigationController, animated: true, completion: completion)

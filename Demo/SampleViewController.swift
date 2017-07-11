@@ -42,9 +42,23 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
-
+        
     }
     
+    @IBAction func tappedStringPickerWithImageButton(_ sender: UIButton) {
+        /// StringPickerPopover with image:
+        let p = StringPickerPopover(title: "with image", choices: ["value 1","value 2",""])
+            .setImageNames(["imageIcon",nil,"thumbUpIcon"])
+            .setDoneButton(action: {
+                popover, selectedRow, selectedString in
+                print("done row \(selectedRow) \(selectedString)")
+            })
+            .setCancelButton(action: {v in
+                print("cancel") })
+        
+        p.appear(originView: sender, baseViewController: self)
+
+    }
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
         /// DatePickerPopover appears:
         DatePickerPopover(title: "DatePicker")
@@ -95,7 +109,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 popover.setSelectedTimeInterval(TimeInterval()).reload()
             })
             .appear(originView: sender, baseViewController: self)
-        
     }
     
     @IBAction func columnsString(_ sender: UIButton) {

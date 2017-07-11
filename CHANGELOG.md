@@ -1,3 +1,34 @@
+4.1.1 Release notes (2017-07-11)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+* Polish code of StringPickerPopover's attributedTitleForRow.
+
+### Bugfixes
+
+* None.
+
+
+4.1.0 Release notes (2017-07-09)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+* Add setRowHeight() to StringPickerPopover.
+* Add setImageNames() to StringPickerPopover to dispay image like UITableViewCell.
+
+### Bugfixes
+
+* None.
+
+
 4.0.1 Release notes (2017-05-17)
 =============================================================
 

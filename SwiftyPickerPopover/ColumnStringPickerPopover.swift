@@ -63,7 +63,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
         self.selectedRows_ = rows
         return self
     }
-
+    
     /// Set property
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.

@@ -23,11 +23,14 @@ A more convenient way to display a popover with a built-in picker, on iPhone/iPa
 MIT.
 
 ## Usage
-For installing it with CocoaPods, specify it in your 'Podfile':
+For installing it with CocoaPods, specify it in your 'Podfile'.
+Replace ‘YourProjectTargetName’ with your own target name:
 ```ruby
 platform :ios, '9.0'
 use_frameworks!
+target ‘YourProjectTargetName’ do
 pod 'SwiftyPickerPopover'
+end
 ```
 Run 'pod install'.
 
@@ -95,6 +98,14 @@ To display a popover with an UIDatePicker of countDownTimer style:
 ```
 
 ### Advanced
+To display a popover with an UIPickerView that allows users to choose a String type choice with image like UITableViewCell. After adding image files to your target's Assets.xcassets:
+```swift
+StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
+        .setImageNames(["Icon1",nil,"Icon3"])
+        .appear(originView: button, baseViewController: self)
+```
+<img src="README_resources/StringWithImage.jpeg" width="362">
+
 To display a DatePickerPopover has a clear button, which rewinds itself by tapping the button, and.which disappers automatically after a certain number of seconds:
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")

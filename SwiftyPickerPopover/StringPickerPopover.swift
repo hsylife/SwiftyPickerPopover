@@ -17,6 +17,7 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: - Properties
     
     var choices: [ItemType] = []
+    var imageNames_: [String?]?
     
     var displayStringFor_:((ItemType?)->String?)?
     var doneButton_: (title: String, action:((PopoverType, Int, ItemType)->Void)?) =
@@ -26,6 +27,8 @@ public class StringPickerPopover: AbstractPopover {
     
     var selectedRow_: Int = 0
 
+    var rowHeight_: CGFloat = 44.0
+    
     // MARK: - Initializer
 
     /// Initialize a Popover with the following arguments.
@@ -43,6 +46,11 @@ public class StringPickerPopover: AbstractPopover {
         
     }
 
+    public func setImageNames(_ imageNames:[String?]?)->Self{
+        self.imageNames_ = imageNames
+        return self
+    }
+    
     // MARK: - Propery setter
 
     /// Set property
@@ -54,6 +62,15 @@ public class StringPickerPopover: AbstractPopover {
         return self
     }
 
+    /// Set row height
+    ///
+    /// - Parameter height: Row height
+    /// - Returns: self
+    public func setRowHeight(_ height:CGFloat)->Self{
+        self.rowHeight_ = height
+        return self
+    }
+    
     /// Set property
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
@@ -106,6 +123,41 @@ extension StringPickerPopover: UIPickerViewDelegate {
             return d(choices[row])
         }
         return choices[row]
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let baseAtt = NSMutableAttributedString()
+        
+        if let imageNames = imageNames_{
+            if let name = imageNames[row], let image = UIImage(named: name){
+                
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = image
+                let imageAtt = NSAttributedString(attachment: imageAttachment)
+                baseAtt.append(imageAtt)
+                
+                let marginAtt = NSAttributedString(string: " ")
+                baseAtt.append(marginAtt)
+            }
+            else {
+                return nil
+            }
+        }
+        
+        var str:String?
+        if let d = displayStringFor_ {
+            str = d(choices[row])
+        }
+        
+        let stringAtt = NSAttributedString(string: str ?? choices[row])
+        baseAtt.append(stringAtt)
+        
+        return baseAtt
+    }
+
+    public func pickerView(_ pickerView: UIPickerView,
+                           rowHeightForComponent component: Int) -> CGFloat {
+        return rowHeight_
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

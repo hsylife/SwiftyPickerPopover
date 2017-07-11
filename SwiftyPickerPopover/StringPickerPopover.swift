@@ -129,26 +129,27 @@ extension StringPickerPopover: UIPickerViewDelegate {
         let baseAtt = NSMutableAttributedString()
         
         if let imageNames = imageNames_{
-            if let name = imageNames[row]{
+            if let name = imageNames[row], let image = UIImage(named: name){
+                
                 let imageAttachment = NSTextAttachment()
-                imageAttachment.image = UIImage(named: name)
+                imageAttachment.image = image
                 let imageAtt = NSAttributedString(attachment: imageAttachment)
                 baseAtt.append(imageAtt)
                 
                 let marginAtt = NSAttributedString(string: " ")
                 baseAtt.append(marginAtt)
             }
+            else {
+                return nil
+            }
         }
         
-        var str = ""
+        var str:String?
         if let d = displayStringFor_ {
-            str = d(choices[row]) ?? choices[row]
-        }
-        else {
-            str = choices[row]
+            str = d(choices[row])
         }
         
-        let stringAtt = NSAttributedString(string: str)
+        let stringAtt = NSAttributedString(string: str ?? choices[row])
         baseAtt.append(stringAtt)
         
         return baseAtt

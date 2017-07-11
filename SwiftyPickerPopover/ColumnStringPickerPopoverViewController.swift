@@ -31,10 +31,12 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         
         navigationItem.leftBarButtonItem = nil
         cancelButton.title = popover?.cancelButton_.title
+        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
         navigationItem.leftBarButtonItem = cancelButton
         
         navigationItem.rightBarButtonItem = nil
         doneButton.title = popover?.doneButton_.title
+        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
         navigationItem.rightBarButtonItem = doneButton
 
         if let selected = popover?.selectedRows_ {

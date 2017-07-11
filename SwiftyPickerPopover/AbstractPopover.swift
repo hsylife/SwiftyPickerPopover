@@ -22,6 +22,7 @@ open class AbstractPopover: NSObject {
     
     var contentViewController: AnyObject?
     var backgroundColor: UIColor?
+    var tintColor: UIColor?
     
     override public init(){
         //Get a string as stroyboard name from this class name.
@@ -71,7 +72,7 @@ open class AbstractPopover: NSObject {
         
         navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController.view.backgroundColor
         
-        navigationController.navigationBar.tintColor = baseViewController.view.tintColor
+        tintColor = baseViewController.view.tintColor
         
         // presnet popover
         baseViewController.present(navigationController, animated: true, completion: completion)

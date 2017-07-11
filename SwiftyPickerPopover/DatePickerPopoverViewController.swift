@@ -24,14 +24,17 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
         
         navigationItem.leftBarButtonItem = nil
         cancelButton.title = popover?.cancelButton_.title
+        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
         navigationItem.leftBarButtonItem = cancelButton
         
         navigationItem.rightBarButtonItem = nil
         doneButton.title = popover?.doneButton_.title
+        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
         navigationItem.rightBarButtonItem = doneButton
 
         clearButton.setTitle(popover?.clearButton_.title, for: .normal)
-        
+        clearButton.tintColor = popover?.clearButton_.color ?? popover?.tintColor
+
         if let _ = popover?.clearButton_.action { }
         else {
             clearButton.removeFromSuperview()

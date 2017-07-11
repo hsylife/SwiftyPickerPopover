@@ -36,7 +36,7 @@ Run 'pod install'.
 
 Instead, for installing it with Carthage, add it to your Cartfile:
 ```
-github "hsylife/SwiftyPickerPopover"
+github "hsylife/SwiftyPickerPopover" "swift4"
 ```
 Run 'carthage update --platform iOS'.
 

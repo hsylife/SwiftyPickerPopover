@@ -53,7 +53,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelButton(action: {v in
+            .setCancelButton(action: { _, _, _ in
                 print("cancel") })
         
         p.appear(originView: sender, baseViewController: self)

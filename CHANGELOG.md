@@ -1,3 +1,19 @@
+4.2.0 Release notes (2017-07-12)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+* Add color: to setDoneButton(), setCancelButton() and setClearButton().
+
+
+### Bugfixes
+
+* None.
+
+
 4.1.1 Release notes (2017-07-11)
 =============================================================
 

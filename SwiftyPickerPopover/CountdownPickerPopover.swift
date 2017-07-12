@@ -14,12 +14,12 @@ public class CountdownPickerPopover: AbstractPopover {
 
     // MARK: - Properties
 
-    var doneButton_: (title: String, action:((PopoverType, ItemType)->Void)?) =
-        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
-    var cancelButton_: (title: String, action:((PopoverType, ItemType)->Void)?) =
-        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
-    var clearButton_: (title: String, action:((PopoverType, ItemType)->Void)?) =
-        (NSLocalizedString("Clear", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil)
+    var doneButton_: (title: String, color:UIColor?, action:((PopoverType, ItemType)->Void)?) =
+        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil, nil)
+    var cancelButton_: (title: String, color:UIColor?, action:((PopoverType, ItemType)->Void)?) =
+        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil, nil)
+    var clearButton_: (title: String, color:UIColor?,action:((PopoverType, ItemType)->Void)?) =
+        (NSLocalizedString("Clear", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil, nil)
 
     // selected value
     var selectedTimeInterval_:ItemType = ItemType()
@@ -47,37 +47,53 @@ public class CountdownPickerPopover: AbstractPopover {
         return self
     }
 
+    /// Set Done button properties.
+    ///
     /// - Parameters:
-    ///   - title: Title for the bar button item
+    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setDoneButton(title:String? = nil, action:((PopoverType, ItemType)->Void)?)->Self{
+    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, ItemType)->Void)?)->Self{
         if let t = title{
             self.doneButton_.title = t
+        }
+        if let c = color{
+            self.doneButton_.color = c
         }
         self.doneButton_.action = action
         return self
     }
     
+    /// Set Cancel button properties.
+    ///
     /// - Parameters:
-    ///   - title: Title for the bar button item
+    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, action:((PopoverType, ItemType)->Void)?)->Self{
+    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, ItemType)->Void)?)->Self{
         if let t = title{
             self.cancelButton_.title = t
+        }
+        if let c = color{
+            self.cancelButton_.color = c
         }
         self.cancelButton_.action = action
         return self
     }
     
     /// - Parameters:
-    ///   - title: Title for the bar button item
+    ///   - title: Title for the button
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - completion: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setClearButton(title:String? = nil, action:((PopoverType, ItemType)->Void)?)->Self{
+    public func setClearButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, ItemType)->Void)?)->Self{
         if let t = title{
             self.clearButton_.title = t
+        }
+        if let c = color{
+            self.clearButton_.color = c
         }
         self.clearButton_.action = action
         return self

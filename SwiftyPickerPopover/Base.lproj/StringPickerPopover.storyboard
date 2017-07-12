@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,9 +14,11 @@
                 <navigationController id="Vlu-nf-qJc" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="320"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bbG-aM-kwI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="pEv-eJ-a7K" kind="relationship" relationship="rootViewController" id="Qf2-lE-d36"/>
@@ -36,11 +37,11 @@
                         <viewControllerLayoutGuide type="bottom" id="tOz-Gm-pij"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cBE-9P-52d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,7 +55,7 @@
                     <navigationItem key="navigationItem" title="Title" id="0qf-St-WhE">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="a1u-Fu-SLI">
                             <connections>
-                                <action selector="tappedCancel:" destination="pEv-eJ-a7K" id="aK0-eV-0SS"/>
+                                <action selector="tappedCancel:" destination="pEv-eJ-a7K" id="1Ja-ND-Ob3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="NGv-xi-ME4" userLabel="Done Button">
@@ -65,8 +66,9 @@
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
                     <connections>
-                        <outlet property="cancelButton" destination="a1u-Fu-SLI" id="4yf-Jq-G2E"/>
+                        <outlet property="cancelButton" destination="a1u-Fu-SLI" id="pCt-rp-fSc"/>
                         <outlet property="doneButton" destination="NGv-xi-ME4" id="PQL-FR-PK6"/>
                         <outlet property="picker" destination="tJe-Py-ArN" id="0ed-HW-3nL"/>
                     </connections>

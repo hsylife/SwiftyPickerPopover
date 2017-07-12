@@ -25,9 +25,11 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         title = popover?.title
         
         cancelButton.title = popover?.cancelButton_.title
+        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
         navigationItem.leftBarButtonItem = cancelButton
         
         doneButton.title = popover?.doneButton_.title
+        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
         navigationItem.rightBarButtonItem = doneButton
         
         if let select = popover?.selectedRow_ {

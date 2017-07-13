@@ -45,13 +45,14 @@ On Xcode, import the module:
 import SwiftyPickerPopover
 ```
 ### Basic
+#### UIDatePicker appears
 To display a popover with an UIDatePicker, the code looks like this:
 ```swift
 DatePickerPopover(title: "DatePicker")
             .appear(originView: sender, baseViewController: self)
 ```
-
-To specify more arguments:
+#### more arguments
+You can specify more arguments like this:
 ```swift
 DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
@@ -61,6 +62,7 @@ DatePickerPopover(title: "DatePicker")
             .appear(originView: sender, baseViewController: self)
 ```
 
+#### StringPicker
 To display a popover with an UIPickerView that allows users to choose a String type choice:
 ```swift
 StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
@@ -73,6 +75,7 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
         .appear(originView: button, baseViewController: self)
 ```
 
+#### multiple columns
 To display a popover with an UIPickerView of multiple columns:
 ```swift
 ColumnStringPickerPopover(title: "Columns Strings",
@@ -85,6 +88,7 @@ ColumnStringPickerPopover(title: "Columns Strings",
 )
 ```
 
+#### countDownTimer
 To display a popover with an UIDatePicker of countDownTimer style:
 ```swift
  CountdownPickerPopover(title: "CountdownPicker")
@@ -98,6 +102,8 @@ To display a popover with an UIDatePicker of countDownTimer style:
 ```
 
 ### Advanced
+#### With images
+StringPickerPopover can have images.
 To display a popover with an UIPickerView that allows users to choose a String type choice with image like UITableViewCell. After adding image files to your target's Assets.xcassets:
 ```swift
 StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
@@ -106,7 +112,8 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
 ```
 <img src="README_resources/StringWithImage.jpeg" width="362">
 
-To display a DatePickerPopover has a clear button, which rewinds itself by tapping the button, and.which disappers automatically after a certain number of seconds:
+#### Clearable DatePicker
+To display a DatePickerPopover has a clear button, which rewinds itself by tapping the button. And it disappers automatically after a certain number of seconds:
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
@@ -120,7 +127,7 @@ let p = DatePickerPopover(title: "Clearable DatePicker")
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0)
 ```
-
+#### Time interval
 To display a DatePickerPopover of .time style with a time interval of 5 mins and the arrow only to .down direction permitted:
 ```swift
 DatePickerPopover(title: "DatePicker .time 5minInt.")
@@ -133,6 +140,8 @@ DatePickerPopover(title: "DatePicker .time 5minInt.")
 )
 ```
 
+#### displayStringFor
+It can separate the screen values from the original values.
 To display a StringPickerPopover which can prepare a choice string for display on picker separately from a source string:
 ```swift
 let displayStringFor:((String?)->String?)? = { string in
@@ -165,6 +174,18 @@ let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2"
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
 ```
 
+#### Resize popover
+A StringPickerPopover with narrower width appears:
+```swift
+StringPickerPopover(title: "Narrow StringPicker", choices: ["value 1","value 2","value 3"])
+            .setSize(width: 250.0)
+            .appear(originView: sender, baseViewController: self)
+```
+The default width and height of popover are both 300.0.
+By using .setSize(width:, height:), we can override it or them.
+When you set nil to the parameter or don't specify it, the default will be used.
+
+#### With collectionView cell
 A StringPickerPopover appears from the collectionView's cell:
 ```swift
 func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -181,7 +202,8 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
     }
 ```
 
-If originView has no superview, then you need to set baseViewWhenOriginViewHasNoSuperview as above to specify sourceView for the position of the arrow. If it has the superview, then SwiftyPickerPopover automatically use it as the sourceView.
+If originView has no superView, then then you need to set baseViewWhenOriginViewHasNoSuperview as above to specify sourceView for the position for the arrow.
+If it has the superview, then SwiftyPickerPopover automatically use it for the sourceView.
 
 ## Customize
 ### How do I customize or localize a popover's storyboard?

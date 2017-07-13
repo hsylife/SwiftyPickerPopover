@@ -21,6 +21,17 @@ open class AbstractPickerPopoverViewController: UIViewController {
     /// Make the popover property reflect on the popover
     func refrectPopoverProperties(){
         title = (anyPopover as? AbstractPopover)?.title
+        
+        // Set size
+        if var size = navigationController?.preferredContentSize {
+            if let w = (anyPopover as? AbstractPopover)?.size?.width {
+                size.width = w
+            }
+            if let h = (anyPopover as? AbstractPopover)?.size?.height {
+                size.height = h
+            }
+            navigationController?.preferredContentSize = size
+        }
     }
 }
 

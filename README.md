@@ -176,12 +176,12 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
                         .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in print("done row \(selectedRow) \(selectedString)") })
                         .setCancelButton(title:"🗑", action: { (popover, selectedRow, selectedString) in print("cancel")} )
         
-        p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
+        p.appear(originView: theCell, baseViewWhenOriginViewHasNoSuperview collectionView, baseViewController: self)
         
     }
 ```
 
-If originView.superView != baseViewController.view, then we need to set baseView: as above to specify the position for the arrow.
+If originView has no superView, then then you need to set baseViewWhenOriginViewHasNoSuperview as above to specify sourceView for the position for the arrow. If it has the superview, then SwiftyPickerPopover automatically use it for the sourceView.
 
 ## Customize
 ### How do I customize or localize a popover's storyboard?

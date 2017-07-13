@@ -27,7 +27,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     }
     
     override func refrectPopoverProperties(){
-        title = popover?.title
+        super.refrectPopoverProperties()
         
         cancelButton.title = popover?.cancelButton_.title
         cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor

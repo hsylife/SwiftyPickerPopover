@@ -1,3 +1,18 @@
+5.1.0 Release notes (2017-07-14)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+* Add setSize() to resize popover.
+
+### Bugfixes
+
+* None.
+
+
 5.0.0 Release notes (2017-07-13)
 =============================================================
 

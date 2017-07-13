@@ -23,6 +23,7 @@ open class AbstractPopover: NSObject {
     var contentViewController: AnyObject?
     var backgroundColor: UIColor?
     var tintColor: UIColor?
+    var size:(width: CGFloat?, height: CGFloat?)?
     
     override public init(){
         //Get a string as stroyboard name from this class name.
@@ -49,6 +50,17 @@ open class AbstractPopover: NSObject {
         return self
     }
 
+    /// Set popover size
+    ///
+    /// - Parameters:
+    ///   - width: Wanting width. Omissible. If it is nil or not specified, then no value will override it.
+    ///   - height: Wanting height.
+    /// - Returns: Self
+    open func setSize(width: CGFloat? = nil, height: CGFloat? = nil)->Self{
+        self.size = (width: width, height: height)
+        return self
+    }
+    
     // MARK: - Popover display
     
     /// The popover appears.

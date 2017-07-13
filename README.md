@@ -181,7 +181,7 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
     }
 ```
 
-If originView has no superView, then then you need to set baseViewWhenOriginViewHasNoSuperview as above to specify sourceView for the position for the arrow. If it has the superview, then SwiftyPickerPopover automatically use it for the sourceView.
+If originView has no superview, then you need to set baseViewWhenOriginViewHasNoSuperview as above to specify sourceView for the position of the arrow. If it has the superview, then SwiftyPickerPopover automatically use it as the sourceView.
 
 ## Customize
 ### How do I customize or localize a popover's storyboard?

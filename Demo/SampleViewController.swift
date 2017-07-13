@@ -143,7 +143,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         })
         .setCancelButton(title:"👎", action: { _,_,_ in print("cancel")} )
         
-        p.appear(originView: theCell, baseView: collectionView, baseViewController: self)
+        p.appear(originView: theCell, baseViewWhenOriginViewHasNoSuperview: collectionView, baseViewController: self)
         
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {

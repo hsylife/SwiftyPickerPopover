@@ -55,16 +55,16 @@ open class AbstractPopover: NSObject {
     ///
     /// - Parameter
     ///   - originView: The view to be the origin point where the popover appears.
-    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewWhenOriginViewHasNoSuperview: SourceView of popoverPresentationController. Omissible. This view will be used instead of originView.superView when it is nil.
     ///   - baseViewController: The base viewController
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
-    open func appear(originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil){
+    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil){
 
         self.baseViewController = baseViewController
         
         // create navigationController
-        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections_ ) else { return }
+        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections_ ) else { return }
         
         // configure StringPickerPopoverViewController
         let contentVC = configureContentViewController(navigationController: navigationController)
@@ -136,11 +136,11 @@ open class AbstractPopover: NSObject {
     /// - Parameters:
     ///   - storyboardName: Storyboard name
     ///   - originView: The view to be the origin point where the popover appears.
-    ///   - baseView: SourceView of popoverPresentationController. Omissible.
+    ///   - baseViewWhenOriginViewHasNoSuperview: SourceView of popoverPresentationController. Omissible.
     ///   - baseViewController: The base viewController
     ///   - permittedArrowDirections: The default value is .any. Omissible.
     /// - Returns: The configured navigationController.
-    open func configureNavigationController(storyboardName: String, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
+    open func configureNavigationController(storyboardName: String, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
         var bundle:Bundle
         if let _ = Bundle.main.path(forResource: storyboardName, ofType: "storyboardc"){
             bundle = Bundle.main
@@ -154,15 +154,15 @@ open class AbstractPopover: NSObject {
             return nil
         }
         
-        return self.configureNavigationController(navigationController: navigationController, originView: originView, baseView: baseView, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
+        return self.configureNavigationController(navigationController: navigationController, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
     }
 	
-	fileprivate func configureNavigationController(navigationController: UINavigationController, originView: UIView, baseView: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController? {
+	fileprivate func configureNavigationController(navigationController: UINavigationController, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController? {
 		// define using popover
 		navigationController.modalPresentationStyle = .popover
 		
 		// origin
-		navigationController.popoverPresentationController?.sourceView = baseView ?? baseViewController.view
+		navigationController.popoverPresentationController?.sourceView = originView.superview ?? baseViewWhenOriginViewHasNoSuperview ?? baseViewController.view
 		navigationController.popoverPresentationController?.sourceRect = originView.frame
 		
 		// direction of arrow

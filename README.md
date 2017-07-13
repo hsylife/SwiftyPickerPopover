@@ -180,6 +180,9 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         
     }
 ```
+.appear(originView: sender, baseView: stackView ,baseViewController: self) }
+
+If originView.superView != baseViewController.view, then we need to set baseView: as above to specify the position for the arrow.
 
 ## Customize
 ### How do I customize or localize a popover's storyboard?

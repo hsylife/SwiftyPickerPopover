@@ -1,3 +1,18 @@
+5.0.0 Release notes (2017-07-13)
+=============================================================
+
+### API Breaking Changes
+
+* Rename baseView: to baseViewWhenOriginViewHasNoSuperview: of AbstractPopover's appear(), configureNavigationController() and configureNavigationController().
+
+### Enhancements
+* When the originView has its superview, you no longer need to set baseView:, which has been renamed to baseViewWhenOriginViewHasNoSuperview:.
+
+### Bugfixes
+
+* None.
+
+
 4.2.0 Release notes (2017-07-12)
 =============================================================
 

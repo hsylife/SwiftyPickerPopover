@@ -38,7 +38,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
-        
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
         
@@ -48,6 +47,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         /// StringPickerPopover with image:
         let p = StringPickerPopover(title: "with image", choices: ["value 1","value 2",""])
             .setImageNames(["imageIcon",nil,"thumbUpIcon"])
+            .setSize(width: 280.0)
             .setDoneButton(color: UIColor.red, action: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")

@@ -20,7 +20,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     var hideClearButton: Bool = false
     
     override func refrectPopoverProperties(){
-        title = popover?.title
+        super.refrectPopoverProperties()
         
         navigationItem.leftBarButtonItem = nil
         cancelButton.title = popover?.cancelButton_.title

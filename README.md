@@ -165,6 +165,14 @@ let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2"
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
 ```
 
+A StringPickerPopover appears with narrower width:
+```swift
+StringPickerPopover(title: "Narrow StringPicker", choices: ["value 1","value 2","value 3"])
+            .setSize(width: 250.0)
+            .appear(originView: sender, baseViewController: self)
+```
+The default width and height of popover are both 300.0. By using .setSize(width:,height:), we can override it or them. When you set nil to the parameter or don't specify it, the default will be used.
+
 A StringPickerPopover appears from the collectionView's cell:
 ```swift
 func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

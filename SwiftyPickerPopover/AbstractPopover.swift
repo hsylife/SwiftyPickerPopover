@@ -124,7 +124,9 @@ open class AbstractPopover: NSObject {
         
         disappearAutomaticallyItems.dispatchWorkItem?.cancel()
         disappearAutomaticallyItems.dispatchWorkItem = DispatchQueue.main.cancelableAsyncAfter(deadline: .now() + seconds) {
-            self.baseViewController?.dismiss(animated: false, completion: completion)
+            if let _ = self.contentViewController {
+                self.baseViewController?.dismiss(animated: false, completion: completion)
+            }
             self.disappearAutomaticallyItems = (nil,nil,nil)
         }
     }

@@ -1,3 +1,20 @@
+5.1.1 Release notes (2017-07-22)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+* None
+
+### Bugfixes
+
+* Fix circular reference.
+* Fix that popover size cannot be set correctly when tapping clear button.
+* Fix that another popover will unintentionally disapper after the specified time when executing disappearAutomatically().
+
+
 5.1.0 Release notes (2017-07-14)
 =============================================================
 

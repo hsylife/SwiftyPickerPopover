@@ -15,12 +15,12 @@ open class AbstractPopover: NSObject {
 
     var title: String?
     
-    var baseViewController: UIViewController = UIViewController()
+    weak var baseViewController: UIViewController? = UIViewController()
     var permittedArrowDirections_:UIPopoverArrowDirection = .any
     
     var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
     
-    var contentViewController: AnyObject?
+    weak var contentViewController: AnyObject?
     var backgroundColor: UIColor?
     var tintColor: UIColor?
     var size:(width: CGFloat?, height: CGFloat?)?
@@ -82,7 +82,7 @@ open class AbstractPopover: NSObject {
         let contentVC = configureContentViewController(navigationController: navigationController)
         navigationController.popoverPresentationController?.delegate = contentVC
         
-        navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController.view.backgroundColor
+        navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController?.view.backgroundColor
         
         tintColor = baseViewController.view.tintColor
         
@@ -108,7 +108,7 @@ open class AbstractPopover: NSObject {
     ///
     /// - Parameter completion: Action to be performed after the popover disappeared. Omissible.
     open func disappear(completion:(()->Void)? = nil){
-        self.baseViewController.dismiss(animated: false, completion: completion)
+        self.baseViewController?.dismiss(animated: false, completion: completion)
     }
     
     /// The popover automatically disappears after the arbitrary number of seconds.
@@ -124,7 +124,9 @@ open class AbstractPopover: NSObject {
         
         disappearAutomaticallyItems.dispatchWorkItem?.cancel()
         disappearAutomaticallyItems.dispatchWorkItem = DispatchQueue.main.cancelableAsyncAfter(deadline: .now() + seconds) {
-            self.baseViewController.dismiss(animated: false, completion: completion)
+            if let _ = self.contentViewController {
+                self.baseViewController?.dismiss(animated: false, completion: completion)
+            }
             self.disappearAutomaticallyItems = (nil,nil,nil)
         }
     }

@@ -22,15 +22,13 @@ open class AbstractPickerPopoverViewController: UIViewController {
     func refrectPopoverProperties(){
         title = (anyPopover as? AbstractPopover)?.title
         
-        // Set size
-        if var size = navigationController?.preferredContentSize {
-            if let w = (anyPopover as? AbstractPopover)?.size?.width {
-                size.width = w
-            }
-            if let h = (anyPopover as? AbstractPopover)?.size?.height {
-                size.height = h
-            }
-            navigationController?.preferredContentSize = size
+        // Change size if needed
+        if let w = (anyPopover as? AbstractPopover)?.size?.width {
+            navigationController?.preferredContentSize.width = w
+        }
+
+        if let h = (anyPopover as? AbstractPopover)?.size?.height {
+            navigationController?.preferredContentSize.height = h
         }
     }
 }

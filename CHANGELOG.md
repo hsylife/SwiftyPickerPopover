@@ -1,3 +1,18 @@
+5.1.2 Release notes (2017-07-23)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+* Improve the layout of SampleViewController
+
+### Bugfixes
+
+* None
+
+
 5.1.1 Release notes (2017-07-22)
 =============================================================
 

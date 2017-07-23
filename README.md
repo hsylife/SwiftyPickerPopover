@@ -149,7 +149,7 @@ StringPickerPopover(title: "Narrow StringPicker", choices: ["value 1","value 2",
             .appear(originView: sender, baseViewController: self)
 ```
 The default width and height of popover are both 300.0.
-By using .setSize(width:, height:), we can override it or them.
+By using setSize(width:, height:), you can override it or them.
 When you set nil to the parameter or don't specify it, the default will be used.
 
 It appears from the collectionView's cell:

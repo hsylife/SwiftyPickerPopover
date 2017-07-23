@@ -12,7 +12,7 @@ A more convenient way to display a popover with a built-in picker, on iPhone/iPa
 - Callback
 - Swift 4 version is available [here](https://github.com/hsylife/SwiftyPickerPopover/tree/swift4).
 ## Screenshots
-<img src="README_resources/SwiftyPickerPopover_movie.gif" width="154">
+<img src="README_resources/SwiftyPickerPopover_movie.gif" width="308">
 
 ## Required
 - Swift 3, Xcode 8.

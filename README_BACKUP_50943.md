@@ -8,6 +8,7 @@ A more convenient way to display a popover with a built-in picker, on iPhone/iPa
 
 ## Features
 - By simple code, you can display a popover that contains a built-in picker, on iPhone or iPad.
+- Swift 3, iOS9+. UIPopoverController free. 
 - Callback
 - Swift 4 version is available [here](https://github.com/hsylife/SwiftyPickerPopover/tree/swift4).
 ## Screenshots

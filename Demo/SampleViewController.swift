@@ -136,7 +136,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
         //StringPickerPopover appears from the cell of collectionView.
-        let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
+        let p = StringPickerPopover(title: "Cell "+(indexPath as NSIndexPath).row.description, choices: ["value 1","value 2","value 3"])
         .setSelectedRow(1)
         .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
@@ -151,7 +151,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
 
     

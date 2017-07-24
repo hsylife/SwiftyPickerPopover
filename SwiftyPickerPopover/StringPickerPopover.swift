@@ -46,7 +46,6 @@ public class StringPickerPopover: AbstractPopover {
     ///   - title: Title for navigation bar.
     ///   - choices: Options for picker.
     public init(title: String?, choices:[ItemType]){
-        
         super.init()
         
         // Set parameters
@@ -55,16 +54,16 @@ public class StringPickerPopover: AbstractPopover {
         
     }
 
+    // MARK: - Propery setter
+
     /// Set image names
     ///
-    /// - Parameter imageNames: Array of image name to attach to a choice
+    /// - Parameter imageNames: String Array of image name to attach to a choice
     /// - Returns: Self
     public func setImageNames(_ imageNames:[String?]?)->Self{
         self.imageNames_ = imageNames
         return self
     }
-    
-    // MARK: - Propery setter
 
     /// Set selected row
     ///
@@ -116,7 +115,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
-    ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value. Omissble.
+    ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{

@@ -10,27 +10,36 @@
 
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
+//  Modified by Yuta Hoshino on 2017/07/24. 
 
+/// ColumnStringPickerPopover has an UIPickerView of multiple columns.
 public class ColumnStringPickerPopover: AbstractPopover {
     
     // MARK: Types
     
+    /// Type of choice value
     public typealias ItemType = String
+    /// Popover type. It is also used as the storyboard name.
     public typealias PopoverType = ColumnStringPickerPopover
-    
+    /// Action type for buttons
+    public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
+
     // MARK: - Properties
 
+    /// Choice array. Nest.
     var choices: [[ItemType]] = [[]]
+    /// Selected rows
     var selectedRows_: [Int] = [Int]()
+    /// Column ratio
     var columnPercents_: [Float] = [Float]()
-    
+    /// Font size
     var fontSize_: CGFloat = 12.0
+    
+    /// Convert a raw value to the string for displaying it
     var displayStringFor_: ((ItemType?)->String?)?
     
-    var doneButton_: (title: String, color:UIColor?, action:((PopoverType, [Int], [ItemType])->Void)?) =
-        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil,nil)
-    var cancelButton_: (title: String, color:UIColor?, action:((PopoverType, [Int], [ItemType])->Void)?) =
-        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil,nil)
+    var doneButton_: (title: String, color:UIColor?, action:ActionHandlerType?) = ("Done".localized(bundle: Bundle(for: PopoverType.self)), nil, nil)
+    var cancelButton_: (title: String, color:UIColor?, action:ActionHandlerType?) = ("Cancel".localized(bundle: Bundle(for: PopoverType.self)), nil, nil)
 
     // MARK: - Initializer
     
@@ -42,10 +51,9 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - selectedRow: Selected rows of picker.
     ///   - columnPercent: Rate of each column of picker
     public init(title: String?, choices:[[ItemType]], selectedRows:[Int], columnPercents:[Float]){
-        
         super.init()
         
-        // set parameters
+        // Set parameters
         self.title = title
         self.choices = choices
         self.selectedRows_ = selectedRows
@@ -54,32 +62,32 @@ public class ColumnStringPickerPopover: AbstractPopover {
 
     // MARK: - Propery setter
     
-    /// Set property
+    /// Set selected rows
     ///
-    /// - Parameter row: Selected rows of picker.
-    /// - Returns: self
+    /// - Parameter row: Selected rows of picker
+    /// - Returns: Self
     public func setSelectedRows(_ rows:[Int])->Self{
         self.selectedRows_ = rows
         return self
     }
     
-    /// Set DisplayString
+    /// Set displayStringFor closures
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
-    /// - Returns: self
+    /// - Returns: Self
     public func setDisplayStringFor(_ displayStringFor:((ItemType?)->String?)?)->Self{
         self.displayStringFor_ = displayStringFor
         return self
     }
 
-    /// Set Done button properties.
+    /// Set done button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, [Int], [ItemType])->Void)?)->Self{
+    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             self.doneButton_.title = t
         }
@@ -90,14 +98,14 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set Cancel button properties.
+    /// Set cancel button properties.
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, [Int], [ItemType])->Void)?)->Self{
+    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             self.cancelButton_.title = t
         }
@@ -108,10 +116,10 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
 
-    /// Set property
+    /// Set font size
     ///
-    /// - Parameter fontSize: Font size of picker
-    /// - Returns: self
+    /// - Parameter fontSize: Font size on picker
+    /// - Returns: Self
     public func setFontSize(_ fontSize:CGFloat)->Self{
         self.fontSize_ = fontSize
         return self

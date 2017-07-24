@@ -13,7 +13,7 @@ public class StringPickerPopover: AbstractPopover {
     
     /// Type of choice value
     public typealias ItemType = String
-    /// Popover type. It is also used as the storyboard name.
+    /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
     public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void

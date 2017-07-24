@@ -10,7 +10,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
 
     // MARK: Types
     
-    /// Popover type. It is also used as the storyboard name.
+    /// Popover type
     typealias PopoverType = StringPickerPopover
     
     // MARK: Properties

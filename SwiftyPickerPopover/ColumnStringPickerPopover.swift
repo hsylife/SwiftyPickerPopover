@@ -17,7 +17,6 @@ public class ColumnStringPickerPopover: AbstractPopover {
     
     public typealias ItemType = String
     public typealias PopoverType = ColumnStringPickerPopover
-    public typealias PickerPopoverViewControllerType = ColumnStringPickerPopoverViewController
     
     // MARK: - Properties
 

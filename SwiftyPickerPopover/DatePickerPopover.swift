@@ -12,7 +12,6 @@ public class DatePickerPopover: AbstractPopover {
     
     public typealias ItemType = Date
     public typealias PopoverType = DatePickerPopover
-    public typealias PickerPopoverViewControllerType = DatePickerPopoverViewController
 
     // MARK: - Properties
 

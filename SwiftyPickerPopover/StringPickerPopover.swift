@@ -12,7 +12,6 @@ public class StringPickerPopover: AbstractPopover {
     
     public typealias ItemType = String
     public typealias PopoverType = StringPickerPopover
-    public typealias PickerPopoverViewControllerType = StringPickerPopoverViewController
     
     // MARK: - Properties
     

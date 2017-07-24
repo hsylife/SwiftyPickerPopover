@@ -10,7 +10,6 @@ public class CountdownPickerPopover: AbstractPopover {
     // MARK: Types
     public typealias ItemType = TimeInterval
     public typealias PopoverType = CountdownPickerPopover
-    public typealias PickerPopoverViewControllerType = CountdownPickerPopoverViewController
 
     // MARK: - Properties
 

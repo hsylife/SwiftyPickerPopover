@@ -6,22 +6,30 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
+/// StringPickerPopover has an UIPickerView that allows user to choose a String type choice.
 public class StringPickerPopover: AbstractPopover {
 
     // MARK: Types
     
+    /// Type of choice value
     public typealias ItemType = String
+    /// Popover type. It is also used as the storyboard name.
     public typealias PopoverType = StringPickerPopover
+    /// Action type for buttons
+    public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void
     
     // MARK: - Properties
     
+    /// Choice array
     var choices: [ItemType] = []
+    /// Array of image name to attach to a choice
     var imageNames_: [String?]?
     
+    /// Convert a raw value to the string for displaying it
     var displayStringFor_:((ItemType?)->String?)?
-    var doneButton_: (title: String, color:UIColor?, action:((PopoverType, Int, ItemType)->Void)?) =
+    var doneButton_: (title: String, color:UIColor?, action:ActionHandlerType?) =
         (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil, nil)
-    var cancelButton_: (title: String, color:UIColor?, action:((PopoverType, Int, ItemType)->Void)?) =
+    var cancelButton_: (title: String, color:UIColor?, action:ActionHandlerType?) =
         (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil ,nil)
     
     var selectedRow_: Int = 0
@@ -84,9 +92,9 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
-    ///   - action: Action to be performed before the popover disappeared.
+    ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
     /// - Returns: Self
-    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, Int, ItemType)->Void)?)->Self{
+    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             self.doneButton_.title = t
         }
@@ -102,9 +110,9 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
-    ///   - action: Action to be performed before the popover disappeared.
+    ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value. Omissble.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, Int, ItemType)->Void)?)->Self{
+    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             self.cancelButton_.title = t
         }

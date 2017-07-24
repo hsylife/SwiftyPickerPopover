@@ -109,7 +109,6 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
 
-    
     /// Set property
     ///
     /// - Parameter fontSize: Font size of picker

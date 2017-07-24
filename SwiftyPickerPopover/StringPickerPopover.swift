@@ -27,13 +27,15 @@ public class StringPickerPopover: AbstractPopover {
     
     /// Convert a raw value to the string for displaying it
     var displayStringFor_:((ItemType?)->String?)?
-    var doneButton_: (title: String, color:UIColor?, action:ActionHandlerType?) =
-        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil, nil)
-    var cancelButton_: (title: String, color:UIColor?, action:ActionHandlerType?) =
-        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil ,nil)
+    /// Done button parameters
+    var doneButton_: (title: String, color:UIColor?, action:ActionHandlerType?) = ("Done".localized(bundle: Bundle(for: PopoverType.self)), nil, nil)
+    /// Cancel button parameters
+    var cancelButton_: (title: String, color:UIColor?, action:ActionHandlerType?) = ("Cancel".localized(bundle: Bundle(for: PopoverType.self)), nil, nil)
     
+    /// Selected row
     var selectedRow_: Int = 0
 
+    /// Row height
     var rowHeight_: CGFloat = 44.0
     
     // MARK: - Initializer
@@ -47,12 +49,16 @@ public class StringPickerPopover: AbstractPopover {
         
         super.init()
         
-        // set parameters
+        // Set parameters
         self.title = title
         self.choices = choices
         
     }
 
+    /// Set image names
+    ///
+    /// - Parameter imageNames: Array of image name to attach to a choice
+    /// - Returns: Self
     public func setImageNames(_ imageNames:[String?]?)->Self{
         self.imageNames_ = imageNames
         return self
@@ -60,10 +66,10 @@ public class StringPickerPopover: AbstractPopover {
     
     // MARK: - Propery setter
 
-    /// Set property
+    /// Set selected row
     ///
-    /// - Parameter row: Selected row of picker.
-    /// - Returns: self
+    /// - Parameter row: Selected row on picker
+    /// - Returns: Self
     public func setSelectedRow(_ row:Int)->Self{
         self.selectedRow_ = row
         return self
@@ -72,22 +78,22 @@ public class StringPickerPopover: AbstractPopover {
     /// Set row height
     ///
     /// - Parameter height: Row height
-    /// - Returns: self
+    /// - Returns: Self
     public func setRowHeight(_ height:CGFloat)->Self{
         self.rowHeight_ = height
         return self
     }
     
-    /// Set DisplayString
+    /// Set displayStringFor closure
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
-    /// - Returns: self
+    /// - Returns: Self
     public func setDisplayStringFor(_ displayStringFor:((ItemType?)->String?)?)->Self{
         self.displayStringFor_ = displayStringFor
         return self
     }
     
-    /// Set Done button properties.
+    /// Set done button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
@@ -105,7 +111,7 @@ public class StringPickerPopover: AbstractPopover {
         return self
     }
 
-    /// Set Cancel button properties.
+    /// Set cancel button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.

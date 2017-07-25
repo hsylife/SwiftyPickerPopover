@@ -200,6 +200,7 @@ ColumnStringPickerPopover(title: "Columns Strings",
 * setMinimumDate()
 * setMaximumDate()
 * setMinuteInterval()
+* setLocale()
 * setDoneButton(title:, color:, action:)
 * setCancelButton(title:, color:, action:)
 * setClearButton(title:, color:, action:)

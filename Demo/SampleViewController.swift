@@ -71,6 +71,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
         /// DatePickerPopover appears:
         let p = DatePickerPopover(title: "Clearable DatePicker")
+            .setLocale(identifier: "en_GB") //en_GB is dd-MM-YYYY. en_US is MM-dd-YYYY. They are both in English.
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
             .setCancelButton(action: { _, _ in print("cancel")})
             .setClearButton(action: { popover, selectedDate in

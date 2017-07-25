@@ -38,6 +38,8 @@ public class DatePickerPopover: AbstractPopover {
     /// Selected date
     var selectedDate_: ItemType = ItemType()
 
+    var locale_: Locale = Locale.current
+    
     // MARK: - Initializer
     
     /// Initialize a Popover with the following argument.
@@ -48,6 +50,8 @@ public class DatePickerPopover: AbstractPopover {
         
         // set parameters
         self.title = title
+        
+        
     }
     
     // MARK: - Propery setter
@@ -97,6 +101,24 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
     
+    /// Set locale
+    ///
+    /// - Parameter localeIdentifier: The locale identifier which is used for display date picker
+    /// - Returns: Self
+    public func setLocale(identifier localeIdentifier:String)->Self{
+        let locale = Locale(identifier: localeIdentifier)
+        return setLocale(locale)
+    }
+    
+    /// Set locale
+    ///
+    /// - Parameter locale: Locale which is used for display date picker
+    /// - Returns: Self
+    public func setLocale(_ locale:Locale)->Self{
+        self.locale_ = locale
+        return self
+    }
+
     /// Set Done button properties
     ///
     /// - Parameters:

@@ -6,27 +6,41 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
+/// StringPickerPopover has an UIPickerView that allows user to choose a String type choice.
 public class StringPickerPopover: AbstractPopover {
 
     // MARK: Types
     
+    /// Type of choice value
     public typealias ItemType = String
+    /// Popover type
     public typealias PopoverType = StringPickerPopover
-    public typealias PickerPopoverViewControllerType = StringPickerPopoverViewController
-    
+    /// Action type for buttons
+    public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void
+    /// Button parameters type
+    public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
+    /// Type of the rule closure to convert from a raw value to the display string
+    public typealias DisplayStringForType = ((ItemType?)->String?)
+
     // MARK: - Properties
     
+    /// Choice array
     var choices: [ItemType] = []
+    /// Array of image name to attach to a choice
     var imageNames_: [String?]?
     
-    var displayStringFor_:((ItemType?)->String?)?
-    var doneButton_: (title: String, color:UIColor?, action:((PopoverType, Int, ItemType)->Void)?) =
-        (NSLocalizedString("Done", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil, nil)
-    var cancelButton_: (title: String, color:UIColor?, action:((PopoverType, Int, ItemType)->Void)?) =
-        (NSLocalizedString("Cancel", tableName: nil, bundle: Bundle(for: PopoverType.self), value: "", comment: ""), nil ,nil)
+    /// Convert a raw value to the string for displaying it
+    var displayStringFor_:DisplayStringForType?
     
+    /// Done button parameters
+    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    /// Cancel button parameters
+    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    
+    /// Selected row
     var selectedRow_: Int = 0
 
+    /// Row height
     var rowHeight_: CGFloat = 44.0
     
     // MARK: - Initializer
@@ -37,26 +51,29 @@ public class StringPickerPopover: AbstractPopover {
     ///   - title: Title for navigation bar.
     ///   - choices: Options for picker.
     public init(title: String?, choices:[ItemType]){
-        
         super.init()
         
-        // set parameters
+        // Set parameters
         self.title = title
         self.choices = choices
         
     }
 
+    // MARK: - Propery setter
+
+    /// Set image names
+    ///
+    /// - Parameter imageNames: String Array of image name to attach to a choice
+    /// - Returns: Self
     public func setImageNames(_ imageNames:[String?]?)->Self{
         self.imageNames_ = imageNames
         return self
     }
-    
-    // MARK: - Propery setter
 
-    /// Set property
+    /// Set selected row
     ///
-    /// - Parameter row: Selected row of picker.
-    /// - Returns: self
+    /// - Parameter row: Selected row on picker
+    /// - Returns: Self
     public func setSelectedRow(_ row:Int)->Self{
         self.selectedRow_ = row
         return self
@@ -65,56 +82,63 @@ public class StringPickerPopover: AbstractPopover {
     /// Set row height
     ///
     /// - Parameter height: Row height
-    /// - Returns: self
+    /// - Returns: Self
     public func setRowHeight(_ height:CGFloat)->Self{
         self.rowHeight_ = height
         return self
     }
     
-    /// Set DisplayString
+    /// Set displayStringFor closure
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
-    /// - Returns: self
-    public func setDisplayStringFor(_ displayStringFor:((ItemType?)->String?)?)->Self{
+    /// - Returns: Self
+    public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
         self.displayStringFor_ = displayStringFor
         return self
     }
     
-    /// Set Done button properties.
+    /// Set done button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
-    ///   - action: Action to be performed before the popover disappeared.
+    ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
     /// - Returns: Self
-    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, Int, ItemType)->Void)?)->Self{
-        if let t = title{
-            self.doneButton_.title = t
-        }
-        if let c = color{
-            self.doneButton_.color = c
-        }
-        self.doneButton_.action = action
-        return self
+    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+        return setButton(button: &doneButton_, title:title, color:color, action: action)
+
     }
 
-    /// Set Cancel button properties.
+    /// Set cancel button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
+    ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
+    /// - Returns: Self
+    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+        return setButton(button: &cancelButton_, title:title, color:color, action: action)
+    }
+    
+    /// Set button arguments to the targeted button propertoes
+    ///
+    /// - Parameters:
+    ///   - button: Target button properties
+    ///   - title: Button title
+    ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:((PopoverType, Int, ItemType)->Void)?)->Self{
+    func setButton( button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
-            self.cancelButton_.title = t
+            button.title = t
         }
         if let c = color{
-            self.cancelButton_.color = c
+            button.color = c
         }
-        self.cancelButton_.action = action
+        button.action = action
         return self
     }
+
 }
 
 // MARK: - UIPickerViewDataSource

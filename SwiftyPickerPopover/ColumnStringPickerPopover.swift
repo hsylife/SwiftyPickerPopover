@@ -25,6 +25,8 @@ public class ColumnStringPickerPopover: AbstractPopover {
     public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
+    /// Type of the rule closure to convert from a raw value to the display string
+    public typealias DisplayStringForType = ((ItemType?)->String?)
 
     // MARK: - Properties
 
@@ -38,7 +40,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     var fontSize_: CGFloat = 12.0
     
     /// Convert a raw value to the string for displaying it
-    var displayStringFor_: ((ItemType?)->String?)?
+    var displayStringFor_: DisplayStringForType?
     
     /// Done button parameters
     var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
@@ -79,7 +81,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
     /// - Returns: Self
-    public func setDisplayStringFor(_ displayStringFor:((ItemType?)->String?)?)->Self{
+    public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
         self.displayStringFor_ = displayStringFor
         return self
     }

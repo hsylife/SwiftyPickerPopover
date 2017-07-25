@@ -52,7 +52,7 @@ public class DatePickerPopover: AbstractPopover {
     
     // MARK: - Propery setter
 
-    /// Set property
+    /// Set selected date
     ///
     /// - Parameter row: The default value of picker.
     /// - Returns: self
@@ -61,7 +61,7 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set property
+    /// Set date mode of picker
     ///
     /// - Parameter dateMode: UIDatePickerMode of picker.
     /// - Returns: self
@@ -70,7 +70,7 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set property
+    /// Set minimum date
     ///
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
@@ -79,7 +79,7 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
 
-    /// Set property
+    /// Set maximun date
     ///
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
@@ -88,7 +88,7 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set property
+    /// Set minute interval
     ///
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
@@ -97,7 +97,7 @@ public class DatePickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set Done button properties.
+    /// Set Done button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
@@ -108,7 +108,7 @@ public class DatePickerPopover: AbstractPopover {
         return setButton(button: &doneButton_, title:title, color:color, action: action)
     }
     
-    /// Set Cancel button properties.
+    /// Set Cancel button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
@@ -119,7 +119,7 @@ public class DatePickerPopover: AbstractPopover {
         return setButton(button: &cancelButton_, title:title, color:color, action: action)
     }
     
-    /// Set Clear button properties.
+    /// Set Clear button properties
     ///
     /// - Parameters:
     ///   - title: Title for the button

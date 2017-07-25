@@ -1,3 +1,19 @@
+5.2.0 Release notes (2017-07-26)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+* Add setLocale() to DatePickerPopover
+* Improve comments and polish code
+
+### Bugfixes
+
+* None
+
+
 5.1.2 Release notes (2017-07-23)
 =============================================================
 

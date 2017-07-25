@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+/// AbstractPopover's view controller
 open class AbstractPickerPopoverViewController: UIViewController {
     
+    /// AbstractPopover
     var anyPopover: AnyObject?
     
     open override func viewWillAppear(_ animated: Bool) {

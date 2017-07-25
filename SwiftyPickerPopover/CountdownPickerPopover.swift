@@ -43,7 +43,7 @@ public class CountdownPickerPopover: AbstractPopover {
 
     // MARK: - Propery setter
     
-    /// Set property
+    /// Set selected time interval
     ///
     /// - Parameter interval: Value for picker.
     /// - Returns: self

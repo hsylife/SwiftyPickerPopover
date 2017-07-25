@@ -175,8 +175,8 @@
 				D6D8BEA01D8A69140075DFAD /* Abstract */,
 				D6D8BEA11D8A69250075DFAD /* DatePicker */,
 				BECD4B721D9DB6F7008BB309 /* CountdownPicker */,
-				BECD4B961D9DC56B008BB309 /* ColumnStringPicker */,
 				D6D8BEA21D8A69350075DFAD /* StringPicker */,
+				BECD4B961D9DC56B008BB309 /* ColumnStringPicker */,
 				D6C02B2C1F25FC7100289FED /* Extension */,
 			);
 			path = SwiftyPickerPopover;

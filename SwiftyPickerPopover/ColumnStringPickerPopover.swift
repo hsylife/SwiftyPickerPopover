@@ -23,6 +23,8 @@ public class ColumnStringPickerPopover: AbstractPopover {
     public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
     public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
+    /// Button parameters type
+    public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
 
     // MARK: - Properties
 
@@ -38,8 +40,10 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Convert a raw value to the string for displaying it
     var displayStringFor_: ((ItemType?)->String?)?
     
-    var doneButton_: (title: String, color:UIColor?, action:ActionHandlerType?) = ("Done".localized(bundle: Bundle(for: PopoverType.self)), nil, nil)
-    var cancelButton_: (title: String, color:UIColor?, action:ActionHandlerType?) = ("Cancel".localized(bundle: Bundle(for: PopoverType.self)), nil, nil)
+    /// Done button parameters
+    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    /// Cancel button parameters
+    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
 
     // MARK: - Initializer
     
@@ -88,14 +92,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        if let t = title{
-            self.doneButton_.title = t
-        }
-        if let c = color{
-            self.doneButton_.color = c
-        }
-        self.doneButton_.action = action
-        return self
+        return setButton(button: &doneButton_, title:title, color:color, action: action)
     }
     
     /// Set cancel button properties.
@@ -106,16 +103,28 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        if let t = title{
-            self.cancelButton_.title = t
-        }
-        if let c = color{
-            self.cancelButton_.color = c
-        }
-        self.cancelButton_.action = action
-        return self
+        return setButton(button: &cancelButton_, title:title, color:color, action: action)
     }
 
+    /// Set button arguments to the targeted button propertoes
+    ///
+    /// - Parameters:
+    ///   - button: Target button properties
+    ///   - title: Button title
+    ///   - color: Button tintcolor
+    ///   - action: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    func setButton( button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+        if let t = title{
+            button.title = t
+        }
+        if let c = color{
+            button.color = c
+        }
+        button.action = action
+        return self
+    }
+    
     /// Set font size
     ///
     /// - Parameter fontSize: Font size on picker

@@ -110,7 +110,7 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
         .appear(originView: button, baseViewController: self)
 ```
 
-It can separate the screen values from the raw values:
+##### It can separate the screen values from the raw values:
 ```swift
 let displayStringFor:((String?)->String?)? = { string in
    if let s = string {

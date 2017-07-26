@@ -171,6 +171,13 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
 If originView has no superView, then then you need to set baseViewWhenOriginViewHasNoSuperview as above to specify sourceView for the position for the arrow.
 If it has the superview, then SwiftyPickerPopover automatically use it for the sourceView.
 
+It appears from an UIBarButtonItem:
+```swift
+let item: UIBarButtonItem = sender
+let originView = item.value(forKey: "view") as! UIView
+p.appear(originView: originView, baseViewController: self)
+```
+
 #### ColumnStringPickerPopover
 * init(title:, choices:, selectedRows:, columnPercents:)
 

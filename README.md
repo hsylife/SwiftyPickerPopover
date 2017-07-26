@@ -87,7 +87,7 @@ All popovers have the following APIs.
 * setDoneButton(title:, color:, action:)
 * setCancelButton(title:, color:, action:)
 
-##### You can use it like this:
+##### You can use StringPickerPopover like this:
 ```swift
 StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
         .setSelectedRow(0)
@@ -212,7 +212,7 @@ ColumnStringPickerPopover(title: "Columns Strings",
 * setCancelButton(title:, color:, action:)
 * setClearButton(title:, color:, action:)
 
-##### Like this:
+##### DatePickerPopover can be used like this:
 ```swift
 DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
@@ -257,7 +257,7 @@ DatePickerPopover(title: "DatePicker .time 5minInt.")
 * setCancelButton(title:, color:, action:)
 * setClearButton(title:, color:, action:)
 
-##### like this:
+##### CountdownPickerPopover can be used like this:
 ```swift
  CountdownPickerPopover(title: "CountdownPicker")
             .setSelectedTimeInterval(TimeInterval())

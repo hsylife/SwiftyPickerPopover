@@ -1,3 +1,18 @@
+5.2.1 Release notes (2017-07-28)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+
+* Add Podfile and Cartfile
+
+### Bugfixes
+
+* The demo target bundle identifier has been changed to "ge-nie-inc.SwiftyPickerPopoverDemo"
+
 5.2.0 Release notes (2017-07-26)
 =============================================================
 

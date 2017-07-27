@@ -45,7 +45,7 @@ Run 'pod install'.
 ### Carthage
 - Add it to your Cartfile:
 ```
-github "hsylife/SwiftyPickerPopover"
+github "hsylife/SwiftyPickerPopover" “swift4”
 ```
 - Run `carthage update --platform iOS`
 - Add 'SwiftyPickerPopover.framework' to 'Linked Frameworks and Library' on your project.

@@ -47,7 +47,7 @@ Run 'pod install'.
 ```
 github "hsylife/SwiftyPickerPopover"
 ```
-- Run `carthage update --platform iOS`.
+- Run `carthage update --platform iOS`
 - Add 'SwiftyPickerPopover.framework' to 'Linked Frameworks and Library' on your project.
 - Add `/usr/local/bin/carthage copy-frameworks` to 'New Run Script Phase'.
 - Add `$(SRCROOT)/Carthage/Build/iOS/SwiftyPickerPopover.framework` to 'Input Files'.

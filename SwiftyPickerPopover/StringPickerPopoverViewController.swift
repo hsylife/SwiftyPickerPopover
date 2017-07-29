@@ -32,11 +32,19 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         super.refrectPopoverProperties()
         
         // Set up cancel button
+        if #available(iOS 11.0, *) { }
+        else {
+            navigationItem.leftBarButtonItem = nil
+        }
         cancelButton.title = popover?.cancelButton_.title
         cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         
         // Set up done button
+        if #available(iOS 11.0, *) { }
+        else {
+            navigationItem.rightBarButtonItem = nil
+        }
         doneButton.title = popover?.doneButton_.title
         doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)

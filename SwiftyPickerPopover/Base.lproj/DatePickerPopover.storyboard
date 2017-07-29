@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +16,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFP-QF-Beb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sFP-QF-Beb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -40,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
-                                <rect key="frame" x="0.0" y="64" width="300" height="198"/>
+                                <rect key="frame" x="0.0" y="44" width="300" height="218"/>
                                 <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
                                     <!--2016-09-13 10:35:36 +0000-->
                                 </date>
@@ -84,10 +85,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
                     <connections>
-                        <outlet property="cancelButton" destination="vwO-pz-IdI" id="cxF-N5-zYi"/>
+                        <outlet property="cancelButton" destination="vwO-pz-IdI" id="RCC-NP-Ove"/>
                         <outlet property="clearButton" destination="4cY-yy-Wau" id="Ohn-Mu-Hs3"/>
-                        <outlet property="doneButton" destination="Yyt-an-MNd" id="JuL-IO-G91"/>
+                        <outlet property="doneButton" destination="Yyt-an-MNd" id="Azc-UD-0PM"/>
                         <outlet property="picker" destination="7zB-OQ-P43" id="keP-bs-a96"/>
                     </connections>
                 </viewController>

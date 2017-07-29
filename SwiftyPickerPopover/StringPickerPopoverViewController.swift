@@ -32,16 +32,14 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         super.refrectPopoverProperties()
         
         // Set up cancel button
-        navigationItem.leftBarButtonItem = nil
         cancelButton.title = popover?.cancelButton_.title
         cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
-        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.setLeftBarButton(cancelButton, animated: false)
         
         // Set up done button
-        navigationItem.rightBarButtonItem = nil
         doneButton.title = popover?.doneButton_.title
         doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
-        navigationItem.rightBarButtonItem = doneButton
+        navigationItem.setRightBarButton(doneButton, animated: false)
         
         // Select row if needed
         if let select = popover?.selectedRow_ {

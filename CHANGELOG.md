@@ -1,3 +1,19 @@
+5.2.2 Release notes (2017-07-30)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+
+* None
+
+### Bugfixes
+
+* Fix that cancelButton is set to nil on iOS 11
+
+
 5.2.1 Release notes (2017-07-28)
 =============================================================
 

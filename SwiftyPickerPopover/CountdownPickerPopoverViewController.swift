@@ -27,13 +27,21 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
 
+        if #available(iOS 11.0, *) { }
+        else {
+            navigationItem.leftBarButtonItem = nil
+        }
         cancelButton.title = popover?.cancelButton_.title
         cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
-        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.setLeftBarButton(cancelButton, animated: false)
         
+        if #available(iOS 11.0, *) { }
+        else {
+            navigationItem.rightBarButtonItem = nil
+        }
         doneButton.title = popover?.doneButton_.title
         doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
-        navigationItem.rightBarButtonItem = doneButton
+        navigationItem.setRightBarButton(doneButton, animated: false)
 
         clearButton.setTitle(popover?.clearButton_.title, for: .normal)
         clearButton.tintColor = popover?.clearButton_.color ?? popover?.tintColor

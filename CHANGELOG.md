@@ -1,3 +1,19 @@
+5.2.3 Release notes (2017-08-03)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+
+* None
+
+### Bugfixes
+
+* Remove cartfile to avoid circular reference when installing it via carthage
+
+
 5.2.2 Release notes (2017-07-30)
 =============================================================
 

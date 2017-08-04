@@ -11,7 +11,8 @@ public class DatePickerPopover: AbstractPopover {
     // MARK: Types
     
     /// Type of choice value
-    public typealias ValueType = Date
+    public typealias ValueElementType = Date
+    public typealias ValueType = ValueElementType
     /// Popover type
     public typealias PopoverType = DatePickerPopover
     /// Action type for buttons

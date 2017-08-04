@@ -9,7 +9,8 @@ public class CountdownPickerPopover: AbstractPopover {
     
     // MARK: Types
     /// Type of choice value
-    public typealias ValueType = TimeInterval
+    public typealias ValueElementType = TimeInterval
+    public typealias ValueType = ValueElementType
     /// Popover type
     public typealias PopoverType = CountdownPickerPopover
     /// Action type for buttons

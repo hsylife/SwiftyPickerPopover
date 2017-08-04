@@ -6,44 +6,27 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
+
+// MARK: Types
+public typealias StringPickerPopover_PopoverType = StringPickerPopover
+public typealias StringPickerPopover_ValueElementType = String
+public typealias StringPickerPopover_ValueType = StringPickerPopover_ValueElementType
+public typealias StringPickerPopover_IndexRowType = Int
+
 /// StringPickerPopover has an UIPickerView that allows user to choose a String type choice.
-public class StringPickerPopover: AbstractPopover {
+public class StringPickerPopover: AbstractPickerViewPopover<StringPickerPopover_ValueElementType, StringPickerPopover_ValueType,StringPickerPopover_IndexRowType>, UIPickerViewDataSource, UIPickerViewDelegate {
 
     // MARK: Types
-    
-    /// Type of choice value
-    public typealias ValueElementType = String
-    public typealias ValueType = ValueElementType
-    /// Popover type
-    public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, Int, ValueType)->Void
+    public typealias ActionHandlerType = (StringPickerPopover_PopoverType, StringPickerPopover_IndexRowType, StringPickerPopover_ValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
-    /// Type of the rule closure to convert from a raw value to the display string
-    public typealias DisplayStringForType = ((ValueElementType?)->String?)
 
-    // MARK: - Properties
-    
-    /// Choice array
-    var choices = [ValueType]()
-    /// Array of image name to attach to a choice
-    var imageNames_: [String?]?
-    
-    /// Convert a raw value to the string for displaying it
-    var displayStringFor_:DisplayStringForType?
-    
     /// Done button parameters
     var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
     /// Cancel button parameters
     var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
-    
-    /// Selected row
-    var selectedRow_: Int = 0
 
-    /// Row height
-    var rowHeight_: CGFloat = 44.0
-    
     // MARK: - Initializer
 
     /// Initialize a Popover with the following arguments.
@@ -51,7 +34,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - title: Title for navigation bar.
     ///   - choices: Options for picker.
-    public init(title: String?, choices:[ValueType]){
+    public init(title: String?, choices:[StringPickerPopover_ValueType]){
         super.init()
         
         // Set parameters
@@ -59,62 +42,12 @@ public class StringPickerPopover: AbstractPopover {
         self.choices = choices
         
     }
-
-    // MARK: - Propery setter
-
-    /// Set image names
-    ///
-    /// - Parameter imageNames: String Array of image name to attach to a choice
-    /// - Returns: Self
-    public func setImageNames(_ imageNames:[String?]?)->Self{
-        self.imageNames_ = imageNames
-        return self
-    }
-
-    /// Set selected row
-    ///
-    /// - Parameter row: Selected row on picker
-    /// - Returns: Self
-    public func setSelectedRow(_ row:Int)->Self{
-        self.selectedRow_ = row
-        return self
-    }
-
-    /// Set row height
-    ///
-    /// - Parameter height: Row height
-    /// - Returns: Self
-    public func setRowHeight(_ height:CGFloat)->Self{
-        self.rowHeight_ = height
-        return self
-    }
     
-    /// Set displayStringFor closure
-    ///
-    /// - Parameter displayStringFor: Rules for converting choice values to display strings.
-    /// - Returns: Self
-    public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
-        self.displayStringFor_ = displayStringFor
-        return self
-    }
-    
-    /// Set done button properties
-    ///
-    /// - Parameters:
-    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
-    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
-    ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
-    /// - Returns: Self
-    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton_, title:title, color:color, action: action)
-
-    }
-
     /// Set cancel button properties
     ///
     /// - Parameters:
     ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
-    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
@@ -139,11 +72,20 @@ public class StringPickerPopover: AbstractPopover {
         button.action = action
         return self
     }
+    
+    /// Set done button properties
+    ///
+    /// - Parameters:
+    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
+    ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
+    /// - Returns: Self
+    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+        return setButton(button: &doneButton_, title:title, color:color, action: action)
+        
+    }
 
-}
-
-// MARK: - UIPickerViewDataSource
-extension StringPickerPopover: UIPickerViewDataSource {
+    // MARK: - UIPickerViewDataSource
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -151,10 +93,8 @@ extension StringPickerPopover: UIPickerViewDataSource {
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return choices.count
     }
-}
 
-// MARK: - UIPickerViewDelegate
-extension StringPickerPopover: UIPickerViewDelegate {
+    // MARK: - UIPickerViewDelegate
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let d = displayStringFor_ {
             return d(choices[row])

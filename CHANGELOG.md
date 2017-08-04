@@ -1,3 +1,18 @@
+5.3.0 Release notes (2017-08-04)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+
+* Supports for adding UIImage to string directly
+
+### Bugfixes
+
+* None
+
 5.2.3 Release notes (2017-08-03)
 =============================================================
 

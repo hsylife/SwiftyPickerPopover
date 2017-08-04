@@ -81,6 +81,7 @@ All popovers have the following APIs.
 * init(title:, choices:)
 
 * setImageNames()
+* setImages()
 * setSelectedRow()
 * setRowHeight()
 * setDisplayStringFor()

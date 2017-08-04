@@ -1,3 +1,18 @@
+5.3.0 Release notes (2017-08-04)
+=============================================================
+
+### API Breaking Changes
+
+* None
+
+### Enhancements
+
+* Supports for adding UIImage to string directly
+
+### Bugfixes
+
+* None
+
 5.2.3 Release notes (2017-08-03)
 =============================================================
 
@@ -13,7 +28,6 @@
 
 * Remove cartfile to avoid circular reference when installing it via carthage
 
-
 5.2.2 Release notes (2017-07-30)
 =============================================================
 
@@ -28,7 +42,6 @@
 ### Bugfixes
 
 * Fix that cancelButton is set to nil on iOS 11
-
 
 5.2.1 Release notes (2017-07-28)
 =============================================================

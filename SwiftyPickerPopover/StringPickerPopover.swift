@@ -28,6 +28,8 @@ public class StringPickerPopover: AbstractPopover {
     var choices: [ItemType] = []
     /// Array of image name to attach to a choice
     var imageNames_: [String?]?
+    /// Array of image to attach to a choice
+    var images_: [UIImage?]?
     
     /// Convert a raw value to the string for displaying it
     var displayStringFor_:DisplayStringForType?
@@ -70,6 +72,15 @@ public class StringPickerPopover: AbstractPopover {
         return self
     }
 
+    /// Set images
+    ///
+    /// - Parameter images: String Array of image to attach to a choice
+    /// - Returns: Self
+    public func setImages(_ images:[UIImage?]?)->Self{
+        self.images_ = images
+        return self
+    }
+    
     /// Set selected row
     ///
     /// - Parameter row: Selected row on picker
@@ -178,6 +189,22 @@ extension StringPickerPopover: UIPickerViewDelegate {
             else {
                 return nil
             }
+        }
+        else if let images = images_ {
+            if let image = images[row] {
+                
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = image
+                let imageAtt = NSAttributedString(attachment: imageAttachment)
+                baseAtt.append(imageAtt)
+                
+                let marginAtt = NSAttributedString(string: " ")
+                baseAtt.append(marginAtt)
+            }
+            else {
+                return nil
+            }
+
         }
         
         var str:String?

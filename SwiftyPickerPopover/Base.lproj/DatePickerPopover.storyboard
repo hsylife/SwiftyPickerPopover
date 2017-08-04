@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Wzr-YZ-hfN">
+            <objects>
+                <navigationController id="byJ-Vv-M5N" sceneMemberID="viewController">
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFP-QF-Beb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="erI-yJ-JEk" kind="relationship" relationship="rootViewController" id="zCz-fC-4Od"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIz-np-6Ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-944" y="-406"/>
+        </scene>
+        <!--title-->
+        <scene sceneID="rjb-gs-enU">
+            <objects>
+                <viewController id="erI-yJ-JEk" customClass="DatePickerPopoverViewController" customModule="SwiftyPickerPopover" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cbG-vC-cwF"/>
+                        <viewControllerLayoutGuide type="bottom" id="KrY-U2-tGZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wcv-6k-DXR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
+                                <rect key="frame" x="0.0" y="64" width="414" height="634"/>
+                                <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
+                                    <!--2016-09-13 10:35:36 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="pickerValueChanged:" destination="erI-yJ-JEk" eventType="valueChanged" id="U5r-kP-lXN"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
+                                <rect key="frame" x="0.0" y="698" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="oSp-Dx-5ub"/>
+                                </constraints>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="tappedClear:" destination="erI-yJ-JEk" eventType="touchUpInside" id="cMx-Qs-KEL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4cY-yy-Wau" secondAttribute="trailing" id="1fv-rE-uSY"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="8bc-BX-xCK"/>
+                            <constraint firstAttribute="trailing" secondItem="7zB-OQ-P43" secondAttribute="trailing" id="9RB-ls-UNS"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="top" secondItem="cbG-vC-cwF" secondAttribute="bottom" id="QxE-V2-F5C"/>
+                            <constraint firstItem="KrY-U2-tGZ" firstAttribute="top" secondItem="4cY-yy-Wau" secondAttribute="bottom" constant="8" id="aOX-zI-LFx"/>
+                            <constraint firstItem="7zB-OQ-P43" firstAttribute="leading" secondItem="wcv-6k-DXR" secondAttribute="leading" id="hae-tz-b0f"/>
+                            <constraint firstAttribute="bottom" secondItem="7zB-OQ-P43" secondAttribute="bottom" priority="250" constant="8" id="iD6-NR-jMv"/>
+                            <constraint firstItem="4cY-yy-Wau" firstAttribute="top" secondItem="7zB-OQ-P43" secondAttribute="bottom" id="yli-tL-4Vv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="title" id="xWT-K2-Lfp">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="vwO-pz-IdI">
+                            <connections>
+                                <action selector="tappedCancel:" destination="erI-yJ-JEk" id="Ogz-sH-k2v"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="Yyt-an-MNd">
+                            <connections>
+                                <action selector="tappedDone:" destination="erI-yJ-JEk" id="rW3-Fe-TcP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="vwO-pz-IdI" id="nX9-at-xPI"/>
+                        <outlet property="clearButton" destination="4cY-yy-Wau" id="Ohn-Mu-Hs3"/>
+                        <outlet property="doneButton" destination="Yyt-an-MNd" id="JuL-IO-G91"/>
+                        <outlet property="picker" destination="7zB-OQ-P43" id="keP-bs-a96"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xB-ci-cta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-342.39999999999998" y="-407.49625187406298"/>
+        </scene>
+    </scenes>
+</document>

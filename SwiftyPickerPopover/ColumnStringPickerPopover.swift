@@ -12,36 +12,30 @@
 */
 //  Modified by Yuta Hoshino on 2017/07/24. 
 
+// MARK: Types
+public typealias ColumnStringPickerPopover_ValueElementType = String
+public typealias ColumnStringPickerPopover_ValueType = [ColumnStringPickerPopover_ValueElementType]
+public typealias ColumnStringPickerPopover_IndexRowType = [Int]
+
+
 /// ColumnStringPickerPopover has an UIPickerView of multiple columns.
-public class ColumnStringPickerPopover: AbstractPopover {
+public class ColumnStringPickerPopover: AbstractPickerViewPopover<ColumnStringPickerPopover_ValueElementType, ColumnStringPickerPopover_ValueType, ColumnStringPickerPopover_IndexRowType>, UIPickerViewDataSource, UIPickerViewDelegate  {
     
     // MARK: Types
     
     /// Type of choice value
-    public typealias ValueElementType = String
-    public typealias ValueType = [ValueElementType]
-    /// Popover type
-    public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, [Int], ValueType)->Void
+    public typealias ActionHandlerType = (ColumnStringPickerPopover, ColumnStringPickerPopover_IndexRowType, ColumnStringPickerPopover_ValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
-    /// Type of the rule closure to convert from a raw value to the display string
-    public typealias DisplayStringForType = ((ValueElementType?)->String?)
 
+    public typealias ColumnPercentsType = [Float]
     // MARK: - Properties
 
-    /// Choice array. Nest.
-    var choices = [ValueType]()
-    /// Selected rows
-    var selectedRows_: [Int] = [Int]()
     /// Column ratio
-    var columnPercents_: [Float] = [Float]()
+    var columnPercents_ = ColumnPercentsType()
     /// Font size
     var fontSize_: CGFloat = 12.0
-    
-    /// Convert a raw value to the string for displaying it
-    var displayStringFor_: DisplayStringForType?
     
     /// Done button parameters
     var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
@@ -57,7 +51,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - choices: Options for picker.
     ///   - selectedRow: Selected rows of picker.
     ///   - columnPercent: Rate of each column of picker
-    public init(title: String?, choices:[ValueType], selectedRows:[Int], columnPercents:[Float]){
+    public init(title: String?, choices:[ColumnStringPickerPopover_ValueType], selectedRows:ColumnStringPickerPopover_IndexRowType, columnPercents:ColumnPercentsType){
         super.init()
         
         // Set parameters
@@ -65,26 +59,6 @@ public class ColumnStringPickerPopover: AbstractPopover {
         self.choices = choices
         self.selectedRows_ = selectedRows
         self.columnPercents_ = columnPercents
-    }
-
-    // MARK: - Propery setter
-    
-    /// Set selected rows
-    ///
-    /// - Parameter row: Selected rows of picker
-    /// - Returns: Self
-    public func setSelectedRows(_ rows:[Int])->Self{
-        self.selectedRows_ = rows
-        return self
-    }
-    
-    /// Set displayStringFor closures
-    ///
-    /// - Parameter displayStringFor: Rules for converting choice values to display strings.
-    /// - Returns: Self
-    public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
-        self.displayStringFor_ = displayStringFor
-        return self
     }
 
     /// Set done button properties
@@ -137,12 +111,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
 
-    
-
-}
-
-// MARK: - UIPickerViewDelegate
-extension ColumnStringPickerPopover: UIPickerViewDelegate{
+    // MARK: - UIPickerViewDelegate
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return choice(component: component, row: row)
     }
@@ -169,10 +138,7 @@ extension ColumnStringPickerPopover: UIPickerViewDelegate{
         redoDisappearAutomatically()
     }
 
-}
-
-// MARK: - UIPickerViewDataSource
-extension ColumnStringPickerPopover: UIPickerViewDataSource{
+    // MARK: - UIPickerViewDataSource
     
     /// UIPickerViewDataSource
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -191,7 +157,7 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
     }
     
     // get string of choice
-    func choice(component: Int, row: Int)->ValueElementType? {
+    func choice(component: Int, row: Int)->ColumnStringPickerPopover_ValueElementType? {
         if let d = displayStringFor_ {
             return d(choices[component][row])
         }
@@ -199,8 +165,8 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
     }
     
     // get array of selected values
-    func selectedValues()->ValueType{
-        var result = ValueType()
+    func selectedValues()->ColumnStringPickerPopover_ValueType{
+        var result = ColumnStringPickerPopover_ValueType()
         for (index, content) in selectedRows_.enumerated() {
             if let string = choice(component: index, row: content){
                 result.append(string)

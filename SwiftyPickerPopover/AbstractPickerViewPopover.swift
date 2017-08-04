@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
+/// AbstractPickerViewPopover is the generic abstract popover for a popover which has a pickerView
+///  ValueElementType: The type for value element
+///  ValueType: The type for value
+///  IndexRowType: The type for index row
 open class AbstractPickerViewPopover<ValueElementType: Initializable, ValueType: Initializable, IndexRowType: Initializable>: AbstractPopover {
+
+    // MARK: - Types
 
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ValueElementType?)->String?)
@@ -26,7 +32,7 @@ open class AbstractPickerViewPopover<ValueElementType: Initializable, ValueType:
     var displayStringFor_:DisplayStringForType?
     
     /// Selected row
-    var selectedRow_ = IndexRowType()
+    var selectedRows_ = IndexRowType()
 
     /// Row height
     var rowHeight_: CGFloat = 44.0
@@ -47,7 +53,7 @@ open class AbstractPickerViewPopover<ValueElementType: Initializable, ValueType:
     /// - Parameter row: Selected row on picker
     /// - Returns: Self
     public func setSelectedRow(_ row:IndexRowType)->Self{
-        self.selectedRow_ = row
+        self.selectedRows_ = row
         return self
     }
 

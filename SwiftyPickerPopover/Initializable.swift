@@ -14,3 +14,4 @@ public protocol Initializable {
 
 extension String: Initializable {}
 extension Int: Initializable {}
+extension Array: Initializable {}

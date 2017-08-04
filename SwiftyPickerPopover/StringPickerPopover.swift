@@ -14,7 +14,7 @@ public typealias StringPickerPopover_ValueType = StringPickerPopover_ValueElemen
 public typealias StringPickerPopover_IndexRowType = Int
 
 /// StringPickerPopover has an UIPickerView that allows user to choose a String type choice.
-public class StringPickerPopover: AbstractPickerViewPopover<StringPickerPopover_ValueElementType, StringPickerPopover_ValueType,StringPickerPopover_IndexRowType>, UIPickerViewDataSource, UIPickerViewDelegate {
+public class StringPickerPopover: AbstractPickerViewPopover<StringPickerPopover_ValueElementType, StringPickerPopover_ValueType, StringPickerPopover_IndexRowType>, UIPickerViewDataSource, UIPickerViewDelegate {
 
     // MARK: Types
     /// Action type for buttons

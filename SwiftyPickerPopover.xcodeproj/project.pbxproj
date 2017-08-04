@@ -34,7 +34,6 @@
 		D6C02B2B1F25FC5200289FED /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C02B2A1F25FC5200289FED /* String+Extension.swift */; };
 		D6D756851F345F3800704F9C /* AbstractPickerViewPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D756841F345F3800704F9C /* AbstractPickerViewPopover.swift */; };
 		D6D756871F34AD0000704F9C /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D756861F34AD0000704F9C /* Initializable.swift */; };
-		D6D756891F34ADD600704F9C /* PopoverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D756881F34ADD600704F9C /* PopoverProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,7 +82,6 @@
 		D6D5C5311D892C930002118F /* SwiftyPickerPopoverDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPickerPopoverDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D756841F345F3800704F9C /* AbstractPickerViewPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractPickerViewPopover.swift; sourceTree = "<group>"; };
 		D6D756861F34AD0000704F9C /* Initializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
-		D6D756881F34ADD600704F9C /* PopoverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +194,6 @@
 				D6D756841F345F3800704F9C /* AbstractPickerViewPopover.swift */,
 				D646E0EC1E820825003C8731 /* AbstractPickerPopoverViewController.swift */,
 				D6D756861F34AD0000704F9C /* Initializable.swift */,
-				D6D756881F34ADD600704F9C /* PopoverProtocol.swift */,
 				D64C09B61EACD2270072BB79 /* Localizable.strings */,
 			);
 			name = Abstract;
@@ -354,7 +351,6 @@
 				D60AE7E71D9EE111000320F4 /* CountdownPickerPopover.swift in Sources */,
 				D60AE7E81D9EE111000320F4 /* CountdownPickerPopoverViewController.swift in Sources */,
 				D60AE7E91D9EE111000320F4 /* ColumnStringPickerPopover.swift in Sources */,
-				D6D756891F34ADD600704F9C /* PopoverProtocol.swift in Sources */,
 				D6D756851F345F3800704F9C /* AbstractPickerViewPopover.swift in Sources */,
 				D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */,
 				D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */,

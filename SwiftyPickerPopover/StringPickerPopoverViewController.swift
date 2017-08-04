@@ -50,7 +50,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         navigationItem.setRightBarButton(doneButton, animated: false)
         
         // Select row if needed
-        if let select = popover?.selectedRow_ {
+        if let select = popover?.selectedRows_ {
             picker?.selectRow(select, inComponent: 0, animated: true)
         }
     }

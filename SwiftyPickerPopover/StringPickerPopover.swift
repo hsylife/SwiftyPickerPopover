@@ -13,10 +13,11 @@ public class StringPickerPopover: AbstractPopover {
     
     /// Type of choice value
     public typealias ValueType = String
+    public typealias StructuredValueType = ValueType
     /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, Int, ValueType)->Void
+    public typealias ActionHandlerType = (PopoverType, Int, StructuredValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
@@ -25,7 +26,7 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: - Properties
     
     /// Choice array
-    var choices: [ValueType] = []
+    var choices = [StructuredValueType]()
     /// Array of image name to attach to a choice
     var imageNames_: [String?]?
     

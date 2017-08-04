@@ -19,10 +19,11 @@ public class ColumnStringPickerPopover: AbstractPopover {
     
     /// Type of choice value
     public typealias ValueType = String
+    public typealias StructuredValueType = [ValueType]
     /// Popover type
     public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, [Int], [ValueType])->Void
+    public typealias ActionHandlerType = (PopoverType, [Int], StructuredValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
@@ -31,7 +32,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     // MARK: - Properties
 
     /// Choice array. Nest.
-    var choices: [[ValueType]] = [[]]
+    var choices = [StructuredValueType]()
     /// Selected rows
     var selectedRows_: [Int] = [Int]()
     /// Column ratio

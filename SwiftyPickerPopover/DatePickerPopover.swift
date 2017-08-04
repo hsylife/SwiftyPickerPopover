@@ -11,11 +11,11 @@ public class DatePickerPopover: AbstractPopover {
     // MARK: Types
     
     /// Type of choice value
-    public typealias ItemType = Date
+    public typealias ValueType = Date
     /// Popover type
     public typealias PopoverType = DatePickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, ValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
 
@@ -31,12 +31,12 @@ public class DatePickerPopover: AbstractPopover {
     /// Date mode
     var dateMode_:UIDatePickerMode = .date
     /// Limit of range
-    var minimumDate_: ItemType?
-    var maximumDate_: ItemType?
+    var minimumDate_: ValueType?
+    var maximumDate_: ValueType?
     /// Date picker interval. Mins
     var minuteInterval_: Int = 0
     /// Selected date
-    var selectedDate_: ItemType = ItemType()
+    var selectedDate_: ValueType = ValueType()
 
     var locale_: Locale = Locale.current
     
@@ -60,7 +60,7 @@ public class DatePickerPopover: AbstractPopover {
     ///
     /// - Parameter row: The default value of picker.
     /// - Returns: self
-    public func setSelectedDate(_ date:ItemType)->Self{
+    public func setSelectedDate(_ date:ValueType)->Self{
         self.selectedDate_ = date
         return self
     }

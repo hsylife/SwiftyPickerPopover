@@ -18,20 +18,20 @@ public class ColumnStringPickerPopover: AbstractPopover {
     // MARK: Types
     
     /// Type of choice value
-    public typealias ItemType = String
+    public typealias ValueType = String
     /// Popover type
     public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
+    public typealias ActionHandlerType = (PopoverType, [Int], [ValueType])->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
-    public typealias DisplayStringForType = ((ItemType?)->String?)
+    public typealias DisplayStringForType = ((ValueType?)->String?)
 
     // MARK: - Properties
 
     /// Choice array. Nest.
-    var choices: [[ItemType]] = [[]]
+    var choices: [[ValueType]] = [[]]
     /// Selected rows
     var selectedRows_: [Int] = [Int]()
     /// Column ratio
@@ -56,7 +56,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - choices: Options for picker.
     ///   - selectedRow: Selected rows of picker.
     ///   - columnPercent: Rate of each column of picker
-    public init(title: String?, choices:[[ItemType]], selectedRows:[Int], columnPercents:[Float]){
+    public init(title: String?, choices:[[ValueType]], selectedRows:[Int], columnPercents:[Float]){
         super.init()
         
         // Set parameters
@@ -190,7 +190,7 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
     }
     
     // get string of choice
-    func choice(component: Int, row: Int)->ItemType? {
+    func choice(component: Int, row: Int)->ValueType? {
         if let d = displayStringFor_ {
             return d(choices[component][row])
         }
@@ -198,8 +198,8 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
     }
     
     // get array of selected values
-    func selectedValues()->[ItemType]{
-        var result = [ItemType]()
+    func selectedValues()->[ValueType]{
+        var result = [ValueType]()
         for (index, content) in selectedRows_.enumerated() {
             if let string = choice(component: index, row: content){
                 result.append(string)

@@ -9,11 +9,11 @@ public class CountdownPickerPopover: AbstractPopover {
     
     // MARK: Types
     /// Type of choice value
-    public typealias ItemType = TimeInterval
+    public typealias ValueType = TimeInterval
     /// Popover type
     public typealias PopoverType = CountdownPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, ValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
 
@@ -27,7 +27,7 @@ public class CountdownPickerPopover: AbstractPopover {
     var clearButton_: ButtonParameterType = ("Clear".localized, nil, nil)
 
     // Selected value
-    var selectedTimeInterval_:ItemType = ItemType()
+    var selectedTimeInterval_:ValueType = ValueType()
 
     // MARK: - Initializer
     
@@ -47,7 +47,7 @@ public class CountdownPickerPopover: AbstractPopover {
     ///
     /// - Parameter interval: Value for picker.
     /// - Returns: self
-    public func setSelectedTimeInterval(_ interval:ItemType)->Self{
+    public func setSelectedTimeInterval(_ interval:ValueType)->Self{
         self.selectedTimeInterval_ = interval
         return self
     }

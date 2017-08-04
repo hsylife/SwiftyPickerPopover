@@ -12,20 +12,20 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: Types
     
     /// Type of choice value
-    public typealias ItemType = String
+    public typealias ValueType = String
     /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, Int, ValueType)->Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
-    public typealias DisplayStringForType = ((ItemType?)->String?)
+    public typealias DisplayStringForType = ((ValueType?)->String?)
 
     // MARK: - Properties
     
     /// Choice array
-    var choices: [ItemType] = []
+    var choices: [ValueType] = []
     /// Array of image name to attach to a choice
     var imageNames_: [String?]?
     
@@ -50,7 +50,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - title: Title for navigation bar.
     ///   - choices: Options for picker.
-    public init(title: String?, choices:[ItemType]){
+    public init(title: String?, choices:[ValueType]){
         super.init()
         
         // Set parameters

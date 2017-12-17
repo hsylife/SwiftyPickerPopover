@@ -79,6 +79,19 @@ open class AbstractPopover: NSObject {
     /// Display the popover.
     ///
     /// - Parameter
+    ///   - barButtonItem: Bar button item to be the origin point at where the popover appears.
+    ///   - baseViewWhenOriginViewHasNoSuperview: SourceView of popoverPresentationController. Omissible. This view will be used instead of originView.superView when it is nil.
+    ///   - baseViewController: Base viewController
+    ///   - completion: Action to be performed after the popover appeared. Omissible.
+    
+    open func appear(barButtonItem: UIBarButtonItem, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil) {
+        guard let originView = barButtonItem.value(forKey: "view") as? UIView else { return }
+        appear(originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, completion: completion)
+    }
+    
+    /// Display the popover.
+    ///
+    /// - Parameter
     ///   - originView: View to be the origin point at where the popover appears.
     ///   - baseViewWhenOriginViewHasNoSuperview: SourceView of popoverPresentationController. Omissible. This view will be used instead of originView.superView when it is nil.
     ///   - baseViewController: Base viewController

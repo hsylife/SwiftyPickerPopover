@@ -73,6 +73,7 @@ All popovers have the following APIs.
 * setSize(width:,height:)
 
 * appear(originView:, baseViewWhenOriginViewHasNoSuperview:, baseViewController:, completion:)
+* appear(barButtonItem:, baseViewWhenOriginViewHasNoSuperview:, baseViewController:, completion:)
 * disappear()
 * disappearAutomatically(after seconds:, completion:)
 * reload()
@@ -283,6 +284,7 @@ When you prepare your customized Storyboard, it will be applied automatically.
 - Ken Torimaru [GitHub](https://github.com/ktorimaru) for CountdownPickerPopover and ColumnStringPickerPopover.
 - BalestraPatrick [GitHub](https://github.com/BalestraPatrick) for README.md typo.
 - andersonlucasg3 [GitHub](https://github.com/andersonlucasg3) for adding possibility to override the storyboards with custom localizations in the app project.
+- Mihael Isaev [GitHub](https://github.com/MihaelIsaev) for adding appear() from barButtonItem.
 
 ## Author
 - Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

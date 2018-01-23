@@ -96,7 +96,7 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
         .setDoneButton(action: { (popover, selectedRow, selectedString) in
             print("done row \(selectedRow) \(selectedString)")
         })
-        .setCancelButton(action: { v in print("cancel")}
+        .setCancelButton(action: { (_, _, _) in print("cancel")}
         )
         .appear(originView: button, baseViewController: self)
 ```
@@ -136,7 +136,7 @@ let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2"
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
-            .setCancelButton(action: { v in
+            .setCancelButton(action: { _, _, _ in
                 print("cancel")
             })
             
@@ -163,7 +163,7 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
                         .setSelectedRow(1)
                         .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in print("done row \(selectedRow) \(selectedString)") })
-                        .setCancelButton(title:"🗑", action: { v in print("cancel")} )
+                        .setCancelButton(title:"🗑", action: { (_, _, _) in print("cancel")} )
         
         p.appear(originView: theCell, baseViewWhenOriginViewHasNoSuperview collectionView, baseViewController: self)
         
@@ -187,7 +187,7 @@ p.appear(originView: originView, baseViewController: self)
 * setFontSize()
 * setDisplayStringFor()
 * setDoneButton(title:, color:, action:)
-* setCancelButton(title:, color:, action:)
+* vButton(title:, color:, action:)
 
 ##### ColumnStringPickerPopover can have multiple String values:
 ```swift
@@ -195,7 +195,7 @@ ColumnStringPickerPopover(title: "Columns Strings",
                                   choices: [["Breakfast", "Lunch", "Dinner"],["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
         .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
-        .setCancelButton(action: {v in print("cancel")})
+        .setCancelButton(action: {_, _, _ in print("cancel")})
         .setFontSize(14)
         .appear(originView: sender, baseViewController: self)
 )
@@ -220,7 +220,7 @@ DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")})
-            .setCancelButton(action: { v in print("cancel")})
+            .setCancelButton(action: { _, _ in print("cancel")})
             .appear(originView: sender, baseViewController: self)
 ```
 
@@ -228,7 +228,7 @@ DatePickerPopover(title: "DatePicker")
 ```swift
 let p = DatePickerPopover(title: "Clearable DatePicker")
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
-            .setCancelButton(action: { v in print("cancel")})
+            .setCancelButton(action: { _, _ in print("cancel")})
             .setClearButton(action: { popover, selectedDate in
                 print("clear")
                 //Rewind

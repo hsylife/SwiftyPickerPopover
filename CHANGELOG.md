@@ -1,3 +1,18 @@
+6.0.0 Release notes (2018-01-28)
+=============================================================
+### API Breaking Changes
+
+* Change ColumnStringPickerPopover setFontSize() to setFontSizes().
+
+### Enhancements
+
+* Added setFont(), setFontColor() and setFontSize() to StringPickerPopover.
+* Added setFonts(), setFontColors() and setFontSizes() to ColumnStringPickerPopover
+
+### Bugfixes
+
+*Fixed minor bugs.
+
 5.3.0 Release notes (2017-08-04)
 =============================================================
 

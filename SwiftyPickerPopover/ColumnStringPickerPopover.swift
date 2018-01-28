@@ -31,24 +31,23 @@ public class ColumnStringPickerPopover: AbstractPopover {
     // MARK: - Properties
 
     /// Choice array. Nest.
-    var choices: [[ItemType]] = [[]]
+    private(set)  var choices: [[ItemType]] = [[]]
     /// Selected rows
-    var selectedRows_: [Int] = [Int]()
+    private(set)  var selectedRows_: [Int] = [Int]()
     /// Column ratio
-    var columnPercents_: [Float] = [Float]()
+    private(set)  var columnPercents_: [Float] = [Float]()
     ///Font
-    private var font_: UIFont?
-    var fontSize_: CGFloat = 12.0
-    ///Font Color
-    private var fontColor_: UIColor = .black
+    private(set)  var font_: UIFont?
+    private(set)  var fontSize_: CGFloat = 12
+    private(set)  var fontColor_: UIColor = .black
 
     /// Convert a raw value to the string for displaying it
-    var displayStringFor_: DisplayStringForType?
+    private var displayStringFor_: DisplayStringForType?
     
     /// Done button parameters
-    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
     /// Cancel button parameters
-    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
 
     // MARK: - Initializer
     

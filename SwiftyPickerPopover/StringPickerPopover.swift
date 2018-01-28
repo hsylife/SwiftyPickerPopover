@@ -25,31 +25,29 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: - Properties
     
     /// Choice array
-    var choices: [ItemType] = []
+    private(set) var choices: [ItemType] = []
     /// Array of image name to attach to a choice
-    var imageNames_: [String?]?
+    private(set) var imageNames: [String?]?
     /// Array of image to attach to a choice
-    var images_: [UIImage?]?
+    private(set) var images: [UIImage?]?
     
     /// Font
-    private var font_: UIFont?
-    
-    /// Font color
-    private var fontColor_: UIColor = .black
+    private(set)  var font: UIFont?
+    private(set)  var fontColor: UIColor = .black
     
     /// Convert a raw value to the string for displaying it
-    var displayStringFor_:DisplayStringForType?
+    private(set) var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
-    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil)
     /// Cancel button parameters
-    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil)
     
     /// Selected row
-    var selectedRow_: Int = 0
+    private(set) var selectedRow: Int = 0
 
     /// Row height
-    var rowHeight_: CGFloat = 44.0
+    private(set) var rowHeight: CGFloat = 44
     
     // MARK: - Initializer
 
@@ -72,7 +70,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter fontName: UIFont to change picker font
     /// - Returns: Self
     public func setFont(_ font:UIFont) ->Self {
-        self.font_ = font
+        self.font = font
         return self
     }
     
@@ -81,7 +79,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter colorName: UIColor to change picker ArrayColor
     /// - Returns: Self
     public func setFontColor(_ color:UIColor) ->Self {
-        self.fontColor_ = color
+        self.fontColor = color
         return self
     }
     
@@ -92,7 +90,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter imageNames: String Array of image name to attach to a choice
     /// - Returns: Self
     public func setImageNames(_ imageNames:[String?]?)->Self{
-        self.imageNames_ = imageNames
+        self.imageNames = imageNames
         return self
     }
 
@@ -101,7 +99,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter images: String Array of image to attach to a choice
     /// - Returns: Self
     public func setImages(_ images:[UIImage?]?)->Self{
-        self.images_ = images
+        self.images = images
         return self
     }
     
@@ -110,7 +108,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter row: Selected row on picker
     /// - Returns: Self
     public func setSelectedRow(_ row:Int)->Self{
-        self.selectedRow_ = row
+        self.selectedRow = row
         return self
     }
 
@@ -119,7 +117,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter height: Row height
     /// - Returns: Self
     public func setRowHeight(_ height:CGFloat)->Self{
-        self.rowHeight_ = height
+        self.rowHeight = height
         return self
     }
     
@@ -128,7 +126,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
     /// - Returns: Self
     public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
-        self.displayStringFor_ = displayStringFor
+        self.displayStringFor = displayStringFor
         return self
     }
     
@@ -140,7 +138,7 @@ public class StringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
     /// - Returns: Self
     public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton_, title:title, color:color, action: action)
+        return setButton(button: &doneButton, title:title, color:color, action: action)
 
     }
 
@@ -152,7 +150,7 @@ public class StringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton_, title:title, color:color, action: action)
+        return setButton(button: &cancelButton, title:title, color:color, action: action)
     }
     
     /// Set button arguments to the targeted button propertoes
@@ -190,7 +188,7 @@ extension StringPickerPopover: UIPickerViewDataSource {
 // MARK: - UIPickerViewDelegate
 extension StringPickerPopover: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if let d = displayStringFor_ {
+        if let d = displayStringFor {
             return d(choices[row])
         }
         return choices[row]
@@ -199,7 +197,7 @@ extension StringPickerPopover: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let baseAtt = NSMutableAttributedString()
         
-        if let imageNames = imageNames_{
+        if let imageNames = imageNames{
             if let name = imageNames[row], let image = UIImage(named: name){
                 
                 let imageAttachment = NSTextAttachment()
@@ -214,7 +212,7 @@ extension StringPickerPopover: UIPickerViewDelegate {
                 return nil
             }
         }
-        else if let images = images_ {
+        else if let images = images {
             if let image = images[row] {
                 
                 let imageAttachment = NSTextAttachment()
@@ -232,7 +230,7 @@ extension StringPickerPopover: UIPickerViewDelegate {
         }
         
         var str:String?
-        if let d = displayStringFor_ {
+        if let d = displayStringFor {
             str = d(choices[row])
         }
         
@@ -244,16 +242,16 @@ extension StringPickerPopover: UIPickerViewDelegate {
 
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = (view as? UILabel) ?? UILabel()
-        pickerLabel.textColor = fontColor_
+        pickerLabel.textColor = fontColor
         pickerLabel.textAlignment = .center
-        pickerLabel.font = self.font_ ?? UIFont.systemFont(ofSize: 15)
+        pickerLabel.font = self.font ?? UIFont.systemFont(ofSize: 15)
         pickerLabel.text = choices[row]
         return pickerLabel
     }
     
     public func pickerView(_ pickerView: UIPickerView,
                            rowHeightForComponent component: Int) -> CGFloat {
-        return rowHeight_
+        return rowHeight
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

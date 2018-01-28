@@ -36,8 +36,8 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         else {
             navigationItem.leftBarButtonItem = nil
         }
-        cancelButton.title = popover?.cancelButton_.title
-        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
+        cancelButton.title = popover?.cancelButton.title
+        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         
         // Set up done button
@@ -45,12 +45,12 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         else {
             navigationItem.rightBarButtonItem = nil
         }
-        doneButton.title = popover?.doneButton_.title
-        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
+        doneButton.title = popover?.doneButton.title
+        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
 
         // Select row if needed
-        if let select = popover?.selectedRow_ {
+        if let select = popover?.selectedRow {
             picker?.selectRow(select, inComponent: 0, animated: true)
         }
     }
@@ -61,7 +61,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{
-            popover?.doneButton_.action?(popover!, selectedRow, selectedString)
+            popover?.doneButton.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }
@@ -72,7 +72,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         let selectedRow = picker.selectedRow(inComponent: 0)
         if let selectedString = popover?.choices[selectedRow]{
-            popover?.cancelButton_.action?(popover!, selectedRow, selectedString)
+            popover?.cancelButton.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }

@@ -35,7 +35,7 @@ public class StringPickerPopover: AbstractPopover {
     private var font_: UIFont?
     
     /// Font color
-    private var fontColor_: UIColor?
+    private var fontColor_: UIColor = .black
     
     /// Convert a raw value to the string for displaying it
     var displayStringFor_:DisplayStringForType?
@@ -244,7 +244,7 @@ extension StringPickerPopover: UIPickerViewDelegate {
 
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = (view as? UILabel) ?? UILabel()
-        pickerLabel.textColor = fontColor_ ?? .black
+        pickerLabel.textColor = fontColor_
         pickerLabel.textAlignment = .center
         pickerLabel.font = self.font_ ?? UIFont.systemFont(ofSize: 15)
         pickerLabel.text = choices[row]

@@ -31,21 +31,25 @@ public class ColumnStringPickerPopover: AbstractPopover {
     // MARK: - Properties
 
     /// Choice array. Nest.
-    var choices: [[ItemType]] = [[]]
+    private(set) var choices: [[ItemType]] = [[]]
     /// Selected rows
-    var selectedRows_: [Int] = [Int]()
+    private(set) var selectedRows: [Int] = [Int]()
     /// Column ratio
-    var columnPercents_: [Float] = [Float]()
-    /// Font size
-    var fontSize_: CGFloat = 12.0
-    
+    private(set) var columnPercents: [Float] = [Float]()
+    ///Font
+    private(set) var fonts: [UIFont?]?
+    private(set) var fontSizes: [CGFloat?]?
+    private let kDefaultFontSize:CGFloat = 12
+    private(set) var fontColors: [UIColor?]?
+    private let kDefaultFontColor: UIColor = .black
+
     /// Convert a raw value to the string for displaying it
-    var displayStringFor_: DisplayStringForType?
+    private var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
-    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton: ButtonParameterType = (title:"Done".localized, color: nil, action: nil)
     /// Cancel button parameters
-    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = (title:"Cancel".localized, color: nil, action: nil)
 
     // MARK: - Initializer
     
@@ -62,8 +66,8 @@ public class ColumnStringPickerPopover: AbstractPopover {
         // Set parameters
         self.title = title
         self.choices = choices
-        self.selectedRows_ = selectedRows
-        self.columnPercents_ = columnPercents
+        self.selectedRows = selectedRows
+        self.columnPercents = columnPercents
     }
 
     // MARK: - Propery setter
@@ -73,7 +77,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// - Parameter row: Selected rows of picker
     /// - Returns: Self
     public func setSelectedRows(_ rows:[Int])->Self{
-        self.selectedRows_ = rows
+        self.selectedRows = rows
         return self
     }
     
@@ -82,7 +86,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
     /// - Returns: Self
     public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
-        self.displayStringFor_ = displayStringFor
+        self.displayStringFor = displayStringFor
         return self
     }
 
@@ -94,7 +98,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton_, title:title, color:color, action: action)
+        return setButton(button: &doneButton, title:title, color:color, action: action)
     }
     
     /// Set cancel button properties.
@@ -105,7 +109,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton_, title:title, color:color, action: action)
+        return setButton(button: &cancelButton, title:title, color:color, action: action)
     }
 
     /// Set button arguments to the targeted button propertoes
@@ -116,7 +120,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton( button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+    func setButton(button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             button.title = t
         }
@@ -127,44 +131,48 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set font size
-    ///
-    /// - Parameter fontSize: Font size on picker
-    /// - Returns: Self
-    public func setFontSize(_ fontSize:CGFloat)->Self{
-        self.fontSize_ = fontSize
+    /// Set fonts
+    public func setFonts(_ fonts:[UIFont?]) ->Self {
+        self.fonts = fonts
         return self
     }
-
     
-
+    /// Set pickerFontColors
+    public func setFontColors(_ colors:[UIColor?]) ->Self {
+        self.fontColors = colors
+        return self
+    }
+    
+    /// Set font sizes
+    public func setFontSizes(_ fontSizes:[CGFloat?])->Self{
+        self.fontSizes = fontSizes
+        return self
+    }
 }
 
 // MARK: - UIPickerViewDelegate
 extension ColumnStringPickerPopover: UIPickerViewDelegate{
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return choice(component: component, row: row)
-    }
-    
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label = view as! UILabel!
-        if label == nil {
-            label = UILabel()
-        }
+        let label:UILabel = view as? UILabel ?? UILabel()
         
-        let data = choices[component][row]
-        let title = NSAttributedString(string: data, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize_, weight: UIFont.Weight.regular)])
-        label!.attributedText = title
-        label!.textAlignment = .center
-        return label!
+        let title = choices[component][row]
+        label.text = choice(component: component, row: row)
+        
+        let fontSize: CGFloat = fontSizes?[component] ?? kDefaultFontSize
+        let font: UIFont = fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
+        let fontColor: UIColor = fontColors?[component] ?? kDefaultFontColor
+        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
+        label.attributedText = attributedTitle
+        
+        label.textAlignment = .center
+        return label
     }
     
     public func pickerView(_ pickerView: UIPickerView,
                            didSelectRow row: Int,
                            inComponent component: Int){
         
-        selectedRows_[component] = row
-        
+        selectedRows[component] = row
         redoDisappearAutomatically()
     }
 
@@ -185,22 +193,19 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
     public func pickerView(_ pickerView: UIPickerView,
                            widthForComponent component: Int) -> CGFloat {
         let width = Float(pickerView.frame.size.width)
-        let temp = width * columnPercents_[component]
+        let temp = width * columnPercents[component]
         return CGFloat(temp)
     }
     
     // get string of choice
     func choice(component: Int, row: Int)->ItemType? {
-        if let d = displayStringFor_ {
-            return d(choices[component][row])
-        }
-        return choices[component][row]
+       return displayStringFor?(choices[component][row]) ?? choices[component][row]
     }
     
     // get array of selected values
     func selectedValues()->[ItemType]{
         var result = [ItemType]()
-        for (index, content) in selectedRows_.enumerated() {
+        for (index, content) in selectedRows.enumerated() {
             if let string = choice(component: index, row: content){
                 result.append(string)
             }

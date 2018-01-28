@@ -25,25 +25,28 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: - Properties
     
     /// Choice array
-    var choices: [ItemType] = []
-    /// Array of image name to attach to a choice
-    var imageNames_: [String?]?
+    private(set) var choices: [ItemType] = []
     /// Array of image to attach to a choice
-    var images_: [UIImage?]?
+    private(set) var images: [UIImage?]?
+    
+    /// Font
+    private(set) var font: UIFont?
+    private(set) var fontColor: UIColor = .black
+    private(set) var fontSize: CGFloat = 12
     
     /// Convert a raw value to the string for displaying it
-    var displayStringFor_:DisplayStringForType?
+    private(set) var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
-    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil)
     /// Cancel button parameters
-    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil)
     
     /// Selected row
-    var selectedRow_: Int = 0
+    private(set) var selectedRow: Int = 0
 
     /// Row height
-    var rowHeight_: CGFloat = 44.0
+    private(set) var rowHeight: CGFloat = 44
     
     // MARK: - Initializer
 
@@ -61,6 +64,29 @@ public class StringPickerPopover: AbstractPopover {
         
     }
 
+    /// Set font
+    ///
+    /// - Parameter fontName: UIFont to change picker font
+    /// - Returns: Self
+    public func setFont(_ font:UIFont) ->Self {
+        self.font = font
+        return self
+    }
+    
+    public func setFontSize(_ size:CGFloat) -> Self {
+        self.fontSize = size
+        return self
+    }
+    
+    /// Set pickerFontColor
+    ///
+    /// - Parameter colorName: UIColor to change picker ArrayColor
+    /// - Returns: Self
+    public func setFontColor(_ color:UIColor) ->Self {
+        self.fontColor = color
+        return self
+    }
+    
     // MARK: - Propery setter
 
     /// Set image names
@@ -68,7 +94,10 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter imageNames: String Array of image name to attach to a choice
     /// - Returns: Self
     public func setImageNames(_ imageNames:[String?]?)->Self{
-        self.imageNames_ = imageNames
+        self.images = imageNames?.map({
+            guard let imageName = $0 else { return nil }
+            return UIImage(named: imageName)
+        })
         return self
     }
 
@@ -77,7 +106,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter images: String Array of image to attach to a choice
     /// - Returns: Self
     public func setImages(_ images:[UIImage?]?)->Self{
-        self.images_ = images
+        self.images = images
         return self
     }
     
@@ -86,7 +115,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter row: Selected row on picker
     /// - Returns: Self
     public func setSelectedRow(_ row:Int)->Self{
-        self.selectedRow_ = row
+        self.selectedRow = row
         return self
     }
 
@@ -95,7 +124,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter height: Row height
     /// - Returns: Self
     public func setRowHeight(_ height:CGFloat)->Self{
-        self.rowHeight_ = height
+        self.rowHeight = height
         return self
     }
     
@@ -104,7 +133,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
     /// - Returns: Self
     public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
-        self.displayStringFor_ = displayStringFor
+        self.displayStringFor = displayStringFor
         return self
     }
     
@@ -116,7 +145,7 @@ public class StringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
     /// - Returns: Self
     public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton_, title:title, color:color, action: action)
+        return setButton(button: &doneButton, title:title, color:color, action: action)
 
     }
 
@@ -128,7 +157,7 @@ public class StringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton_, title:title, color:color, action: action)
+        return setButton(button: &cancelButton, title:title, color:color, action: action)
     }
     
     /// Set button arguments to the targeted button propertoes
@@ -139,7 +168,7 @@ public class StringPickerPopover: AbstractPopover {
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton( button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+    func setButton(button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             button.title = t
         }
@@ -166,61 +195,33 @@ extension StringPickerPopover: UIPickerViewDataSource {
 // MARK: - UIPickerViewDelegate
 extension StringPickerPopover: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if let d = displayStringFor_ {
-            return d(choices[row])
-        }
-        return choices[row]
+        return displayStringFor?(choices[row]) ?? choices[row]
     }
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let baseAtt = NSMutableAttributedString()
+        let attributedResult = NSMutableAttributedString()
         
-        if let imageNames = imageNames_{
-            if let name = imageNames[row], let image = UIImage(named: name){
-                
-                let imageAttachment = NSTextAttachment()
-                imageAttachment.image = image
-                let imageAtt = NSAttributedString(attachment: imageAttachment)
-                baseAtt.append(imageAtt)
-                
-                let marginAtt = NSAttributedString(string: " ")
-                baseAtt.append(marginAtt)
-            }
-            else {
-                return nil
-            }
+        if let images = images, let image = images[row] {
+            let imageAttachment = NSTextAttachment()
+            imageAttachment.image = image
+            let attributedImage = NSAttributedString(attachment: imageAttachment)
+            attributedResult.append(attributedImage)
+            
+            let AttributedMargin = NSAttributedString(string: " ")
+            attributedResult.append(AttributedMargin)
         }
-        else if let images = images_ {
-            if let image = images[row] {
-                
-                let imageAttachment = NSTextAttachment()
-                imageAttachment.image = image
-                let imageAtt = NSAttributedString(attachment: imageAttachment)
-                baseAtt.append(imageAtt)
-                
-                let marginAtt = NSAttributedString(string: " ")
-                baseAtt.append(marginAtt)
-            }
-            else {
-                return nil
-            }
+        
+        let title: String = displayStringFor?(choices[row]) ?? choices[row]
+        let font: UIFont = self.font ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
+        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
 
-        }
-        
-        var str:String?
-        if let d = displayStringFor_ {
-            str = d(choices[row])
-        }
-        
-        let stringAtt = NSAttributedString(string: str ?? choices[row])
-        baseAtt.append(stringAtt)
-        
-        return baseAtt
+        attributedResult.append(attributedTitle)
+        return attributedResult
     }
-
+    
     public func pickerView(_ pickerView: UIPickerView,
                            rowHeightForComponent component: Int) -> CGFloat {
-        return rowHeight_
+        return rowHeight
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

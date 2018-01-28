@@ -81,6 +81,9 @@ All popovers have the following APIs.
 #### StringPickerPopover
 * init(title:, choices:)
 
+* setFont()
+* setFontSize()
+* setFontColor()
 * setImageNames()
 * setImages()
 * setSelectedRow()
@@ -183,11 +186,13 @@ p.appear(originView: originView, baseViewController: self)
 #### ColumnStringPickerPopover
 * init(title:, choices:, selectedRows:, columnPercents:)
 
+* setFonts()
+* setFontSizes()
+* setFontColors()
 * setSelectedRows()
-* setFontSize()
 * setDisplayStringFor()
 * setDoneButton(title:, color:, action:)
-* vButton(title:, color:, action:)
+* setCancelButton(title:, color:, action:)
 
 ##### ColumnStringPickerPopover can have multiple String values:
 ```swift
@@ -285,6 +290,7 @@ When you prepare your customized Storyboard, it will be applied automatically.
 - BalestraPatrick [GitHub](https://github.com/BalestraPatrick) for README.md typo.
 - andersonlucasg3 [GitHub](https://github.com/andersonlucasg3) for adding possibility to override the storyboards with custom localizations in the app project.
 - Mihael Isaev [GitHub](https://github.com/MihaelIsaev) for adding appear() from barButtonItem.
+- iosMaher [GitHub](https://github.com/iosMaher) for idea of setFont() and setFontColor().
 
 ## Author
 - Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

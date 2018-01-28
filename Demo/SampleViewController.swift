@@ -120,8 +120,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
         .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
         .setCancelButton(action: { _,_,_ in print("cancel")})
-        .setFont(UIFont.boldSystemFont(ofSize: 14))
-        .setFontColor(.brown)
+        .setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
+        .setFontColors([nil, .red])
         .appear(originView: sender, baseViewController: self)
     }
 

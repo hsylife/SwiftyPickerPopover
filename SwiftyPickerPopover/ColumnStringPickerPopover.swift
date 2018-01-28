@@ -37,9 +37,11 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Column ratio
     private(set) var columnPercents: [Float] = [Float]()
     ///Font
-    private(set) var font: UIFont?
-    private(set) var fontSize: CGFloat = 12
-    private(set) var fontColor: UIColor = .black
+    private(set) var fonts: [UIFont?]?
+    private(set) var fontSizes: [CGFloat?]?
+    private let kDefaultFontSize:CGFloat = 12
+    private(set) var fontColors: [UIColor?]?
+    private let kDefaultFontColor: UIColor = .black
 
     /// Convert a raw value to the string for displaying it
     private var displayStringFor: DisplayStringForType?
@@ -129,30 +131,21 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
     
-    /// Set font
-    ///
-    /// - Parameter fontName: UIFont to change picker font
-    /// - Returns: Self
-    public func setFont(_ fontName:UIFont) ->Self {
-        self.font = fontName
+    /// Set fonts
+    public func setFonts(_ fonts:[UIFont?]) ->Self {
+        self.fonts = fonts
         return self
     }
     
-    /// Set pickerFontColor
-    ///
-    /// - Parameter colorName: UIColor to change picker ArrayColor
-    /// - Returns: Self
-    public func setFontColor(_ colorName:UIColor) ->Self {
-        self.fontColor = colorName
+    /// Set pickerFontColors
+    public func setFontColors(_ colors:[UIColor?]) ->Self {
+        self.fontColors = colors
         return self
     }
     
-    /// Set font size
-    ///
-    /// - Parameter fontSize: Font size on picker
-    /// - Returns: Self
-    public func setFontSize(_ fontSize:CGFloat)->Self{
-        self.fontSize = fontSize
+    /// Set font sizes
+    public func setFontSizes(_ fontSizes:[CGFloat?])->Self{
+        self.fontSizes = fontSizes
         return self
     }
 }
@@ -170,7 +163,10 @@ extension ColumnStringPickerPopover: UIPickerViewDelegate{
         }
         
         let data = choices[component][row]
-        let title = NSAttributedString(string: data, attributes: [NSAttributedStringKey.font: font ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular), NSAttributedStringKey.foregroundColor: fontColor])
+        let fontSize: CGFloat = fontSizes?[component] ?? kDefaultFontSize
+        let font: UIFont = fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
+        let fontColor: UIColor = fontColors?[component] ?? kDefaultFontColor
+        let title = NSAttributedString(string: data, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
         label!.attributedText = title
         label!.textAlignment = .center
         return label!

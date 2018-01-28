@@ -32,6 +32,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
+            .setFont(UIFont.boldSystemFont(ofSize: 14))
+            .setFontColor(.blue)
             .setDoneButton(
                 action: {  popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
@@ -118,7 +120,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
         .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
         .setCancelButton(action: { _,_,_ in print("cancel")})
-        .setFontSize(14)
+        .setFont(UIFont.boldSystemFont(ofSize: 14))
+        .setFontColor(.brown)
         .appear(originView: sender, baseViewController: self)
     }
 

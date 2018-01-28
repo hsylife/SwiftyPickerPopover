@@ -21,11 +21,11 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     // MARK: Properties
     
     /// Popover
-    var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType? { return anyPopover as? PopoverType }
 
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak private var cancelButton: UIBarButtonItem!
+    @IBOutlet weak private var doneButton: UIBarButtonItem!
+    @IBOutlet weak private var picker: UIPickerView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()

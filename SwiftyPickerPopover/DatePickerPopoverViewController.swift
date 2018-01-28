@@ -10,12 +10,12 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     
     typealias PopoverType = DatePickerPopover
     
-    var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType? { return anyPopover as? PopoverType }
     
-    @IBOutlet weak public var picker: UIDatePicker!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak private var picker: UIDatePicker!
+    @IBOutlet weak private var cancelButton: UIBarButtonItem!
+    @IBOutlet weak private var doneButton: UIBarButtonItem!
+    @IBOutlet weak private var clearButton: UIButton!
     
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
@@ -61,7 +61,8 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        tapped(button: popover?.clearButton)
+        popover?.clearButton.action?(popover!, picker.date)
+        popover?.redoDisappearAutomatically()
     }
     
     private func tapped(button: DatePickerPopover.ButtonParameterType?) {

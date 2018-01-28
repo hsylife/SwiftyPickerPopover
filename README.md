@@ -81,6 +81,9 @@ All popovers have the following APIs.
 #### StringPickerPopover
 * init(title:, choices:)
 
+* setFont()
+* setFontSize()
+* setFontColor()
 * setImageNames()
 * setImages()
 * setSelectedRow()
@@ -183,11 +186,13 @@ p.appear(originView: originView, baseViewController: self)
 #### ColumnStringPickerPopover
 * init(title:, choices:, selectedRows:, columnPercents:)
 
+* setFonts()
+* setFontSizes()
+* setFontColors()
 * setSelectedRows()
-* setFontSize()
 * setDisplayStringFor()
 * setDoneButton(title:, color:, action:)
-* vButton(title:, color:, action:)
+* setCancelButton(title:, color:, action:)
 
 ##### ColumnStringPickerPopover can have multiple String values:
 ```swift

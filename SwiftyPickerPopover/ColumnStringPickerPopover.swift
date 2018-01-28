@@ -163,6 +163,8 @@ extension ColumnStringPickerPopover: UIPickerViewDelegate{
         }
         
         let data = choices[component][row]
+        label!.text = choice(component: component, row: row)
+        
         let fontSize: CGFloat = fontSizes?[component] ?? kDefaultFontSize
         let font: UIFont = fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
         let fontColor: UIColor = fontColors?[component] ?? kDefaultFontColor

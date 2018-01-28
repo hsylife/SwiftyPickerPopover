@@ -26,14 +26,13 @@ public class StringPickerPopover: AbstractPopover {
     
     /// Choice array
     private(set) var choices: [ItemType] = []
-    /// Array of image name to attach to a choice
-    private(set) var imageNames: [String?]?
     /// Array of image to attach to a choice
     private(set) var images: [UIImage?]?
     
     /// Font
-    private(set)  var font: UIFont?
-    private(set)  var fontColor: UIColor = .black
+    private(set) var font: UIFont?
+    private(set) var fontColor: UIColor = .black
+    private(set) var fontSize: CGFloat = 12
     
     /// Convert a raw value to the string for displaying it
     private(set) var displayStringFor: DisplayStringForType?
@@ -74,6 +73,11 @@ public class StringPickerPopover: AbstractPopover {
         return self
     }
     
+    public func setFontSize(_ size:CGFloat) -> Self {
+        self.fontSize = size
+        return self
+    }
+    
     /// Set pickerFontColor
     ///
     /// - Parameter colorName: UIColor to change picker ArrayColor
@@ -90,7 +94,10 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameter imageNames: String Array of image name to attach to a choice
     /// - Returns: Self
     public func setImageNames(_ imageNames:[String?]?)->Self{
-        self.imageNames = imageNames
+        self.images = imageNames?.map({
+            guard let imageName = $0 else { return nil }
+            return UIImage(named: imageName)
+        })
         return self
     }
 
@@ -188,65 +195,28 @@ extension StringPickerPopover: UIPickerViewDataSource {
 // MARK: - UIPickerViewDelegate
 extension StringPickerPopover: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if let d = displayStringFor {
-            return d(choices[row])
-        }
-        return choices[row]
+        return displayStringFor?(choices[row]) ?? choices[row]
     }
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let baseAtt = NSMutableAttributedString()
+        let attributedResult = NSMutableAttributedString()
         
-        if let imageNames = imageNames{
-            if let name = imageNames[row], let image = UIImage(named: name){
-                
-                let imageAttachment = NSTextAttachment()
-                imageAttachment.image = image
-                let imageAtt = NSAttributedString(attachment: imageAttachment)
-                baseAtt.append(imageAtt)
-                
-                let marginAtt = NSAttributedString(string: " ")
-                baseAtt.append(marginAtt)
-            }
-            else {
-                return nil
-            }
+        if let images = images, let image = images[row] {
+            let imageAttachment = NSTextAttachment()
+            imageAttachment.image = image
+            let attributedImage = NSAttributedString(attachment: imageAttachment)
+            attributedResult.append(attributedImage)
+            
+            let AttributedMargin = NSAttributedString(string: " ")
+            attributedResult.append(AttributedMargin)
         }
-        else if let images = images {
-            if let image = images[row] {
-                
-                let imageAttachment = NSTextAttachment()
-                imageAttachment.image = image
-                let imageAtt = NSAttributedString(attachment: imageAttachment)
-                baseAtt.append(imageAtt)
-                
-                let marginAtt = NSAttributedString(string: " ")
-                baseAtt.append(marginAtt)
-            }
-            else {
-                return nil
-            }
+        
+        let title: String = displayStringFor?(choices[row]) ?? choices[row]
+        let font: UIFont = self.font ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
+        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
 
-        }
-        
-        var str:String?
-        if let d = displayStringFor {
-            str = d(choices[row])
-        }
-        
-        let stringAtt = NSAttributedString(string: str ?? choices[row])
-        baseAtt.append(stringAtt)
-        
-        return baseAtt
-    }
-
-    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let pickerLabel = (view as? UILabel) ?? UILabel()
-        pickerLabel.textColor = fontColor
-        pickerLabel.textAlignment = .center
-        pickerLabel.font = self.font ?? UIFont.systemFont(ofSize: 15)
-        pickerLabel.text = choices[row]
-        return pickerLabel
+        attributedResult.append(attributedTitle)
+        return attributedResult
     }
     
     public func pickerView(_ pickerView: UIPickerView,

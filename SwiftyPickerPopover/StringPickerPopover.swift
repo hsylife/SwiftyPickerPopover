@@ -31,6 +31,12 @@ public class StringPickerPopover: AbstractPopover {
     /// Array of image to attach to a choice
     var images_: [UIImage?]?
     
+    /// Font
+    private var font_: UIFont?
+    
+    /// Font color
+    private var fontColor_: UIColor?
+    
     /// Convert a raw value to the string for displaying it
     var displayStringFor_:DisplayStringForType?
     
@@ -61,6 +67,24 @@ public class StringPickerPopover: AbstractPopover {
         
     }
 
+    /// Set font
+    ///
+    /// - Parameter fontName: UIFont to change picker font
+    /// - Returns: Self
+    public func setFont(_ fontName:UIFont) ->Self {
+        self.font_ = fontName
+        return self
+    }
+    
+    /// Set pickerFontColor
+    ///
+    /// - Parameter colorName: UIColor to change picker ArrayColor
+    /// - Returns: Self
+    public func setColor(_ colorName:UIColor) ->Self {
+        self.fontColor_ = colorName
+        return self
+    }
+    
     // MARK: - Propery setter
 
     /// Set image names
@@ -218,6 +242,15 @@ extension StringPickerPopover: UIPickerViewDelegate {
         return baseAtt
     }
 
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = (view as? UILabel) ?? UILabel()
+        pickerLabel.textColor = fontColor_ ?? .black
+        pickerLabel.textAlignment = .center
+        pickerLabel.font = self.font_ ?? UIFont.systemFont(ofSize: 15)
+        pickerLabel.text = choices[row]
+        return pickerLabel
+    }
+    
     public func pickerView(_ pickerView: UIPickerView,
                            rowHeightForComponent component: Int) -> CGFloat {
         return rowHeight_

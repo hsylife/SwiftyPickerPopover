@@ -35,16 +35,12 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         if #available(iOS 11.0, *) { }
         else {
             navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = nil
         }
         cancelButton.title = popover?.cancelButton.title
         cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         
-        // Set up done button
-        if #available(iOS 11.0, *) { }
-        else {
-            navigationItem.rightBarButtonItem = nil
-        }
         doneButton.title = popover?.doneButton.title
         doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
@@ -59,20 +55,20 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     ///
     /// - Parameter sender: Done button
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
-        let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover?.choices[selectedRow]{
-            popover?.doneButton.action?(popover!, selectedRow, selectedString)
-        }
-        dismiss(animated: false, completion: {})
+        tapped(button: popover?.doneButton)
     }
     
     /// Action when tapping cancel button
     ///
     /// - Parameter sender: Cancel button
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
+        tapped(button: popover?.cancelButton)
+    }
+    
+    private func tapped(button: StringPickerPopover.ButtonParameterType?) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover?.choices[selectedRow]{
-            popover?.cancelButton.action?(popover!, selectedRow, selectedString)
+        if let selectedString = popover?.choices[selectedRow] {
+            button?.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }

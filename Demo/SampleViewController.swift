@@ -122,6 +122,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         .setCancelButton(action: { _,_,_ in print("cancel")})
         .setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
         .setFontColors([nil, .red])
+        .setSelectedRows([0,2])
         .appear(originView: sender, baseViewController: self)
     }
 

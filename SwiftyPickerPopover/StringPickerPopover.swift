@@ -71,8 +71,8 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter fontName: UIFont to change picker font
     /// - Returns: Self
-    public func setFont(_ fontName:UIFont) ->Self {
-        self.font_ = fontName
+    public func setFont(_ font:UIFont) ->Self {
+        self.font_ = font
         return self
     }
     
@@ -80,8 +80,8 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter colorName: UIColor to change picker ArrayColor
     /// - Returns: Self
-    public func setColor(_ colorName:UIColor) ->Self {
-        self.fontColor_ = colorName
+    public func setFontColor(_ color:UIColor) ->Self {
+        self.fontColor_ = color
         return self
     }
     

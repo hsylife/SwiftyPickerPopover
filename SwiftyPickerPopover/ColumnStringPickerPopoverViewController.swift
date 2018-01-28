@@ -41,8 +41,8 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         else {
             navigationItem.leftBarButtonItem = nil
         }
-        cancelButton.title = popover?.cancelButton_.title
-        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
+        cancelButton.title = popover?.cancelButton.title
+        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
 
         // Set up done button
@@ -50,12 +50,12 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         else {
             navigationItem.rightBarButtonItem = nil
         }
-        doneButton.title = popover?.doneButton_.title
-        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
+        doneButton.title = popover?.doneButton.title
+        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
 
         // Select row if needed
-        if let selected = popover?.selectedRows_ {
+        if let selected = popover?.selectedRows {
             for x in 0..<selected.count {
                 picker.selectRow(selected[x], inComponent: x, animated: true)
             }
@@ -67,9 +67,9 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     /// - Parameter sender: Done button
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
         if let popover = popover {
-            let selectedRows = popover.selectedRows_
+            let selectedRows = popover.selectedRows
             let selectedChoices = popover.selectedValues()
-            popover.doneButton_.action?(popover, selectedRows, selectedChoices)
+            popover.doneButton.action?(popover, selectedRows, selectedChoices)
             
             dismiss(animated: false, completion: {})
         }
@@ -80,9 +80,9 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     /// - Parameter sender: Cancel button
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         if let popover = popover {
-            let selectedRows = popover.selectedRows_
+            let selectedRows = popover.selectedRows
             let selectedChoices = popover.selectedValues()
-            popover.cancelButton_.action?(popover, selectedRows, selectedChoices)
+            popover.cancelButton.action?(popover, selectedRows, selectedChoices)
             
             dismiss(animated: false, completion: {})
         }

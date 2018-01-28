@@ -36,9 +36,12 @@ public class ColumnStringPickerPopover: AbstractPopover {
     var selectedRows_: [Int] = [Int]()
     /// Column ratio
     var columnPercents_: [Float] = [Float]()
-    /// Font size
+    ///Font
+    private var font_: UIFont?
     var fontSize_: CGFloat = 12.0
-    
+    ///Font Color
+    private var fontColor_: UIColor = .black
+
     /// Convert a raw value to the string for displaying it
     var displayStringFor_: DisplayStringForType?
     
@@ -127,6 +130,24 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
     
+    /// Set font
+    ///
+    /// - Parameter fontName: UIFont to change picker font
+    /// - Returns: Self
+    public func setFont(_ fontName:UIFont) ->Self {
+        self.font_ = fontName
+        return self
+    }
+    
+    /// Set pickerFontColor
+    ///
+    /// - Parameter colorName: UIColor to change picker ArrayColor
+    /// - Returns: Self
+    public func setFontColor(_ colorName:UIColor) ->Self {
+        self.fontColor_ = colorName
+        return self
+    }
+    
     /// Set font size
     ///
     /// - Parameter fontSize: Font size on picker
@@ -135,9 +156,6 @@ public class ColumnStringPickerPopover: AbstractPopover {
         self.fontSize_ = fontSize
         return self
     }
-
-    
-
 }
 
 // MARK: - UIPickerViewDelegate
@@ -153,7 +171,7 @@ extension ColumnStringPickerPopover: UIPickerViewDelegate{
         }
         
         let data = choices[component][row]
-        let title = NSAttributedString(string: data, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize_, weight: UIFont.Weight.regular)])
+        let title = NSAttributedString(string: data, attributes: [NSAttributedStringKey.font: font_ ?? UIFont.systemFont(ofSize: fontSize_, weight: UIFont.Weight.regular), NSAttributedStringKey.foregroundColor: fontColor_])
         label!.attributedText = title
         label!.textAlignment = .center
         return label!

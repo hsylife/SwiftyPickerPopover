@@ -58,8 +58,17 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 print("cancel") })
 
         p.appear(originView: sender, baseViewController: self)
-
     }
+    
+    @IBAction func didTapStringPickerWithTextField(_ sender: UITextField) {
+        StringPickerPopover(title: "TextField", choices: ["","Text 1", "Text 2", "Text 3"])
+        .setDoneButton(action: { popover, selectedRow, selectedString in
+            sender.text = selectedString
+        })
+        .appear(originView: sender, baseViewController: self)
+        
+    }
+    
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
         /// DatePickerPopover appears:
         DatePickerPopover(title: "DatePicker")

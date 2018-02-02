@@ -37,7 +37,7 @@ Specify it in your 'Podfile', after replacing ‘YourProjectTargetName’ with y
 platform :ios, '9.0'
 use_frameworks!
 target ‘YourProjectTargetName’ do
-pod 'SwiftyPickerPopover', :git => 'https://github.com/hsylife/SwiftyPickerPopover', :branch => 'swift4'
+pod 'SwiftyPickerPopover'
 end
 ```
 Run 'pod install'.
@@ -45,7 +45,7 @@ Run 'pod install'.
 ### Carthage
 - Add it to your Cartfile:
 ```
-github "hsylife/SwiftyPickerPopover" “swift4”
+github "hsylife/SwiftyPickerPopover"
 ```
 - Run `carthage update --platform iOS`
 - Add 'SwiftyPickerPopover.framework' to 'Linked Frameworks and Library' on your project.

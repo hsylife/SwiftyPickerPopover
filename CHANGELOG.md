@@ -1,3 +1,18 @@
+6.0.1 Release notes (2018-02-02)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Added the new sample code about how to use StringPickerPopover with UITextField.
+
+### Bugfixes
+
+* Nothing
+
 6.0.0 Release notes (2018-01-28)
 =============================================================
 ### API Breaking Changes

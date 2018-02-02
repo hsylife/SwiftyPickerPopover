@@ -19,24 +19,24 @@ open class AbstractPopover: NSObject {
     var title: String?
     
     /// Base view controller
-    weak var baseViewController: UIViewController? = UIViewController()
+    private(set) weak var baseViewController: UIViewController? = UIViewController()
     /// Permitted arrow directions
-    var permittedArrowDirections_:UIPopoverArrowDirection = .any
+    private(set) var permittedArrowDirections:UIPopoverArrowDirection = .any
     
     /// - Item to be executed after the specified time
     /// - The time
     /// - Process to be executed after performing the DispatchWorkItem
-    var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
+    private(set) var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
     
     /// ViewController in charge of content in the popover
-    weak var contentViewController: AnyObject?
+    private(set) weak var contentViewController: AnyObject?
     /// Background color of contentViewController
-    var backgroundColor: UIColor?
+    private(set) var backgroundColor: UIColor?
     /// tintColor of contentViewController
-    var tintColor: UIColor?
+    private(set) var tintColor: UIColor?
     
     /// Size of th popover
-    var size:(width: CGFloat?, height: CGFloat?)?
+    private(set) var size:(width: CGFloat?, height: CGFloat?)?
     
     override public init(){
         //Get a string as stroyboard name from this class name.
@@ -50,7 +50,7 @@ open class AbstractPopover: NSObject {
     /// - Parameter permittedArrowDirections: Permitted arrow directions
     /// - Returns: Self
     open func setPermittedArrowDirections(_ permittedArrowDirections:UIPopoverArrowDirection)->Self{
-        self.permittedArrowDirections_ = permittedArrowDirections
+        self.permittedArrowDirections = permittedArrowDirections
         return self
     }
     
@@ -79,6 +79,19 @@ open class AbstractPopover: NSObject {
     /// Display the popover.
     ///
     /// - Parameter
+    ///   - barButtonItem: Bar button item to be the origin point at where the popover appears.
+    ///   - baseViewWhenOriginViewHasNoSuperview: SourceView of popoverPresentationController. Omissible. This view will be used instead of originView.superView when it is nil.
+    ///   - baseViewController: Base viewController
+    ///   - completion: Action to be performed after the popover appeared. Omissible.
+    
+    open func appear(barButtonItem: UIBarButtonItem, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil) {
+        guard let originView = barButtonItem.value(forKey: "view") as? UIView else { return }
+        appear(originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, completion: completion)
+    }
+    
+    /// Display the popover.
+    ///
+    /// - Parameter
     ///   - originView: View to be the origin point at where the popover appears.
     ///   - baseViewWhenOriginViewHasNoSuperview: SourceView of popoverPresentationController. Omissible. This view will be used instead of originView.superView when it is nil.
     ///   - baseViewController: Base viewController
@@ -89,7 +102,7 @@ open class AbstractPopover: NSObject {
         self.baseViewController = baseViewController
         
         // create navigationController
-        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections_ ) else { return }
+        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections ) else { return }
         
         // configure StringPickerPopoverViewController
         let contentVC = configureContentViewController(navigationController: navigationController)

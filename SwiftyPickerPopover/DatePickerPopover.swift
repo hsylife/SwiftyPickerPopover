@@ -22,23 +22,22 @@ public class DatePickerPopover: AbstractPopover {
     // MARK: - Properties
 
     /// Done button parameters
-    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton: ButtonParameterType = (title: "Done".localized, color: nil, action: nil)
     /// Cancel button parameters
-    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, color: nil, action: nil)
     /// Clear button parameters
-    var clearButton_: ButtonParameterType = ("Clear".localized, nil, nil)
+    private(set) var clearButton: ButtonParameterType = (title: "Clear".localized, color: nil, action: nil)
     
     /// Date mode
-    var dateMode_:UIDatePickerMode = .date
+    private(set) var dateMode_:UIDatePickerMode = .date
     /// Limit of range
-    var minimumDate_: ItemType?
-    var maximumDate_: ItemType?
+    private(set) var minimumDate: ItemType?
+    private(set) var maximumDate: ItemType?
     /// Date picker interval. Mins
-    var minuteInterval_: Int = 0
+    private(set) var minuteInterval: Int = 0
     /// Selected date
-    var selectedDate_: ItemType = ItemType()
-
-    var locale_: Locale = Locale.current
+    private(set) var selectedDate: ItemType = ItemType()
+    private(set) var locale: Locale = Locale.current
     
     // MARK: - Initializer
     
@@ -47,11 +46,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - Parameter title: Title for navigation bar.
     public init(title: String?){
         super.init()
-        
-        // set parameters
         self.title = title
-        
-        
     }
     
     // MARK: - Propery setter
@@ -61,7 +56,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - Parameter row: The default value of picker.
     /// - Returns: self
     public func setSelectedDate(_ date:ItemType)->Self{
-        self.selectedDate_ = date
+        self.selectedDate = date
         return self
     }
     
@@ -79,7 +74,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
     public func setMinimumDate(_ minimumDate:Date)->Self{
-        self.minimumDate_ = minimumDate
+        self.minimumDate = minimumDate
         return self
     }
 
@@ -88,7 +83,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
     public func setMaximumDate(_ maximumDate:Date)->Self{
-        self.maximumDate_ = maximumDate
+        self.maximumDate = maximumDate
         return self
     }
     
@@ -97,7 +92,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
     public func setMinuteInterval(_ minuteInterval:Int)->Self{
-        self.minuteInterval_ = minuteInterval
+        self.minuteInterval = minuteInterval
         return self
     }
     
@@ -115,7 +110,7 @@ public class DatePickerPopover: AbstractPopover {
     /// - Parameter locale: Locale which is used for display date picker
     /// - Returns: Self
     public func setLocale(_ locale:Locale)->Self{
-        self.locale_ = locale
+        self.locale = locale
         return self
     }
 
@@ -127,7 +122,7 @@ public class DatePickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton_, title:title, color:color, action: action)
+        return setButton(button: &doneButton, title:title, color:color, action: action)
     }
     
     /// Set Cancel button properties
@@ -138,7 +133,7 @@ public class DatePickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton_, title:title, color:color, action: action)
+        return setButton(button: &cancelButton, title:title, color:color, action: action)
     }
     
     /// Set Clear button properties
@@ -149,7 +144,7 @@ public class DatePickerPopover: AbstractPopover {
     ///   - completion: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setClearButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &clearButton_, title:title, color:color, action: action)
+        return setButton(button: &clearButton, title:title, color:color, action: action)
     }
     
     /// Set button arguments to the targeted button propertoes

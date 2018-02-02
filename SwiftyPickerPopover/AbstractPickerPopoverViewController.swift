@@ -19,7 +19,7 @@ open class AbstractPickerPopoverViewController: UIViewController {
         super.viewWillAppear(animated)
         refrectPopoverProperties()
     }
-
+    
     /// Make the popover property reflect on the popover
     func refrectPopoverProperties(){
         title = (anyPopover as? AbstractPopover)?.title

@@ -10,70 +10,64 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     
     typealias PopoverType = DatePickerPopover
     
-    var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType? { return anyPopover as? PopoverType }
     
-    @IBOutlet weak public var picker: UIDatePicker!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var clearButton: UIButton!
-
-    var hideClearButton: Bool = false
+    @IBOutlet weak private var picker: UIDatePicker!
+    @IBOutlet weak private var cancelButton: UIBarButtonItem!
+    @IBOutlet weak private var doneButton: UIBarButtonItem!
+    @IBOutlet weak private var clearButton: UIButton!
     
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
-
-        if #available(iOS 11.0, *) { }
-        else {
-            navigationItem.leftBarButtonItem = nil
-        }
-        cancelButton.title = popover?.cancelButton_.title
-        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
-        navigationItem.setLeftBarButton(cancelButton, animated: false)
         
         if #available(iOS 11.0, *) { }
         else {
+            navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = nil
         }
-        doneButton.title = popover?.doneButton_.title
-        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
+        cancelButton.title = popover?.cancelButton.title
+        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
+        navigationItem.setLeftBarButton(cancelButton, animated: false)
+        
+        doneButton.title = popover?.doneButton.title
+        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
+        
+        clearButton.setTitle(popover?.clearButton.title, for: .normal)
+        clearButton.tintColor = popover?.clearButton.color ?? popover?.tintColor
 
-        clearButton.setTitle(popover?.clearButton_.title, for: .normal)
-        clearButton.tintColor = popover?.clearButton_.color ?? popover?.tintColor
-
-        if let _ = popover?.clearButton_.action { }
-        else {
+        if popover?.clearButton.action == nil {
             clearButton.removeFromSuperview()
             view.layoutIfNeeded()
         }
 
-        if let pp = popover {
-            picker.date = pp.selectedDate_
-            picker.minimumDate = pp.minimumDate_
-            picker.maximumDate = pp.maximumDate_
-            picker.datePickerMode = pp.dateMode_
-            picker.locale = pp.locale_
-            if picker.datePickerMode != .date {
-                picker.minuteInterval = pp.minuteInterval_
-            }
+        guard let popover = popover else { return }
+        picker.date = popover.selectedDate
+        picker.minimumDate = popover.minimumDate
+        picker.maximumDate = popover.maximumDate
+        picker.datePickerMode = popover.dateMode_
+        picker.locale = popover.locale
+        if picker.datePickerMode != .date {
+            picker.minuteInterval = popover.minuteInterval
         }
-        
-
     }
 
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        popover?.doneButton_.action?(popover!, picker.date)
-        dismiss(animated: false, completion: {})
+        tapped(button: popover?.doneButton)
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelButton_.action?(popover!, picker.date)
-        dismiss(animated: false, completion: {})
+        tapped(button: popover?.cancelButton)
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        popover?.clearButton_.action?(popover!, picker.date)
+        popover?.clearButton.action?(popover!, picker.date)
         popover?.redoDisappearAutomatically()
+    }
+    
+    private func tapped(button: DatePickerPopover.ButtonParameterType?) {
+        button?.action?(popover!, picker.date)
+        dismiss(animated: false, completion: {})
     }
     
     @IBAction func pickerValueChanged(_ sender: UIDatePicker) {

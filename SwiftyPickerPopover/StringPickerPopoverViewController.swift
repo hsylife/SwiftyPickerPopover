@@ -16,11 +16,11 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     // MARK: Properties
 
     /// Popover
-    var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType? { return anyPopover as? PopoverType }
     
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak private var cancelButton: UIBarButtonItem!
+    @IBOutlet weak private var doneButton: UIBarButtonItem!
+    @IBOutlet weak private var picker: UIPickerView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -35,22 +35,18 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         if #available(iOS 11.0, *) { }
         else {
             navigationItem.leftBarButtonItem = nil
-        }
-        cancelButton.title = popover?.cancelButton_.title
-        cancelButton.tintColor = popover?.cancelButton_.color ?? popover?.tintColor
-        navigationItem.setLeftBarButton(cancelButton, animated: false)
-        
-        // Set up done button
-        if #available(iOS 11.0, *) { }
-        else {
             navigationItem.rightBarButtonItem = nil
         }
-        doneButton.title = popover?.doneButton_.title
-        doneButton.tintColor = popover?.doneButton_.color ?? popover?.tintColor
-        navigationItem.setRightBarButton(doneButton, animated: false)
+        cancelButton.title = popover?.cancelButton.title
+        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
+        navigationItem.setLeftBarButton(cancelButton, animated: false)
         
+        doneButton.title = popover?.doneButton.title
+        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
+        navigationItem.setRightBarButton(doneButton, animated: false)
+
         // Select row if needed
-        if let select = popover?.selectedRow_ {
+        if let select = popover?.selectedRow {
             picker?.selectRow(select, inComponent: 0, animated: true)
         }
     }
@@ -59,20 +55,20 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     ///
     /// - Parameter sender: Done button
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
-        let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover?.choices[selectedRow]{
-            popover?.doneButton_.action?(popover!, selectedRow, selectedString)
-        }
-        dismiss(animated: false, completion: {})
+        tapped(button: popover?.doneButton)
     }
     
     /// Action when tapping cancel button
     ///
     /// - Parameter sender: Cancel button
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
+        tapped(button: popover?.cancelButton)
+    }
+    
+    private func tapped(button: StringPickerPopover.ButtonParameterType?) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover?.choices[selectedRow]{
-            popover?.cancelButton_.action?(popover!, selectedRow, selectedString)
+        if let selectedString = popover?.choices[selectedRow] {
+            button?.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }

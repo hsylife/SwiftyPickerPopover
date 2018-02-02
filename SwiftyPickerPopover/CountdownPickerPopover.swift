@@ -20,14 +20,14 @@ public class CountdownPickerPopover: AbstractPopover {
     // MARK: - Properties
 
     /// Done button parameters
-    var doneButton_: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton: ButtonParameterType = (title: "Done".localized, color: nil, action: nil)
     /// Cancel button parameters
-    var cancelButton_: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, color: nil, action: nil)
     /// Clear button parameters
-    var clearButton_: ButtonParameterType = ("Clear".localized, nil, nil)
+    private(set) var clearButton: ButtonParameterType = (title: "Clear".localized, color: nil, action: nil)
 
     // Selected value
-    var selectedTimeInterval_:ItemType = ItemType()
+    private(set) var selectedTimeInterval:ItemType = ItemType()
 
     // MARK: - Initializer
     
@@ -36,8 +36,6 @@ public class CountdownPickerPopover: AbstractPopover {
     /// - Parameter title: Title for navigation bar.
     public init(title: String?){
         super.init()
-        
-        // set parameters
         self.title = title
     }
 
@@ -48,7 +46,7 @@ public class CountdownPickerPopover: AbstractPopover {
     /// - Parameter interval: Value for picker.
     /// - Returns: self
     public func setSelectedTimeInterval(_ interval:ItemType)->Self{
-        self.selectedTimeInterval_ = interval
+        self.selectedTimeInterval = interval
         return self
     }
 
@@ -60,7 +58,7 @@ public class CountdownPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton_, title:title, color:color, action: action)
+        return setButton(button: &doneButton, title:title, color:color, action: action)
     }
     
     /// Set Cancel button properties.
@@ -71,7 +69,7 @@ public class CountdownPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton_, title:title, color:color, action: action)
+        return setButton(button: &cancelButton, title:title, color:color, action: action)
     }
     
     /// - Parameters:
@@ -80,7 +78,7 @@ public class CountdownPickerPopover: AbstractPopover {
     ///   - completion: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setClearButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &clearButton_, title:title, color:color, action: action)
+        return setButton(button: &clearButton, title:title, color:color, action: action)
     }
 
     /// Set button arguments to the targeted button propertoes
@@ -91,7 +89,7 @@ public class CountdownPickerPopover: AbstractPopover {
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton( button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+    func setButton(button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         if let t = title{
             button.title = t
         }

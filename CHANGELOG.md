@@ -1,3 +1,18 @@
+6.1.0 Release notes (2018-02-09)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Add: setCornerRadius() for popover
+
+### Bugfixes
+
+* Nothing
+
 6.0.1 Release notes (2018-02-02)
 =============================================================
 

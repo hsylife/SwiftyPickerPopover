@@ -71,6 +71,7 @@ All popovers have the following APIs.
 * setPermittedArrowDirections()
 * setArrowColor()
 * setSize(width:,height:)
+* setCornerRadius()
 
 * appear(originView:, baseViewWhenOriginViewHasNoSuperview:, baseViewController:, completion:)
 * appear(barButtonItem:, baseViewWhenOriginViewHasNoSuperview:, baseViewController:, completion:)

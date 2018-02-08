@@ -45,11 +45,11 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
     }
     
-    @IBAction func tappedStringPickerWithImageButton(_ sender: UIButton) {
+    @IBAction func didTapStringPickerWithImageButton(_ sender: UIButton) {
         /// StringPickerPopover with image:
         let p = StringPickerPopover(title: "with image", choices: ["value 1","value 2",""])
             .setImageNames(["imageIcon",nil,"thumbUpIcon"])
-            .setSize(width: 280.0)
+            .setSize(width: 280)
             .setCornerRadius(0)
             .setDoneButton(color: UIColor.red, action: {
                 popover, selectedRow, selectedString in
@@ -57,7 +57,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
-
         p.appear(originView: sender, baseViewController: self)
     }
     

@@ -50,6 +50,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         let p = StringPickerPopover(title: "with image", choices: ["value 1","value 2",""])
             .setImageNames(["imageIcon",nil,"thumbUpIcon"])
             .setSize(width: 280.0)
+            .setCornerRadius(0)
             .setDoneButton(color: UIColor.red, action: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")

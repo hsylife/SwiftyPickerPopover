@@ -38,6 +38,8 @@ open class AbstractPopover: NSObject {
     /// Size of th popover
     private(set) var size:(width: CGFloat?, height: CGFloat?)?
     
+    private(set) var cornerRadius: CGFloat?
+    
     override public init(){
         //Get a string as stroyboard name from this class name.
         storyboardName = String(describing: type(of:self))
@@ -71,6 +73,11 @@ open class AbstractPopover: NSObject {
     /// - Returns: Self
     open func setSize(width: CGFloat? = nil, height: CGFloat? = nil)->Self{
         self.size = (width: width, height: height)
+        return self
+    }
+    
+    open func setCornerRadius(_ radius: CGFloat) -> Self {
+        self.cornerRadius = radius
         return self
     }
     
@@ -112,8 +119,13 @@ open class AbstractPopover: NSObject {
         
         tintColor = baseViewController.view.tintColor
         
-        // presnet popover
-        baseViewController.present(navigationController, animated: true, completion: completion)
+        // show popover
+        baseViewController.present(navigationController, animated: true, completion: { [weak self] in
+            if let cornerRadius = self?.cornerRadius {
+                navigationController.view.superview?.layer.cornerRadius = cornerRadius
+            }
+            completion?()
+        })
     }
     
     /// Configure contentViewController of popover
@@ -215,8 +227,8 @@ open class AbstractPopover: NSObject {
 		navigationController.popoverPresentationController?.sourceRect = originView.frame
 		
 		// direction of arrow
-		navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
-		
+		navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections        
+        
 		return navigationController
 	}
 }

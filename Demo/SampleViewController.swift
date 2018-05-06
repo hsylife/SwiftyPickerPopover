@@ -147,6 +147,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
         .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
         .setCancelButton(action: { _,_,_ in print("cancel")})
+        .setValueChange(action: { _, _, selectedStrings in
+            print("current strings: \(selectedStrings)")
+        })
         .setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
         .setFontColors([nil, .red])
         .setSelectedRows([0,2])

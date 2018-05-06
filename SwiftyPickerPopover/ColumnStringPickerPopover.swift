@@ -51,6 +51,9 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Cancel button parameters
     private(set) var cancelButton: ButtonParameterType = (title:"Cancel".localized, color: nil, action: nil)
 
+    /// Action for picker value change
+    private(set) var valueChangeAction: ActionHandlerType?
+
     // MARK: - Initializer
     
     /// Initialize a Popover with the following arguments.
@@ -131,6 +134,16 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return self
     }
     
+    /// Set an action for each value change done by user
+    ///
+    /// - Parameters:
+    ///   -action: Action to be performed each time the picker is moved to a new value.
+    /// - Returns: Self
+    public func setValueChange(action: ActionHandlerType?)->Self{
+        valueChangeAction = action
+        return self
+    }
+    
     /// Set fonts
     public func setFonts(_ fonts:[UIFont?]) ->Self {
         self.fonts = fonts
@@ -173,6 +186,7 @@ extension ColumnStringPickerPopover: UIPickerViewDelegate{
                            inComponent component: Int){
         
         selectedRows[component] = row
+        valueChangeAction?(self, selectedRows, selectedValues())
         redoDisappearAutomatically()
     }
 

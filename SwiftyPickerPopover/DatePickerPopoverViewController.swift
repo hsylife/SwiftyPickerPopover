@@ -71,6 +71,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     }
     
     @IBAction func pickerValueChanged(_ sender: UIDatePicker) {
+        popover?.valueChangeAction?(popover!, picker.date)
         popover?.redoDisappearAutomatically()
     }
     

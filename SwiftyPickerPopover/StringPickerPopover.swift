@@ -238,7 +238,7 @@ extension StringPickerPopover: UIPickerViewDelegate {
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        redoDisappearAutomatically()
         valueChangeAction?(self, row, choices[row])
+        redoDisappearAutomatically()
     }
 }

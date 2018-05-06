@@ -68,6 +68,7 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     
     
     @IBAction func pickerValueChanged(_ sender: UIDatePicker) {
+        popover?.valueChangeAction?(popover!, picker.countDownDuration)
         popover?.redoDisappearAutomatically()
     }
     

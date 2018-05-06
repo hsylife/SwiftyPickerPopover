@@ -132,6 +132,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         // CountdownPickerPopover appears:
         CountdownPickerPopover(title: "CountdownPicker")
             .setSelectedTimeInterval(TimeInterval())
+            .setValueChange(action: { _, timeInterval in
+                print("current interval \(timeInterval)")
+            })
             .setDoneButton(action: { popover, timeInterval in print("timeInterval \(timeInterval)")} )
             .setCancelButton(action: { _, _ in print("cancel")})
             .setClearButton(action: { popover, timeInterval in print("Clear")

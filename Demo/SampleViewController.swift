@@ -34,6 +34,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setDisplayStringFor(displayStringFor)
             .setFont(UIFont.boldSystemFont(ofSize: 14))
             .setFontColor(.blue)
+            .setValueChange(action: { _, _, selectedString in
+                print("current string: \(selectedString)")
+            })
             .setDoneButton(
                 action: {  popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")

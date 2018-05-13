@@ -42,6 +42,9 @@ public class StringPickerPopover: AbstractPopover {
     /// Cancel button parameters
     private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil)
     
+    /// Action for picker value change
+    private(set) var valueChangeAction: ActionHandlerType?
+    
     /// Selected row
     private(set) var selectedRow: Int = 0
 
@@ -160,7 +163,7 @@ public class StringPickerPopover: AbstractPopover {
         return setButton(button: &cancelButton, title:title, color:color, action: action)
     }
     
-    /// Set button arguments to the targeted button propertoes
+    /// Set button arguments to the targeted button properties
     ///
     /// - Parameters:
     ///   - button: Target button properties
@@ -176,6 +179,16 @@ public class StringPickerPopover: AbstractPopover {
             button.color = c
         }
         button.action = action
+        return self
+    }
+    
+    /// Set an action for each value change done by user
+    ///
+    /// - Parameters:
+    ///   -action: Action to be performed each time the picker is moved to a new value.
+    /// - Returns: Self
+    public func setValueChange(action: ActionHandlerType?)->Self{
+        valueChangeAction = action
         return self
     }
 
@@ -225,6 +238,7 @@ extension StringPickerPopover: UIPickerViewDelegate {
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        valueChangeAction?(self, row, choices[row])
         redoDisappearAutomatically()
     }
 }

@@ -27,7 +27,9 @@ public class DatePickerPopover: AbstractPopover {
     private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, color: nil, action: nil)
     /// Clear button parameters
     private(set) var clearButton: ButtonParameterType = (title: "Clear".localized, color: nil, action: nil)
-    
+    /// Action for picker value change
+    private(set) var valueChangeAction: ActionHandlerType?
+
     /// Date mode
     private(set) var dateMode_:UIDatePickerMode = .date
     /// Limit of range
@@ -163,6 +165,16 @@ public class DatePickerPopover: AbstractPopover {
             button.color = c
         }
         button.action = action
+        return self
+    }
+    
+    /// Set an action for each value change done by user
+    ///
+    /// - Parameters:
+    ///   -action: Action to be performed each time the picker is moved to a new value.
+    /// - Returns: Self
+    public func setValueChange(action: ActionHandlerType?)->Self{
+        valueChangeAction = action
         return self
     }
     

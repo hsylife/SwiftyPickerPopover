@@ -1,3 +1,18 @@
+6.2.0 Release notes (2018-05-13)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Add: setValueChange(action:) for all popovers
+
+### Bugfixes
+
+* Nothing
+
 6.1.0 Release notes (2018-02-09)
 =============================================================
 

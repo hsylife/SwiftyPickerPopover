@@ -115,7 +115,7 @@ open class AbstractPopover: NSObject {
         let contentVC = configureContentViewController(navigationController: navigationController)
         navigationController.popoverPresentationController?.delegate = contentVC
         
-        navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController?.view.backgroundColor
+        navigationController.popoverPresentationController?.backgroundColor = self.backgroundColor ?? self.baseViewController?.navigationController?.navigationBar.barTintColor ?? self.baseViewController?.view.backgroundColor
         
         tintColor = baseViewController.view.tintColor
         

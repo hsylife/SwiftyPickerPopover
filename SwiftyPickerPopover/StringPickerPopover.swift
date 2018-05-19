@@ -18,7 +18,7 @@ public class StringPickerPopover: AbstractPopover {
     /// Action type for buttons
     public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void
     /// Button parameters type
-    public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
+    public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ItemType?)->String?)
 
@@ -38,9 +38,9 @@ public class StringPickerPopover: AbstractPopover {
     private(set) var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
-    private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil)
+    private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil, nil)
     /// Cancel button parameters
-    private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil, nil)
     
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
@@ -147,8 +147,8 @@ public class StringPickerPopover: AbstractPopover {
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
     /// - Returns: Self
-    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton, title:title, color:color, action: action)
+    public func setDoneButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        return setButton(button: &doneButton, title: title, font: font, color: color, action: action)
 
     }
 
@@ -159,8 +159,8 @@ public class StringPickerPopover: AbstractPopover {
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
     ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton, title:title, color:color, action: action)
+    public func setCancelButton(title:String? = nil, font: UIFont? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+        return setButton(button: &cancelButton, title: title, font: font, color: color, action: action)
     }
     
     /// Set button arguments to the targeted button properties
@@ -171,11 +171,14 @@ public class StringPickerPopover: AbstractPopover {
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton(button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        if let t = title{
+    func setButton(button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
+        if let t = title {
             button.title = t
         }
-        if let c = color{
+        if let font = font {
+            button.font = font
+        }
+        if let c = color {
             button.color = c
         }
         button.action = action

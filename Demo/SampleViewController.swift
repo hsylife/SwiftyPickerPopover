@@ -38,7 +38,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 print("current string: \(selectedString)")
             })
             .setDoneButton(
-                action: {  popover, selectedRow, selectedString in
+                font: UIFont.boldSystemFont(ofSize: 16),
+                color: UIColor.orange,
+                action: { popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
             .setCancelButton(action: {_, _, _ in

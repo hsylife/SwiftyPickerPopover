@@ -119,7 +119,7 @@ public class DatePickerPopover: AbstractPopover {
     /// Set Done button properties
     ///
     /// - Parameters:
-    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
+    ///   - title: Title for the bar button item. Omissible. If it is nil or not specified, then localized "Done" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
@@ -130,7 +130,7 @@ public class DatePickerPopover: AbstractPopover {
     /// Set Cancel button properties
     ///
     /// - Parameters:
-    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
+    ///   - title: Title for the bar button item. Omissible. If it is nil or not specified, then localized "Cancel" will be used.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self

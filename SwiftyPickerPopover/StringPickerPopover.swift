@@ -143,9 +143,10 @@ public class StringPickerPopover: AbstractPopover {
     /// Set done button properties
     ///
     /// - Parameters:
-    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Done" will be used.
+    ///   - title: Title for the bar button item. Omissible. If it is nil or not specified, then localized "Done" will be used.
+    ///   - font: Button title font for .normal. Omissible.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
-    ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissble.
+    ///   - action: Action to be performed before the popover disappeared. The popover, Selected row, Selected value. Omissible.
     /// - Returns: Self
     public func setDoneButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         return setButton(button: &doneButton, title: title, font: font, color: color, action: action)
@@ -155,7 +156,8 @@ public class StringPickerPopover: AbstractPopover {
     /// Set cancel button properties
     ///
     /// - Parameters:
-    ///   - title: Title for the bar button item. Omissble. If it is nil or not specified, then localized "Cancel" will be used.
+    ///   - title: Title for the bar button item. Omissible. If it is nil or not specified, then localized "Cancel" will be used.
+    ///   - font: Button title font for .normal. Omissible.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
     ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
@@ -168,10 +170,11 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - button: Target button properties
     ///   - title: Button title
+    ///   - font: Button title font
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton(button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
+    func setButton(button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         if let t = title {
             button.title = t
         }

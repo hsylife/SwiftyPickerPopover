@@ -67,7 +67,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     
     private func tapped(button: StringPickerPopover.ButtonParameterType?) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover?.choices[selectedRow] {
+        if let selectedString = popover?.choices[safe: selectedRow] {
             button?.action?(popover!, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
@@ -79,6 +79,4 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
-
-
 }

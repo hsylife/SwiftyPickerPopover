@@ -1,3 +1,20 @@
+6.2.1 Release notes (2018-05-19)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+
+* Fix: crash when tapping done/cancel button with no items set String/ColumnStringPickerPopover #85
+- Fix: wired arrow color when setting navigation bar color globally. #83
+
+
 6.2.0 Release notes (2018-05-13)
 =============================================================
 

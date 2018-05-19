@@ -1,3 +1,18 @@
+6.3.0 Release notes (2018-05-19)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* add: font parameter to setDone/Cancle/ClearButton() for each popover #82
+
+### Bugfixes
+
+* Nothing
+
 6.2.1 Release notes (2018-05-19)
 =============================================================
 

@@ -30,7 +30,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         
         /// Create StringPickerPopover:
-        let p = StringPickerPopover(title: "StringPicker", choices: [])
+        let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
             .setFont(UIFont.boldSystemFont(ofSize: 14))
             .setFontColor(.blue)

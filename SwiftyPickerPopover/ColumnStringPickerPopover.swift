@@ -213,7 +213,11 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
     
     // get string of choice
     func choice(component: Int, row: Int)->ItemType? {
-       return displayStringFor?(choices[component][row]) ?? choices[component][row]
+        guard let items = choices[safe: component],
+            let selectedValue = items[safe: row] else {
+                return nil
+        }
+       return displayStringFor?(selectedValue) ?? selectedValue
     }
     
     // get array of selected values

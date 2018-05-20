@@ -19,38 +19,36 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
-        
+        guard let popover = popover else {
+            return
+        }
         if #available(iOS 11.0, *) { }
         else {
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = nil
         }
-        cancelButton.title = popover?.cancelButton.title
-        if let font = popover?.cancelButton.font {
+        cancelButton.title = popover.cancelButton.title
+        if let font = popover.cancelButton.font {
             cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         }
-        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
+        cancelButton.tintColor = popover.cancelButton.color ?? popover.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         
-        doneButton.title = popover?.doneButton.title
-        if let font = popover?.doneButton.font {
+        doneButton.title = popover.doneButton.title
+        if let font = popover.doneButton.font {
             doneButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
         }
-        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
+        doneButton.tintColor = popover.doneButton.color ?? popover.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
         
-        clearButton.setTitle(popover?.clearButton.title, for: .normal)
-        if let font = popover?.clearButton.font {
+        clearButton.setTitle(popover.clearButton.title, for: .normal)
+        if let font = popover.clearButton.font {
             clearButton.titleLabel?.font = font
         }
-        clearButton.tintColor = popover?.clearButton.color ?? popover?.tintColor
+        clearButton.tintColor = popover.clearButton.color ?? popover.tintColor
 
-        if popover?.clearButton.action == nil {
-            clearButton.removeFromSuperview()
-            view.layoutIfNeeded()
-        }
+        clearButton.isHidden = popover.clearButton.action == nil
 
-        guard let popover = popover else { return }
         picker.date = popover.selectedDate
         picker.minimumDate = popover.minimumDate
         picker.maximumDate = popover.maximumDate

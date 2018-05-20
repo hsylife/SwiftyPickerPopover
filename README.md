@@ -91,8 +91,8 @@ All popovers have the following APIs.
 * setSelectedRow()
 * setRowHeight()
 * setDisplayStringFor()
-* setDoneButton(title:, color:, action:)
-* setCancelButton(title:, color:, action:)
+* setDoneButton(title:, font:, color:, action:)
+* setCancelButton(title:, font:,  color:, action:)
 
 ##### You can use StringPickerPopover like this:
 ```swift
@@ -196,8 +196,8 @@ p.appear(originView: originView, baseViewController: self)
 * setFontColors()
 * setSelectedRows()
 * setDisplayStringFor()
-* setDoneButton(title:, color:, action:)
-* setCancelButton(title:, color:, action:)
+* setDoneButton(title:, font:, color:, action:)
+* setCancelButton(title:, font:, color:, action:)
 
 ##### ColumnStringPickerPopover can have multiple String values:
 ```swift
@@ -220,9 +220,9 @@ ColumnStringPickerPopover(title: "Columns Strings",
 * setMaximumDate()
 * setMinuteInterval()
 * setLocale()
-* setDoneButton(title:, color:, action:)
-* setCancelButton(title:, color:, action:)
-* setClearButton(title:, color:, action:)
+* setDoneButton(title:, font:, color:, action:)
+* setCancelButton(title:, font:, color:, action:)
+* setClearButton(title:, font:, color:, action:)
 
 ##### DatePickerPopover can be used like this:
 ```swift
@@ -265,9 +265,9 @@ DatePickerPopover(title: "DatePicker .time 5minInt.")
 * init(title:)
 
 * setSelectedTimeInterval
-* setDoneButton(title:, color:, action:)
-* setCancelButton(title:, color:, action:)
-* setClearButton(title:, color:, action:)
+* setDoneButton(title:, font:, color:, action:)
+* setCancelButton(title:, font:, color:, action:)
+* setClearButton(title:, font:, color:, action:)
 
 ##### CountdownPickerPopover can be used like this:
 ```swift

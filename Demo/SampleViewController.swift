@@ -38,7 +38,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 print("current string: \(selectedString)")
             })
             .setDoneButton(
-                action: {  popover, selectedRow, selectedString in
+                font: UIFont.boldSystemFont(ofSize: 16),
+                color: UIColor.orange,
+                action: { popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
             .setCancelButton(action: {_, _, _ in
@@ -148,7 +150,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         ColumnStringPickerPopover(title: "Columns Strings",
                                   choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
-        .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
+        .setDoneButton(action: { popover, selectedRows, selectedStrings in
+            print("selected rows \(selectedRows) strings \(selectedStrings)")
+        })
         .setCancelButton(action: { _,_,_ in print("cancel")})
         .setValueChange(action: { _, _, selectedStrings in
             print("current strings: \(selectedStrings)")

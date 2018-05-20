@@ -24,7 +24,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Action type for buttons
     public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
     /// Button parameters type
-    public typealias ButtonParameterType = (title: String, color:UIColor?, action:ActionHandlerType?)
+    public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ItemType?)->String?)
 
@@ -47,9 +47,9 @@ public class ColumnStringPickerPopover: AbstractPopover {
     private var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
-    private(set) var doneButton: ButtonParameterType = (title:"Done".localized, color: nil, action: nil)
+    private(set) var doneButton: ButtonParameterType = (title: "Done".localized, font: nil, color: nil, action: nil)
     /// Cancel button parameters
-    private(set) var cancelButton: ButtonParameterType = (title:"Cancel".localized, color: nil, action: nil)
+    private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, font: nil, color: nil, action: nil)
 
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
@@ -96,23 +96,25 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Set done button properties
     ///
     /// - Parameters:
-    ///   - title: Title for the bar button item
+    ///   - title: Title for the bar button item. Omissible.
+    ///   - font: Button title font. Omissible.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setDoneButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &doneButton, title:title, color:color, action: action)
+    public func setDoneButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        return setButton(button: &doneButton, title: title, font: font, color: color, action: action)
     }
     
     /// Set cancel button properties.
     ///
     /// - Parameters:
-    ///   - title: Title for the bar button item
+    ///   - title: Title for the bar button item. Omissible.
+    ///   - font: Button title font. Omissible.
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
-        return setButton(button: &cancelButton, title:title, color:color, action: action)
+    public func setCancelButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        return setButton(button: &cancelButton, title:title, font: font, color: color, action: action)
     }
 
     /// Set button arguments to the targeted button propertoes
@@ -120,12 +122,16 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - button: Target button properties
     ///   - title: Button title
+    ///   - font: Button title font
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton(button: inout ButtonParameterType, title:String? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+    func setButton(button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         if let t = title{
             button.title = t
+        }
+        if let font = font {
+            button.font = font
         }
         if let c = color{
             button.color = c

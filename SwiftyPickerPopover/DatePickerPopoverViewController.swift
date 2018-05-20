@@ -26,14 +26,23 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
             navigationItem.rightBarButtonItem = nil
         }
         cancelButton.title = popover?.cancelButton.title
+        if let font = popover?.cancelButton.font {
+            cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+        }
         cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         
         doneButton.title = popover?.doneButton.title
+        if let font = popover?.doneButton.font {
+            doneButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+        }
         doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
         
         clearButton.setTitle(popover?.clearButton.title, for: .normal)
+        if let font = popover?.clearButton.font {
+            clearButton.titleLabel?.font = font
+        }
         clearButton.tintColor = popover?.clearButton.color ?? popover?.tintColor
 
         if popover?.clearButton.action == nil {

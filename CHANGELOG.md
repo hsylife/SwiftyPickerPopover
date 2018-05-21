@@ -1,3 +1,18 @@
+6.3.1 Release notes (2018-05-21)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+
+* Fix: popover navi bar color is different from parent navi bar color #83
+
 6.3.0 Release notes (2018-05-20)
 =============================================================
 

@@ -13,6 +13,7 @@
         <scene sceneID="Wzr-YZ-hfN">
             <objects>
                 <navigationController id="byJ-Vv-M5N" sceneMemberID="viewController">
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFP-QF-Beb">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

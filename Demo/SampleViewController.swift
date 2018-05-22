@@ -68,6 +68,21 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         p.appear(originView: sender, baseViewController: self)
     }
     
+    @IBAction func didTapStringPickerClearableButton(_ sender: UIButton) {
+        /// StringPickerPopover Clearable:
+        let p = StringPickerPopover(title: "Clearable", choices: ["value 1","value 2","value3"])
+            .setDoneButton(color: UIColor.red, action: {
+                popover, selectedRow, selectedString in
+                print("done row \(selectedRow) \(selectedString)")
+            })
+            .setCancelButton(action: {_, _, _ in
+                print("cancel") })
+            .setClearButton(title: "Reset", action: {(popover, row, value) in
+                print("clear")
+            })
+        p.appear(originView: sender, baseViewController: self)
+    }
+    
     @IBAction func didTapStringPickerWithTextField(_ sender: UITextField) {
         StringPickerPopover(title: "TextField", choices: ["","Text 1", "Text 2", "Text 3"])
         .setValueChange(action: { _, _, selectedString in

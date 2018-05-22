@@ -41,7 +41,9 @@ public class StringPickerPopover: AbstractPopover {
     private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil, nil)
     /// Cancel button parameters
     private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil, nil)
-    
+    /// Clear button parameters
+    private(set) var clearButton: ButtonParameterType = ("Clear".localized, nil, nil, nil)
+
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
     
@@ -164,6 +166,17 @@ public class StringPickerPopover: AbstractPopover {
     public func setCancelButton(title:String? = nil, font: UIFont? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
         return setButton(button: &cancelButton, title: title, font: font, color: color, action: action)
     }
+    
+    /// - Parameters:
+    ///   - title: Title for the button. Omissible.
+    ///   - font: Button title font. Omissible.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        return setButton(button: &clearButton, title:title, font: font, color: color, action: action)
+    }
+
     
     /// Set button arguments to the targeted button properties
     ///

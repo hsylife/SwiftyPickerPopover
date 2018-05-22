@@ -49,6 +49,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9H-Vq-pbw">
                                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                         <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="tappedClear:" destination="pEv-eJ-a7K" eventType="touchUpInside" id="Xkg-Mh-xgO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

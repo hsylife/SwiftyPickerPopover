@@ -20,6 +20,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     
     @IBOutlet weak private var cancelButton: UIBarButtonItem!
     @IBOutlet weak private var doneButton: UIBarButtonItem!
+    @IBOutlet weak private var clearButton: UIButton!    
     @IBOutlet weak private var picker: UIPickerView!
     
     override public func viewDidLoad() {

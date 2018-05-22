@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,9 +15,8 @@
                 <navigationController id="Vlu-nf-qJc" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bbG-aM-kwI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -38,19 +37,28 @@
                         <viewControllerLayoutGuide type="bottom" id="tOz-Gm-pij"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cBE-9P-52d">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oa7-FA-D0J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9H-Vq-pbw">
+                                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                        <state key="normal" title="Clear"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tJe-Py-ArN" firstAttribute="leading" secondItem="cBE-9P-52d" secondAttribute="leading" id="98t-4I-CPt"/>
-                            <constraint firstItem="tJe-Py-ArN" firstAttribute="top" secondItem="cBE-9P-52d" secondAttribute="top" id="NNL-y9-LRz"/>
-                            <constraint firstAttribute="trailing" secondItem="tJe-Py-ArN" secondAttribute="trailing" id="Vqd-29-kE5"/>
-                            <constraint firstItem="tOz-Gm-pij" firstAttribute="top" secondItem="tJe-Py-ArN" secondAttribute="bottom" id="pm8-kS-z0e"/>
+                            <constraint firstItem="oa7-FA-D0J" firstAttribute="top" secondItem="cBE-9P-52d" secondAttribute="top" id="9AD-ca-pud"/>
+                            <constraint firstAttribute="trailing" secondItem="oa7-FA-D0J" secondAttribute="trailing" id="Qjj-t5-GDS"/>
+                            <constraint firstItem="tOz-Gm-pij" firstAttribute="top" secondItem="oa7-FA-D0J" secondAttribute="bottom" id="jIk-6c-7OQ"/>
+                            <constraint firstItem="oa7-FA-D0J" firstAttribute="leading" secondItem="cBE-9P-52d" secondAttribute="leading" id="nTL-gR-Ayv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="0qf-St-WhE">
@@ -67,9 +75,9 @@
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
                     <connections>
                         <outlet property="cancelButton" destination="a1u-Fu-SLI" id="pCt-rp-fSc"/>
+                        <outlet property="clearButton" destination="j9H-Vq-pbw" id="f0O-bH-HqF"/>
                         <outlet property="doneButton" destination="NGv-xi-ME4" id="PQL-FR-PK6"/>
                         <outlet property="picker" destination="tJe-Py-ArN" id="0ed-HW-3nL"/>
                     </connections>

@@ -93,6 +93,7 @@ All popovers have the following APIs.
 * setDisplayStringFor()
 * setDoneButton(title:, font:, color:, action:)
 * setCancelButton(title:, font:,  color:, action:)
+* setClearButton(title:, font:,  color:, action:)
 
 ##### You can use StringPickerPopover like this:
 ```swift

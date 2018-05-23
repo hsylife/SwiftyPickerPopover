@@ -40,6 +40,8 @@ open class AbstractPopover: NSObject {
     
     private(set) var cornerRadius: CGFloat?
     
+    private(set) var isAllowedOutsideTappingDismissing: Bool?
+    
     override public init(){
         //Get a string as stroyboard name from this class name.
         storyboardName = String(describing: type(of:self))
@@ -78,6 +80,11 @@ open class AbstractPopover: NSObject {
     
     open func setCornerRadius(_ radius: CGFloat) -> Self {
         self.cornerRadius = radius
+        return self
+    }
+    
+    open func setOutsideTappingDismissing(_ allowed: Bool = true) -> Self {
+        self.isAllowedOutsideTappingDismissing = allowed
         return self
     }
     
@@ -230,7 +237,6 @@ open class AbstractPopover: NSObject {
 		
 		// direction of arrow
 		navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections        
-        
 		return navigationController
 	}
 }

@@ -1,3 +1,18 @@
+6.4.0 Release notes (2018-05-24)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Add: setOutsideTapDismissing(allowed:) to popovers. It makes dismissing of popover by tapping outside of it avilable or not.
+
+### Bugfixes
+
+* Nothing
+
 6.3.1 Release notes (2018-05-21)
 =============================================================
 

@@ -83,7 +83,7 @@ open class AbstractPopover: NSObject {
         return self
     }
     
-    open func setOutsideTappingDismissing(_ allowed: Bool = true) -> Self {
+    open func setOutsideTapDismissing(allowed: Bool = true) -> Self {
         self.isAllowedOutsideTappingDismissing = allowed
         return self
     }

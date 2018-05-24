@@ -65,6 +65,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
+            .setOutsideTapDismissing(allowed: false)
         p.appear(originView: sender, baseViewController: self)
     }
     

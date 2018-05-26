@@ -15,7 +15,7 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     
     typealias PopoverType = CountdownPickerPopover
 
-    private var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType! { return anyPopover as? PopoverType }
 
     @IBOutlet weak private var doneButton: UIBarButtonItem!
     @IBOutlet weak private var cancelButton: UIBarButtonItem!
@@ -24,9 +24,6 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
-        guard let popover = popover else {
-            return
-        }
         if #available(iOS 11.0, *) { }
         else {
             navigationItem.leftBarButtonItem = nil
@@ -58,28 +55,26 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     }
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
-        popover?.doneButton.action?(popover!, picker.countDownDuration)
+        popover.doneButton.action?(popover, picker.countDownDuration)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        popover?.cancelButton.action?(popover!, picker.countDownDuration)
+        popover.cancelButton.action?(popover, picker.countDownDuration)
         dismiss(animated: false, completion: {})
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {
-        popover?.redoDisappearAutomatically()
-        popover?.clearButton.action?(popover!, picker.countDownDuration)
+        popover.redoDisappearAutomatically()
+        popover.clearButton.action?(popover, picker.countDownDuration)
     }
     
-    
     @IBAction func pickerValueChanged(_ sender: UIDatePicker) {
-        popover?.valueChangeAction?(popover!, picker.countDownDuration)
-        popover?.redoDisappearAutomatically()
+        popover.valueChangeAction?(popover, picker.countDownDuration)
+        popover.redoDisappearAutomatically()
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
-
 }

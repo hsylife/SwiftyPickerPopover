@@ -91,8 +91,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         .setDoneButton(action: { popover, selectedRow, selectedString in
             sender.text = selectedString
         })
-        .appear(originView: sender, baseViewController: self)
-        
+        .appear(originView: sender, baseViewController: self)        
     }
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {

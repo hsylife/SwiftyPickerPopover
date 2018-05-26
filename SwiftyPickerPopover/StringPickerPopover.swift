@@ -16,7 +16,7 @@ public class StringPickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, Int, ItemType) -> Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string

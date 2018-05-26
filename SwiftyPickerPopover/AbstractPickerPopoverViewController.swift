@@ -15,8 +15,8 @@ open class AbstractPickerPopoverViewController: UIViewController {
     /// AbstractPopover
     var anyPopover: AbstractPopover!
     
-    open override func viewDidLoad() {
-        super.viewDidLoad()
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refrectPopoverProperties()
     }
     

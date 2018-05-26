@@ -31,12 +31,16 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     /// Make the popover properties reflect on this view controller
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
+        // Select row if needed
+        picker?.selectRow(popover.selectedRow, inComponent: 0, animated: true)
+
         // Set up cancel button
         if #available(iOS 11.0, *) { }
         else {
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = nil
         }
+
         cancelButton.title = popover.cancelButton.title
         if let font = popover.cancelButton.font {
             cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
@@ -58,13 +62,6 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         clearButton.tintColor = popover.clearButton.color ?? popover.tintColor
         clearButton.isHidden = popover.clearButton.action == nil
         enableClearButtonIfNeeded()
-
-        // Select row if needed
-        picker?.selectRow(popover.selectedRow, inComponent: 0, animated: true)
-        
-        // 初回のdisabled
-        // FIXME: valueを選択したときにenabledをセットすべし
-        // vcとpopoverの違いで詰まる
     }
     
     private func enableClearButtonIfNeeded() {

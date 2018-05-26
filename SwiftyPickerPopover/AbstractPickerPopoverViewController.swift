@@ -13,7 +13,7 @@ import UIKit
 open class AbstractPickerPopoverViewController: UIViewController {
     
     /// AbstractPopover
-    var anyPopover: AnyObject?
+    var anyPopover: AbstractPopover!
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +22,13 @@ open class AbstractPickerPopoverViewController: UIViewController {
     
     /// Make the popover property reflect on the popover
     func refrectPopoverProperties(){
-        guard let popover = anyPopover as? AbstractPopover else {
-            return
-        }
-        title = popover.title
+        title = anyPopover.title
         
         // Change size if needed
-        if let width = popover.size?.width {
+        if let width = anyPopover.size?.width {
             navigationController?.preferredContentSize.width = width
         }
-        if let height = popover.size?.height {
+        if let height = anyPopover.size?.height {
             navigationController?.preferredContentSize.height = height
         }
     }

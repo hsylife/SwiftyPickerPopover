@@ -22,34 +22,38 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
+    public typealias ActionHandlerType = (PopoverType, [Int], [ItemType]) -> Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ItemType?)->String?)
 
+    // MARK: Constants
+    let kValueForCleared: ItemType = ""
+    
     // MARK: - Properties
 
     /// Choice array. Nest.
     private(set) var choices: [[ItemType]] = [[]]
     /// Selected rows
-    private(set) var selectedRows: [Int] = [Int]()
+    var selectedRows: [Int] = [Int]()
     /// Column ratio
     private(set) var columnPercents: [Float] = [Float]()
     ///Font
     private(set) var fonts: [UIFont?]?
     private(set) var fontSizes: [CGFloat?]?
-    private let kDefaultFontSize:CGFloat = 12
+    let kDefaultFontSize: CGFloat = 12
     private(set) var fontColors: [UIColor?]?
-    private let kDefaultFontColor: UIColor = .black
+    let kDefaultFontColor: UIColor = .black
 
     /// Convert a raw value to the string for displaying it
-    private var displayStringFor: DisplayStringForType?
+    private(set) var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
     private(set) var doneButton: ButtonParameterType = (title: "Done".localized, font: nil, color: nil, action: nil)
     /// Cancel button parameters
     private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, font: nil, color: nil, action: nil)
+    private(set) var clearButton: ButtonParameterType = (title: "Clear".localized, font: nil, color: nil, action: nil)
 
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
@@ -117,6 +121,22 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return setButton(button: &cancelButton, title:title, font: font, color: color, action: action)
     }
 
+    /// - Parameters:
+    ///   - title: Title for the button. Omissible.
+    ///   - font: Button title font. Omissible.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        // Insert the value like "" if needed
+        for componet in 0..<choices.count {
+            if let firstItem = choices[componet].first, firstItem != kValueForCleared {
+                choices[componet].insert(kValueForCleared, at: 0)
+            }
+        }
+        return setButton(button: &clearButton, title:title, font: font, color: color, action: action)
+    }
+    
     /// Set button arguments to the targeted button propertoes
     ///
     /// - Parameters:
@@ -167,74 +187,4 @@ public class ColumnStringPickerPopover: AbstractPopover {
         self.fontSizes = fontSizes
         return self
     }
-}
-
-// MARK: - UIPickerViewDelegate
-extension ColumnStringPickerPopover: UIPickerViewDelegate{
-    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label:UILabel = view as? UILabel ?? UILabel()
-        
-        let title = choices[component][row]
-        label.text = choice(component: component, row: row)
-        
-        let fontSize: CGFloat = fontSizes?[component] ?? kDefaultFontSize
-        let font: UIFont = fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
-        let fontColor: UIColor = fontColors?[component] ?? kDefaultFontColor
-        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
-        label.attributedText = attributedTitle
-        
-        label.textAlignment = .center
-        return label
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView,
-                           didSelectRow row: Int,
-                           inComponent component: Int){
-        
-        selectedRows[component] = row
-        valueChangeAction?(self, selectedRows, selectedValues())
-        redoDisappearAutomatically()
-    }
-
-}
-
-// MARK: - UIPickerViewDataSource
-extension ColumnStringPickerPopover: UIPickerViewDataSource{
-    
-    /// UIPickerViewDataSource
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return choices.count
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return choices[component].count
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView,
-                           widthForComponent component: Int) -> CGFloat {
-        let width = Float(pickerView.frame.size.width)
-        let temp = width * columnPercents[component]
-        return CGFloat(temp)
-    }
-    
-    // get string of choice
-    func choice(component: Int, row: Int)->ItemType? {
-        guard let items = choices[safe: component],
-            let selectedValue = items[safe: row] else {
-                return nil
-        }
-       return displayStringFor?(selectedValue) ?? selectedValue
-    }
-    
-    // get array of selected values
-    func selectedValues()->[ItemType]{
-        var result = [ItemType]()
-        for (index, content) in selectedRows.enumerated() {
-            if let string = choice(component: index, row: content){
-                result.append(string)
-            }
-        }
-        return result
-    }
- 
 }

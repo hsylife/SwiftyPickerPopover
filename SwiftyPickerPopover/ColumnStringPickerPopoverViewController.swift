@@ -21,15 +21,17 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     // MARK: Properties
     
     /// Popover
-    private var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType! { return anyPopover as? PopoverType }
 
     @IBOutlet weak private var cancelButton: UIBarButtonItem!
     @IBOutlet weak private var doneButton: UIBarButtonItem!
     @IBOutlet weak private var picker: UIPickerView!
-
+    @IBOutlet weak private var clearButton: UIButton!
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-        picker.delegate = popover
+        picker.delegate = self
+        picker.dataSource = self
     }
     
     /// Make the popover properties reflect on this view controller
@@ -43,40 +45,64 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
             navigationItem.rightBarButtonItem = nil
         }
         
-        cancelButton.title = popover?.cancelButton.title
-        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
+        // Select rows if needed
+        popover.selectedRows.enumerated().forEach {
+            picker.selectRow($0.element, inComponent: $0.offset, animated: true)
+        }
+
+        cancelButton.title = popover.cancelButton.title
+        cancelButton.tintColor = popover.cancelButton.color ?? popover.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
 
-        doneButton.title = popover?.doneButton.title
-        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
+        doneButton.title = popover.doneButton.title
+        doneButton.tintColor = popover.doneButton.color ?? popover.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
 
-        // Select row if needed
-        popover?.selectedRows.enumerated().forEach {
-            picker.selectRow($0.1, inComponent: $0.0, animated: true)
+        clearButton.setTitle(popover.clearButton.title, for: .normal)
+        if let font = popover.clearButton.font {
+            clearButton.titleLabel?.font = font
         }
+        clearButton.tintColor = popover.clearButton.color ?? popover.tintColor
+        clearButton.isHidden = popover.clearButton.action == nil
+        enableClearButtonIfNeeded()
     }
     
     /// Action when tapping done button
     ///
     /// - Parameter sender: Done button
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
-        tapped(button: popover?.doneButton)
+        tapped(button: popover.doneButton)
     }
     
     /// Action when tapping cancel button
     ///
     /// - Parameter sender: Cancel button
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        tapped(button: popover?.cancelButton)
+        tapped(button: popover.cancelButton)
     }
     
     private func tapped(button: ColumnStringPickerPopover.ButtonParameterType?) {
-        guard let popover = popover else { return }
         let selectedRows = popover.selectedRows
-        let selectedChoices = popover.selectedValues()
+        let selectedChoices = selectedValues()
         button?.action?(popover, selectedRows, selectedChoices)
-        dismiss(animated: false, completion: {})
+        dismiss(animated: false)
+    }
+    
+    @IBAction func tappedClear(_ sender: AnyObject? = nil) {
+        // Select row 0 in each componet
+        for componet in 0..<picker.numberOfComponents {
+            picker.selectRow(0, inComponent: componet, animated: true)
+        }
+        enableClearButtonIfNeeded()
+        popover.clearButton.action?(popover, popover.selectedRows, selectedValues())
+        popover.redoDisappearAutomatically()
+    }
+    
+    private func enableClearButtonIfNeeded() {
+        guard !clearButton.isHidden else {
+            return
+        }
+        clearButton.isEnabled = selectedValues().filter({ $0 != popover.kValueForCleared}).count > 0
     }
     
     /// Action to be executed after the popover disappears
@@ -85,5 +111,63 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
+}
 
+// MARK: - UIPickerViewDataSource
+extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return popover.choices.count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return popover.choices[component].count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView,
+                           widthForComponent component: Int) -> CGFloat {
+        return pickerView.frame.size.width * CGFloat(popover.columnPercents[component])
+    }
+    
+    private func selectedValue(component: Int, row: Int) -> ColumnStringPickerPopover.ItemType? {
+        guard let items = popover.choices[safe: component],
+            let selectedValue = items[safe: row] else {
+                return nil
+        }
+        return popover.displayStringFor?(selectedValue) ?? selectedValue
+    }
+    
+    private func selectedValues() -> [ColumnStringPickerPopover.ItemType] {
+        var result = [ColumnStringPickerPopover.ItemType]()
+        popover.selectedRows.enumerated().forEach {
+            if let value = selectedValue(component: $0.offset, row: $0.element){
+                result.append(value)
+            }
+        }
+        return result
+    }
+}
+
+extension ColumnStringPickerPopoverViewController: UIPickerViewDelegate {
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label: UILabel = view as? UILabel ?? UILabel()
+        label.text = selectedValue(component: component, row: row)
+
+        let fontSize: CGFloat = popover.fontSizes?[component] ?? popover.kDefaultFontSize
+        let font: UIFont = popover.fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
+        let fontColor: UIColor = popover.fontColors?[component] ?? popover.kDefaultFontColor
+        let title: String = popover.choices[component][row]
+        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
+        label.attributedText = attributedTitle
+        label.textAlignment = .center
+        return label
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView,
+                           didSelectRow row: Int,
+                           inComponent component: Int){
+        popover.selectedRows[component] = row
+        enableClearButtonIfNeeded()
+        popover.valueChangeAction?(popover, popover.selectedRows, selectedValues())
+        popover.redoDisappearAutomatically()
+    }
 }

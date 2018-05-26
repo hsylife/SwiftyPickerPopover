@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Vlu-nf-qJc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +16,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bbG-aM-kwI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -39,16 +39,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bBN-ZK-3Ap">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </pickerView>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-Py-ArN">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="44" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCx-LB-zU9">
+                                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                        <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="tappedClear:" destination="pEv-eJ-a7K" eventType="touchUpInside" id="8Aq-JU-8qG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tJe-Py-ArN" firstAttribute="leading" secondItem="cBE-9P-52d" secondAttribute="leading" id="9du-3u-ELh"/>
-                            <constraint firstItem="tJe-Py-ArN" firstAttribute="top" secondItem="cBE-9P-52d" secondAttribute="top" id="lsN-Wt-Nxt"/>
-                            <constraint firstItem="tOz-Gm-pij" firstAttribute="top" secondItem="tJe-Py-ArN" secondAttribute="bottom" id="nhk-Tw-uYu"/>
-                            <constraint firstAttribute="trailing" secondItem="tJe-Py-ArN" secondAttribute="trailing" id="pR2-bS-Fm5"/>
+                            <constraint firstItem="bBN-ZK-3Ap" firstAttribute="top" secondItem="cBE-9P-52d" secondAttribute="top" id="1jT-5j-g09"/>
+                            <constraint firstAttribute="trailing" secondItem="bBN-ZK-3Ap" secondAttribute="trailing" id="Jve-Wb-ug1"/>
+                            <constraint firstItem="bBN-ZK-3Ap" firstAttribute="leading" secondItem="cBE-9P-52d" secondAttribute="leading" id="Ph3-of-IJ7"/>
+                            <constraint firstItem="tOz-Gm-pij" firstAttribute="top" secondItem="bBN-ZK-3Ap" secondAttribute="bottom" id="Qzf-rz-oV6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="0qf-St-WhE">
@@ -67,6 +79,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="a1u-Fu-SLI" id="3Zc-w0-zd8"/>
+                        <outlet property="clearButton" destination="VCx-LB-zU9" id="Kbn-4c-ds4"/>
                         <outlet property="doneButton" destination="NGv-xi-ME4" id="1p3-fa-ieC"/>
                         <outlet property="picker" destination="tJe-Py-ArN" id="0ed-HW-3nL"/>
                     </connections>

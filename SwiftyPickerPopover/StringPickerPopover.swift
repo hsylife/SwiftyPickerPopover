@@ -16,11 +16,14 @@ public class StringPickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, Int, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, Int, ItemType) -> Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ItemType?)->String?)
+
+    // MARK: Constants
+    let kValueForCleared: ItemType = ""
 
     // MARK: - Properties
     
@@ -41,7 +44,9 @@ public class StringPickerPopover: AbstractPopover {
     private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil, nil)
     /// Cancel button parameters
     private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil, nil)
-    
+    /// Clear button parameters
+    private(set) var clearButton: ButtonParameterType = ("Clear".localized, nil, nil, nil)
+
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
     
@@ -165,6 +170,20 @@ public class StringPickerPopover: AbstractPopover {
         return setButton(button: &cancelButton, title: title, font: font, color: color, action: action)
     }
     
+    /// - Parameters:
+    ///   - title: Title for the button. Omissible.
+    ///   - font: Button title font. Omissible.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        // Insert the value like "" if needed
+        if let item = choices.first, item != kValueForCleared {
+            choices.insert(kValueForCleared, at: 0)
+        }
+        return setButton(button: &clearButton, title:title, font: font, color: color, action: action)
+    }
+    
     /// Set button arguments to the targeted button properties
     ///
     /// - Parameters:
@@ -196,55 +215,5 @@ public class StringPickerPopover: AbstractPopover {
     public func setValueChange(action: ActionHandlerType?)->Self{
         valueChangeAction = action
         return self
-    }
-
-}
-
-// MARK: - UIPickerViewDataSource
-extension StringPickerPopover: UIPickerViewDataSource {
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return choices.count
-    }
-}
-
-// MARK: - UIPickerViewDelegate
-extension StringPickerPopover: UIPickerViewDelegate {
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return displayStringFor?(choices[row]) ?? choices[row]
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedResult = NSMutableAttributedString()
-        
-        if let images = images, let image = images[row] {
-            let imageAttachment = NSTextAttachment()
-            imageAttachment.image = image
-            let attributedImage = NSAttributedString(attachment: imageAttachment)
-            attributedResult.append(attributedImage)
-            
-            let AttributedMargin = NSAttributedString(string: " ")
-            attributedResult.append(AttributedMargin)
-        }
-        
-        let title: String = displayStringFor?(choices[row]) ?? choices[row]
-        let font: UIFont = self.font ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
-        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
-
-        attributedResult.append(attributedTitle)
-        return attributedResult
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView,
-                           rowHeightForComponent component: Int) -> CGFloat {
-        return rowHeight
-    }
-    
-    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        valueChangeAction?(self, row, choices[row])
-        redoDisappearAutomatically()
     }
 }

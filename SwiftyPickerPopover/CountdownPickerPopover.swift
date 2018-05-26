@@ -13,7 +13,7 @@ public class CountdownPickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = CountdownPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, ItemType) -> Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
 
@@ -114,7 +114,7 @@ public class CountdownPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   -action: Action to be performed each time the picker is moved to a new value.
     /// - Returns: Self
-    public func setValueChange(action: ActionHandlerType?)->Self{
+    public func setValueChange(action: ActionHandlerType?) -> Self{
         valueChangeAction = action
         return self
     }

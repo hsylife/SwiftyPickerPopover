@@ -15,7 +15,7 @@ public class DatePickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = DatePickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, ItemType)->Void
+    public typealias ActionHandlerType = (PopoverType, ItemType) -> Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
 
@@ -183,14 +183,5 @@ public class DatePickerPopover: AbstractPopover {
     public func setValueChange(action: ActionHandlerType?)->Self{
         valueChangeAction = action
         return self
-    }
-    
-    // MARK: - Popover display
-    
-    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //Redo disapperAutomatically()
-        if let seconds = disappearAutomaticallyItems.seconds {
-            disappearAutomatically(after: seconds, completion: disappearAutomaticallyItems.completion)
-        }
-    }
+    }    
 }

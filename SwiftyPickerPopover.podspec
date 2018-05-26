@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SwiftyPickerPopover"
-  s.version      = "6.4.0"
+  s.version      = "6.5.0"
   s.summary      = "A more convenient way to display a popover with a built-in picker, on iPhone/iPad of iOS9+."
   s.homepage     = "https://github.com/hsylife/SwiftyPickerPopover"
   s.license      = "MIT"

@@ -1,3 +1,18 @@
+6.5.0 Release notes (2018-05-27)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* * Add: setClearButton() to String/ColumnStringPickerPopover.
+
+### Bugfixes
+
+* Fix: setSelectedRow/Rows() don't work correctly.
+
 6.4.0 Release notes (2018-05-24)
 =============================================================
 

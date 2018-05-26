@@ -31,10 +31,6 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     /// Make the popover properties reflect on this view controller
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
-        guard let popover = popover else {
-            return
-        }
-
         // Set up cancel button
         if #available(iOS 11.0, *) { }
         else {
@@ -85,23 +81,20 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     ///
     /// - Parameter sender: Done button
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
-        tapped(button: popover?.doneButton)
+        tapped(button: popover.doneButton)
     }
     
     /// Action when tapping cancel button
     ///
     /// - Parameter sender: Cancel button
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        tapped(button: popover?.cancelButton)
+        tapped(button: popover.cancelButton)
     }
     
     /// Action when tapping clear button
     ///
     /// - Parameter sender: Clear button
     @IBAction func tappedClear(_ sender: AnyObject? = nil) {
-        guard let popover = popover else {
-            return
-        }
         let kTargetRow = 0
         picker.selectRow(kTargetRow, inComponent: 0, animated: true)
         enableClearButtonIfNeeded()
@@ -113,8 +106,8 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
     
     private func tapped(button: StringPickerPopover.ButtonParameterType?) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover?.choices[safe: selectedRow] {
-            button?.action?(popover!, selectedRow, selectedString)
+        if let selectedString = popover.choices[safe: selectedRow] {
+            button?.action?(popover, selectedRow, selectedString)
         }
         dismiss(animated: false, completion: {})
     }
@@ -134,23 +127,17 @@ extension StringPickerPopoverViewController: UIPickerViewDataSource {
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return popover?.choices.count ?? 0
+        return popover.choices.count
     }
 }
 
 // MARK: - UIPickerViewDelegate
 extension StringPickerPopoverViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let popover = popover else {
-            return nil
-        }
         return popover.displayStringFor?(popover.choices[row]) ?? popover.choices[row]
     }
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        guard let popover = popover else {
-            return nil
-        }
         let attributedResult = NSMutableAttributedString()
         
         if let images = popover.images, let image = images[row] {
@@ -173,13 +160,10 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
     
     public func pickerView(_ pickerView: UIPickerView,
                            rowHeightForComponent component: Int) -> CGFloat {
-        return popover?.rowHeight ?? 0
+        return popover.rowHeight
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let popover = popover else {
-            return
-        }
         enableClearButtonIfNeeded()
         popover.valueChangeAction?(popover, row, popover.choices[row])
         popover.redoDisappearAutomatically()

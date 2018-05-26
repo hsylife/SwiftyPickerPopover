@@ -41,7 +41,7 @@ extension AbstractPickerPopoverViewController: UIPopoverPresentationControllerDe
     }
     
     open func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        guard let allowed = (anyPopover as? AbstractPopover)?.isAllowedOutsideTappingDismissing else {
+        guard let allowed = anyPopover.isAllowedOutsideTappingDismissing else {
             return true
         }
         return allowed

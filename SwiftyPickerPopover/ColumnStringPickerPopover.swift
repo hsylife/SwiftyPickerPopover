@@ -50,6 +50,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     private(set) var doneButton: ButtonParameterType = (title: "Done".localized, font: nil, color: nil, action: nil)
     /// Cancel button parameters
     private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, font: nil, color: nil, action: nil)
+    private(set) var clearButton: ButtonParameterType = (title: "Clear".localized, font: nil, color: nil, action: nil)
 
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
@@ -117,6 +118,22 @@ public class ColumnStringPickerPopover: AbstractPopover {
         return setButton(button: &cancelButton, title:title, font: font, color: color, action: action)
     }
 
+    /// - Parameters:
+    ///   - title: Title for the button. Omissible.
+    ///   - font: Button title font. Omissible.
+    ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
+    ///   - completion: Action to be performed before the popover disappeared.
+    /// - Returns: Self
+    public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
+        let kHomeValue = ""
+        for componet in 0..<choices.count {
+            if let firstItem = choices[componet].first, firstItem != kHomeValue {
+                choices[componet].insert(kHomeValue, at: 0)
+            }
+        }
+        return setButton(button: &clearButton, title:title, font: font, color: color, action: action)
+    }
+    
     /// Set button arguments to the targeted button propertoes
     ///
     /// - Parameters:

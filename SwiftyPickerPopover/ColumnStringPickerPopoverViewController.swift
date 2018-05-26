@@ -21,7 +21,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     // MARK: Properties
     
     /// Popover
-    private var popover: PopoverType? { return anyPopover as? PopoverType }
+    private var popover: PopoverType! { return anyPopover as? PopoverType }
 
     @IBOutlet weak private var cancelButton: UIBarButtonItem!
     @IBOutlet weak private var doneButton: UIBarButtonItem!
@@ -43,16 +43,16 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
             navigationItem.rightBarButtonItem = nil
         }
         
-        cancelButton.title = popover?.cancelButton.title
-        cancelButton.tintColor = popover?.cancelButton.color ?? popover?.tintColor
+        cancelButton.title = popover.cancelButton.title
+        cancelButton.tintColor = popover.cancelButton.color ?? popover.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
 
-        doneButton.title = popover?.doneButton.title
-        doneButton.tintColor = popover?.doneButton.color ?? popover?.tintColor
+        doneButton.title = popover.doneButton.title
+        doneButton.tintColor = popover.doneButton.color ?? popover.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)
 
         // Select row if needed
-        popover?.selectedRows.enumerated().forEach {
+        popover.selectedRows.enumerated().forEach {
             picker.selectRow($0.1, inComponent: $0.0, animated: true)
         }
     }
@@ -61,18 +61,17 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     ///
     /// - Parameter sender: Done button
     @IBAction func tappedDone(_ sender: AnyObject? = nil) {
-        tapped(button: popover?.doneButton)
+        tapped(button: popover.doneButton)
     }
     
     /// Action when tapping cancel button
     ///
     /// - Parameter sender: Cancel button
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
-        tapped(button: popover?.cancelButton)
+        tapped(button: popover.cancelButton)
     }
     
     private func tapped(button: ColumnStringPickerPopover.ButtonParameterType?) {
-        guard let popover = popover else { return }
         let selectedRows = popover.selectedRows
         let selectedChoices = popover.selectedValues()
         button?.action?(popover, selectedRows, selectedChoices)

@@ -22,7 +22,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, [Int], [ItemType])->Void
+    public typealias ActionHandlerType = (PopoverType, [Int], [ItemType]) -> Void
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
@@ -195,7 +195,6 @@ extension ColumnStringPickerPopover: UIPickerViewDelegate{
         valueChangeAction?(self, selectedRows, selectedValues())
         redoDisappearAutomatically()
     }
-
 }
 
 // MARK: - UIPickerViewDataSource
@@ -236,5 +235,4 @@ extension ColumnStringPickerPopover: UIPickerViewDataSource{
         }
         return result
     }
- 
 }

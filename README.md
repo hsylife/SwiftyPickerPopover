@@ -199,6 +199,7 @@ p.appear(originView: originView, baseViewController: self)
 * setDisplayStringFor()
 * setDoneButton(title:, font:, color:, action:)
 * setCancelButton(title:, font:, color:, action:)
+* setClearButton(title:, font:,  color:, action:)
 
 ##### ColumnStringPickerPopover can have multiple String values:
 ```swift

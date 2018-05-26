@@ -56,12 +56,12 @@ public class CountdownPickerPopoverViewController: AbstractPickerPopoverViewCont
     
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
         popover.doneButton.action?(popover, picker.countDownDuration)
-        dismiss(animated: false, completion: {})
+        dismiss(animated: false)
     }
     
     @IBAction func tappedCancel(_ sender: AnyObject? = nil) {
         popover.cancelButton.action?(popover, picker.countDownDuration)
-        dismiss(animated: false, completion: {})
+        dismiss(animated: false)
     }
     
     @IBAction func tappedClear(_ sender: UIButton? = nil) {

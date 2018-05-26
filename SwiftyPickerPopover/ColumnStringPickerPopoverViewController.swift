@@ -85,7 +85,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         let selectedRows = popover.selectedRows
         let selectedChoices = selectedValues()
         button?.action?(popover, selectedRows, selectedChoices)
-        dismiss(animated: false, completion: {})
+        dismiss(animated: false)
     }
     
     @IBAction func tappedClear(_ sender: AnyObject? = nil) {
@@ -128,8 +128,7 @@ extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
         return pickerView.frame.size.width * CGFloat(popover.columnPercents[component])
     }
     
-    // get string of choice
-    func choice(component: Int, row: Int) -> ColumnStringPickerPopover.ItemType? {
+    private func selectedValue(component: Int, row: Int) -> ColumnStringPickerPopover.ItemType? {
         guard let items = popover.choices[safe: component],
             let selectedValue = items[safe: row] else {
                 return nil
@@ -137,12 +136,11 @@ extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
         return popover.displayStringFor?(selectedValue) ?? selectedValue
     }
     
-    // get array of selected values
-    func selectedValues() -> [ColumnStringPickerPopover.ItemType] {
+    private func selectedValues() -> [ColumnStringPickerPopover.ItemType] {
         var result = [ColumnStringPickerPopover.ItemType]()
-        for (index, content) in popover.selectedRows.enumerated() {
-            if let string = choice(component: index, row: content){
-                result.append(string)
+        popover.selectedRows.enumerated().forEach {
+            if let value = selectedValue(component: $0.offset, row: $0.element){
+                result.append(value)
             }
         }
         return result
@@ -152,7 +150,7 @@ extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
 extension ColumnStringPickerPopoverViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label: UILabel = view as? UILabel ?? UILabel()
-        label.text = choice(component: component, row: row)
+        label.text = selectedValue(component: component, row: row)
 
         let fontSize: CGFloat = popover.fontSizes?[component] ?? popover.kDefaultFontSize
         let font: UIFont = popover.fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)

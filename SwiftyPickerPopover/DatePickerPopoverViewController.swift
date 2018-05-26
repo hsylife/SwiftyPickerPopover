@@ -10,7 +10,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     
     typealias PopoverType = DatePickerPopover
     
-    private var popover: PopoverType! { return anyPopover as? PopoverType }
+    fileprivate var popover: PopoverType! { return anyPopover as? PopoverType }
     
     @IBOutlet weak private var picker: UIDatePicker!
     @IBOutlet weak private var cancelButton: UIBarButtonItem!

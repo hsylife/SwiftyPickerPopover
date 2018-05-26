@@ -29,7 +29,8 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        picker.delegate = popover
+        picker.delegate = self
+        picker.dataSource = self
     }
     
     /// Make the popover properties reflect on this view controller
@@ -73,7 +74,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     
     private func tapped(button: ColumnStringPickerPopover.ButtonParameterType?) {
         let selectedRows = popover.selectedRows
-        let selectedChoices = popover.selectedValues()
+        let selectedChoices = selectedValues()
         button?.action?(popover, selectedRows, selectedChoices)
         dismiss(animated: false, completion: {})
     }
@@ -84,5 +85,64 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
     public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         tappedCancel()
     }
+}
 
+// MARK: - UIPickerViewDataSource
+extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return popover.choices.count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return popover.choices[component].count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView,
+                           widthForComponent component: Int) -> CGFloat {
+        return pickerView.frame.size.width * CGFloat(popover.columnPercents[component])
+    }
+    
+    // get string of choice
+    func choice(component: Int, row: Int) -> ColumnStringPickerPopover.ItemType? {
+        guard let items = popover.choices[safe: component],
+            let selectedValue = items[safe: row] else {
+                return nil
+        }
+        return popover.displayStringFor?(selectedValue) ?? selectedValue
+    }
+    
+    // get array of selected values
+    func selectedValues() -> [ColumnStringPickerPopover.ItemType] {
+        var result = [ColumnStringPickerPopover.ItemType]()
+        for (index, content) in popover.selectedRows.enumerated() {
+            if let string = choice(component: index, row: content){
+                result.append(string)
+            }
+        }
+        return result
+    }
+}
+
+extension ColumnStringPickerPopoverViewController: UIPickerViewDelegate {
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label: UILabel = view as? UILabel ?? UILabel()        
+        label.text = choice(component: component, row: row)
+
+        let fontSize: CGFloat = popover.fontSizes?[component] ?? popover.kDefaultFontSize
+        let font: UIFont = popover.fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
+        let fontColor: UIColor = popover.fontColors?[component] ?? popover.kDefaultFontColor
+        let title: String = popover.choices[component][row]
+        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
+        label.attributedText = attributedTitle
+        label.textAlignment = .center
+        return label
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView,
+                           didSelectRow row: Int,
+                           inComponent component: Int){
+        popover.selectedRows[component] = row
+        popover.valueChangeAction?(popover, popover.selectedRows, selectedValues())
+        popover.redoDisappearAutomatically()
+    }
 }

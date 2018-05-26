@@ -89,6 +89,14 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         tapped(button: popover.cancelButton)
     }
     
+    private func tapped(button: StringPickerPopover.ButtonParameterType?) {
+        let selectedRow = picker.selectedRow(inComponent: 0)
+        if let selectedValue = popover.choices[safe: selectedRow] {
+            button?.action?(popover, selectedRow, selectedValue)
+        }
+        dismiss(animated: false, completion: {})
+    }
+
     /// Action when tapping clear button
     ///
     /// - Parameter sender: Clear button
@@ -96,18 +104,10 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         let kTargetRow = 0
         picker.selectRow(kTargetRow, inComponent: 0, animated: true)
         enableClearButtonIfNeeded()
-        if let selectedString = popover.choices[safe: kTargetRow] {
-            popover.clearButton.action?(popover, kTargetRow, selectedString)
+        if let selectedValue = popover.choices[safe: kTargetRow] {
+            popover.clearButton.action?(popover, kTargetRow, selectedValue)
         }
         popover.redoDisappearAutomatically()
-    }
-    
-    private func tapped(button: StringPickerPopover.ButtonParameterType?) {
-        let selectedRow = picker.selectedRow(inComponent: 0)
-        if let selectedString = popover.choices[safe: selectedRow] {
-            button?.action?(popover, selectedRow, selectedString)
-        }
-        dismiss(animated: false, completion: {})
     }
     
     /// Action to be executed after the popover disappears

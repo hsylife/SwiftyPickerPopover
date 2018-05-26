@@ -81,10 +81,17 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         tapped(button: popover.cancelButton)
     }
     
+    private func tapped(button: ColumnStringPickerPopover.ButtonParameterType?) {
+        let selectedRows = popover.selectedRows
+        let selectedChoices = selectedValues()
+        button?.action?(popover, selectedRows, selectedChoices)
+        dismiss(animated: false, completion: {})
+    }
+    
     @IBAction func tappedClear(_ sender: AnyObject? = nil) {
-        let kHomeRow = 0
+        // Select row 0 in each componet
         for componet in 0..<picker.numberOfComponents {
-            picker.selectRow(kHomeRow, inComponent: componet, animated: true)
+            picker.selectRow(0, inComponent: componet, animated: true)
         }
         enableClearButtonIfNeeded()
         popover.clearButton.action?(popover, popover.selectedRows, selectedValues())
@@ -96,13 +103,6 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
             return
         }
         clearButton.isEnabled = selectedValues().filter({ $0 != popover.kValueForCleared}).count > 0
-    }
-    
-    private func tapped(button: ColumnStringPickerPopover.ButtonParameterType?) {
-        let selectedRows = popover.selectedRows
-        let selectedChoices = selectedValues()
-        button?.action?(popover, selectedRows, selectedChoices)
-        dismiss(animated: false, completion: {})
     }
     
     /// Action to be executed after the popover disappears

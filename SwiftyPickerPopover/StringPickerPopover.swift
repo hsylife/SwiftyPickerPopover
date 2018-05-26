@@ -22,6 +22,9 @@ public class StringPickerPopover: AbstractPopover {
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ItemType?)->String?)
 
+    // MARK: Constants
+    let kValueForCleared: ItemType = ""
+
     // MARK: - Properties
     
     /// Choice array
@@ -174,12 +177,12 @@ public class StringPickerPopover: AbstractPopover {
     ///   - completion: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
-        if let item = choices.first, item != "" {
-            choices.insert("", at: 0)
+        // Insert the value like "" if needed
+        if let item = choices.first, item != kValueForCleared {
+            choices.insert(kValueForCleared, at: 0)
         }
         return setButton(button: &clearButton, title:title, font: font, color: color, action: action)
     }
-
     
     /// Set button arguments to the targeted button properties
     ///

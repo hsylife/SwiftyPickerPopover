@@ -95,7 +95,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         guard !clearButton.isHidden else {
             return
         }
-        clearButton.isEnabled = selectedValues().filter({ $0 != ""}).count > 0
+        clearButton.isEnabled = selectedValues().filter({ $0 != popover.kValueForCleared}).count > 0
     }
     
     private func tapped(button: ColumnStringPickerPopover.ButtonParameterType?) {

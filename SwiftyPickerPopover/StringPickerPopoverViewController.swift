@@ -69,8 +69,9 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
             return
         }
         clearButton.isEnabled = false
-        if let selectedRow = picker?.selectedRow(inComponent: 0), let popover = popover, let selectedValue = popover.choices[safe: selectedRow] {
-            clearButton.isEnabled = selectedValue != ""
+        if let selectedRow = picker?.selectedRow(inComponent: 0),
+            let selectedValue = popover.choices[safe: selectedRow] {
+            clearButton.isEnabled = selectedValue != popover.kValueForCleared
         }
     }
     

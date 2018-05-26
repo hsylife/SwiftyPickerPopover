@@ -28,6 +28,9 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Type of the rule closure to convert from a raw value to the display string
     public typealias DisplayStringForType = ((ItemType?)->String?)
 
+    // MARK: Constants
+    let kValueForCleared: ItemType = ""
+    
     // MARK: - Properties
 
     /// Choice array. Nest.
@@ -125,10 +128,10 @@ public class ColumnStringPickerPopover: AbstractPopover {
     ///   - completion: Action to be performed before the popover disappeared.
     /// - Returns: Self
     public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
-        let kHomeValue = ""
+        // Insert the value like "" if needed
         for componet in 0..<choices.count {
-            if let firstItem = choices[componet].first, firstItem != kHomeValue {
-                choices[componet].insert(kHomeValue, at: 0)
+            if let firstItem = choices[componet].first, firstItem != kValueForCleared {
+                choices[componet].insert(kValueForCleared, at: 0)
             }
         }
         return setButton(button: &clearButton, title:title, font: font, color: color, action: action)

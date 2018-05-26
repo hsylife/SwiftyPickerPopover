@@ -73,6 +73,7 @@ All popovers have the following APIs.
 * setSize(width:,height:)
 * setCornerRadius()
 * setValueChange(action:)
+* setOutsideTapDismissing(allowed:)
 
 * appear(originView:, baseViewWhenOriginViewHasNoSuperview:, baseViewController:, completion:)
 * appear(barButtonItem:, baseViewWhenOriginViewHasNoSuperview:, baseViewController:, completion:)

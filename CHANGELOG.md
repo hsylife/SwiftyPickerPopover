@@ -1,4 +1,4 @@
-6.4.0 Release notes (2018-05-27)
+6.4.0 Release notes (2018-05-24)
 =============================================================
 
 ### API Breaking Changes
@@ -7,11 +7,11 @@
 
 ### Enhancements
 
-* Add: setClearButton() to String/ColumnStringPickerPopover.
+* Add: setOutsideTapDismissing(allowed:) to popovers. It makes dismissing of popover by tapping outside of it avilable or not.
 
 ### Bugfixes
 
-* Fix: setSelectedRow/Rows() don't work correctly.
+* Nothing
 
 6.3.1 Release notes (2018-05-21)
 =============================================================

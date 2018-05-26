@@ -39,4 +39,11 @@ extension AbstractPickerPopoverViewController: UIPopoverPresentationControllerDe
     open func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
+    
+    open func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        guard let allowed = (anyPopover as? AbstractPopover)?.isAllowedOutsideTappingDismissing else {
+            return true
+        }
+        return allowed
+    }
 }

@@ -27,8 +27,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 }
             }
             return nil
-        }
-        
+        }        
         /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
@@ -47,7 +46,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 print("cancel") })
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
-        
     }
     
     @IBAction func didTapStringPickerWithImageButton(_ sender: UIButton) {
@@ -124,10 +122,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 //Instead, hide it.
 //                popover.disappear()
             })
-            
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0)
-
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
@@ -145,7 +141,6 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     @IBAction func countdownButton(_ sender: UIButton) {
-        
         // CountdownPickerPopover appears:
         CountdownPickerPopover(title: "CountdownPicker")
             .setSelectedTimeInterval(TimeInterval())
@@ -213,7 +208,5 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
-
-    
 }
 

@@ -1,3 +1,18 @@
+6.5.1 Release notes (2018-05-27)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+
+* Refactor: polish code
+
 6.5.0 Release notes (2018-05-27)
 =============================================================
 
@@ -7,7 +22,7 @@
 
 ### Enhancements
 
-* * Add: setClearButton() to String/ColumnStringPickerPopover.
+* Add: setClearButton() to String/ColumnStringPickerPopover.
 
 ### Bugfixes
 

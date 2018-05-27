@@ -16,7 +16,7 @@ public class StringPickerPopover: AbstractPopover {
     /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
-    public typealias ActionHandlerType = (PopoverType, Int, ItemType) -> Void
+    public typealias ActionHandlerType = (PopoverType, Int, ItemType) -> ()
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
@@ -41,11 +41,11 @@ public class StringPickerPopover: AbstractPopover {
     private(set) var displayStringFor: DisplayStringForType?
     
     /// Done button parameters
-    private(set) var doneButton: ButtonParameterType = ("Done".localized, nil, nil, nil)
+    private(set) var doneButton: ButtonParameterType = (title: "Done".localized, font: nil, color: nil, action: nil)
     /// Cancel button parameters
-    private(set) var cancelButton: ButtonParameterType = ("Cancel".localized, nil, nil, nil)
+    private(set) var cancelButton: ButtonParameterType = (title: "Cancel".localized, font: nil, color: nil, action: nil)
     /// Clear button parameters
-    private(set) var clearButton: ButtonParameterType = ("Clear".localized, nil, nil, nil)
+    private(set) var clearButton: ButtonParameterType = (title: "Clear".localized, font: nil, color: nil, action: nil)
 
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
@@ -63,25 +63,24 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   - title: Title for navigation bar.
     ///   - choices: Options for picker.
-    public init(title: String?, choices:[ItemType]){
+    public init(title: String?, choices: [ItemType]) {
         super.init()
         
         // Set parameters
         self.title = title
         self.choices = choices
-        
     }
 
     /// Set font
     ///
     /// - Parameter fontName: UIFont to change picker font
     /// - Returns: Self
-    public func setFont(_ font:UIFont) ->Self {
+    public func setFont(_ font: UIFont) -> Self {
         self.font = font
         return self
     }
     
-    public func setFontSize(_ size:CGFloat) -> Self {
+    public func setFontSize(_ size: CGFloat) -> Self {
         self.fontSize = size
         return self
     }
@@ -101,11 +100,13 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter imageNames: String Array of image name to attach to a choice
     /// - Returns: Self
-    public func setImageNames(_ imageNames:[String?]?)->Self{
-        self.images = imageNames?.map({
-            guard let imageName = $0 else { return nil }
+    public func setImageNames(_ imageNames: [String?]?) -> Self {
+        self.images = imageNames?.map {
+            guard let imageName = $0 else {
+                return nil
+            }
             return UIImage(named: imageName)
-        })
+        }
         return self
     }
 
@@ -113,7 +114,7 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter images: String Array of image to attach to a choice
     /// - Returns: Self
-    public func setImages(_ images:[UIImage?]?)->Self{
+    public func setImages(_ images: [UIImage?]?) -> Self {
         self.images = images
         return self
     }
@@ -122,7 +123,7 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter row: Selected row on picker
     /// - Returns: Self
-    public func setSelectedRow(_ row:Int)->Self{
+    public func setSelectedRow(_ row: Int) -> Self {
         self.selectedRow = row
         return self
     }
@@ -131,7 +132,7 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter height: Row height
     /// - Returns: Self
-    public func setRowHeight(_ height:CGFloat)->Self{
+    public func setRowHeight(_ height: CGFloat) -> Self {
         self.rowHeight = height
         return self
     }
@@ -140,7 +141,7 @@ public class StringPickerPopover: AbstractPopover {
     ///
     /// - Parameter displayStringFor: Rules for converting choice values to display strings.
     /// - Returns: Self
-    public func setDisplayStringFor(_ displayStringFor:DisplayStringForType?)->Self{
+    public func setDisplayStringFor(_ displayStringFor: DisplayStringForType?) -> Self {
         self.displayStringFor = displayStringFor
         return self
     }
@@ -166,7 +167,7 @@ public class StringPickerPopover: AbstractPopover {
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor. 
     ///   - action: Action to be performed before the popover disappeared.The popover, Selected row, Selected value.
     /// - Returns: Self
-    public func setCancelButton(title:String? = nil, font: UIFont? = nil, color:UIColor? = nil, action:ActionHandlerType?)->Self{
+    public func setCancelButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
         return setButton(button: &cancelButton, title: title, font: font, color: color, action: action)
     }
     
@@ -194,14 +195,14 @@ public class StringPickerPopover: AbstractPopover {
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
     func setButton(button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
-        if let t = title {
-            button.title = t
+        if let title = title {
+            button.title = title
         }
         if let font = font {
             button.font = font
         }
-        if let c = color {
-            button.color = c
+        if let color = color {
+            button.color = color
         }
         button.action = action
         return self
@@ -212,7 +213,7 @@ public class StringPickerPopover: AbstractPopover {
     /// - Parameters:
     ///   -action: Action to be performed each time the picker is moved to a new value.
     /// - Returns: Self
-    public func setValueChange(action: ActionHandlerType?)->Self{
+    public func setValueChange(action: ActionHandlerType?) -> Self{
         valueChangeAction = action
         return self
     }

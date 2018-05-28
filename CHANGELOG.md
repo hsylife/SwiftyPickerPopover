@@ -1,3 +1,18 @@
+6.5.2 Release notes (2018-05-28)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+
+* fix: wierd view color of DatePickerPopover
+
 6.5.1 Release notes (2018-05-27)
 =============================================================
 

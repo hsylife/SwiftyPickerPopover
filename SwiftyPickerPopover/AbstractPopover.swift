@@ -123,7 +123,7 @@ open class AbstractPopover: NSObject {
     ///   - baseViewController: Base viewController
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
-    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion: VoidHandlerType? = nil){
+    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion: VoidHandlerType? = nil) {
         // create navigationController
         guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections ) else {
             return
@@ -195,7 +195,7 @@ open class AbstractPopover: NSObject {
     /// - Parameters:
     ///   - seconds: Seconds to delay closing
     ///   - completion: Action to be performed after the popover disappeared. Omissible.
-    open func disappearAutomatically(after seconds: Double, completion: VoidHandlerType? = nil){
+    open func disappearAutomatically(after seconds: Double, completion: VoidHandlerType? = nil) {
         // automatically hide the popover
         disappearAutomaticallyItems.seconds = seconds
         disappearAutomaticallyItems.completion = completion
@@ -205,12 +205,12 @@ open class AbstractPopover: NSObject {
             if let _ = self.contentViewController {
                 self.disappear(completion: completion)
             }
-            self.disappearAutomaticallyItems = (nil,nil,nil)
+            self.disappearAutomaticallyItems = (dispatchWorkItem: nil, seconds: nil, completion: nil)
         }
     }
     
     /// Update the started time of disappearAutomatically().
-    func redoDisappearAutomatically(){
+    func redoDisappearAutomatically() {
         //Redo disapperAutomatically()
         if let seconds = disappearAutomaticallyItems.seconds {
             disappearAutomatically(after: seconds, completion: disappearAutomaticallyItems.completion)
@@ -219,7 +219,7 @@ open class AbstractPopover: NSObject {
     
     
     /// Reload the popover with the latest properties. 
-    open func reload(){
+    open func reload() {
         (contentViewController as? AbstractPickerPopoverViewController)?.refrectPopoverProperties()
     }
     
@@ -233,7 +233,7 @@ open class AbstractPopover: NSObject {
     ///   - permittedArrowDirections: The default value is '.any'. Omissible.
     /// - Returns: The configured navigationController
     open func configureNavigationController(storyboardName: String, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any) -> UINavigationController? {
-        var bundle:Bundle
+        var bundle: Bundle
         if let _ = Bundle.main.path(forResource: storyboardName, ofType: "storyboardc"){
             bundle = Bundle.main
         } else {
@@ -246,7 +246,7 @@ open class AbstractPopover: NSObject {
             return nil
         }
         
-        return self.configureNavigationController(navigationController: navigationController, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
+        return configureNavigationController(navigationController: navigationController, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections)
     }
 	
 	/// Configure navigationController
@@ -258,7 +258,7 @@ open class AbstractPopover: NSObject {
 	///   - baseViewController: Base viewController
 	///   - permittedArrowDirections: The default value is '.any'. Omissible.
 	/// - Returns: The configured navigationController
-	fileprivate func configureNavigationController(navigationController: UINavigationController, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController? {
+	fileprivate func configureNavigationController(navigationController: UINavigationController, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any) -> UINavigationController? {
 		// define using popover
 		navigationController.modalPresentationStyle = .popover
 		

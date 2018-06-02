@@ -26,7 +26,7 @@ open class AbstractPopover: NSObject {
     /// - Item to be executed after the specified time
     /// - The time
     /// - Process to be executed after performing the DispatchWorkItem
-    private(set) var disappearAutomaticallyItems: (dispatchWorkItem:DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
+    private(set) var disappearAutomaticallyItems: (dispatchWorkItem: DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
     
     /// ViewController in charge of content in the popover
     private(set) weak var contentViewController: AnyObject?
@@ -98,8 +98,10 @@ open class AbstractPopover: NSObject {
     ///   - baseViewController: Base viewController
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
-    open func appear(barButtonItem: UIBarButtonItem, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil) {
-        guard let originView = barButtonItem.value(forKey: "view") as? UIView else { return }
+    open func appear(barButtonItem: UIBarButtonItem, baseViewWhenOriginViewHasNoSuperview:  UIView? = nil, baseViewController: UIViewController, completion:(() -> Void)? = nil) {
+        guard let originView = barButtonItem.value(forKey: "view") as? UIView else {
+            return
+        }
         appear(originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, completion: completion)
     }
     
@@ -111,12 +113,12 @@ open class AbstractPopover: NSObject {
     ///   - baseViewController: Base viewController
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
-    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:(()->Void)? = nil){
-
-        self.baseViewController = baseViewController
-        
+    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:( () -> Void)? = nil){
         // create navigationController
-        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections ) else { return }
+        guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections ) else {
+            return
+        }
+        self.baseViewController = baseViewController
         
         // configure StringPickerPopoverViewController
         let contentVC = configureContentViewController(navigationController: navigationController)
@@ -130,7 +132,10 @@ open class AbstractPopover: NSObject {
         
         // show popover
         baseViewController.present(navigationController, animated: true, completion: { [weak self] in
-            if let cornerRadius = self?.cornerRadius {
+            guard let `self` = self else {
+                return
+            }
+            if let cornerRadius = self.cornerRadius {
                 navigationController.view.superview?.layer.cornerRadius = cornerRadius
             }
             completion?()

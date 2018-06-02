@@ -1,3 +1,20 @@
+6.6.0 Release notes (2018-06-03)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* add: setDimmedBackgroundView(enabled:)
+
+### Bugfixes
+* fix: arrow and naviBar are diffrent colors
+* fix: circular references in appear() and disappearAutomatically()
+* refactor: added VoidHandlerType
+
+
 6.5.2 Release notes (2018-05-28)
 =============================================================
 

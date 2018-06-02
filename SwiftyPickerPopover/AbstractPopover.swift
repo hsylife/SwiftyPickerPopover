@@ -141,15 +141,7 @@ open class AbstractPopover: NSObject {
         tintColor = baseViewController.view.tintColor
         
         // dimmed backgorund view
-        if let isEnabled = isEnabledDimmedBackgroundView, isEnabled {
-            let dimmedView = UIView(frame: UIScreen.main.bounds)
-            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            dimmedView.accessibilityIdentifier = kDimmedViewIdentifer
-            if let parentView = baseViewController.navigationController?.view ?? baseViewController.view {
-                parentView.addSubview(dimmedView)
-                parentView.bringSubview(toFront: dimmedView)
-            }
-        }
+        addDimmedBackgroundViewIfNeeded(baseViewController)
         
         // show popover
         baseViewController.present(navigationController, animated: true, completion: { [weak self] in
@@ -161,6 +153,18 @@ open class AbstractPopover: NSObject {
             }
             completion?()
         })
+    }
+    
+    private func addDimmedBackgroundViewIfNeeded(_ baseViewController: UIViewController) {
+        if let isEnabled = isEnabledDimmedBackgroundView, isEnabled {
+            let dimmedView = UIView(frame: UIScreen.main.bounds)
+            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            dimmedView.accessibilityIdentifier = kDimmedViewIdentifer
+            if let parentView = baseViewController.navigationController?.view ?? baseViewController.view {
+                parentView.addSubview(dimmedView)
+                parentView.bringSubview(toFront: dimmedView)
+            }
+        }
     }
     
     /// Configure contentViewController of popover

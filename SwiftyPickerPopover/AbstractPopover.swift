@@ -12,6 +12,10 @@ import UIKit
 /// The original popover for all
 open class AbstractPopover: NSObject {
 
+    public typealias VoidHandlerType = (() -> Void)
+
+    private let kDimmedViewIdentifer = "DimmedView"
+
     /// Name of the storyboard on which AbstractPopover is based
     let storyboardName: String
 
@@ -44,21 +48,18 @@ open class AbstractPopover: NSObject {
     
     private(set) var isEnabledDimmedBackgroundView: Bool?
     
-    public typealias VoidHandlerType = (() -> Void)
-    
     override public init() {
         //Get a string as stroyboard name from this class name.
         storyboardName = String(describing: type(of: self))
     }
     
-    private let kDimmedViewIdentifer = "DimmedView"
     // MARK: - Set permitted arr setter
     
     /// Set permitted arrow directions
     ///
     /// - Parameter permittedArrowDirections: Permitted arrow directions
     /// - Returns: Self
-    open func setPermittedArrowDirections(_ permittedArrowDirections:UIPopoverArrowDirection) -> Self {
+    open func setPermittedArrowDirections(_ permittedArrowDirections: UIPopoverArrowDirection) -> Self {
         self.permittedArrowDirections = permittedArrowDirections
         return self
     }
@@ -205,7 +206,10 @@ open class AbstractPopover: NSObject {
         disappearAutomaticallyItems.completion = completion
         
         disappearAutomaticallyItems.dispatchWorkItem?.cancel()
-        disappearAutomaticallyItems.dispatchWorkItem = DispatchQueue.main.cancelableAsyncAfter(deadline: .now() + seconds) {
+        disappearAutomaticallyItems.dispatchWorkItem = DispatchQueue.main.cancelableAsyncAfter(deadline: .now() + seconds) { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             if let _ = self.contentViewController {
                 self.disappear(completion: completion)
             }
@@ -272,7 +276,7 @@ open class AbstractPopover: NSObject {
 		presentationController?.sourceRect = originView.frame
 		
 		// direction of arrow
-		presentationController?.permittedArrowDirections = permittedArrowDirections        
+		presentationController?.permittedArrowDirections = permittedArrowDirections
 		return navigationController
 	}
 }

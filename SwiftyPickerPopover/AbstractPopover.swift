@@ -42,11 +42,14 @@ open class AbstractPopover: NSObject {
     
     private(set) var isAllowedOutsideTappingDismissing: Bool?
     
+    private(set) var isEnabledDimmedBackgroundView: Bool?
+    
     override public init(){
         //Get a string as stroyboard name from this class name.
         storyboardName = String(describing: type(of:self))
     }
     
+    private let kDimmedViewIdentifer = "DimmedView"
     // MARK: - Set permitted arr setter
     
     /// Set permitted arrow directions
@@ -85,6 +88,11 @@ open class AbstractPopover: NSObject {
     
     open func setOutsideTapDismissing(allowed: Bool = true) -> Self {
         self.isAllowedOutsideTappingDismissing = allowed
+        return self
+    }
+    
+    open func setDimmedBackground(enabled: Bool) -> Self {
+        self.isEnabledDimmedBackgroundView = enabled
         return self
     }
     
@@ -130,6 +138,17 @@ open class AbstractPopover: NSObject {
         
         tintColor = baseViewController.view.tintColor
         
+        // dimmed backgorund view
+        if let isEnabled = isEnabledDimmedBackgroundView, isEnabled {
+            let dimmedView = UIView(frame: UIScreen.main.bounds)
+            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            dimmedView.accessibilityIdentifier = kDimmedViewIdentifer
+            if let parentView = baseViewController.navigationController?.view ?? baseViewController.view {
+                parentView.addSubview(dimmedView)
+                parentView.bringSubview(toFront: dimmedView)
+            }
+        }
+        
         // show popover
         baseViewController.present(navigationController, animated: true, completion: { [weak self] in
             guard let `self` = self else {
@@ -159,8 +178,15 @@ open class AbstractPopover: NSObject {
     /// Close the popover
     ///
     /// - Parameter completion: Action to be performed after the popover disappeared. Omissible.
-    open func disappear(completion:(()->Void)? = nil){
-        self.baseViewController?.dismiss(animated: false, completion: completion)
+    open func disappear(completion:( () -> Void )? = nil){
+        if let parentView = baseViewController?.navigationController?.view ?? baseViewController?.view, let dimmedView = parentView.subviews.filter({$0.accessibilityIdentifier == kDimmedViewIdentifer}).first {
+            UIView.animate(withDuration: 0.4, animations: {
+                dimmedView.alpha = 0
+            }, completion: { _ in
+                dimmedView.removeFromSuperview()
+            })
+        }
+        baseViewController?.dismiss(animated: false, completion: completion)
     }
     
     /// Close the popover automatically after the specified seconds.
@@ -168,16 +194,15 @@ open class AbstractPopover: NSObject {
     /// - Parameters:
     ///   - seconds: Seconds to delay closing
     ///   - completion: Action to be performed after the popover disappeared. Omissible.
-    open func disappearAutomatically(after seconds: Double, completion: (()->Void)? = nil){
+    open func disappearAutomatically(after seconds: Double, completion: (()-> Void)? = nil){
         // automatically hide the popover
-        
         disappearAutomaticallyItems.seconds = seconds
         disappearAutomaticallyItems.completion = completion
         
         disappearAutomaticallyItems.dispatchWorkItem?.cancel()
         disappearAutomaticallyItems.dispatchWorkItem = DispatchQueue.main.cancelableAsyncAfter(deadline: .now() + seconds) {
             if let _ = self.contentViewController {
-                self.baseViewController?.dismiss(animated: false, completion: completion)
+                self.disappear(completion: completion)
             }
             self.disappearAutomaticallyItems = (nil,nil,nil)
         }

@@ -57,7 +57,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setValueChange(action: { _, _, selectedString in
                 print("current string: \(selectedString)")
             })
-            .setDoneButton(color: UIColor.red, action: {
+            .setDoneButton(action: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })

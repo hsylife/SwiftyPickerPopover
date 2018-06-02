@@ -21,7 +21,7 @@ open class AbstractPickerPopoverViewController: UIViewController {
     }
     
     /// Make the popover property reflect on the popover
-    func refrectPopoverProperties(){
+    func refrectPopoverProperties() {
         title = anyPopover.title
         
         // Change size if needed

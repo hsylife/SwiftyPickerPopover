@@ -57,13 +57,14 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setValueChange(action: { _, _, selectedString in
                 print("current string: \(selectedString)")
             })
-            .setDoneButton(color: UIColor.red, action: {
+            .setDoneButton(action: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
             .setOutsideTapDismissing(allowed: false)
+            .setDimmedBackgroundView(enabled: true)
         p.appear(originView: sender, baseViewController: self)
     }
     

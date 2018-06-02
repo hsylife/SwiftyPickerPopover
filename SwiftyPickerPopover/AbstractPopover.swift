@@ -26,7 +26,7 @@ open class AbstractPopover: NSObject {
     /// - Item to be executed after the specified time
     /// - The time
     /// - Process to be executed after performing the DispatchWorkItem
-    private(set) var disappearAutomaticallyItems: (dispatchWorkItem: DispatchWorkItem?, seconds: Double?, completion: (()->Void)?)
+    private(set) var disappearAutomaticallyItems: (dispatchWorkItem: DispatchWorkItem?, seconds: Double?, completion: VoidHandlerType?)
     
     /// ViewController in charge of content in the popover
     private(set) weak var contentViewController: AnyObject?
@@ -44,7 +44,9 @@ open class AbstractPopover: NSObject {
     
     private(set) var isEnabledDimmedBackgroundView: Bool?
     
-    override public init(){
+    public typealias VoidHandlerType = (() -> Void)
+    
+    override public init() {
         //Get a string as stroyboard name from this class name.
         storyboardName = String(describing: type(of:self))
     }
@@ -56,7 +58,7 @@ open class AbstractPopover: NSObject {
     ///
     /// - Parameter permittedArrowDirections: Permitted arrow directions
     /// - Returns: Self
-    open func setPermittedArrowDirections(_ permittedArrowDirections:UIPopoverArrowDirection)->Self{
+    open func setPermittedArrowDirections(_ permittedArrowDirections:UIPopoverArrowDirection) -> Self {
         self.permittedArrowDirections = permittedArrowDirections
         return self
     }
@@ -77,22 +79,22 @@ open class AbstractPopover: NSObject {
     ///   - height: Wanting height. Omissible. If it is nil or not specified, then the default value will be used.
     /// - Returns: Self
     open func setSize(width: CGFloat? = nil, height: CGFloat? = nil)->Self{
-        self.size = (width: width, height: height)
+        size = (width: width, height: height)
         return self
     }
     
     open func setCornerRadius(_ radius: CGFloat) -> Self {
-        self.cornerRadius = radius
+        cornerRadius = radius
         return self
     }
     
     open func setOutsideTapDismissing(allowed: Bool = true) -> Self {
-        self.isAllowedOutsideTappingDismissing = allowed
+        isAllowedOutsideTappingDismissing = allowed
         return self
     }
     
     open func setDimmedBackgroundView(enabled: Bool) -> Self {
-        self.isEnabledDimmedBackgroundView = enabled
+        isEnabledDimmedBackgroundView = enabled
         return self
     }
     
@@ -106,7 +108,7 @@ open class AbstractPopover: NSObject {
     ///   - baseViewController: Base viewController
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
-    open func appear(barButtonItem: UIBarButtonItem, baseViewWhenOriginViewHasNoSuperview:  UIView? = nil, baseViewController: UIViewController, completion:(() -> Void)? = nil) {
+    open func appear(barButtonItem: UIBarButtonItem, baseViewWhenOriginViewHasNoSuperview:  UIView? = nil, baseViewController: UIViewController, completion: VoidHandlerType? = nil) {
         guard let originView = barButtonItem.value(forKey: "view") as? UIView else {
             return
         }
@@ -121,7 +123,7 @@ open class AbstractPopover: NSObject {
     ///   - baseViewController: Base viewController
     ///   - completion: Action to be performed after the popover appeared. Omissible.
     
-    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion:( () -> Void)? = nil){
+    open func appear(originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, completion: VoidHandlerType? = nil){
         // create navigationController
         guard let navigationController = configureNavigationController(storyboardName: storyboardName, originView: originView, baseViewWhenOriginViewHasNoSuperview: baseViewWhenOriginViewHasNoSuperview, baseViewController: baseViewController, permittedArrowDirections: permittedArrowDirections ) else {
             return
@@ -165,20 +167,19 @@ open class AbstractPopover: NSObject {
     ///
     /// - Parameter navigationController: Source navigationController.
     /// - Returns: ContentViewController.
-    open func configureContentViewController(navigationController: UINavigationController)->AbstractPickerPopoverViewController?{
+    open func configureContentViewController(navigationController: UINavigationController) -> AbstractPickerPopoverViewController? {
         if let contentViewController = navigationController.topViewController as? AbstractPickerPopoverViewController {
             contentViewController.anyPopover = self
             self.contentViewController = contentViewController
             return contentViewController
         }
-        
         return nil
     }
     
     /// Close the popover
     ///
     /// - Parameter completion: Action to be performed after the popover disappeared. Omissible.
-    open func disappear(completion:( () -> Void )? = nil){
+    open func disappear(completion: VoidHandlerType? = nil) {
         if let parentView = baseViewController?.navigationController?.view ?? baseViewController?.view, let dimmedView = parentView.subviews.filter({$0.accessibilityIdentifier == kDimmedViewIdentifer}).first {
             UIView.animate(withDuration: 0.4, animations: {
                 dimmedView.alpha = 0
@@ -194,7 +195,7 @@ open class AbstractPopover: NSObject {
     /// - Parameters:
     ///   - seconds: Seconds to delay closing
     ///   - completion: Action to be performed after the popover disappeared. Omissible.
-    open func disappearAutomatically(after seconds: Double, completion: (()-> Void)? = nil){
+    open func disappearAutomatically(after seconds: Double, completion: VoidHandlerType? = nil){
         // automatically hide the popover
         disappearAutomaticallyItems.seconds = seconds
         disappearAutomaticallyItems.completion = completion
@@ -231,7 +232,7 @@ open class AbstractPopover: NSObject {
     ///   - baseViewController: Base viewController
     ///   - permittedArrowDirections: The default value is '.any'. Omissible.
     /// - Returns: The configured navigationController
-    open func configureNavigationController(storyboardName: String, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any)->UINavigationController?{
+    open func configureNavigationController(storyboardName: String, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any) -> UINavigationController? {
         var bundle:Bundle
         if let _ = Bundle.main.path(forResource: storyboardName, ofType: "storyboardc"){
             bundle = Bundle.main

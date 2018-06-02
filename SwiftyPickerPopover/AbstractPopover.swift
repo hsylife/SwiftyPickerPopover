@@ -91,7 +91,7 @@ open class AbstractPopover: NSObject {
         return self
     }
     
-    open func setDimmedBackground(enabled: Bool) -> Self {
+    open func setDimmedBackgroundView(enabled: Bool) -> Self {
         self.isEnabledDimmedBackgroundView = enabled
         return self
     }

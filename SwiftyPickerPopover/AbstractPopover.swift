@@ -65,8 +65,8 @@ open class AbstractPopover: NSObject {
     ///
     /// - Parameter color: Arrow color. Specify the color of viewController.backgroundColor
     /// - Returns: Self
-    open func setArrowColor(_ color:UIColor)->Self{
-        self.backgroundColor = color
+    open func setArrowColor(_ color: UIColor) -> Self {
+        backgroundColor = color
         return self
     }
 
@@ -132,9 +132,9 @@ open class AbstractPopover: NSObject {
         let contentVC = configureContentViewController(navigationController: navigationController)
         navigationController.popoverPresentationController?.delegate = contentVC
         
-        let color = self.backgroundColor ?? self.baseViewController?.navigationController?.navigationBar.barTintColor ?? self.baseViewController?.view.backgroundColor
+        let color = backgroundColor ?? baseViewController.navigationController?.navigationBar.barTintColor ?? baseViewController.view.backgroundColor
         navigationController.navigationBar.barTintColor = color
-        navigationController.popoverPresentationController?.backgroundColor = color?.withAlphaComponent(0.8)
+        navigationController.popoverPresentationController?.backgroundColor =  color
         
         tintColor = baseViewController.view.tintColor
         
@@ -219,7 +219,7 @@ open class AbstractPopover: NSObject {
     
     /// Reload the popover with the latest properties. 
     open func reload(){
-        (self.contentViewController as? AbstractPickerPopoverViewController)?.refrectPopoverProperties()
+        (contentViewController as? AbstractPickerPopoverViewController)?.refrectPopoverProperties()
     }
     
     /// Configure navigationController

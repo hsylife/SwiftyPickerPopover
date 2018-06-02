@@ -48,7 +48,7 @@ open class AbstractPopover: NSObject {
     
     override public init() {
         //Get a string as stroyboard name from this class name.
-        storyboardName = String(describing: type(of:self))
+        storyboardName = String(describing: type(of: self))
     }
     
     private let kDimmedViewIdentifer = "DimmedView"
@@ -267,11 +267,12 @@ open class AbstractPopover: NSObject {
 		navigationController.modalPresentationStyle = .popover
 		
 		// origin
-		navigationController.popoverPresentationController?.sourceView = originView.superview ?? baseViewWhenOriginViewHasNoSuperview ?? baseViewController.view
-		navigationController.popoverPresentationController?.sourceRect = originView.frame
+        let presentationController = navigationController.popoverPresentationController
+		presentationController?.sourceView = originView.superview ?? baseViewWhenOriginViewHasNoSuperview ?? baseViewController.view
+		presentationController?.sourceRect = originView.frame
 		
 		// direction of arrow
-		navigationController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections        
+		presentationController?.permittedArrowDirections = permittedArrowDirections        
 		return navigationController
 	}
 }

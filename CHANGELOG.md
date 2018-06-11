@@ -1,3 +1,17 @@
+6.6.1 Release notes (2018-06-11)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+* fix: dismiss() is not called correctly.
+
 6.6.0 Release notes (2018-06-03)
 =============================================================
 

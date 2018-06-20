@@ -70,6 +70,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     
     private func tapped(button: DatePickerPopover.ButtonParameterType?) {
         button?.action?(popover, picker.date)
+        popover.removeDimmedView()
         dismiss(animated: false)
     }
     

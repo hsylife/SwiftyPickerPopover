@@ -94,6 +94,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         if let selectedValue = popover.choices[safe: selectedRow] {
             button?.action?(popover, selectedRow, selectedValue)
         }
+        popover.removeDimmedView()
         dismiss(animated: false)
     }
 

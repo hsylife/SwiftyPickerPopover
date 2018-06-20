@@ -1,3 +1,17 @@
+6.6.2 Release notes (2018-06-20)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+* fix: dimmedView does not disappear.
+
 6.6.1 Release notes (2018-06-11)
 =============================================================
 

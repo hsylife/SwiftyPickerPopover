@@ -185,6 +185,11 @@ open class AbstractPopover: NSObject {
     ///
     /// - Parameter completion: Action to be performed after the popover disappeared. Omissible.
     open func disappear(completion: VoidHandlerType? = nil) {
+        removeDimmedView()
+        baseViewController?.dismiss(animated: false, completion: completion)
+    }
+    
+    public func removeDimmedView() {
         if let parentView = baseViewController?.navigationController?.view ?? baseViewController?.view, let dimmedView = parentView.subviews.filter({$0.accessibilityIdentifier == kDimmedViewIdentifer}).first {
             UIView.animate(withDuration: 0.4, animations: {
                 dimmedView.alpha = 0
@@ -192,7 +197,6 @@ open class AbstractPopover: NSObject {
                 dimmedView.removeFromSuperview()
             })
         }
-        baseViewController?.dismiss(animated: false, completion: completion)
     }
     
     /// Close the popover automatically after the specified seconds.

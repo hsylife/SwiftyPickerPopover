@@ -1,4 +1,4 @@
-6.6.2 Release notes (2018-06-20)
+6.6.2 Release notes (2018-06-21)
 =============================================================
 
 ### API Breaking Changes
@@ -7,7 +7,7 @@
 
 ### Enhancements
 
-* Nothing
+* add: TextFeildCell for demo
 
 ### Bugfixes
 * fix: dimmedView does not disappear.

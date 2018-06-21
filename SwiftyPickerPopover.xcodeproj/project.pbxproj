@@ -28,6 +28,9 @@
 		D646E0EE1E820F2A003C8731 /* SwiftyPickerPopover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60AE7D71D9EE0DE000320F4 /* SwiftyPickerPopover.framework */; };
 		D64C09B41EACD2270072BB79 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D64C09B61EACD2270072BB79 /* Localizable.strings */; };
 		D651432F20AE948800A74E20 /* CollectionType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D651432E20AE948800A74E20 /* CollectionType+Extension.swift */; };
+		D660C83B20DA7D9B00A4FAA0 /* TextFieldCel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D660C83920DA7D9B00A4FAA0 /* TextFieldCel.swift */; };
+		D660C83C20DA7D9B00A4FAA0 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D660C83A20DA7D9B00A4FAA0 /* TextFieldCell.xib */; };
+		D663843420DA75CE00428539 /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D663843320DA75CE00428539 /* SampleTableViewController.swift */; };
 		D671079B1EA7386200C06AC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */; };
 		D671079C1EA7387D00C06AC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D671079E1EA7387D00C06AC2 /* Main.storyboard */; };
 		D67107A51EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67107A71EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard */; };
@@ -68,6 +71,9 @@
 		D651432E20AE948800A74E20 /* CollectionType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionType+Extension.swift"; sourceTree = "<group>"; };
 		D65E30701D9282B000771790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatePickerPopover.storyboard; sourceTree = "<group>"; };
 		D65E30741D92837800771790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StringPickerPopover.storyboard; sourceTree = "<group>"; };
+		D660C83920DA7D9B00A4FAA0 /* TextFieldCel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCel.swift; sourceTree = "<group>"; };
+		D660C83A20DA7D9B00A4FAA0 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		D663843320DA75CE00428539 /* SampleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
 		D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Demo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D671079F1EA7389300C06AC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D67107A01EA7389B00C06AC2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -135,9 +141,12 @@
 			children = (
 				D63410E01D8AD0EB00DAE60A /* AppDelegate.swift */,
 				D63410E91D8AD0F300DAE60A /* SampleViewController.swift */,
+				D663843320DA75CE00428539 /* SampleTableViewController.swift */,
 				D63410E21D8AD0F300DAE60A /* Assets.xcassets */,
 				D63410E81D8AD0F300DAE60A /* Info.plist */,
 				D671079E1EA7387D00C06AC2 /* Main.storyboard */,
+				D660C83920DA7D9B00A4FAA0 /* TextFieldCel.swift */,
+				D660C83A20DA7D9B00A4FAA0 /* TextFieldCell.xib */,
 				D67107991EA7386200C06AC2 /* LaunchScreen.storyboard */,
 			);
 			name = Demo;
@@ -329,6 +338,7 @@
 				D671079B1EA7386200C06AC2 /* LaunchScreen.storyboard in Resources */,
 				D63410EA1D8AD0F300DAE60A /* Assets.xcassets in Resources */,
 				D671079C1EA7387D00C06AC2 /* Main.storyboard in Resources */,
+				D660C83C20DA7D9B00A4FAA0 /* TextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +371,8 @@
 			files = (
 				D63410E11D8AD0EB00DAE60A /* AppDelegate.swift in Sources */,
 				D63410EE1D8AD0F300DAE60A /* SampleViewController.swift in Sources */,
+				D663843420DA75CE00428539 /* SampleTableViewController.swift in Sources */,
+				D660C83B20DA7D9B00A4FAA0 /* TextFieldCel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

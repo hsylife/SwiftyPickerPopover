@@ -142,8 +142,6 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
         let adjustedValue: String = popover.displayStringFor?(value) ?? value
         let label: UILabel = view as? UILabel ?? UILabel()
         label.text = adjustedValue
-        
-        
         label.attributedText = getAttributedText(image: popover.images?[row], text: adjustedValue)
         label.textAlignment = .center
         return label

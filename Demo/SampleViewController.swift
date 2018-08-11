@@ -172,6 +172,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         })
         .setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
         .setFontColors([nil, .red])
+        .setFontSizes([20, nil]) // override
         .setSelectedRows([0,2])
         .appear(originView: sender, baseViewController: self)
     }

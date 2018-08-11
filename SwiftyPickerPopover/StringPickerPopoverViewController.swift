@@ -137,6 +137,57 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
         return popover.displayStringFor?(value) ?? value
     }
     
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let value: String = popover.choices[row]
+        let adjustedValue: String = popover.displayStringFor?(value) ?? value
+        let label: UILabel = view as? UILabel ?? UILabel()
+        label.text = adjustedValue
+        
+        
+        label.attributedText = getAttributedText(image: popover.images?[row], text: adjustedValue)
+        label.textAlignment = .center
+        return label
+    }
+    
+    private func getAttributedText(image: UIImage?, text: String?) -> NSAttributedString? {
+        let result: NSMutableAttributedString = NSMutableAttributedString()
+        if let attributedImage = getAttributedImage(image), let space = getAttributedText(" ") {
+            result.append(attributedImage)
+            result.append(space)
+        }
+        if let attributedText = getAttributedText(text) {
+            result.append(attributedText)
+        }
+        return result
+    }
+    
+    private func getAttributedText(_ text: String?) -> NSAttributedString? {
+        guard let text = text else {
+            return nil
+        }
+        let font: UIFont = {
+            if let f = popover.font {
+                if let size = popover.fontSize {
+                    return UIFont(name: f.fontName, size: size)!
+                }
+                return UIFont(name: f.fontName, size: f.pointSize)!
+            }
+            let size = popover.fontSize ?? popover.kDefaultFontSize
+            return UIFont.systemFont(ofSize: size)
+        }()
+        let color: UIColor = popover.fontColor
+        return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
+    }
+    
+    private func getAttributedImage(_ image: UIImage?) -> NSAttributedString? {
+        guard let image = image else {
+            return nil
+        }
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = image
+        return NSAttributedString(attachment: imageAttachment)
+    }
+    
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attributedResult = NSMutableAttributedString()
         
@@ -152,8 +203,17 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
         
         let value: String = popover.choices[row]
         let title: String = popover.displayStringFor?(value) ?? value
-        let font: UIFont = popover.font ?? UIFont.systemFont(ofSize: popover.fontSize, weight: UIFont.Weight.regular)
-        let attributedTitle: NSAttributedString = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: popover.fontColor])
+        let font: UIFont = {
+            if let f = popover.font {
+                if let fontSize = popover.fontSize {
+                    return UIFont(name: f.fontName, size: fontSize)!
+                }
+                return UIFont(name: f.fontName, size: f.pointSize)!
+            }
+            let fontSize = popover.fontSize ?? popover.kDefaultFontSize
+            return UIFont.systemFont(ofSize: fontSize)
+        }()
+        let attributedTitle: NSAttributedString = NSAttributedString(string: title, attributes: [.font: font, .foregroundColor: popover.fontColor])
         
         attributedResult.append(attributedTitle)
         return attributedResult

@@ -35,7 +35,8 @@ public class StringPickerPopover: AbstractPopover {
     /// Font
     private(set) var font: UIFont?
     private(set) var fontColor: UIColor = .black
-    private(set) var fontSize: CGFloat = 12
+    private(set) var fontSize: CGFloat?
+    let kDefaultFontSize: CGFloat = 14
     
     /// Convert a raw value to the string for displaying it
     private(set) var displayStringFor: DisplayStringForType?

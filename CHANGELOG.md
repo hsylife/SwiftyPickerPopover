@@ -1,3 +1,17 @@
+6.6.3 Release notes (2018-08-11)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+* fix: fontSize of StringPickerPopover do not work. fontSize has been accorded priority over font's pointSize.
+
 6.6.2 Release notes (2018-06-21)
 =============================================================
 

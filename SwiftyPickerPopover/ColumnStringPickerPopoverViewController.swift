@@ -150,17 +150,31 @@ extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
 
 extension ColumnStringPickerPopoverViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let value: String = popover.choices[component][row]
+        let adjustedValue: String = popover.displayStringFor?(value) ?? value
         let label: UILabel = view as? UILabel ?? UILabel()
-        label.text = selectedValue(component: component, row: row)
-
-        let fontSize: CGFloat = popover.fontSizes?[component] ?? popover.kDefaultFontSize
-        let font: UIFont = popover.fonts?[component] ?? UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.regular)
-        let fontColor: UIColor = popover.fontColors?[component] ?? popover.kDefaultFontColor
-        let title: String = popover.choices[component][row]
-        let attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: fontColor])
-        label.attributedText = attributedTitle
+        label.text = adjustedValue
+        label.attributedText = getAttributedText(adjustedValue, component: component)
         label.textAlignment = .center
         return label
+    }
+    
+    private func getAttributedText(_ text: String?, component: Int) -> NSAttributedString? {
+        guard let text = text else {
+            return nil
+        }
+        let font: UIFont = {
+            if let f = popover.fonts?[component] {
+                if let size = popover.fontSizes?[component] {
+                    return UIFont(name: f.fontName, size: size)!
+                }
+                return UIFont(name: f.fontName, size: f.pointSize)!
+            }
+            let size = popover.fontSizes?[component] ?? popover.kDefaultFontSize
+            return UIFont.systemFont(ofSize: size)
+        }()
+        let color: UIColor = popover.fontColors?[component] ?? popover.kDefaultFontColor
+        return NSAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])
     }
     
     public func pickerView(_ pickerView: UIPickerView,

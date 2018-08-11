@@ -31,11 +31,10 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
-            .setFont(UIFont.boldSystemFont(ofSize: 14))
-            .setFontColor(.blue)
             .setValueChange(action: { _, _, selectedString in
                 print("current string: \(selectedString)")
             })
+            .setFontSize(16)
             .setDoneButton(
                 font: UIFont.boldSystemFont(ofSize: 16),
                 color: UIColor.orange,
@@ -71,6 +70,9 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBAction func didTapStringPickerClearableButton(_ sender: UIButton) {
         /// StringPickerPopover Clearable:
         let p = StringPickerPopover(title: "Clearable", choices: ["value 1","value 2","value3"])
+            .setFont(UIFont.boldSystemFont(ofSize: 30))
+            .setFontColor(.orange)
+            .setFontSize(14)
             .setDoneButton(color: UIColor.red, action: {
                 popover, selectedRow, selectedString in
                 print("done row \(selectedRow) \(selectedString)")
@@ -170,6 +172,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         })
         .setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
         .setFontColors([nil, .red])
+        .setFontSizes([20, nil]) // override
         .setSelectedRows([0,2])
         .appear(originView: sender, baseViewController: self)
     }

@@ -303,6 +303,7 @@ When you prepare your customized Storyboard, it will be applied automatically.
 - Mihael Isaev [GitHub](https://github.com/MihaelIsaev) for adding appear() from barButtonItem.
 - iosMaher [GitHub](https://github.com/iosMaher) for idea of setFont() and setFontColor().
 - gbuela [GitHub](https://github.com/gbuela) for setValueChange(action:) API for all popover types.
+- ikbalyasar [GitHub](https://github.com/ikbalyasar) for demo code for showing selected value on StringPickerPopover.
 
 ## Author
 - Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

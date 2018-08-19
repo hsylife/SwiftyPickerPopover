@@ -11,6 +11,9 @@ import SwiftyPickerPopover
 
 class SampleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // for keeping selectedRow
+    private var selectedRow: Int = 0
+    
     @IBAction func tappedStringPickerButton(_ sender: UIButton) {
         /// Replace a string with the string to be display.
         let displayStringFor:((String?)->String?)? = { string in
@@ -27,7 +30,8 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 }
             }
             return nil
-        }        
+        }
+        
         /// Create StringPickerPopover:
         let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
             .setDisplayStringFor(displayStringFor)
@@ -39,10 +43,13 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 font: UIFont.boldSystemFont(ofSize: 16),
                 color: UIColor.orange,
                 action: { popover, selectedRow, selectedString in
-                print("done row \(selectedRow) \(selectedString)")
+                    print("done row \(selectedRow) \(selectedString)")
+                    self.selectedRow = selectedRow
+                    
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
+        .setSelectedRow(selectedRow)
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
     }

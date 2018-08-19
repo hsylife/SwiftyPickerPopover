@@ -1,3 +1,17 @@
+6.6.4 Release notes (2018-08-19)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* add: demo code for showing selected value on StringPickerPopover.
+
+### Bugfixes
+* Nothing
+
 6.6.3 Release notes (2018-08-11)
 =============================================================
 

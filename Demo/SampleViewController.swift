@@ -10,7 +10,9 @@ import UIKit
 import SwiftyPickerPopover
 
 class SampleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    var selecttedValue: Int = 0
+    
+    // for keeping selectedRow
+    private var selectedRow: Int = 0
     
     @IBAction func tappedStringPickerButton(_ sender: UIButton) {
         /// Replace a string with the string to be display.
@@ -42,12 +44,12 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 color: UIColor.orange,
                 action: { popover, selectedRow, selectedString in
                     print("done row \(selectedRow) \(selectedString)")
-                    self.selecttedValue = selectedRow
+                    self.selectedRow = selectedRow
                     
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
-        .setSelectedRow(selecttedValue)
+        .setSelectedRow(selectedRow)
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0, completion: { print("automatically hidden")} )
     }

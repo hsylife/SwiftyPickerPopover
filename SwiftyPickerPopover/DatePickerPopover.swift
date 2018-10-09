@@ -31,7 +31,7 @@ public class DatePickerPopover: AbstractPopover {
     private(set) var valueChangeAction: ActionHandlerType?
 
     /// Date mode
-    private(set) var dateMode_:UIDatePickerMode = .date
+    private(set) var dateMode_: UIDatePicker.Mode = .date
     /// Limit of range
     private(set) var minimumDate: ItemType?
     private(set) var maximumDate: ItemType?
@@ -66,7 +66,7 @@ public class DatePickerPopover: AbstractPopover {
     ///
     /// - Parameter dateMode: UIDatePickerMode of picker.
     /// - Returns: self
-    public func setDateMode(_ dateMode:UIDatePickerMode)->Self{
+    public func setDateMode(_ dateMode: UIDatePicker.Mode)->Self{
         self.dateMode_ = dateMode
         return self
     }

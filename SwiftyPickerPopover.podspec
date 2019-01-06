@@ -7,6 +7,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "Yuta Hoshino" => "ythshn@gmail.com" }
   s.platform     = :ios, "9.0"
+  s.swift_version = '4.2'
   # s.ios.deployment_target = "9.0"
 
   s.source       = { :git => "https://github.com/hsylife/SwiftyPickerPopover.git", :tag => s.version }

@@ -43,14 +43,14 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
 
         cancelButton.title = popover.cancelButton.title
         if let font = popover.cancelButton.font {
-            cancelButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+            cancelButton.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
         cancelButton.tintColor = popover.cancelButton.color ?? popover.tintColor
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         
         doneButton.title = popover.doneButton.title
         if let font = popover.doneButton.font {
-            doneButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+            doneButton.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
         doneButton.tintColor = popover.doneButton.color ?? popover.tintColor
         navigationItem.setRightBarButton(doneButton, animated: false)

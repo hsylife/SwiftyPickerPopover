@@ -8,7 +8,7 @@ A more convenient way to display a popover with a built-in picker, on iPhone/iPa
 
 ## Features
 - By simple code, you can display a popover that contains a built-in picker, on iPhone or iPad.
-- Swift 4, iOS9+. UIPopoverController free. 
+- Swift 4.2, iOS9+. UIPopoverController free. 
 - Callback
 
 ## Screenshots
@@ -23,7 +23,7 @@ DatePickerPopover(title: "DatePicker")
 ```
 
 ## Required
-- Swift 4, Xcode 9.
+- Swift 4.2, Xcode 10.
 - iOS 9+
 - CocoaPods 1.1.0.rc.2+ or Carthage 0.12.0+
 
@@ -304,6 +304,7 @@ When you prepare your customized Storyboard, it will be applied automatically.
 - iosMaher [GitHub](https://github.com/iosMaher) for idea of setFont() and setFontColor().
 - gbuela [GitHub](https://github.com/gbuela) for setValueChange(action:) API for all popover types.
 - ikbalyasar [GitHub](https://github.com/ikbalyasar) for demo code for showing selected value on StringPickerPopover.
+- weakfl [GitHub](https://github.com/weakfl) for update to Swift 4.2
 
 ## Author
 - Yuta Hoshino [Twitter](https://twitter.com/hsylife) [Facebook](https://www.facebook.com/yuta.hoshino)

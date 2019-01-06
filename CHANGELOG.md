@@ -1,3 +1,17 @@
+6.6.5 Release notes (2019-01-06)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+* Update to Swift 4.2
+
 6.6.4 Release notes (2018-08-19)
 =============================================================
 

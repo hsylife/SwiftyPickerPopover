@@ -23,7 +23,7 @@ open class AbstractPopover: NSObject {
     var title: String?
     
     /// Base view controller
-    private(set) weak var baseViewController: UIViewController? = UIViewController()
+    private(set) weak var baseViewController: UIViewController?
     /// Permitted arrow directions
     private(set) var permittedArrowDirections:UIPopoverArrowDirection = .any
     
@@ -163,7 +163,7 @@ open class AbstractPopover: NSObject {
             dimmedView.accessibilityIdentifier = kDimmedViewIdentifer
             if let parentView = baseViewController.navigationController?.view ?? baseViewController.view {
                 parentView.addSubview(dimmedView)
-                parentView.bringSubview(toFront: dimmedView)
+                parentView.bringSubviewToFront(dimmedView)
             }
         }
     }

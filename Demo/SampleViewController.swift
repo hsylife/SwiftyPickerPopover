@@ -41,7 +41,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             .setFontSize(16)
             .setDoneButton(
                 font: UIFont.boldSystemFont(ofSize: 16),
-                color: UIColor.orange,
+                color: UIColor.white,
                 action: { popover, selectedRow, selectedString in
                     print("done row \(selectedRow) \(selectedString)")
                     self.selectedRow = selectedRow

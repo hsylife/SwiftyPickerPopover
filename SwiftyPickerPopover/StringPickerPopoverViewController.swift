@@ -40,30 +40,38 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
             navigationItem.leftBarButtonItem = nil
             navigationItem.rightBarButtonItem = nil
         }
-
-        cancelButton.title = popover.cancelButton.title
-        if let font = popover.cancelButton.font {
-            cancelButton.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
-        }
-        cancelButton.tintColor = popover.cancelButton.color ?? popover.tintColor
+        setupCancelButton()
         navigationItem.setLeftBarButton(cancelButton, animated: false)
-        
-        doneButton.title = popover.doneButton.title
-        if let font = popover.doneButton.font {
-            doneButton.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
-        }
-        doneButton.tintColor = popover.doneButton.color ?? popover.tintColor
-        navigationItem.setRightBarButton(doneButton, animated: false)
 
-        clearButton.setTitle(popover.clearButton.title, for: .normal)
-        if let font = popover.clearButton.font {
-            clearButton.titleLabel?.font = font
-        }
-        clearButton.tintColor = popover.clearButton.color ?? popover.tintColor
+        setupDoneButton()
+        navigationItem.setRightBarButton(doneButton, animated: false)
+        
+        setupClearButton()
         clearButton.isHidden = popover.clearButton.action == nil
         enableClearButtonIfNeeded()
     }
     
+    private func setupCancelButton() {
+        cancelButton.title = popover.cancelButton.title
+        let color = popover.cancelButton.color ?? popover.tintColor
+        let attributes = getAttributes(font: popover.cancelButton.font, color: color)
+        cancelButton.setTitleTextAttributes(attributes, for: .normal)
+    }
+
+    private func setupDoneButton() {
+        doneButton.title = popover.doneButton.title
+        let color = popover.doneButton.color ?? popover.tintColor
+        let attributes = getAttributes(font: popover.doneButton.font, color: color)
+        doneButton.setTitleTextAttributes(attributes, for: .normal)
+    }
+
+    private func setupClearButton() {
+        clearButton.setTitle(popover.clearButton.title, for: .normal)
+        clearButton.tintColor = popover.clearButton.color ?? popover.tintColor
+        guard let font = popover.clearButton.font else { return }
+        clearButton.titleLabel?.font = font
+    }
+        
     private func enableClearButtonIfNeeded() {
         guard !clearButton.isHidden else {
             return

@@ -32,17 +32,6 @@ open class AbstractPickerPopoverViewController: UIViewController {
             navigationController?.preferredContentSize.height = height
         }
     }
-    
-    func getAttributes(font: UIFont?, color: UIColor?) -> [NSAttributedString.Key : Any] {
-        var attributes = [NSAttributedString.Key : Any]()
-        if let font = font {
-            attributes[NSAttributedString.Key.font] = font
-        }
-        if let color = color {
-            attributes[NSAttributedString.Key.foregroundColor] = color
-        }
-        return attributes
-    }
 }
 
 extension AbstractPickerPopoverViewController: UIPopoverPresentationControllerDelegate {

@@ -105,7 +105,7 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBAction func tappendDatePickerButton(_ sender: UIButton) {
         /// DatePickerPopover appears:
-        DatePickerPopover(title: "DatePicker")
+        let picker = DatePickerPopover(title: "DatePicker")
             .setDateMode(.date)
             .setSelectedDate(Date())
             .setValueChange(action: { _, selectedDate in
@@ -113,7 +113,10 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             })
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")})
             .setCancelButton(action: { _, _ in print("cancel")})
-            .appear(originView: sender, baseViewController: self)
+        if #available(iOS 13.4, *) {
+            picker.setPreferredDatePickerStyle(.wheels)
+        }
+        picker.appear(originView: sender, baseViewController: self)
     }
     
     @IBAction func tappendDatePickerCanClearButton(_ sender: UIButton) {
@@ -132,13 +135,16 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
                 //Instead, hide it.
 //                popover.disappear()
             })
+        if #available(iOS 13.4, *) {
+            p.setPreferredDatePickerStyle(.wheels)
+        }
         p.appear(originView: sender, baseViewController: self)
         p.disappearAutomatically(after: 3.0)
     }
     
     @IBAction func tappendDatePickerTime5MinIntButton(_ sender: UIButton) {
         // DatePickerPopover appears:
-        DatePickerPopover(title: "DatePicker .time 5minInt.")
+        let picker = DatePickerPopover(title: "DatePicker .time 5minInt.")
             .setDateMode(.time)
             .setMinuteInterval(5)
             .setPermittedArrowDirections(.down)
@@ -147,7 +153,10 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             })
             .setDoneButton(action: { popover, selectedDate in print("selectedDate \(selectedDate)")} )
             .setCancelButton(action: { _, _ in print("cancel")})
-            .appear(originView: sender, baseViewController: self)
+        if #available(iOS 13.4, *) {
+            picker.setPreferredDatePickerStyle(.wheels)
+        }
+        picker.appear(originView: sender, baseViewController: self)
     }
 
     @IBAction func countdownButton(_ sender: UIButton) {

@@ -7,9 +7,9 @@
 //
 
 public class DatePickerPopover: AbstractPopover {
-    
+
     // MARK: Types
-    
+
     /// Type of choice value
     public typealias ItemType = Date
     /// Popover type
@@ -30,8 +30,18 @@ public class DatePickerPopover: AbstractPopover {
     /// Action for picker value change
     private(set) var valueChangeAction: ActionHandlerType?
 
-    /// Date mode
+    /// preferred style
     private(set) var dateMode_: UIDatePicker.Mode = .date
+    /// Date mode
+    private(set) var preferredDatePickerStyle: Any? = nil
+
+    @available(iOS 13.4, *)
+    fileprivate var preferredDatePickerStyle_: UIDatePickerStyle {
+        if preferredDatePickerStyle == nil {
+            preferredDatePickerStyle = UIDatePickerStyle.automatic
+        }
+        return preferredDatePickerStyle as! UIDatePickerStyle
+    }
     /// Limit of range
     private(set) var minimumDate: ItemType?
     private(set) var maximumDate: ItemType?
@@ -40,42 +50,52 @@ public class DatePickerPopover: AbstractPopover {
     /// Selected date
     private(set) var selectedDate: ItemType = ItemType()
     private(set) var locale: Locale = Locale.current
-    
+
     // MARK: - Initializer
-    
+
     /// Initialize a Popover with the following argument.
     ///
     /// - Parameter title: Title for navigation bar.
-    public init(title: String?){
+    public init(title: String?) {
         super.init()
         self.title = title
     }
-    
+
     // MARK: - Propery setter
 
     /// Set selected date
     ///
     /// - Parameter row: The default value of picker.
     /// - Returns: self
-    public func setSelectedDate(_ date:ItemType)->Self{
+    public func setSelectedDate(_ date: ItemType) -> Self {
         self.selectedDate = date
         return self
     }
-    
+
     /// Set date mode of picker
     ///
     /// - Parameter dateMode: UIDatePickerMode of picker.
     /// - Returns: self
-    public func setDateMode(_ dateMode: UIDatePicker.Mode)->Self{
+    public func setDateMode(_ dateMode: UIDatePicker.Mode) -> Self {
         self.dateMode_ = dateMode
         return self
     }
-    
+
+    /// Set preferred style of picker
+    ///
+    /// - Parameter preferredDatePickerStyle: UIDatePickerStyle of picker.
+    /// - Returns: self
+    @available(iOS 13.4, *)
+    public func setPreferredDatePickerStyle(_ preferredDatePickerStyle: UIDatePickerStyle) -> Self {
+        self.preferredDatePickerStyle = preferredDatePickerStyle
+        return self
+    }
+
     /// Set minimum date
     ///
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
-    public func setMinimumDate(_ minimumDate:Date)->Self{
+    public func setMinimumDate(_ minimumDate: Date) -> Self {
         self.minimumDate = minimumDate
         return self
     }
@@ -84,34 +104,34 @@ public class DatePickerPopover: AbstractPopover {
     ///
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
-    public func setMaximumDate(_ maximumDate:Date)->Self{
+    public func setMaximumDate(_ maximumDate: Date) -> Self {
         self.maximumDate = maximumDate
         return self
     }
-    
+
     /// Set minute interval
     ///
     /// - Parameter minimumDate: Minimum value
     /// - Returns: self
-    public func setMinuteInterval(_ minuteInterval:Int)->Self{
+    public func setMinuteInterval(_ minuteInterval: Int) -> Self {
         self.minuteInterval = minuteInterval
         return self
     }
-    
+
     /// Set locale
     ///
     /// - Parameter localeIdentifier: The locale identifier which is used for display date picker
     /// - Returns: Self
-    public func setLocale(identifier localeIdentifier:String)->Self{
+    public func setLocale(identifier localeIdentifier: String) -> Self {
         let locale = Locale(identifier: localeIdentifier)
         return setLocale(locale)
     }
-    
+
     /// Set locale
     ///
     /// - Parameter locale: Locale which is used for display date picker
     /// - Returns: Self
-    public func setLocale(_ locale:Locale)->Self{
+    public func setLocale(_ locale: Locale) -> Self {
         self.locale = locale
         return self
     }
@@ -124,10 +144,10 @@ public class DatePickerPopover: AbstractPopover {
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setDoneButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
+    public func setDoneButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         return setButton(button: &doneButton, title: title, font: font, color: color, action: action)
     }
-    
+
     /// Set Cancel button properties
     ///
     /// - Parameters:
@@ -136,10 +156,10 @@ public class DatePickerPopover: AbstractPopover {
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setCancelButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
+    public func setCancelButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         return setButton(button: &cancelButton, title: title, font: font, color: color, action: action)
     }
-    
+
     /// Set Clear button properties
     ///
     /// - Parameters:
@@ -148,10 +168,10 @@ public class DatePickerPopover: AbstractPopover {
     ///   - color: Button tint color. Omissible. If this is nil or not specified, then the button tintColor inherits appear()'s baseViewController.view.tintColor.
     ///   - completion: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
+    public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         return setButton(button: &clearButton, title: title, font: font, color: color, action: action)
     }
-    
+
     /// Set button arguments to the targeted button propertoes
     ///
     /// - Parameters:
@@ -161,7 +181,7 @@ public class DatePickerPopover: AbstractPopover {
     ///   - color: Button tintcolor
     ///   - action: Action to be performed before the popover disappeared.
     /// - Returns: Self
-    func setButton( button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self{
+    func setButton(button: inout ButtonParameterType, title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         if let t = title {
             button.title = t
         }
@@ -174,14 +194,14 @@ public class DatePickerPopover: AbstractPopover {
         button.action = action
         return self
     }
-    
+
     /// Set an action for each value change done by user
     ///
     /// - Parameters:
     ///   -action: Action to be performed each time the picker is moved to a new value.
     /// - Returns: Self
-    public func setValueChange(action: ActionHandlerType?)->Self{
+    public func setValueChange(action: ActionHandlerType?) -> Self {
         valueChangeAction = action
         return self
-    }    
+    }
 }

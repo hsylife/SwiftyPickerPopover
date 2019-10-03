@@ -1,3 +1,19 @@
+6.6.6 Release notes (2019-10-03)
+=============================================================
+
+### API Breaking Changes
+
+* Nothing
+
+### Enhancements
+
+* Nothing
+
+### Bugfixes
+* Update to Swift 5.0
+* Support for Xcode 11
+
+
 6.6.5 Release notes (2019-01-06)
 =============================================================
 

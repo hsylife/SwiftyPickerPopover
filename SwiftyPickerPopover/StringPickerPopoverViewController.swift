@@ -71,7 +71,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         guard let font = popover.clearButton.font else { return }
         clearButton.titleLabel?.font = font
     }
-        
+    
     private func enableClearButtonIfNeeded() {
         guard !clearButton.isHidden else {
             return

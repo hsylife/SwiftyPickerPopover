@@ -16,7 +16,15 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
     @IBOutlet weak private var cancelButton: UIBarButtonItem!
     @IBOutlet weak private var doneButton: UIBarButtonItem!
     @IBOutlet weak private var clearButton: UIButton!
-    
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        }
+    }
+
     override func refrectPopoverProperties(){
         super.refrectPopoverProperties()
         if #available(iOS 11.0, *) { }

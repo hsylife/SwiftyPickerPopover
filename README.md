@@ -59,8 +59,8 @@ import SwiftyPickerPopover
 ```
 ### Popover types
 SwiftyPickerPopover offers you the following popovers:
-- **StringPickerPopover**: has an UIPickerView that allows user to choose a String type choice.
-- **ColumnStringPickerPopover**: has an UIPickerView of multiple columns.
+- **StringPickerPopover**: has an UIPickerView that allows user to choose a SwiftyModelPicker type choice.
+- **ColumnStringPickerPopover**: has an UIPickerView of multiple columns with SwiftyModelPicker type choice.
 - **DatePickerPopover**: has an UIDatePicker that allows user to choose a Date type choice.
 - **CountdownPickerPopover**: has an UIDatePicker specializing in countDownTimer style.
 
@@ -99,13 +99,17 @@ All popovers have the following APIs.
 
 ##### You can use StringPickerPopover like this:
 ```swift
-StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
+//Setup SwiftyModelPicker data
+let choices = [SwiftyModelPicker(id: 1, title: "value 1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "value 3")]
+
+StringPickerPopover(title: "StringPicker", choices: choices)
         .setSelectedRow(0)
-        .setValueChange(action: { _, selectedDate in
-            print("current date \(selectedDate)")
-        })
-        .setDoneButton(action: { (popover, selectedRow, selectedString) in
-            print("done row \(selectedRow) \(selectedString)")
+        .setValueChange(action: { _, _, selectedObject in
+            print("current string: \(selectedObject.title) & id: \(selectedObject.id)")
+        })
+        .setDoneButton(action: {
+            popover, selectedRow, selectedObject in
+            print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)")
         })
         .setCancelButton(action: { (_, _, _) in print("cancel")}
         )
@@ -118,34 +122,39 @@ StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 
 
 After adding image files to your target's Assets.xcassets:
 ```swift
-StringPickerPopover(title: "StringPicker", choices: ["value 1","value2",""])
-        .setImageNames(["Icon1",nil,"Icon3"])
+//Setup SwiftyModelPicker data with images
+let choices = [SwiftyModelPicker(id: 1, title: "value 1", imageName: "Icon1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "", imageName: "Icon3")]
+
+StringPickerPopover(title: "StringPicker", choices: choices)
         .appear(originView: button, baseViewController: self)
 ```
 
 ##### It can separate the screen values from the raw values:
 ```swift
-let displayStringFor:((String?)->String?)? = { string in
-   if let s = string {
-      switch(s){
-      case "value 1":
-        return "😊"
-      case "value 2":
-         return "😏"
-      case "value 3":
-         return "😓"
-      default:
-         return s
-      }
+let displayStringFor:((SwiftyModelPicker?)->SwiftyModelPicker?)? = { object in
+    if let s = object {
+        switch(s.title){
+        case "value 1":
+            return SwiftyModelPicker(id: 1, title: "😊")
+        case "value 2":
+            return SwiftyModelPicker(id: 2, title: "😏")
+        case "value 3":
+            return SwiftyModelPicker(id: 3, title: "😓")
+        default:
+            return s
+        }
     }
-  return nil
-  }
+    return nil
+}
         
-let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
+//Setup SwiftyModelPicker data
+let choices = [SwiftyModelPicker(id: 1, title: "value 1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "value 3")]        
+        
+let p = StringPickerPopover(title: "StringPicker", choices: choices)
             .setDisplayStringFor(displayStringFor)
             .setDoneButton(action: {
-                popover, selectedRow, selectedString in
-                print("done row \(selectedRow) \(selectedString)")
+                popover, selectedRow, selectedObject in
+                print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)")
             })
             .setCancelButton(action: { _, _, _ in
                 print("cancel")
@@ -157,7 +166,11 @@ let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2"
 
 ##### To specify the size:
 ```swift
-StringPickerPopover(title: "Narrow StringPicker", choices: ["value 1","value 2","value 3"])
+
+//Setup SwiftyModelPicker data
+let choices = [SwiftyModelPicker(id: 1, title: "value 1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "value 3")] 
+
+StringPickerPopover(title: "Narrow StringPicker", choices: choices)
             .setSize(width: 250.0)
             .appear(originView: sender, baseViewController: self)
 ```
@@ -171,9 +184,12 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        let p = StringPickerPopover(title: "CollectionView", choices: ["value 1","value 2","value 3"])
+        //Setup SwiftyModelPicker data
+        let choices = [SwiftyModelPicker(id: 1, title: "value 1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "value 3")] 
+        
+        let p = StringPickerPopover(title: "CollectionView", choices: choices)
                         .setSelectedRow(1)
-                        .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in print("done row \(selectedRow) \(selectedString)") })
+                        .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedObject) in print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)") })
                         .setCancelButton(title:"🗑", action: { (_, _, _) in print("cancel")} )
         
         p.appear(originView: theCell, baseViewWhenOriginViewHasNoSuperview collectionView, baseViewController: self)
@@ -205,14 +221,30 @@ p.appear(originView: originView, baseViewController: self)
 
 ##### ColumnStringPickerPopover can have multiple String values:
 ```swift
+
+//Setup SwiftyModelPicker data
+let column1 = [SwiftyModelPicker(id: 1, title: "Breakfast"),SwiftyModelPicker(id: 2, title: "Lunch"),SwiftyModelPicker(id: 3, title: "Dinner")]
+let column2 = [SwiftyModelPicker(id: 11, title: "Tacos"),SwiftyModelPicker(id: 12, title: "Sushi"),SwiftyModelPicker(id: 13, title: "Steak"),SwiftyModelPicker(id: 14, title: "Waffles", object: nil),SwiftyModelPicker(id: 15, title: "Burgers")]
+
+//ColumnStringPickerPopover appears.
 ColumnStringPickerPopover(title: "Columns Strings",
-                                  choices: [["Breakfast", "Lunch", "Dinner"],["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
-                                  selectedRows: [0,0], columnPercents: [0.5, 0.5])
-        .setDoneButton(action: { popover, selectedRows, selectedStrings in print("selected rows \(selectedRows) strings \(selectedStrings)")})
-        .setCancelButton(action: {_, _, _ in print("cancel")})
-        .setFontSize(14)
-        .appear(originView: sender, baseViewController: self)
-)
+                          choices: [column1, column2],
+                          selectedRows: [0,0], columnPercents: [0.5, 0.5])
+.setDoneButton(action: { popover, selectedRows, selectedObjects in
+    print("selected rows \(String(describing: selectedRows.first)) id \(selectedObjects.first?.id ?? 0) strings \(selectedObjects.first?.title ?? "")")
+    print("selected rows \(String(describing: selectedRows.last)) id \(selectedObjects.last?.id ?? 0) strings \(selectedObjects.last?.title ?? "")")
+})
+.setCancelButton(action: { _,_,_ in print("cancel")})
+.setValueChange(action: { _, _, selectedObjects in
+    print("current strings: \(selectedObjects.first?.title ?? "")")
+    print("current strings: \(selectedObjects.last?.title ?? "")")
+})
+.setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
+.setFontColors([nil, .red])
+.setFontSizes([20, nil]) // override
+.setSelectedRows([0,2])
+.appear(originView: sender, baseViewController: self)
+
 ```
 
 #### DatePickerPopover

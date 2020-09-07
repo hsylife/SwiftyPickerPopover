@@ -18,7 +18,7 @@ public class ColumnStringPickerPopover: AbstractPopover {
     // MARK: Types
     
     /// Type of choice value
-    public typealias ItemType = String
+    public typealias ItemType = SwiftyModelPicker
     /// Popover type
     public typealias PopoverType = ColumnStringPickerPopover
     /// Action type for buttons
@@ -26,10 +26,10 @@ public class ColumnStringPickerPopover: AbstractPopover {
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
-    public typealias DisplayStringForType = ((ItemType?)->String?)
+    public typealias DisplayStringForType = ((ItemType?)->SwiftyModelPicker?)
 
     // MARK: Constants
-    let kValueForCleared: ItemType = ""
+    let kValueForCleared: ItemType? = nil
     
     // MARK: - Properties
 
@@ -130,8 +130,8 @@ public class ColumnStringPickerPopover: AbstractPopover {
     public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         // Insert the value like "" if needed
         for componet in 0..<choices.count {
-            if let firstItem = choices[componet].first, firstItem != kValueForCleared {
-                choices[componet].insert(kValueForCleared, at: 0)
+            if let firstItem = choices[componet].first, kValueForCleared != nil, firstItem.id != kValueForCleared!.id {
+                choices[componet].insert(kValueForCleared!, at: 0)
             }
         }
         return setButton(button: &clearButton, title:title, font: font, color: color, action: action)

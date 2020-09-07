@@ -16,15 +16,15 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBAction func tappedStringPickerButton(_ sender: UIButton) {
         /// Replace a string with the string to be display.
-        let displayStringFor:((String?)->String?)? = { string in
-            if let s = string {
-                switch(s){
+        let displayStringFor:((SwiftyModelPicker?)->SwiftyModelPicker?)? = { object in
+            if let s = object {
+                switch(s.title){
                 case "value 1":
-                    return "😊"
+                    return SwiftyModelPicker(id: 1, title: "😊")
                 case "value 2":
-                    return "😏"
+                    return SwiftyModelPicker(id: 2, title: "😏")
                 case "value 3":
-                    return "😓"
+                    return SwiftyModelPicker(id: 3, title: "😓")
                 default:
                     return s
                 }
@@ -32,18 +32,21 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
             return nil
         }
         
+        //Setup SwiftyModelPicker data
+        let choices = [SwiftyModelPicker(id: 1, title: "value 1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "value 3")]
+        
         /// Create StringPickerPopover:
-        let p = StringPickerPopover(title: "StringPicker", choices: ["value 1","value 2","value 3"])
+        let p = StringPickerPopover(title: "StringPicker", choices: choices)
             .setDisplayStringFor(displayStringFor)
-            .setValueChange(action: { _, _, selectedString in
-                print("current string: \(selectedString)")
+            .setValueChange(action: { _, _, selectedObject in
+                print("current string: \(selectedObject.title) & id: \(selectedObject.id)")
             })
             .setFontSize(16)
             .setDoneButton(
                 font: UIFont.boldSystemFont(ofSize: 16),
                 color: UIColor.orange,
-                action: { popover, selectedRow, selectedString in
-                    print("done row \(selectedRow) \(selectedString)")
+                action: { popover, selectedRow, selectedObject in
+                    print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)")
                     self.selectedRow = selectedRow
                     
             })
@@ -55,17 +58,20 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func didTapStringPickerWithImageButton(_ sender: UIButton) {
+        
+        //Setup SwiftyModelPicker data
+        let choices = [SwiftyModelPicker(id: 1, title: "value 1", imageName: "imageIcon"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "", imageName: "thumbUpIcon")]
+        
         /// StringPickerPopover with image:
-        let p = StringPickerPopover(title: "with image", choices: ["value 1","value 2",""])
-            .setImageNames(["imageIcon",nil,"thumbUpIcon"])
+        let p = StringPickerPopover(title: "with image", choices: choices)
             .setSize(width: 280)
             .setCornerRadius(0)
-            .setValueChange(action: { _, _, selectedString in
-                print("current string: \(selectedString)")
+            .setValueChange(action: { _, _, selectedObject in
+                print("current string: \(selectedObject.title) & id: \(selectedObject.id)")
             })
             .setDoneButton(action: {
-                popover, selectedRow, selectedString in
-                print("done row \(selectedRow) \(selectedString)")
+                popover, selectedRow, selectedObject in
+                print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)")
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
@@ -75,14 +81,18 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func didTapStringPickerClearableButton(_ sender: UIButton) {
+        
+        //Setup SwiftyModelPicker data
+        let choices = [SwiftyModelPicker(id: 1, title: "value1"),SwiftyModelPicker(id: 2, title: "value2"),SwiftyModelPicker(id: 3, title: "value3")]
+        
         /// StringPickerPopover Clearable:
-        let p = StringPickerPopover(title: "Clearable", choices: ["value 1","value 2","value3"])
+        let p = StringPickerPopover(title: "Clearable", choices: choices)
             .setFont(UIFont.boldSystemFont(ofSize: 30))
             .setFontColor(.orange)
             .setFontSize(14)
             .setDoneButton(color: UIColor.red, action: {
-                popover, selectedRow, selectedString in
-                print("done row \(selectedRow) \(selectedString)")
+                popover, selectedRow, selectedObject in
+                print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)")
             })
             .setCancelButton(action: {_, _, _ in
                 print("cancel") })
@@ -93,12 +103,16 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func didTapStringPickerWithTextField(_ sender: UITextField) {
-        StringPickerPopover(title: "TextField", choices: ["","Text 1", "Text 2", "Text 3"])
-        .setValueChange(action: { _, _, selectedString in
-            print("current string: \(selectedString)")
+        
+        //Setup SwiftyModelPicker data
+        let choices = [SwiftyModelPicker(id: 1, title: ""), SwiftyModelPicker(id: 2, title: "Text 1"),SwiftyModelPicker(id: 3, title: "Text 2"),SwiftyModelPicker(id: 4, title: "Text 3")]
+        
+        StringPickerPopover(title: "TextField", choices: choices)
+        .setValueChange(action: { _, _, selectedObject in
+            print("current string: \(selectedObject.title) & id: \(selectedObject.id)")
         })
-        .setDoneButton(action: { popover, selectedRow, selectedString in
-            sender.text = selectedString
+        .setDoneButton(action: { popover, selectedRow, selectedObject in
+            sender.text = selectedObject.title
         })
         .appear(originView: sender, baseViewController: self)        
     }
@@ -166,16 +180,23 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     @IBAction func columnsString(_ sender: UIButton) {
+           
+        //Setup SwiftyModelPicker data
+        let column1 = [SwiftyModelPicker(id: 1, title: "Breakfast"),SwiftyModelPicker(id: 2, title: "Lunch"),SwiftyModelPicker(id: 3, title: "Dinner")]
+        let column2 = [SwiftyModelPicker(id: 11, title: "Tacos"),SwiftyModelPicker(id: 12, title: "Sushi"),SwiftyModelPicker(id: 13, title: "Steak"),SwiftyModelPicker(id: 14, title: "Waffles", object: nil),SwiftyModelPicker(id: 15, title: "Burgers")]
+        
         //ColumnStringPickerPopover appears.
         ColumnStringPickerPopover(title: "Columns Strings",
-                                  choices: [["Breakfast", "Lunch", "Dinner"], ["Tacos", "Sushi", "Steak", "Waffles", "Burgers"]],
+                                  choices: [column1, column2],
                                   selectedRows: [0,0], columnPercents: [0.5, 0.5])
-        .setDoneButton(action: { popover, selectedRows, selectedStrings in
-            print("selected rows \(selectedRows) strings \(selectedStrings)")
+        .setDoneButton(action: { popover, selectedRows, selectedObjects in
+            print("selected rows \(String(describing: selectedRows.first)) id \(selectedObjects.first?.id ?? 0) strings \(selectedObjects.first?.title ?? "")")
+            print("selected rows \(String(describing: selectedRows.last)) id \(selectedObjects.last?.id ?? 0) strings \(selectedObjects.last?.title ?? "")")
         })
         .setCancelButton(action: { _,_,_ in print("cancel")})
-        .setValueChange(action: { _, _, selectedStrings in
-            print("current strings: \(selectedStrings)")
+        .setValueChange(action: { _, _, selectedObjects in
+            print("current strings: \(selectedObjects.first?.title ?? "")")
+            print("current strings: \(selectedObjects.last?.title ?? "")")
         })
         .setFonts([UIFont.boldSystemFont(ofSize: 14), nil])
         .setFontColors([nil, .red])
@@ -198,14 +219,17 @@ class SampleViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let theCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
+        //Setup SwiftyModelPicker data
+        let choices = [SwiftyModelPicker(id: 1, title: "value 1"),SwiftyModelPicker(id: 2, title: "value 2"),SwiftyModelPicker(id: 3, title: "value 3")]
+        
         //StringPickerPopover appears from the cell of collectionView.
-        let p = StringPickerPopover(title: "Cell "+(indexPath as NSIndexPath).row.description, choices: ["value 1","value 2","value 3"])
+        let p = StringPickerPopover(title: "Cell "+(indexPath as NSIndexPath).row.description, choices: choices)
         .setSelectedRow(1)
-        .setValueChange(action: { _, _, selectedString in
-            print("current string: \(selectedString)")
+        .setValueChange(action: { _, _, selectedObject in
+            print("current string: \(selectedObject.title) & id: \(selectedObject.id)")
         })
-        .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedString) in
-            print("done row \(selectedRow) \(selectedString)")
+        .setDoneButton(title:"👌", action: { (popover, selectedRow, selectedObject) in
+            print("done row \(selectedRow) string \(selectedObject.title) & id \(selectedObject.id)")
         })
         .setCancelButton(title:"👎", action: { _,_,_ in print("cancel")} )
         

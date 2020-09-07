@@ -71,7 +71,7 @@ public class StringPickerPopoverViewController: AbstractPickerPopoverViewControl
         clearButton.isEnabled = false
         if let selectedRow = picker?.selectedRow(inComponent: 0),
             let selectedValue = popover.choices[safe: selectedRow] {
-            clearButton.isEnabled = selectedValue != popover.kValueForCleared
+            clearButton.isEnabled = selectedValue.id != popover.kValueForCleared?.id
         }
     }
     
@@ -133,16 +133,16 @@ extension StringPickerPopoverViewController: UIPickerViewDataSource {
 // MARK: - UIPickerViewDelegate
 extension StringPickerPopoverViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let value: String = popover.choices[row]
-        return popover.displayStringFor?(value) ?? value
+        let value: SwiftyModelPicker = popover.choices[row]
+        return (popover.displayStringFor?(value) ?? value).title
     }
     
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let value: String = popover.choices[row]
-        let adjustedValue: String = popover.displayStringFor?(value) ?? value
+        let value: SwiftyModelPicker = popover.choices[row]
+        let adjustedValue: SwiftyModelPicker = popover.displayStringFor?(value) ?? value
         let label: UILabel = view as? UILabel ?? UILabel()
-        label.text = adjustedValue
-        label.attributedText = getAttributedText(image: popover.images?[row], text: adjustedValue)
+        label.text = adjustedValue.title
+        label.attributedText = getAttributedText(image: adjustedValue.image, text: adjustedValue.title)
         label.textAlignment = .center
         return label
     }
@@ -189,7 +189,10 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attributedResult = NSMutableAttributedString()
         
-        if let image = popover.images?[row] {
+        let value: SwiftyModelPicker = popover.choices[row]
+        let object: SwiftyModelPicker = popover.displayStringFor?(value) ?? value
+        
+        if let image = object.image {
             let imageAttachment = NSTextAttachment()
             imageAttachment.image = image
             let attributedImage = NSAttributedString(attachment: imageAttachment)
@@ -199,8 +202,6 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
             attributedResult.append(AttributedMargin)
         }
         
-        let value: String = popover.choices[row]
-        let title: String = popover.displayStringFor?(value) ?? value
         let font: UIFont = {
             if let f = popover.font {
                 if let fontSize = popover.fontSize {
@@ -211,7 +212,7 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
             let fontSize = popover.fontSize ?? popover.kDefaultFontSize
             return UIFont.systemFont(ofSize: fontSize)
         }()
-        let attributedTitle: NSAttributedString = NSAttributedString(string: title, attributes: [.font: font, .foregroundColor: popover.fontColor])
+        let attributedTitle: NSAttributedString = NSAttributedString(string: object.title, attributes: [.font: font, .foregroundColor: popover.fontColor])
         
         attributedResult.append(attributedTitle)
         return attributedResult

@@ -103,7 +103,7 @@ public class ColumnStringPickerPopoverViewController: AbstractPickerPopoverViewC
         guard !clearButton.isHidden else {
             return
         }
-        clearButton.isEnabled = selectedValues().filter({ $0 != popover.kValueForCleared}).count > 0
+        clearButton.isEnabled = selectedValues().filter({ $0.id != popover.kValueForCleared?.id}).count > 0
     }
     
     /// Action to be executed after the popover disappears
@@ -150,11 +150,11 @@ extension ColumnStringPickerPopoverViewController: UIPickerViewDataSource {
 
 extension ColumnStringPickerPopoverViewController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let value: String = popover.choices[component][row]
-        let adjustedValue: String = popover.displayStringFor?(value) ?? value
+        let value: SwiftyModelPicker = popover.choices[component][row]
+        let adjustedValue: SwiftyModelPicker = popover.displayStringFor?(value) ?? value
         let label: UILabel = view as? UILabel ?? UILabel()
-        label.text = adjustedValue
-        label.attributedText = getAttributedText(adjustedValue, component: component)
+        label.text = adjustedValue.title
+        label.attributedText = getAttributedText(adjustedValue.title, component: component)
         label.textAlignment = .center
         return label
     }

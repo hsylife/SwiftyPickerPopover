@@ -36,6 +36,7 @@
 		D67107A51EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67107A71EA73A2A00C06AC2 /* CountdownPickerPopover.storyboard */; };
 		D688C93F1E83882700D514D9 /* AbstractPopover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */; };
 		D6C02B2B1F25FC5200289FED /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C02B2A1F25FC5200289FED /* String+Extension.swift */; };
+		EEA17E762506000400B30710 /* SwiftyModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA17E752506000400B30710 /* SwiftyModelPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,6 +87,7 @@
 		D688C93E1E83882700D514D9 /* AbstractPopover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AbstractPopover.storyboard; sourceTree = "<group>"; };
 		D6C02B2A1F25FC5200289FED /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D6D5C5311D892C930002118F /* SwiftyPickerPopoverDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPickerPopoverDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEA17E752506000400B30710 /* SwiftyModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyModelPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				BECD4B721D9DB6F7008BB309 /* CountdownPicker */,
 				D6D8BEA21D8A69350075DFAD /* StringPicker */,
 				BECD4B961D9DC56B008BB309 /* ColumnStringPicker */,
+				EEA17E772506000B00B30710 /* Model */,
 				D6C02B2C1F25FC7100289FED /* Extension */,
 			);
 			path = SwiftyPickerPopover;
@@ -223,6 +226,14 @@
 				D6846A321D892EB300792CA4 /* StringPickerPopoverViewController.swift */,
 			);
 			name = StringPicker;
+			sourceTree = "<group>";
+		};
+		EEA17E772506000B00B30710 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EEA17E752506000400B30710 /* SwiftyModelPicker.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +370,7 @@
 				D60AE7E61D9EE111000320F4 /* DatePickerPopoverViewController.swift in Sources */,
 				D60AE7E71D9EE111000320F4 /* CountdownPickerPopover.swift in Sources */,
 				D60AE7E81D9EE111000320F4 /* CountdownPickerPopoverViewController.swift in Sources */,
+				EEA17E762506000400B30710 /* SwiftyModelPicker.swift in Sources */,
 				D60AE7E91D9EE111000320F4 /* ColumnStringPickerPopover.swift in Sources */,
 				D60AE7EA1D9EE111000320F4 /* ColumnStringPickerPopoverViewController.swift in Sources */,
 				D60AE7EB1D9EE111000320F4 /* StringPickerPopover.swift in Sources */,

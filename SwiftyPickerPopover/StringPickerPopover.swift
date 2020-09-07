@@ -12,7 +12,7 @@ public class StringPickerPopover: AbstractPopover {
     // MARK: Types
     
     /// Type of choice value
-    public typealias ItemType = String
+    public typealias ItemType = SwiftyModelPicker
     /// Popover type
     public typealias PopoverType = StringPickerPopover
     /// Action type for buttons
@@ -20,17 +20,15 @@ public class StringPickerPopover: AbstractPopover {
     /// Button parameters type
     public typealias ButtonParameterType = (title: String, font: UIFont?, color: UIColor?, action: ActionHandlerType?)
     /// Type of the rule closure to convert from a raw value to the display string
-    public typealias DisplayStringForType = ((ItemType?)->String?)
+    public typealias DisplayStringForType = ((ItemType?)->SwiftyModelPicker?)
 
     // MARK: Constants
-    let kValueForCleared: ItemType = ""
+    let kValueForCleared: ItemType? = nil
 
     // MARK: - Properties
     
     /// Choice array
     private(set) var choices: [ItemType] = []
-    /// Array of image to attach to a choice
-    private(set) var images: [UIImage?]?
     
     /// Font
     private(set) var font: UIFont?
@@ -96,29 +94,6 @@ public class StringPickerPopover: AbstractPopover {
     }
     
     // MARK: - Propery setter
-
-    /// Set image names
-    ///
-    /// - Parameter imageNames: String Array of image name to attach to a choice
-    /// - Returns: Self
-    public func setImageNames(_ imageNames: [String?]?) -> Self {
-        self.images = imageNames?.map {
-            guard let imageName = $0 else {
-                return nil
-            }
-            return UIImage(named: imageName)
-        }
-        return self
-    }
-
-    /// Set images
-    ///
-    /// - Parameter images: String Array of image to attach to a choice
-    /// - Returns: Self
-    public func setImages(_ images: [UIImage?]?) -> Self {
-        self.images = images
-        return self
-    }
     
     /// Set selected row
     ///
@@ -180,8 +155,8 @@ public class StringPickerPopover: AbstractPopover {
     /// - Returns: Self
     public func setClearButton(title: String? = nil, font: UIFont? = nil, color: UIColor? = nil, action: ActionHandlerType?) -> Self {
         // Insert the value like "" if needed
-        if let item = choices.first, item != kValueForCleared {
-            choices.insert(kValueForCleared, at: 0)
+        if let item = choices.first, kValueForCleared != nil, item.id != kValueForCleared!.id {
+            choices.insert(kValueForCleared!, at: 0)
         }
         return setButton(button: &clearButton, title:title, font: font, color: color, action: action)
     }

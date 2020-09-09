@@ -10,7 +10,9 @@
 
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-//  Modified by Yuta Hoshino on 2017/07/24. 
+//  Modified by Yuta Hoshino on 2017/07/24.
+
+import UIKit
 
 /// ColumnStringPickerPopover has an UIPickerView of multiple columns.
 public class ColumnStringPickerPopover: AbstractPopover {

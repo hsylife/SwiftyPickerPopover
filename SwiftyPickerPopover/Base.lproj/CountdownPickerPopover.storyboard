@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="byJ-Vv-M5N">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +14,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sFP-QF-Beb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -30,7 +28,7 @@
         <!--title-->
         <scene sceneID="rjb-gs-enU">
             <objects>
-                <viewController id="erI-yJ-JEk" customClass="CountdownPickerPopoverViewController" customModule="SwiftyPickerPopover" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="erI-yJ-JEk" customClass="CountdownPickerPopoverViewController" customModule="SwiftyPickerPopover" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cbG-vC-cwF"/>
                         <viewControllerLayoutGuide type="bottom" id="KrY-U2-tGZ"/>
@@ -40,19 +38,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0l0-Ib-qwY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="495455736.64444602">
-                                            <!--2016-09-13 10:35:36 +0000-->
-                                        </date>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-OQ-P43">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="593"/>
                                         <connections>
                                             <action selector="pickerValueChanged:" destination="erI-yJ-JEk" eventType="valueChanged" id="jgp-eK-LRd"/>
                                         </connections>
                                     </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
-                                        <rect key="frame" x="0.0" y="573" width="375" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-yy-Wau">
+                                        <rect key="frame" x="0.0" y="593" width="375" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="PHP-jd-ES9"/>
                                         </constraints>

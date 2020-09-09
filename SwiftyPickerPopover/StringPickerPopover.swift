@@ -6,6 +6,8 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
+import UIKit
+
 /// StringPickerPopover has an UIPickerView that allows user to choose a String type choice.
 public class StringPickerPopover: AbstractPopover {
 

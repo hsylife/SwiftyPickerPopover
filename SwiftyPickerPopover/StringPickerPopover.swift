@@ -38,6 +38,8 @@ public class StringPickerPopover: AbstractPopover {
     private(set) var fontSize: CGFloat?
     let kDefaultFontSize: CGFloat = 14
     
+    private(set) var numberOfLines: Int = 1
+    
     /// Convert a raw value to the string for displaying it
     private(set) var displayStringFor: DisplayStringForType?
     
@@ -80,6 +82,17 @@ public class StringPickerPopover: AbstractPopover {
         self.font = font
         return self
     }
+    
+    
+    /// Set numberOfLines
+    ///
+    /// - Parameter numberOfLines: Int how many lines is needed per row
+    /// - Returns: Self
+    public func setNumberOfLines(_ numberOfLines: Int) -> Self {
+        self.numberOfLines = numberOfLines
+        return self
+    }
+    
     
     public func setFontSize(_ size: CGFloat) -> Self {
         self.fontSize = size

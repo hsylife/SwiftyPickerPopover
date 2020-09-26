@@ -144,6 +144,7 @@ extension StringPickerPopoverViewController: UIPickerViewDelegate {
         label.text = adjustedValue
         label.attributedText = getAttributedText(image: popover.images?[row], text: adjustedValue)
         label.textAlignment = .center
+        label.numberOfLines = popover.numberOfLines
         return label
     }
     

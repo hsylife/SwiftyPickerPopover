@@ -245,14 +245,7 @@ open class AbstractPopover: NSObject {
     ///   - permittedArrowDirections: The default value is '.any'. Omissible.
     /// - Returns: The configured navigationController
     open func configureNavigationController(storyboardName: String, originView: UIView, baseViewWhenOriginViewHasNoSuperview: UIView? = nil, baseViewController: UIViewController, permittedArrowDirections:UIPopoverArrowDirection = .any) -> UINavigationController? {
-        var bundle: Bundle
-        if let _ = Bundle.main.path(forResource: storyboardName, ofType: "storyboardc"){
-            bundle = Bundle.main
-        } else {
-            bundle = Bundle(for: AbstractPopover.self)
-        }
-
-        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: .current)
         
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else {
             return nil

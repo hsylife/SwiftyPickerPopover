@@ -6,6 +6,8 @@
 //  Copyright © 2016 Yuta Hoshino. All rights reserved.
 //
 
+import UIKit
+
 public class DatePickerPopoverViewController: AbstractPickerPopoverViewController {
     
     typealias PopoverType = DatePickerPopover

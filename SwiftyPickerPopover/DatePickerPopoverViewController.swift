@@ -50,6 +50,20 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
         picker.maximumDate = popover.maximumDate
         picker.datePickerMode = popover.dateMode_
         picker.locale = popover.locale
+        if #available(iOS 13.4, *) {
+            switch popover.preferredDatePickerStyle {
+            case .wheels:
+                picker.preferredDatePickerStyle = UIDatePickerStyle.wheels
+            case .automatic:
+                picker.preferredDatePickerStyle = UIDatePickerStyle.automatic
+            case .compact:
+                picker.preferredDatePickerStyle = UIDatePickerStyle.compact
+            case .inline:
+                if #available(iOS 14.0, *) {
+                    picker.preferredDatePickerStyle = UIDatePickerStyle.automatic
+                }
+            }
+        }
         if picker.datePickerMode != .date {
             picker.minuteInterval = popover.minuteInterval
         }

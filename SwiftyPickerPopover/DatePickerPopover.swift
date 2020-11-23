@@ -46,7 +46,7 @@ public class DatePickerPopover: AbstractPopover {
         case compact
         case inline
     }
-    private(set) var preferredDatePickerStyle: PopoverDatePickerStyle = .wheels
+    private(set) var preferredDatePickerStyle: PopoverDatePickerStyle = .automatic
     
     // MARK: - Initializer
     

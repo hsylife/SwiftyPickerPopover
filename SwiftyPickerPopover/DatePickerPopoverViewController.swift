@@ -60,7 +60,7 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
                 picker.preferredDatePickerStyle = UIDatePickerStyle.compact
             case .inline:
                 if #available(iOS 14.0, *) {
-                    picker.preferredDatePickerStyle = UIDatePickerStyle.automatic
+                    picker.preferredDatePickerStyle = UIDatePickerStyle.inline
                 }
             }
         }

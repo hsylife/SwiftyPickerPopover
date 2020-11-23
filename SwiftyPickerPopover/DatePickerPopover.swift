@@ -40,6 +40,13 @@ public class DatePickerPopover: AbstractPopover {
     /// Selected date
     private(set) var selectedDate: ItemType = ItemType()
     private(set) var locale: Locale = Locale.current
+    public enum PopoverDatePickerStyle {
+        case wheels
+        case automatic
+        case compact
+        case inline
+    }
+    private(set) var preferredDatePickerStyle: PopoverDatePickerStyle = .automatic
     
     // MARK: - Initializer
     
@@ -113,6 +120,15 @@ public class DatePickerPopover: AbstractPopover {
     /// - Returns: Self
     public func setLocale(_ locale:Locale)->Self{
         self.locale = locale
+        return self
+    }
+    
+    /// Set Preferred Date Picker - only works on iOS 13.4 and above
+    ///
+    /// - Parameter style: PopoverDatePickerStyle which is used to display date picker
+    /// - Returns: Self
+    public func setPreferredDatePickerStyle(_ style:PopoverDatePickerStyle)->Self{
+        self.preferredDatePickerStyle = style
         return self
     }
 

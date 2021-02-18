@@ -53,6 +53,9 @@ public class DatePickerPopoverViewController: AbstractPickerPopoverViewControlle
         if picker.datePickerMode != .date {
             picker.minuteInterval = popover.minuteInterval
         }
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = UIDatePickerStyle.wheels
+        }
     }
 
     @IBAction func tappedDone(_ sender: UIButton? = nil) {
